@@ -372,6 +372,12 @@ Popular course START -->
 						<div class="card shadow h-100">
 							<!-- Image -->
 							<img src="assets/images/courses/4by3/08.jpg" class="card-img-top" alt="course image">
+							<!-- <li class="dropdown-submenu dropend">
+								<a href="" class="dropdown-item "><span class="material-symbols-outlined ">more_vert</span></a>
+								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
+									<li> <a class="dropdown-item" href="student-dashboard.html"><i class="bi bi-grid-fill fa-fw me-1"></i>Dashboard</a> </li>
+								</ul>
+							</li> -->
 							<!-- Card body -->
 							<div class="card-body pb-0">
 								<!-- Title -->

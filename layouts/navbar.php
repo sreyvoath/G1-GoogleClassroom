@@ -44,7 +44,7 @@
 
 					<!-- Nav item 2 Pages -->
 					<li class="nav-item dropdown">
-						<a class="nav-link " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Classes</a>
+						<a class="nav-link dropdown-toggle " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Classes</a>
 						<ul class="dropdown-menu" aria-labelledby="accounntMenu">
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item " href="#">Create Class</a>

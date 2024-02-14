@@ -61,8 +61,6 @@
 									<img class="avatar-img rounded-circle" src="assets/images/avatar/04.jpg" alt="avatar">
 								</li>
 							</ul>
-							<!-- Content -->
-							<p class="mb-0 h6 fw-light ms-0 ms-sm-3">4k+ Students joined us, now it's your turn.</p>
 						</div>
 					</div>
 				</div>
@@ -73,11 +71,19 @@
 						<div class="col-sm-10 col-xl-8 m-auto">
 							<!-- Title -->
 							<span class="mb-0 fs-1">👋</span>
-							<h1 class="fs-2">Login into Eduport!</h1>
+							<h1 class="fs-2">Login into Classroom!</h1>
 							<p class="lead mb-4">Nice to see you! Please log in with your account.</p>
 
 							<!-- Form START -->
 							<form>
+								<!-- UserName -->
+								<div class="mb-4">
+									<label for="exampleInputEmail1" class="form-label">User Name *</label>
+									<div class="input-group input-group-lg">
+										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-user-alt"></i></span>
+										<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="User Name" id="exampleInputEmail1">
+									</div>
+								</div>
 								<!-- Email -->
 								<div class="mb-4">
 									<label for="exampleInputEmail1" class="form-label">Email address *</label>
@@ -112,7 +118,7 @@
 								<!-- Button -->
 								<div class="align-items-center mt-0">
 									<div class="d-grid">
-										<button class="btn btn-primary mb-0" type="button">Login</button>
+										<a href="#" class="btn btn-primary mb-0" type="button">Login</a>
 									</div>
 								</div>
 							</form>
