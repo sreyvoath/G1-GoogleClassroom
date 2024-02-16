@@ -28,7 +28,10 @@
 
 	<!-- Theme CSS -->
 	<link id="style-switch" rel="stylesheet" type="text/css" href="vendor/css/style.css">
-
+	
+	<!-- Link to JS -->
+	<script src="vendor/js/alert.js" defer></script>
+	
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-7N7LGGGWT1"></script>
 	<script>

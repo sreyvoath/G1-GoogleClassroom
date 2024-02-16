@@ -19,12 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location:/home');
         } else {
             $_SESSION['password-error'] = "Password is incorrect";
+            header("location:/user-signin");
         }
     } else {
 
         header("location:/user-signin");
-        $_SESSION['user-error']= "User is not found";
+        $_SESSION['email-error']= "E-mail is incorrect";
     }
-    
+
 }
 

@@ -1,8 +1,10 @@
 <?php 
+session_start();
 if (isset($_SESSION['user'])) {
-    header('Location: /home');
+    header('Location:/home');
     die();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -59,6 +61,7 @@ if (isset($_SESSION['user'])) {
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-envelope-fill"></i></span>
 										<input type="email" class="form-control border-0 bg-light rounded-end ps-1" placeholder="E-mail" id="exampleInputEmail1" name="email">
 									</div>
+									<span class="text-danger"><?=isset($_SESSION['email-error'])? $_SESSION['email-error'] : ""?></span>
 								</div>
 								<!-- Password -->
 								<div class="mb-4">
@@ -67,6 +70,7 @@ if (isset($_SESSION['user'])) {
 										<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
 										<input type="password" class="form-control border-0 bg-light rounded-end ps-1" placeholder="password" id="inputPassword5" name="password">
 									</div>
+									<span class="text-danger"><?=isset($_SESSION['password-error'])? $_SESSION['password-error'] : ""?></span>
 									<div id="passwordHelpBlock" class="form-text">
 										Your password must be 8 characters at least 
 									</div>
