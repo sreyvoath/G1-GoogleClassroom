@@ -21,6 +21,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $passwordEncript = password_hash($password, PASSWORD_BCRYPT);
     $name = $_POST['name'];
     $email = $_POST['email'];
+    $user = accountExists($email);
+    if ( count($user)>0) {
+        $_SESSION['exist']= "Email already exists";
+        header("Location:/user-signup");
+        exit;
+    }
     if (!empty($name) && (!empty($email)) && (!empty($password))){
         header("Location:/home");
         $_SESSION['error']= $error;

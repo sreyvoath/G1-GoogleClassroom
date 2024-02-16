@@ -33,6 +33,7 @@ if( isset($_SESSION['error'])){
 	<!-- Theme CSS -->
 	<link id="style-switch" rel="stylesheet" type="text/css" href="vendor/css/style.css">
 
+
 </head>
 
 <body>
@@ -71,6 +72,7 @@ if( isset($_SESSION['error'])){
 											<input type="email" class="form-control border-0 bg-light rounded-end ps-1" placeholder="E-mail" id="exampleInputEmail1" name="email">
 										</div>
 										<span class="text-danger"><?=isset($_SESSION['error'])? $error['name'] : ""?></span>
+										<span class="text-danger"><?=isset($_SESSION['exist'])? $_SESSION['exist'] : ""?></span>
 									</div>
 									<!-- Password -->
 									<div class="mb-4">
@@ -87,7 +89,8 @@ if( isset($_SESSION['error'])){
 									</div>
 									<!-- Button -->
 									<div class="align-items-center mt-0">
-										<div class="d-grid">
+										<div class="d-grid d-flex justify-content-between">
+											<a href="/" class="btn border-secondary btn-outline-danger mb-0" type="button">Cancel</a>
 											<button type="submit" class="btn btn-primary mb-0" type="button">Register</button>
 										</div>
 									</div>
