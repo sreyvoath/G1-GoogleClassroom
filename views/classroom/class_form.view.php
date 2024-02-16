@@ -2,7 +2,7 @@
 require  "./layouts/header.php";
 ?>
 
-<div class="container w-50 p-5 mt-5" style="background-color: #eee;">
+<div class="container w-50 p-5 mt-2" style="background-color: #eee;" >
     <h3 class="title mb-5">Create Class</h3>
     <form action="" method="post">
         <div class="mb-3 col-12 g-3">
@@ -18,8 +18,8 @@ require  "./layouts/header.php";
             <input type="text" name="room" class="form-control" id="room" placeholder="room">
         </div>
         <div class="d-grid gap-2 mt-3 d-md-flex justify-content-md-end ">
-            <button type="button" class="btn btn-light mr-5"><a href="/views/home/home.view.php">Cancell</a></button>
-            <button type="button" class="btn btn-light"><a href="card_class.view.php">Create</a></button>
+            <button type="button" id="cancell" class="btn btn-light mr-5"><a href="/views/home/home.view.php">Cancell</a></button>
+            <button type="button" id="create" class="btn btn-light"><a href="card_class.view.php">Create</a></button>
         </div>
     </form>
 </div>
