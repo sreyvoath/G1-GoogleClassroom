@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     if (!empty($name) && (!empty($email)) && (!empty($password))){
         header("Location:/home");
+        $_SESSION['user']= [$name, $email];
         $_SESSION['error']= $error;
         createAccount($name, $email, $passwordEncript);
     }else{
