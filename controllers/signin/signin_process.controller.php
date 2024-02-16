@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Escape the query string to prevent SQL injection.
     $email = htmlspecialchars($_POST['email']);
     $password = htmlspecialchars($_POST['password']);
+
     // Get data from database
     $user = getUser($email);
 
@@ -17,10 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user'] = $user;
             header('Location:/home');
         } else {
-            $_SESSION['pass-error'] = "Password is incorrect";
+            $_SESSION['password-error'] = "Password is incorrect";
         }
     } else {
-        echo "No user found";
+
+        header("location:/user-signin");
+        $_SESSION['user-error']= "User is not found";
     }
 }
 
