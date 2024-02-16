@@ -5,7 +5,6 @@ $routes = [
     '/' => 'controllers/start/start.controller.php',
     '/user-signin' => 'controllers/signin/signin.controller.php',
     '/user-signup' => 'controllers/signup/signup.controller.php',
-    // '/' => 'controllers/signin/signin.controller.php',
     
 ];
 
