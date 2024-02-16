@@ -111,7 +111,7 @@
 				<div class="nav my-3 my-xl-0 px-4 flex-nowrap align-items-center">
 					<div class="nav-item w-100">
 						<form class="position-relative">
-							<a href="" class="btn btn-danger btn-sm mt-2">Log out</a>
+							<a href="/" class="btn btn-danger btn-sm mt-2">Log out</a>
 						</form>
 					</div>
 				</div>
