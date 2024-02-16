@@ -47,7 +47,7 @@
 						<a class="nav-link " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Classes</a>
 						<ul class="dropdown-menu" aria-labelledby="accounntMenu">
 							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item " href="#">Create Class</a>
+								<a class="dropdown-item " href="/create_class">Create Class</a>
 							</li>
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item " href="#">Join Class</a>
