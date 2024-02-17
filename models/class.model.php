@@ -24,18 +24,19 @@ function createClass(string $title, string $section, string $subject, int $user_
 function getClass(int $id)
 {
     global $connection;
-    $statement = $connection->prepare("select * from project where id = :id");
+    $statement = $connection->prepare("select * from classes where id = :id");
     $statement->execute([':id' => $id]);
     return $statement->fetch();
 }
 
-function updateClass(string $name, int $post_id, int $id) : bool
+function updateClass(string $title, string $section, string $subject, int $id) : bool
 {
     global $connection;
-    $statement = $connection->prepare("update project set name = :name, post_id = :post_id where id = :id");
+    $statement = $connection->prepare("update classes set title = :title, section = :section, subject = :subject where id = :id");
     $statement->execute([
-        ':name' => $name,
-        ':post_id' => $post_id,
+        ':title' => $title,
+        ':section' => $section,
+        ':subject' => $subject,
         ':id' => $id
 
     ]);
@@ -45,7 +46,7 @@ function updateClass(string $name, int $post_id, int $id) : bool
 function deleteClass(int $id) : bool
 {
     global $connection;
-    $statement = $connection->prepare("delete from project where id = :id");
+    $statement = $connection->prepare("delete from classes where id = :id");
     $statement->execute([':id' => $id]);
     return $statement->rowCount() > 0;
 }
