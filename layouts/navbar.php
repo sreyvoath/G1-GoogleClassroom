@@ -47,7 +47,11 @@
 						<a class="nav-link dropdown-toggle " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Classes</a>
 						<ul class="dropdown-menu" aria-labelledby="accounntMenu">
 							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item " href="/create_class">Create Class</a>
+								<!-- <a class="dropdown-item " href="/views/classes/class.view.php">Create Class</a> -->
+								<!-- Button trigger modal -->
+								<button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+									Create Class
+								</button>
 							</li>
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item " href="#">Join Class</a>
@@ -59,7 +63,7 @@
 						</ul>
 
 					</li>
-					
+
 					<!-- Nav item 2 Pages -->
 					<li class="nav-item dropdown">
 						<a class="nav-link d-none" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Teaching</a>
@@ -92,12 +96,12 @@
 							<li> <a class="dropdown-item" href="instructor-delete-account.html"><i class="fas fa-fw fa-trash-alt me-1"></i>Delete Profile</a> </li>
 						</ul>
 					</li>
-				
+
 
 					<!-- Nav item 4 Megamenu-->
 					<li class="nav-item dropdown dropdown-fullwidth">
 						<a class="nav-link" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Calendar</a>
-						
+
 					</li>
 					<!-- Nav item 2 Pages -->
 					<li class="nav-item dropdown">
@@ -164,4 +168,43 @@
 	</nav>
 	<!-- Logo Nav END -->
 </header>
-<!-- Header END -->
+
+<!-- Header END --><!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title" id="exampleModalLabel"> <i class="bi bi-house-door-fill mx-3 text-info fs-2"></i>Create New Class</h3>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form id="myForm" action="controllers/classes/class.create.controller.php" method="post">
+					<div class="mb-3">
+						<label for="title" class="form-label">Class Name*</label>
+						<input type="text" class="form-control" id="title" placeholder="Enter a name" name="title">
+					</div>
+					<div class="mb-3">
+						<label for="section" class="form-label">Section*</label>
+						<input type="text" class="form-control" id="section" placeholder="Enter a section" name="section">
+					</div>
+					<div class="mb-3">
+						<label for="subject" class="form-label">Subject*</label>
+						<input type="text" class="form-control" id="subject" placeholder="Enter a subject" name="subject">
+					</div>
+					<div class="mb-3">
+						<label for="categories" class="form-label">Categories*</label>
+						<select class="form-control" id="categories" name="category">
+							<option disabled selected>Select Category</option>
+							<option value="IT">IT</option>
+							<option value="English">English</option>
+							<option value="PL">PL</option>
+						</select>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class=" form-control btn btn-primary" form="myForm">Create</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -4,6 +4,6 @@ $id = $_GET['id'] ? $_GET['id'] : null;
 if (isset($id))
 {
     require '../../models/project.model.php';
-    deleteProject($id);
+    deleteClass($id);
     header('Location: /project');
 }
