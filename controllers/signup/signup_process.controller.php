@@ -28,10 +28,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
     if (!empty($name) && (!empty($email)) && (!empty($password))){
-        header("Location:/home");
         $_SESSION['user']= [$name, $email];
         $_SESSION['error']= $error;
         createAccount($name, $email, $passwordEncript);
+        var_dump($_SESSION['user']);
+        header("Location:/home");
     }else{
         header("Location:/user-signup");
         $error['name'] = "It's require!";
