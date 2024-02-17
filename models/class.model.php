@@ -2,17 +2,21 @@
 function getClasses() : array
 {
     global $connection;
-    $statement = $connection->prepare("select project.id,project.name,project.post_id,posts.title from project inner join posts on project.post_id = posts.id order by project.id desc");
+    $statement = $connection->prepare("select * from classes");
     $statement->execute();
     return $statement->fetchAll();
 }
-function createClass(string $name, int $post_id) : bool
+function createClass(string $title, string $section, string $subject, int $user_id, bool $archive, int $category_id  ) : bool
 {
     global $connection;
-    $statement = $connection->prepare("insert into project (name, post_id) values (:name, :post_id)");
+    $statement = $connection->prepare("insert into classes(title, section, subject, user_id, archive, category_id) values(:title, :section, :subject, :user_id, :archive, :category_id )");
     $statement->execute([
-        ':name' => $name,
-        ':post_id' => $post_id
+        ':title' => $title,
+        ':section' => $section,
+        ':subject' => $subject,
+        ':user_id' => $user_id,
+        ':archive' => $archive,
+        ':category_id' => $category_id
     ]);
 
     return $statement->rowCount() > 0;

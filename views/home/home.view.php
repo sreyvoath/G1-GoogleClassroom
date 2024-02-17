@@ -1,14 +1,3 @@
-<!-- **************** MAIN CONTENT START **************** -->
-<?php
-
-// if (isset($_SESSION['user'])) {
-// 	header("location: /");
-// 	die();
-// }
-
-
-?>
-
 <main>
 
 	<!-- =======================
@@ -369,44 +358,49 @@ Popular course START -->
 				</li>
 			</ul>
 			<!-- Tabs END -->
-
-			<!-- Tabs content START -->
-			<div class="tab-content" id="course-pills-tabContent">
-				<!-- Content START -->
-				<div class="tab-pane fade show active" id="course-pills-tabs-1" role="tabpanel" aria-labelledby="course-pills-tab-1">
-					<div class="row g-4">
-						<!-- Card item START -->
-						<div class="col-sm-6 col-lg-4 col-xl-3">
-							<div class="card shadow h-100">
-								<!-- Image -->
-								<img src="assets/images/courses/4by3/08.jpg" class="card-img-top" alt="course image">
-								<!-- <li class="dropdown-submenu dropend">
+			<?php
+			require "database/database.php";
+			require 'models/class.model.php';
+			$classes = getClasses();
+			foreach ($classes as $class) :
+			?>
+				<!-- Tabs content START -->
+				<div class="tab-content" id="course-pills-tabContent">
+					<!-- Content START -->
+					<div class="tab-pane fade show active" id="course-pills-tabs-1" role="tabpanel" aria-labelledby="course-pills-tab-1">
+						<div class="row g-4">
+							<!-- Card item START -->
+							<div class="col-sm-6 col-lg-4 col-xl-3">
+								<div class="card shadow h-100">
+									<!-- Image -->
+									<img src="assets/images/courses/4by3/08.jpg" class="card-img-top" alt="course image">
+									<!-- <li class="dropdown-submenu dropend">
 								<a href="" class="dropdown-item "><span class="material-symbols-outlined ">more_vert</span></a>
 								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
 									<li> <a class="dropdown-item" href="student-dashboard.html"><i class="bi bi-grid-fill fa-fw me-1"></i>Dashboard</a> </li>
 								</ul>
 							</li> -->
-								<!-- Card body -->
-								<div class="card-body pb-0">
-									<!-- Title -->
-									<h5 class="card-title fw-normal"><a href="#">Title</a></h5>
-									<p class="mb-2 text-truncate-2">Section</p>
-								</div>
-								<!-- Card footer -->
-								<div class="card-footer pt-0 pb-3">
-									<hr>
-									<div class="d-flex justify-content-between">
-										<span class="h6 fw-light mb-0"><i class="far fa-clock text-danger me-2"></i>12h 56m</span>
-										<span class="h6 fw-light mb-0"><i class="fas fa-table text-orange me-2"></i>15 lectures</span>
+									<!-- Card body -->
+									<div class="card-body pb-0">
+										<!-- Title -->
+										<h5 class="card-title fw-normal  "><a href="#" class="text-decoration-none"><?= $class['title'] ?></h5>
+										<p class="mb-2 text-truncate-2"><?= $class['section'] ?></p>
+									</div>
+									<!-- Card footer -->
+									<div class="card-footer pt-0 pb-3">
+										<div class="d-flex justify-content-between mt-2">
+											<span class="h6 fw-light mb-0"><i class="far fa-clock text-danger me-2"></i>12h 56m</span>
+											<span class="h6 fw-light mb-0"><i class="fas fa-table text-orange me-2"></i>15 lectures</span>
+										</div>
 									</div>
 								</div>
 							</div>
+							<!-- Card item END -->
 						</div>
-						<!-- Card item END -->
 					</div>
+					<!-- Content END -->
 				</div>
-				<!-- Content END -->
-			</div>
+			<?php endforeach; ?>
 			<!-- Tabs content END -->
 		</div>
 	</section>
