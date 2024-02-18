@@ -321,7 +321,6 @@ Counter START -->
 	</section>
 	<!-- =======================
 Counter END -->
-
 	<!-- =======================
 Popular course START -->
 	<section>

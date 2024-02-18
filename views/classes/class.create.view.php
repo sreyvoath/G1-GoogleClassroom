@@ -35,8 +35,6 @@ $posts = getPosts();
             <div class="form-group">
                 <button class="btn btn-block btn-primary">Add Project</button>
             </div>
-
-
         </form>
     </div>
 </div>
