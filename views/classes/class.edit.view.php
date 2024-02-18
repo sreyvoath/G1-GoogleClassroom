@@ -1,9 +1,9 @@
 <?php
 
 require "../../layouts/header.php";
-require "../../layouts/navbar.php";
+// require "../../layouts/navbar.php";
 ?>
-<div class="container">
+<div class="container mt-5">
     <div class="row">
         <div class="col-3"></div>
         <div class="col-5">
@@ -37,6 +37,7 @@ require "../../layouts/navbar.php";
                         </div>
 
                         <button type="submit" class="btn btn-primary form-control">Update</button>
+                        <a href="/home" class="btn btn-info form-control">Update</a>
                     </form>
                 </div>
                 <div class="col-3"></div>
@@ -45,5 +46,3 @@ require "../../layouts/navbar.php";
 
     </div>
 </div>
-
-<?php require "../../layouts/footer.php" ?>

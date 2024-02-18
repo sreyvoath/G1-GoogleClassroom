@@ -46,10 +46,10 @@ if(!isset($_SESSION['user'])){
 
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-7N7LGGGWT1"></script>
+	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-7N7LGGGWT1"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> -->
 	<script>
 		window.dataLayer = window.dataLayer || [];
 
