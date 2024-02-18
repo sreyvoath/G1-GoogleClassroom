@@ -6,8 +6,8 @@
 			<!-- Logo START -->
 			<a class="navbar-brand" href="/home">
 				<h3>
-					<img src="../assets/images/avatar/14.png" alt="">
-					<span class="fs-2 mx-3">Classroom</span>
+					<img src="../assets/images/avatar/16.png" alt="">
+					<span class="fs-2 mx-2">Classroom</span>
 				</h3>
 				
 			</a>
@@ -38,7 +38,7 @@
 				<ul class="navbar-nav navbar-nav-scroll me-auto">
 					<!-- Nav item 1 Demos -->
 					<li class="nav-item dropdown">
-						<a class="nav-link active" href="#" id="demoMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
+						<a class="nav-link active" href="/home">Home</a>
 					</li>
 
 					<!-- Nav item 2 Pages -->
@@ -56,7 +56,7 @@
 								<a class="dropdown-item " href="#">Join Class</a>
 							</li>
 							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item text-primary" href="../views/classes/class.view.php">View all Class</a>
+								<a class="dropdown-item text-primary" href="/classes">View all Class</a>
 							</li>
 
 						</ul>
@@ -98,13 +98,13 @@
 
 
 					<!-- Nav item 4 Megamenu-->
-					<li class="nav-item dropdown dropdown-fullwidth">
-						<a class="nav-link" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Calendar</a>
+					<li class="nav-item">
+						<a class="nav-link" href="/calendar">Calendar</a>
 
 					</li>
 					<!-- Nav item 2 Pages -->
 					<li class="nav-item dropdown">
-						<a class="nav-link " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Archive</a>
+						<a class="nav-link " href="/archive">Archive</a>
 					</li>
 
 				</ul>

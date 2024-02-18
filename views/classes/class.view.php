@@ -1,5 +1,4 @@
-<?php require "../../layouts/header.php"?>
-<?php require "../../layouts/navbar.php"?>
+
 <!-- Popular course START -->
 <section>
     <div class="container">
@@ -44,8 +43,6 @@
                 <div class="row g-4">
                     <!-- Card item START -->
                     <?php
-                    require "../../database/database.php";
-                    require '../../models/class.model.php';
                     $classes = getClasses();
                     foreach ($classes as $class) :?>
                         <div class="col-sm-6 col-lg-4 col-xl-3">
@@ -93,4 +90,3 @@
             <!-- Tabs content END -->
         </div>
 </section>
-<?php require "../../layouts/footer.php"?>
