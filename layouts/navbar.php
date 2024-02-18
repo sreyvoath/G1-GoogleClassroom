@@ -2,15 +2,14 @@
 <header class="navbar-light navbar-sticky header-static">
 	<!-- Logo Nav START -->
 	<nav class="navbar navbar-expand-xl">
-		<div class="container-fluid px-3 px-xl-5">
+		<div class="container-fluid px-3 px-xl-5 py-0">
 			<!-- Logo START -->
-			<a class="navbar-brand" href="/">
+			<a class="navbar-brand" href="/home">
 				<h3>
-					<span class="text-danger">E-</span>
-					<span>Classroom</span>
+					<img src="../assets/images/avatar/14.png" alt="">
+					<span class="fs-2 mx-3">Classroom</span>
 				</h3>
-				<!-- <img class="light-mode-item navbar-brand-item" src="assets/images/logo.svg" alt="logo"> -->
-				<!-- <img class="dark-mode-item navbar-brand-item" src="assets/images/logo-light.svg" alt="logo"> -->
+				
 			</a>
 			<!-- Logo END -->
 
@@ -57,7 +56,7 @@
 								<a class="dropdown-item " href="#">Join Class</a>
 							</li>
 							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item " href="#">View all Class</a>
+								<a class="dropdown-item text-primary" href="../views/classes/class.view.php">View all Class</a>
 							</li>
 
 						</ul>
@@ -134,7 +133,7 @@
 						<div class="d-flex align-items-center">
 							<!-- Avatar -->
 							<div class="avatar me-3">
-								<img class="avatar-img rounded-circle shadow" src="assets/images/avatar/01.jpg" alt="avatar">
+								<img class="avatar-img rounded-circle shadow" src="../../assets/images/avatar/01.jpg" alt="avatar">
 							</div>
 							<div>
 								<a class="h6" href="#">Lori Ferguson</a>
