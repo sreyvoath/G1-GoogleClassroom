@@ -10,10 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user_id = 3;
         $archive = 1;
         $category_id = 2;
-        createClass( $title,  $section,  $subject,  $user_id,  $archive,  $category_id );
+        createClass($title,  $section,  $subject,  $user_id,  $archive,  $category_id);
         header('location:/home');
-// 
+        // 
+    } else {
+        echo "<script>alert('You must complete all fields.');</script>";
+        header('refresh:0; url=/home');
     }
-
-    
 }
