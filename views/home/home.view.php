@@ -394,6 +394,7 @@ Popular course START -->
 										<div class="d-flex">
 											<a href="../../controllers/classes/class.edit.controller.php?id=<?= $class['id']?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-info text-white"><i class="bi bi-pen text-dark "></i></a>
 											<a href="../../controllers/classes/class.delete.controller.php?id=<?= $class['id']?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-trash text-danegr "></i></a>
+											<a href="#" class="btn mx-1 h6 fw-light mb-0 btn-outline-secondary"><i class="bi bi-archive-fill"></i></a>
 										</div>
 									</div>
 								</div>

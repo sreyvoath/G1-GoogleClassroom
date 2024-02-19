@@ -6,10 +6,10 @@
 			<!-- Logo START -->
 			<a class="navbar-brand" href="/home">
 				<h3>
-					<img src="../assets/images/avatar/16.png" alt="">
+					<img src="../assets/images/avatar/16.png" alt="" class="mb-2">
 					<span class="fs-2 mx-2">Classroom</span>
 				</h3>
-				
+
 			</a>
 			<!-- Logo END -->
 
@@ -113,8 +113,10 @@
 				<!-- Nav Search START -->
 				<div class="nav my-3 my-xl-0 px-4 flex-nowrap align-items-center">
 					<div class="nav-item w-100">
-						<form class="position-relative">
-							<a href="/user-signout" class="btn btn-danger btn-sm mt-2 logout">Log out</a>
+						<form class="position-relative mt-2">
+							<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+							<i class="bi bi-plus-circle-fill me-2"></i>Class
+							</button>
 						</form>
 					</div>
 				</div>
@@ -146,7 +148,7 @@
 					<li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
 					<li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account Settings</a></li>
 					<li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a></li>
-					<li><a class="dropdown-item bg-danger-soft-hover" href="#"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+					<li><a class="dropdown-item bg-danger-soft-hover" href="/user-signout"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
 					<li>
 						<hr class="dropdown-divider">
 					</li>

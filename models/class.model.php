@@ -16,7 +16,7 @@ function createClass(string $title, string $section, string $subject, int $user_
         ':subject' => $subject,
         ':user_id' => $user_id,
         ':archive' => $archive,
-        // ':category_id' => $category_id
+        ':category_id' => $category_id
     ]);
 
     return $statement->rowCount() > 0;

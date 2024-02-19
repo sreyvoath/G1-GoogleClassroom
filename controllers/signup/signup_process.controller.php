@@ -21,6 +21,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $passwordEncript = password_hash($password, PASSWORD_BCRYPT);
     $name = $_POST['name'];
     $email = $_POST['email'];
+    $image = $_FILES['image'];
+
+    // Image upload
+    $directory = "../../assets/profiles/";
+    $target_file = $directory .'.'.basename($_FILES['image']['name']);
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $checkImageSize = getimagesize($_FILES["image"]["tmp_name"]);
+    
     $user = accountExists($email);
     if ( count($user)>0) {
         $_SESSION['exist']= "Email already exists";
@@ -30,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (!empty($name) && (!empty($email)) && (!empty($password))){
         $_SESSION['user']= [$name, $email];
         $_SESSION['error']= $error;
-        createAccount($name, $email, $passwordEncript);
+        createAccount($name, $email, $passwordEncript, $image);
         var_dump($_SESSION['user']);
         header("Location:/home");
     }else{
@@ -46,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
     if (empty($error['password'])){
-        createAccount($name, $email, $passwordEncript);
+        createAccount($name, $email, $passwordEncript, $image);
         header("Location:/home");
         $_SESSION['error']= $error;
         exit;
