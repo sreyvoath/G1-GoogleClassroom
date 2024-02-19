@@ -1,4 +1,3 @@
-
 <!-- =======================
 Footer START -->
 <footer class="pt-5">
@@ -9,11 +8,11 @@ Footer START -->
 			<!-- Widget 1 START -->
 			<div class="col-lg-3">
 				<!-- logo -->
-				<a class="me-0" href="index.html">
-					<img class="light-mode-item h-40px" src="assets/images/logo.svg" alt="logo">
-					<img class="dark-mode-item h-40px" src="assets/images/logo-light.svg" alt="logo">
+				<a class="me-0" href="/home">
+					<img src="../assets/images/avatar/16.png" alt="" class=" mb-3">
+					<span class="fs-2 mx-2 ">Classroom</span>
 				</a>
-				<p class="my-3">Eduport education theme, built specifically for the education centers which is dedicated to teaching and involve learners.</p>
+				<p class="my-3">Classroom education theme, built specifically for the education centers which is dedicated to teaching and involve learners.</p>
 				<!-- Social media icon -->
 				<ul class="list-inline mb-0 mt-3">
 					<li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-facebook" href="#"><i class="fab fa-fw fa-facebook-f"></i></a> </li>
@@ -38,7 +37,7 @@ Footer START -->
 							<li class="nav-item"><a class="nav-link" href="#">Career</a></li>
 						</ul>
 					</div>
-									
+
 					<!-- Link block -->
 					<div class="col-6 col-md-4">
 						<h5 class="mb-2 mb-md-4">Community</h5>
@@ -84,7 +83,7 @@ Footer START -->
 						<a href="#"> <img src="assets/images/client/app-store.svg" alt="app-store"> </a>
 					</div>
 				</div> <!-- Row END -->
-			</div> 
+			</div>
 			<!-- Widget 3 END -->
 		</div><!-- Row END -->
 
@@ -96,7 +95,7 @@ Footer START -->
 			<div class="container px-0">
 				<div class="d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
 					<!-- copyright text -->
-					<div class="text-primary-hover"> Copyrights <a href="#" class="text-body">©2021 Eduport</a>. All rights reserved. </div>
+					<div class="text-primary-hover"> Copyrights <a href="#" class="text-body">©2021 Classroom</a>. All rights reserved. </div>
 					<!-- copyright links-->
 					<div class=" mt-3 mt-md-0">
 						<ul class="list-inline mb-0">
@@ -139,4 +138,5 @@ Footer END -->
 <script src="vendor/js/functions.js"></script>
 
 </body>
+
 </html>
