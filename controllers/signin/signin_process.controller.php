@@ -16,10 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Check if password is correct
         if (password_verify($password, $user[3])) {
             $_SESSION['user'] = $user;
+    
             header('Location:/home');
         } else {
             $_SESSION['password-error'] = "Password is incorrect";
             header("location:/user-signin");
+
         }
     } else {
 
@@ -27,5 +29,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['email-error']= "E-mail is incorrect";
     }
 
-}
-
+};
