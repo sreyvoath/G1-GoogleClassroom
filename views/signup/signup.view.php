@@ -1,15 +1,17 @@
 <?php
 session_start();
 if (isset($_SESSION['error'])) {
-	$error = $_SESSION['error'];
-}
+		$error = $_SESSION['error'];
+	}
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<title>Eduport - LMS, Education and Course Theme</title>
+	<title>E-Classroom</title>
 
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
@@ -53,7 +55,7 @@ if (isset($_SESSION['error'])) {
 								<p class="lead mb-4">Nice to see you! Please create with new account.</p>
 
 								<!-- Form START -->
-								<form action="../../controllers/signup/signup_process.controller.php" method="post">
+								<form action="../../controllers/signup/signup_process.controller.php" method="post" enctype="multipart/form-data">
 									<!-- Name -->
 									<div class="mb-4">
 										<label for="exampleInputEmail1" class="form-label">User Name*</label>
@@ -88,8 +90,8 @@ if (isset($_SESSION['error'])) {
 									</div>
 									<!-- Upload Image-->
 									<div class="mb-4">
-										<label for="inputPassword5" class="form-label">Profile Image *</label>
-										<input type="file" class="form-control" id="customFile" name="image"/>
+										<label for="inputImage" class="form-label">Profile Image *</label>
+										<input type="file" name="image" id="inputImages" class="form-control">
 									</div>
 									<!-- Button -->
 									<div class="align-items-center mt-0">
