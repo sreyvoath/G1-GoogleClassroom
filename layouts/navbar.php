@@ -85,7 +85,7 @@
 								</ul>
 							</li>
 							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item " href="#"><i class="fas fa-user-tie fa-fw me-1"></i>Teachers</a>
+								<a class="dropdown-item " href="/trainers"><i class="fas fa-user-tie fa-fw me-1"></i>Teachers</a>
 							</li>
 							<li>
 								<hr class="dropdown-divider">

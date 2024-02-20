@@ -9,6 +9,7 @@ $routes = [
     '/update_class' => 'controllers/classes/class.update.controller.php',
     '/classes' => 'controllers/classes/class.controller.php',
 
+
 ];
 
 if (array_key_exists($uri, $routes)) {
