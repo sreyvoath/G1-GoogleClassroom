@@ -8,6 +8,7 @@ $routes = [
     '/create_class' => 'controllers/classes/class.create.controller.php',
     '/update_class' => 'controllers/classes/class.update.controller.php',
     '/classes' => 'controllers/classes/class.controller.php',
+    '/edit_profile' => 'controllers/profiles/edit_profile.controller.php',
 
 ];
 
