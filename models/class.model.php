@@ -6,7 +6,7 @@ function getClasses() : array
     $statement->execute();
     return $statement->fetchAll();
 }
-function createClass(string $title, string $section, string $subject, int $user_id, bool $archive, int $category_id  ) : bool
+function createClass(string $title, string $section, string $subject, int $user_id, int $category_id) : bool
 {
     global $connection;
     $statement = $connection->prepare("insert into classes(title, section, subject, user_id, archive, category_id) values(:title, :section, :subject, :user_id, :archive, :category_id )");
@@ -15,7 +15,7 @@ function createClass(string $title, string $section, string $subject, int $user_
         ':section' => $section,
         ':subject' => $subject,
         ':user_id' => $user_id,
-        ':archive' => $archive,
+        ':archive' => 1,
         ':category_id' => $category_id
     ]);
 

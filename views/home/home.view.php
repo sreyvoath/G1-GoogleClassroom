@@ -361,7 +361,7 @@ Popular course START -->
 						require 'models/class.model.php';
 						$classes = getClasses();
 						foreach ($classes as $class) {
-							if ($class['archive'] == 0) { ?>
+							if ($class['archive'] == 1) { ?>
 
 								<div class="col-sm-6 col-lg-4 col-xl-3">
 									<div class="card shadow h-100">
