@@ -36,7 +36,7 @@ Popular course START -->
 						<!-- Card item START -->
 						<?php
 						foreach ($classes as $class) {
-							if ($class['archive'] == 1) { ?>
+							if ($class['archive'] == 0) { ?>
 
 								<div class="col-sm-6 col-lg-4 col-xl-3">
 									<div class="card shadow h-100">
@@ -69,7 +69,7 @@ Popular course START -->
 										<!-- Card footer -->
 										<div class="card-footer pt-3 pb-3">
 											<div class="d-flex">
-												<a href="../../controllers/classes/class.edit.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-info text-white"><i class="bi bi-pen text-dark "></i></a>
+												<a href="../../controllers/classes/archive.delete.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-trash text-danegr "></i></a>
 												<a href="../../controllers/classes/restore.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-secondary"><i class="bi bi-bootstrap-reboot"></i></a>
 											</div>
 										</div>
