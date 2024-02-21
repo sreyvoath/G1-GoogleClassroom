@@ -92,7 +92,9 @@ if (isset($_SESSION['error'])) {
 									<div class="mb-4">
 										<label for="inputImage" class="form-label">Profile Image *</label>
 										<input type="file" name="image" id="inputImages" class="form-control">
+										<span class="text-danger"><?= isset($_SESSION['error']) ? $error['name'] : "" ?></span>
 									</div>
+									
 									<!-- Button -->
 									<div class="align-items-center mt-0">
 										<div class="d-grid d-flex justify-content-between">
