@@ -8,8 +8,12 @@ $routes = [
     '/create_class' => 'controllers/classes/class.create.controller.php',
     '/update_class' => 'controllers/classes/class.update.controller.php',
     '/classes' => 'controllers/classes/class.controller.php',
+<<<<<<< HEAD
 
 
+=======
+    '/archive' => 'controllers/classes/archive.view.controller.php',
+>>>>>>> archive_classes
 ];
 
 if (array_key_exists($uri, $routes)) {
