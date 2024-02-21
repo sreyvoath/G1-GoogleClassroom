@@ -1,6 +1,6 @@
 <?php
 require "database/database.php";
-require "models/trainer.model.php";
+require "models/trainers/trainer.model.php";
 
 // $trainers = $getUser();
 require "views/trainers/trainer.view.php";

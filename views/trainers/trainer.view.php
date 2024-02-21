@@ -85,14 +85,14 @@ Inner part START -->
 				<!-- Card item START -->
 				<?php
 				$trainers = getUsers();
-				foreach ($trainers as $trainer) : ?>
+				foreach ($trainers as $trainer) :
+				?>
 					<div class="col-lg-10 col-xl-6">
 						<div class="card shadow p-2">
 							<div class="row g-0">
 								<!-- Image -->
 								<div class="col-md-4">
 									<img src="assets/images/instructor/01.jpg" class="rounded-3" alt="...">
-
 								</div>
 								<!-- Card body -->
 								<div class="col-md-8">
