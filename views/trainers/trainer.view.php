@@ -80,19 +80,19 @@ Inner part START -->
 			<!-- Search option END -->
 
 			<!-- Instructor list START -->
-			<div class="row g-4 d-flex">
+			<div class="row g-4 justify-content-center">
 
 				<!-- Card item START -->
-				<div class="col-lg-10 col-xl-6">
-
-					<div class="card shadow p-2">
-						<?php
-						$trainers = getUsers();
-						foreach ($trainers as $trainer) : ?>
-							<div class="row g-0 ">
+				<?php
+				$trainers = getUsers();
+				foreach ($trainers as $trainer) : ?>
+					<div class="col-lg-10 col-xl-6">
+						<div class="card shadow p-2">
+							<div class="row g-0">
 								<!-- Image -->
 								<div class="col-md-4">
 									<img src="assets/images/instructor/01.jpg" class="rounded-3" alt="...">
+
 								</div>
 								<!-- Card body -->
 								<div class="col-md-8">
@@ -131,14 +131,15 @@ Inner part START -->
 									</div>
 								</div>
 							</div>
-						<?php
-						endforeach;
-						?>
-					</div>
-				</div>
-				<!-- Card item END -->
-			</div>
 
+						</div>
+					</div>
+				<?php
+				endforeach;
+				?>
+				<!-- Card item END -->
+
+			</div>
 			<!-- Instructor list END -->
 
 			<!-- Pagination START -->
