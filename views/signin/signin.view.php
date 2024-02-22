@@ -10,7 +10,7 @@ if (isset($_SESSION['user'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Eduport - LMS, Education and Course Theme</title>
+	<title>Classroom</title>
 
 	<!-- Meta Tags -->
 	<meta charset="utf-8">

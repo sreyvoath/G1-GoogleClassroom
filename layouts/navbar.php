@@ -1,3 +1,9 @@
+<?php
+$user = $_SESSION['user'];
+$classes = $_SESSION['class'];
+
+
+?>
 <!-- Header START -->
 <header class="navbar-light navbar-sticky header-static">
 	<!-- Logo Nav START -->
@@ -81,7 +87,9 @@
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item dropdown-toggle" href="#"><i class="fas fa-user-graduate fa-fw me-1"></i>All Classes</a>
 								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="student-dashboard.html"><i class="bi bi-grid-fill fa-fw me-1"></i>Dashboard</a> </li>
+									<?php foreach ($classes as $class) : ?>
+										<li> <a class="dropdown-item" href="student-dashboard.html"><i class="bi bi-grid-fill fa-fw me-1"></i><?= $class['title'] ?></a> </li>
+									<?php endforeach ?>
 								</ul>
 							</li>
 							<li class="dropdown-submenu dropend">
@@ -115,7 +123,7 @@
 					<div class="nav-item w-100">
 						<form class="position-relative mt-2">
 							<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-							<i class="bi bi-plus-circle-fill me-2"></i>Class
+								<i class="bi bi-plus-circle-fill me-2"></i>Class
 							</button>
 						</form>
 					</div>
@@ -124,15 +132,11 @@
 			</div>
 			<!-- Main navbar END -->
 
-			<?php 
-			
-			$user = $_SESSION['user'];
-		
-			?>
+
 			<!-- Profile START -->
 			<div class="dropdown ms-1 ms-lg-0">
 				<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-					<img class="avatar-img rounded-circle" src="../assets/images/profiles/<?=$user['image']?>" alt="avatar">
+					<img class="avatar-img rounded-circle" src="../assets/images/profiles/<?= $user['image'] ?>" alt="avatar">
 				</a>
 				<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
 					<!-- Profile info -->
@@ -140,7 +144,7 @@
 						<div class="d-flex align-items-center">
 							<!-- Avatar -->
 							<div class="avatar me-3">
-								<img class="avatar-img rounded-circle shadow" src="../assets/images/profiles/<?=$user['image']?>" alt="profiles">
+								<img class="avatar-img rounded-circle shadow" src="../assets/images/profiles/<?= $user['image'] ?>" alt="profiles">
 							</div>
 							<div>
 								<a class="h6" href="#"><?= $user['name'] ?></a>

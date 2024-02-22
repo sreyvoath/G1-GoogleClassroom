@@ -8,7 +8,7 @@ $user = $_SESSION['user'];
 <html lang="en">
 
 <head>
-    <title> ELearning</title>
+    <title>Classroom</title>
 
     <!-- Meta Tags -->
     <meta charset="utf-8">
