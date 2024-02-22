@@ -11,3 +11,18 @@ function getUser(string $id): array
         return [];
     }
 }
+
+function updateProfile(string $name, string $email, string $image, int $id) : bool
+{
+    global $connection;
+    $statement = $connection->prepare("update users set name =:name, email =:email, image = :image where id = :id");
+    $statement->execute([
+        ':name' => $name,
+        ':email' => $email,
+        ':image' => $image,
+        ':id' => $id
+
+    ]);
+
+    return $statement->rowCount() > 0;
+}

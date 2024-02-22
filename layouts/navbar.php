@@ -127,6 +127,7 @@
 			<?php 
 			
 			$user = $_SESSION['user'];
+		
 			?>
 			<!-- Profile START -->
 			<div class="dropdown ms-1 ms-lg-0">
@@ -149,7 +150,7 @@
 						<hr>
 					</li>
 					<!-- Links -->
-					<li><a class="dropdown-item" href="/edit_profile"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
+					<li><a class="dropdown-item" href="../views/profiles/edit_profile.view.php"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
 					<li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account Settings</a></li>
 					<li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a></li>
 					<li><a class="dropdown-item bg-danger-soft-hover" href="/user-signout"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>

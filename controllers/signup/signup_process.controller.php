@@ -55,7 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
     if (!empty($name) && (!empty($email)) && (!empty($password))) {
-        // $_SESSION['user'] = ['name'=>$name, 'email'=>$email, 'image'=>$image];
         $_SESSION['error'] = $error;
         createAccount($name, $email, $passwordEncript, $image);
         header("Location:/home");
@@ -73,7 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     if (empty($error['password'])) {
         createAccount($name, $email, $passwordEncript, $image);
-        // $_SESSION['user'] = ['name'=>$name, 'email'=>$email, 'image'=>$image];
         header("Location:/home");
         $_SESSION['error'] = $error;
         exit;

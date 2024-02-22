@@ -1,7 +1,7 @@
 <?php
 
 require "../../layouts/header.php";
-// require "../../layouts/navbar.php";
+
 ?>
 <div class="container mt-5">
     <div class="row">
