@@ -2,7 +2,7 @@
 function getClasses() : array
 {
     global $connection;
-    $statement = $connection->prepare("select * from classes");
+    $statement = $connection->prepare("select * from classes order by id desc");
     $statement->execute();
     return $statement->fetchAll();
 }
