@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $title = $_POST['title'];
         $section = $_POST['section'];
         $subject = $_POST['subject'];
-        $user_id = 3;
+        $user_id = 1;
         $archive = 1;
         $category_id = 2;
         createClass($title,  $section,  $subject,  $user_id,  $archive,  $category_id);
