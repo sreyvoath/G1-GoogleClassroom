@@ -15,7 +15,7 @@ function createClass(string $title, string $section, string $subject, int $user_
         ':section' => $section,
         ':subject' => $subject,
         ':user_id' => $user_id,
-        ':archive' => 1,
+        ':archive' => 0,
         ':category_id' => $category_id
     ]);
 
