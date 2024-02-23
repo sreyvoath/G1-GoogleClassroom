@@ -93,7 +93,7 @@ $classes = $_SESSION['class'];
 								</ul>
 							</li>
 							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item " href="/trainers"><i class="fas fa-user-tie fa-fw me-1"></i>Teachers</a>
+								<a class="dropdown-item " href="/teacher"><i class="fas fa-user-tie fa-fw me-1"></i>Personal</a>
 							</li>
 							<li>
 								<hr class="dropdown-divider">
@@ -132,7 +132,14 @@ $classes = $_SESSION['class'];
 			</div>
 			<!-- Main navbar END -->
 
+<<<<<<< HEAD
+			<?php 
+			// session_start();
+			$user = $_SESSION['user'];
+			?>
+=======
 
+>>>>>>> f743324a97dc4c30f5f9641fd6679547ccdb9d8a
 			<!-- Profile START -->
 			<div class="dropdown ms-1 ms-lg-0">
 				<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
@@ -144,7 +151,11 @@ $classes = $_SESSION['class'];
 						<div class="d-flex align-items-center">
 							<!-- Avatar -->
 							<div class="avatar me-3">
+<<<<<<< HEAD
+								<img class="avatar-img rounded-circle shadow" src="../../assets/images/profiles/<?=$user['image']?>" alt="profiles">
+=======
 								<img class="avatar-img rounded-circle shadow" src="../assets/images/profiles/<?= $user['image'] ?>" alt="profiles">
+>>>>>>> f743324a97dc4c30f5f9641fd6679547ccdb9d8a
 							</div>
 							<div>
 								<a class="h6" href="#"><?= $user['name'] ?></a>
@@ -152,6 +163,7 @@ $classes = $_SESSION['class'];
 							</div>
 						</div>
 						<hr>
+					
 					</li>
 					<!-- Links -->
 					<li><a class="dropdown-item" href="../views/profiles/edit_profile.view.php"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
