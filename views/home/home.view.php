@@ -360,9 +360,17 @@ Popular course START -->
 						require "database/database.php";
 						require 'models/class.model.php';
 						$classes = getClasses();
-						foreach ($classes as $class) {
-							if ($class['archive'] == 0) { ?>
+						$_SESSION['class'] = $classes;
+						if (count($classes) == 0){
+						?>
+						<img src="../../assets/images/about/25.png" alt="" style="width: 400px; height: 300px; display:flex; margin:auto; padding-top:100px">
 
+						<?php 
+						}else { 
+							
+							foreach ($classes as $class) :
+								if ($class['archive'] == 0):
+						?>
 								<div class="col-sm-6 col-lg-4 col-xl-3">
 									<div class="card shadow h-100">
 										<!-- Image -->
@@ -401,8 +409,10 @@ Popular course START -->
 										</div>
 									</div>
 								</div>
-						<?php }
-						} ?>
+							
+								<?php endif?>
+							<?php endforeach?>
+						<?php }?>
 						<!-- Card item END -->
 					</div>
 				</div>

@@ -8,13 +8,6 @@ function secureData($data)
     $data = htmlspecialchars($data);
     return $data;
 };
-$error = [
-
-    "password" => "",
-    "name" => "",
-    "email" => ""
-
-];
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -54,32 +47,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         }
     }
-    if (!empty($name) && (!empty($email)) && (!empty($password))) {
-        // $_SESSION['user'] = ['name'=>$name, 'email'=>$email, 'image'=>$image];
-        $_SESSION['error'] = $error;
+    if (!preg_match('/^(?=.*[!@#$])[a-zA-Z0-9!@#$]{8,}+$/', secureData($password))) {
+        $_SESSION['password'] = "Password is not secure!";
+        $_SESSION['name'] = "It's require!";
+        header("Location:/user-signup");
+        exit;
+    }
+    if (!empty($name) && (!empty($email)) && (!empty($password)) && !empty($image)) {
         createAccount($name, $email, $passwordEncript, $image);
         header("Location:/home");
     } else {
         header("Location:/user-signup");
-        $error['name'] = "It's require!";
-        $_SESSION['error'] = $error;
+        $_SESSION['name'] ="It's require!";
         exit;
     }
-    if (!preg_match('/^(?=.*[!@#$])[a-zA-Z0-9!@#$]{8,}+$/', secureData($password))) {
-        $error['password'] = "Password is not secure!";
-        $_SESSION['error'] = $error;
-        header("Location:/user-signup");
-        exit;
-    }
+   
     if (empty($error['password'])) {
         createAccount($name, $email, $passwordEncript, $image);
-        // $_SESSION['user'] = ['name'=>$name, 'email'=>$email, 'image'=>$image];
         header("Location:/home");
-        $_SESSION['error'] = $error;
         exit;
     } else {
         header("Location:/user-signup");
-        $_SESSION['error'] = $error;
         exit;
     };
 } else {
