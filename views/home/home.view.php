@@ -369,7 +369,7 @@ Popular course START -->
 						}else { 
 							
 							foreach ($classes as $class) :
-								if ($class['archive'] == 1):
+								if ($class['archive'] == 0):
 						?>
 								<div class="col-sm-6 col-lg-4 col-xl-3">
 									<div class="card shadow h-100">
