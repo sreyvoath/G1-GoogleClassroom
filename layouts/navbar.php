@@ -188,7 +188,7 @@ $classes = $_SESSION['class'];
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<form id="myForm" action="controllers/classes/class.create.controller.php" method="post">
+				<form id="myForm" action="controllers/classes/class.create.controller.php" method="post" enctype="multipart/form-data">
 					<div class="mb-3">
 						<label for="title" class="form-label">Class Name*</label>
 						<input type="text" class="form-control" id="title" placeholder="Enter a name" name="title">
@@ -209,6 +209,10 @@ $classes = $_SESSION['class'];
 							<option value="English">English</option>
 							<option value="PL">PL</option>
 						</select>
+					</div>
+					<div class="mb-4">
+						<label for="inputImage" class="form-label">Profile Image *</label>
+						<input type="file" name="image" id="inputImages" class="form-control">
 					</div>
 				</form>
 			</div>
