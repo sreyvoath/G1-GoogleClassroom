@@ -31,6 +31,11 @@ $posts = getPosts();
                         <option value="<?= $post['id'] ?>"><?= $post['title'] ?></option>
                     <?php endforeach ?>
                 </select>
+                <div class="mb-4">
+                    <input type="file" name="image" id="inputImages" class="form-control">
+                    <span class="text-danger"><?= isset($_SESSION['name']) ? $_SESSION['name'] : "" ?></span>
+                </div>
+
         </form>
     </div>
 </div>

@@ -374,7 +374,7 @@ Popular course START -->
 								<div class="col-sm-6 col-lg-4 col-xl-3">
 									<div class="card shadow h-100">
 										<!-- Image -->
-										<img src="assets/images/courses/4by3/08.jpg" class="card-img-top" alt="course image">
+										<img src="../../assets/images/classes/<?= $class['image']?>" class="card-img-top" alt="course image">
 										<!-- <li class="dropdown-submenu dropend">
 								</li> -->
 										<!-- Card body -->
