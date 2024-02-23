@@ -363,7 +363,7 @@ Popular course START -->
 						$_SESSION['class'] = $classes;
 						if (count($classes) == 0){
 						?>
-						<img src="../../assets/images/about/25.jpg" alt="" style="width: 350px; height: 300px; display:flex; margin:auto">
+						<img src="../../assets/images/about/25.png" alt="" style="width: 400px; height: 300px; display:flex; margin:auto; padding-top:100px">
 
 						<?php 
 						}else { 
