@@ -85,10 +85,10 @@ $classes = $_SESSION['class'];
 
 							<!-- Dropdown submenu -->
 							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="#"><i class="fas fa-user-graduate fa-fw me-1"></i>All Classes</a>
+								<a class="dropdown-item dropdown-toggle" href="#"><i class="bi bi-easel2 fa-fw me-1"></i>All Classes</a>
 								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
 									<?php foreach ($classes as $class) : ?>
-										<li> <a class="dropdown-item" href="student-dashboard.html"><i class="bi bi-grid-fill fa-fw me-1"></i><?= $class['title'] ?></a> </li>
+										<li> <a class="dropdown-item" href="student-dashboard.html"><i class="bi bi-book fa-fw me-1"></i><?= $class['title'] ?></a> </li>
 									<?php endforeach ?>
 								</ul>
 							</li>

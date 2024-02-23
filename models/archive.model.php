@@ -54,5 +54,21 @@ function nounClass(): array
     }
 }
 
+
+function nounclassHOme(): array
+{
+    global $connection;
+    try {
+        $statement = $connection->prepare("SELECT * FROM classes WHERE archive = :id");
+        $statement->execute([
+            ':id' => 0
+        ]);
+        return $statement->fetchAll();
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+        return false;
+    }
+}
+
 ?>
 
