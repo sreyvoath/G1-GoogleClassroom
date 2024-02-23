@@ -85,7 +85,7 @@
 								</ul>
 							</li>
 							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item " href="/trainers"><i class="fas fa-user-tie fa-fw me-1"></i>Teachers</a>
+								<a class="dropdown-item " href="/teacher"><i class="fas fa-user-tie fa-fw me-1"></i>Personal</a>
 							</li>
 							<li>
 								<hr class="dropdown-divider">
@@ -125,7 +125,7 @@
 			<!-- Main navbar END -->
 
 			<?php 
-			
+			// session_start();
 			$user = $_SESSION['user'];
 			?>
 			<!-- Profile START -->
@@ -139,7 +139,7 @@
 						<div class="d-flex align-items-center">
 							<!-- Avatar -->
 							<div class="avatar me-3">
-								<img class="avatar-img rounded-circle shadow" src="../assets/images/profiles/<?=$user['image']?>" alt="profiles">
+								<img class="avatar-img rounded-circle shadow" src="../../assets/images/profiles/<?=$user['image']?>" alt="profiles">
 							</div>
 							<div>
 								<a class="h6" href="#"><?= $user['name'] ?></a>
