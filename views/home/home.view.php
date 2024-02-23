@@ -360,15 +360,10 @@ Popular course START -->
 						require "database/database.php";
 						require 'models/class.model.php';
 						$classes = getClasses();
-<<<<<<< HEAD
 						$_SESSION['class'] = $classes;
 						if (count($classes) == 0){
 						?>
 						<img src="../../assets/images/about/25.jpg" alt="" style="width: 350px; height: 300px; display:flex; margin:auto">
-=======
-						foreach ($classes as $class) {
-							if ($class['archive'] == 0) { ?>
->>>>>>> origin/archive_classes
 
 						<?php 
 						}else { 
