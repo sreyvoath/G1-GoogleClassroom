@@ -9,7 +9,6 @@ $routes = [
     '/update_class' => 'controllers/classes/class.update.controller.php',
     '/classes' => 'controllers/classes/class.controller.php',
     '/edit_profile' => 'controllers/profiles/edit_profile.controller.php',
-
     '/archive' => 'controllers/classes/archive.view.controller.php',
 ];
 
