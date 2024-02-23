@@ -45,7 +45,10 @@
                                     <h5 class="card-title fw-normal"><a class="text-decoration-none" href="#"><?= $class['title']; ?></a></h5>
                                     <p class="mb-2 text-truncate-2"><?= $class['section']; ?></p>
                                 </div>
-                                <!-- Card footer -->
+                                <div class="mb-4">
+                                    <input type="file" name="image" id="inputImages" class="form-control">
+                                    <span class="text-danger"><?= $class['image']?></span>
+                                </div>
                                 <!-- Card footer -->
                                 <div class="card-footer pt-3 pb-3">
                                     <div class="d-flex">
