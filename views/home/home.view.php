@@ -366,13 +366,13 @@ Popular course START -->
 						} else {
 
 							foreach ($classes as $class) :
-								if ($class['archive'] == 0) :
-							?>
-									<div class="col-sm-6 col-lg-4 col-xl-3">
-										<div class="card shadow h-100">
-											<!-- Image -->
-											<img src="assets/images/courses/4by3/08.jpg" class="card-img-top" alt="course image">
-											<!-- <li class="dropdown-submenu dropend">
+								if ($class['archive'] == 0):
+						?>
+								<div class="col-sm-6 col-lg-4 col-xl-3">
+									<div class="card shadow h-100">
+										<!-- Image -->
+										<img src="../../assets/images/classes/<?= $class['image']?>" class="card-img-top" alt="course image">
+										<!-- <li class="dropdown-submenu dropend">
 								</li> -->
 											<!-- Card body -->
 											<div class="nav-item dropdown d-flex justify-content-end">

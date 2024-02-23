@@ -6,17 +6,19 @@ function getClasses() : array
     $statement->execute();
     return $statement->fetchAll();
 }
-function createClass(string $title, string $section, string $subject, int $user_id, int $category_id) : bool
+function createClass(string $title, string $section, string $subject, int $user_id, int $category_id, string $image) : bool
 {
     global $connection;
-    $statement = $connection->prepare("insert into classes(title, section, subject, user_id, archive, category_id) values(:title, :section, :subject, :user_id, :archive, :category_id )");
+
+    $statement = $connection->prepare("insert into classes(title, section, subject, archive, user_id, category_id, image) values(:title, :section, :subject,  :archive,  :user_id,:category_id, :image )");
     $statement->execute([
         ':title' => $title,
         ':section' => $section,
         ':subject' => $subject,
         ':user_id' => $user_id,
         ':archive' => 0,
-        ':category_id' => $category_id
+        ':category_id' => $category_id,
+        ":image" => $image
     ]);
 
     return $statement->rowCount() > 0;
@@ -27,6 +29,7 @@ function getClass(int $id)
     $statement = $connection->prepare("select * from classes where id = :id");
     $statement->execute([':id' => $id]);
     return $statement->fetch();
+    
 }
 
 function updateClass(string $title, string $section, string $subject, int $id) : bool
