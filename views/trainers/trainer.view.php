@@ -154,7 +154,7 @@ Inner part START -->
 				</ul>
 			</nav>
 			<!-- Pagination END -->
-
+			Lori Stevens
 		</div>
 	</section>
 	<!-- =======================

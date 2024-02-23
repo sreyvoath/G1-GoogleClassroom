@@ -31,10 +31,6 @@ $posts = getPosts();
                         <option value="<?= $post['id'] ?>"><?= $post['title'] ?></option>
                     <?php endforeach ?>
                 </select>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-block btn-primary">Add Project</button>
-            </div>
         </form>
     </div>
 </div>

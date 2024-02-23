@@ -93,7 +93,7 @@ $classes = $_SESSION['class'];
 								</ul>
 							</li>
 							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item " href="/trainers"><i class="fas fa-user-tie fa-fw me-1"></i>Teachers</a>
+								<a class="dropdown-item " href="/teacher"><i class="fas fa-user-tie fa-fw me-1"></i>Personal</a>
 							</li>
 							<li>
 								<hr class="dropdown-divider">
@@ -132,7 +132,6 @@ $classes = $_SESSION['class'];
 			</div>
 			<!-- Main navbar END -->
 
-
 			<!-- Profile START -->
 			<div class="dropdown ms-1 ms-lg-0">
 				<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
@@ -144,7 +143,7 @@ $classes = $_SESSION['class'];
 						<div class="d-flex align-items-center">
 							<!-- Avatar -->
 							<div class="avatar me-3">
-								<img class="avatar-img rounded-circle shadow" src="../assets/images/profiles/<?= $user['image'] ?>" alt="profiles">
+								<img class="avatar-img rounded-circle shadow" src="../../assets/images/profiles/<?=$user['image']?>" alt="profiles">
 							</div>
 							<div>
 								<a class="h6" href="#"><?= $user['name'] ?></a>
@@ -152,6 +151,7 @@ $classes = $_SESSION['class'];
 							</div>
 						</div>
 						<hr>
+					
 					</li>
 					<!-- Links -->
 					<li><a class="dropdown-item" href="../views/profiles/edit_profile.view.php"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
@@ -188,7 +188,7 @@ $classes = $_SESSION['class'];
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<form id="myForm" action="controllers/classes/class.create.controller.php" method="post">
+				<form id="myForm" action="controllers/classes/class.create.controller.php" method="post" enctype="multipart/form-data">
 					<div class="mb-3">
 						<label for="title" class="form-label">Class Name*</label>
 						<input type="text" class="form-control" id="title" placeholder="Enter a name" name="title">
@@ -209,6 +209,10 @@ $classes = $_SESSION['class'];
 							<option value="English">English</option>
 							<option value="PL">PL</option>
 						</select>
+					</div>
+					<div class="mb-4">
+						<label for="inputImage" class="form-label">Profile Image *</label>
+						<input type="file" name="image" id="inputImages" class="form-control">
 					</div>
 				</form>
 			</div>
