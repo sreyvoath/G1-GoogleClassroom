@@ -132,14 +132,6 @@ $classes = $_SESSION['class'];
 			</div>
 			<!-- Main navbar END -->
 
-<<<<<<< HEAD
-			<?php 
-			// session_start();
-			$user = $_SESSION['user'];
-			?>
-=======
-
->>>>>>> f743324a97dc4c30f5f9641fd6679547ccdb9d8a
 			<!-- Profile START -->
 			<div class="dropdown ms-1 ms-lg-0">
 				<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
@@ -151,11 +143,7 @@ $classes = $_SESSION['class'];
 						<div class="d-flex align-items-center">
 							<!-- Avatar -->
 							<div class="avatar me-3">
-<<<<<<< HEAD
 								<img class="avatar-img rounded-circle shadow" src="../../assets/images/profiles/<?=$user['image']?>" alt="profiles">
-=======
-								<img class="avatar-img rounded-circle shadow" src="../assets/images/profiles/<?= $user['image'] ?>" alt="profiles">
->>>>>>> f743324a97dc4c30f5f9641fd6679547ccdb9d8a
 							</div>
 							<div>
 								<a class="h6" href="#"><?= $user['name'] ?></a>
