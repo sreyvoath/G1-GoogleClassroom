@@ -57,18 +57,18 @@ $user = $_SESSION['user'];
 </head>
 
 <body>
-    <div class="container">
+    <div class="container mt-n4">
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6">
                 <div class="shadow-lg bg-body rounded border-l mx-auto d-block mt-3">
                     <img src="../../assets/images/about/24.jpg" class="img-fluid" alt="cover">
-                    <div class=" p-0 d-flex justify-content-center flex-column align-items-center">
-                        <img class="rounded-circle" src="../../assets/images/profiles/<?= $user['image'] ?>" style="width: 150px; margin-top: -70px; height: 150px;" alt="profile">
+                    <div class="avatar avatar-xxl mt-n3 d-flex justify-content-center align-items-center">
+                        <img class="avatar-xxl rounded-circle border border-white border-3 shadow" style="width: 150px; height:150px; object-fit:cover; border-radius: 50%; margin-top: -60px " src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="avatar">
                     </div>
                     <div class="card-body d-flex justify-content-center pb-5 pt-3">
                         <form class="card-body" action="../../controllers/profiles/update_profile.controller.php" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="id" id="id" value="<?= $user['id'] ?>">
+                            <input type="hidden" name="id" id="id" value="<?= isset($user['id']) ? $user['id'] : "" ?>">
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Name*</label>
                                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name" placeholder="User Name" value="<?= $user['name'] ?>">
@@ -80,20 +80,18 @@ $user = $_SESSION['user'];
                                 <span class="text-danger"><?= isset($_SESSION['profile_err']) ? $_SESSION['profile_err'] : "" ?></span>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Image*</label>
+                                <label for="exampleInputPassword1" class="form-label">Image*</label>
                                 <input type="file" class="form-control" id="exampleInputPassword1" name="image">
                                 <span class="text-danger"><?= isset($_SESSION['profile_err']) ? $_SESSION['profile_err'] : "" ?></span>
                             </div>
                             <a href="/home" class="btn btn-outline-danger me-3">Cancel</a>
                             <button type="submit" class="btn btn-outline-warning">Change</button>
                         </form>
-
                     </div>
                     <div id="previewContainer"></div>
                 </div>
-
             </div>
             <div class="col-3"></div>
         </div>
     </div>
-<?php unset($_SESSION['profile_err']) ?>
+    <?php unset($_SESSION['profile_err']) ?>
