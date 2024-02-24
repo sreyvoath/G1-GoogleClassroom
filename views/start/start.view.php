@@ -70,7 +70,7 @@
                     </div>
                     <!-- Title -->
                     <div class="col-12 col-lg-6 px-5">
-                        <h1 class="fw-bold mt-5">Where teaching and learning come together</h1>
+                        <h1 class="fw-bold mt-5">Where teaching and learning come together.</h1>
                         <p class="mb-0 h6 fw-light fs-5 lh-base">Google Classroom helps educators create engaging learning experiences they can personalize, manage, and measure. Part of Google Workspace for Education, it empowers educators to enhance their impact and prepare students for the future.</p>
                         <div class="btn mt-3 ml-0">
                             <a href="/user-signin" class="btn btn-primary">Login into Classroom</a>

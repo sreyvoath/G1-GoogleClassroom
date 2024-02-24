@@ -1,4 +1,5 @@
 <?php
+//  function get the users
 function getUsers() : array
 {
     global $connection;
@@ -7,6 +8,7 @@ function getUsers() : array
     return $statement->fetchAll();
 }
 
+//  function create a user
 function createUser(string $name, string $email, string $password, string $image) : bool
 {
     global $connection;

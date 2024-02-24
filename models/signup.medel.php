@@ -1,6 +1,6 @@
 <?php
-
-function createAccount(string $name, string $email, string $password, string $image) : bool
+// function create account
+function createAccount(string $name, string $email, string $password, string $image): bool
 {
     global $connection;
     $role = "teacher";
@@ -17,6 +17,7 @@ function createAccount(string $name, string $email, string $password, string $im
     return $statement->rowCount() > 0;
 }
 
+// function account exists
 function accountExists(string $email): array
 {
     global $connection;

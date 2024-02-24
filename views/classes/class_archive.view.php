@@ -1,8 +1,6 @@
 <main>
-	<!-- =======================
-Counter END -->
-	<!-- =======================
-Popular course START -->
+	<!--Counter END -->
+	<!--Popular course START -->
 	<section>
 		<div class="container">
 			<!-- Title -->
@@ -42,8 +40,7 @@ Popular course START -->
 										<div class="card shadow h-100">
 											<!-- Image -->
 											<img src="assets/images/courses/4by3/08.jpg" class="card-img-top" alt="course image">
-											<!-- <li class="dropdown-submenu dropend">
-										</li> -->
+
 											<!-- Card body -->
 											<div class="nav-item dropdown d-flex justify-content-end">
 												<a class="nav-link " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
@@ -89,7 +86,6 @@ Popular course START -->
 				<!-- Tabs content END -->
 			</div>
 	</section>
-	<!-- =======================
-Popular course END -->
+	<!--Popular course END -->
 
 </main>

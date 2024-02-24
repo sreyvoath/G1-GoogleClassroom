@@ -47,6 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         }
     }
+    // password  secure data
     if (!preg_match('/^(?=.*[!@#$])[a-zA-Z0-9!@#$]{8,}+$/', secureData($password))) {
         $_SESSION['password'] = "Password is not secure!";
         $_SESSION['name'] = "It's require!";

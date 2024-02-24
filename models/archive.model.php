@@ -1,5 +1,5 @@
 <?php
-//<========if archive = 1 the classes is archived======>
+//if archive = 1 the classes is archived
 function archiveClass(int $id): bool
 {
     global $connection;
@@ -15,7 +15,7 @@ function archiveClass(int $id): bool
     }
 }
 
-//<========if archive = 0 is not archive=======>
+//if archive = 0 is not archive
 function restoreClass(int $id): bool
 {
     global $connection;
@@ -31,6 +31,7 @@ function restoreClass(int $id): bool
     }
 }
 
+// function delete archive
 function deleteArchive(int $id) : bool
 {
     global $connection;
@@ -39,6 +40,7 @@ function deleteArchive(int $id) : bool
     return $statement->rowCount() > 0;
 }
 
+// function noun class array
 function nounClass(): array
 {
     global $connection;
@@ -54,8 +56,8 @@ function nounClass(): array
     }
 }
 
-
-function nounclassHOme(): array
+// function noun class home
+function nounClassHome(): array
 {
     global $connection;
     try {

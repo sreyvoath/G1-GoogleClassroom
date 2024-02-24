@@ -1,5 +1,5 @@
 <?php
-
+// function get user
 function getUser(string $id): array
 {
     global $connection;
@@ -12,6 +12,7 @@ function getUser(string $id): array
     }
 }
 
+// function update profile
 function updateProfile(string $name, string $email, string $image, int $id) : bool
 {
     global $connection;

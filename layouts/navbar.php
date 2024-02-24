@@ -1,3 +1,4 @@
+<!-- instore for file user and class -->
 <?php
 $user = $_SESSION['user'];
 $classes = $_SESSION['class'];
@@ -52,7 +53,7 @@ $classes = $_SESSION['class'];
 						<a class="nav-link dropdown-toggle " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Classes</a>
 						<ul class="dropdown-menu" aria-labelledby="accounntMenu">
 							<li class="dropdown-submenu dropend">
-								<!-- <a class="dropdown-item " href="/views/classes/class.view.php">Create Class</a> -->
+								
 								<!-- Button trigger modal -->
 								<button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
 									Create Class
@@ -143,7 +144,7 @@ $classes = $_SESSION['class'];
 						<div class="d-flex align-items-center">
 							<!-- Avatar -->
 							<div class="avatar me-3">
-								<img class="avatar-img rounded-circle shadow" src="../../assets/images/profiles/<?=$user['image']?>" alt="profiles">
+								<img class="avatar-img rounded-circle shadow" src="../../assets/images/profiles/<?= $user['image'] ?>" alt="profiles">
 							</div>
 							<div>
 								<a class="h6" href="#"><?= $user['name'] ?></a>
@@ -151,7 +152,7 @@ $classes = $_SESSION['class'];
 							</div>
 						</div>
 						<hr>
-					
+
 					</li>
 					<!-- Links -->
 					<li><a class="dropdown-item" href="../views/profiles/edit_profile.view.php"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>

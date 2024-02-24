@@ -63,22 +63,27 @@ $user = $_SESSION['user'];
             <div class="col-6">
                 <div class="shadow-lg bg-body rounded border-l mx-auto d-block mt-3">
                     <img src="../../assets/images/about/24.jpg" class="img-fluid" alt="cover">
+                    <!-- user img -->
                     <div class="avatar avatar-xxl mt-n3 d-flex justify-content-center align-items-center">
                         <img class="avatar-xxl rounded-circle border border-white border-3 shadow" style="width: 150px; height:150px; object-fit:cover; border-radius: 50%; margin-top: -60px " src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="avatar">
                     </div>
+                    <!-- information form of a profile edit-->
                     <div class="card-body d-flex justify-content-center pb-5 pt-3">
                         <form class="card-body" action="../../controllers/profiles/update_profile.controller.php" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="id" id="id" value="<?= isset($user['id']) ? $user['id'] : "" ?>">
+                            <!-- name user -->
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Name*</label>
                                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name" placeholder="User Name" value="<?= $user['name'] ?>">
                                 <span class="text-danger"><?= isset($_SESSION['profile_err']) ? $_SESSION['profile_err'] : "" ?></span>
                             </div>
+                            <!-- email user -->
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Email*</label>
                                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Email" value="<?= $user['email'] ?>">
                                 <span class="text-danger"><?= isset($_SESSION['profile_err']) ? $_SESSION['profile_err'] : "" ?></span>
                             </div>
+                            <!-- image uaer -->
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Image*</label>
                                 <input type="file" class="form-control" id="exampleInputPassword1" name="image">
@@ -88,6 +93,7 @@ $user = $_SESSION['user'];
                             <button type="submit" class="btn btn-outline-warning">Change</button>
                         </form>
                     </div>
+                    <!-- information form of a profile edit end -->
                     <div id="previewContainer"></div>
                 </div>
             </div>

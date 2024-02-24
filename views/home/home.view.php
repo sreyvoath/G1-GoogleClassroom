@@ -256,11 +256,9 @@ Main Banner START -->
 		</div>
 		<!-- Content END -->
 	</section>
-	<!-- =======================
-Main Banner END -->
+	<!--Main Banner END -->
 
-	<!-- =======================
-Counter START -->
+	<!--Counter START -->
 	<section class="py-0 py-xl-5">
 		<div class="container">
 			<div class="row g-4">
@@ -319,17 +317,15 @@ Counter START -->
 			</div>
 		</div>
 	</section>
-	<!-- =======================
-Counter END -->
-	<!-- =======================
-Popular course START -->
+	<!--Counter END -->
+	<!--Popular course START -->
 	<section>
 		<div class="container">
 			<!-- Title -->
 			<div class="row mb-4">
 				<div class="col-lg-8 mx-auto text-center">
 					<h2 class="fs-1">Current Classroom</h2>
-					<p class="mb-0">Choose your classroom each courses you learn </p>
+					<p class="mb-0">Choose your classroom each courses you learn</p>
 				</div>
 			</div>
 
@@ -357,7 +353,7 @@ Popular course START -->
 						<?php
 						require "database/database.php";
 						require 'models/class.model.php';
-						$classes = nounclassHOme();
+						$classes = nounClassHome();
 						$_SESSION['class'] = $classes;
 						if (count($classes) == 0) {
 						?>
@@ -366,14 +362,13 @@ Popular course START -->
 						} else {
 
 							foreach ($classes as $class) :
-								if ($class['archive'] == 0):
-						?>
-								<div class="col-sm-6 col-lg-4 col-xl-3">
-									<div class="card shadow h-100">
-										<!-- Image -->
-										<img src="../../assets/images/classes/<?= $class['image']?>" class="card-img-top" alt="course image">
-										<!-- <li class="dropdown-submenu dropend">
-								</li> -->
+								if ($class['archive'] == 0) :
+							?>
+									<div class="col-sm-6 col-lg-4 col-xl-3">
+										<div class="card shadow h-100">
+											<!-- Image -->
+											<img src="../../assets/images/classes/<?= $class['image'] ?>" class="card-img-top" alt="course image">
+
 											<!-- Card body -->
 											<div class="nav-item dropdown d-flex justify-content-end">
 												<a class="nav-link " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
@@ -410,6 +405,7 @@ Popular course START -->
 								<?php endif ?>
 							<?php endforeach ?>
 						<?php } ?>
+
 						<!-- Card item END -->
 					</div>
 				</div>
@@ -417,11 +413,9 @@ Popular course START -->
 				<!-- Tabs content END -->
 			</div>
 	</section>
-	<!-- =======================
-Popular course END -->
+	<!--Popular course END -->
 
-	<!-- =======================
-Action box START -->
+	<!--Action box START -->
 	<section class="pt-0 pt-lg-5">
 		<div class="container position-relative">
 			<!-- SVG decoration START -->
@@ -459,17 +453,16 @@ Action box START -->
 									</div>
 								</div>
 							</div>
-						</div> <!-- Row END -->
+						</div>
+						<!-- Row END -->
 					</div>
 				</div>
 			</div> <!-- Row END -->
 		</div>
 	</section>
-	<!-- =======================
-Action box END -->
+	<!--Action box END -->
 
-	<!-- =======================
-Trending courses START -->
+	<!--Trending courses START -->
 	<section class="pb-5 pt-0 pt-lg-5">
 		<div class="container">
 			<!-- Title -->
@@ -558,7 +551,7 @@ Trending courses START -->
 										<a href="#" class="h6 fw-light mb-0"><i class="far fa-bookmark"></i></a>
 									</div>
 									<!-- Title -->
-									<h5 class="card-title"><a href="#">Angular The Complete Guide (2021 Edition)</a></h5>
+									<h5 class="card-title"><a href="#">Angular The Complete Guide (2024 Edition)</a></h5>
 									<!-- Rating -->
 									<div class="d-flex justify-content-between mb-2">
 										<div class="hstack gap-2">
@@ -615,7 +608,7 @@ Trending courses START -->
 										<a href="#" class="h6 fw-light mb-0"><i class="far fa-bookmark"></i></a>
 									</div>
 									<!-- Title -->
-									<h5 class="card-title"><a href="#">Time Management Mastery: Do More, Stress Less</a></h5>
+									<h5 class="card-title"><a href="#">Time Management Mastery: Do More, stress less</a></h5>
 									<!-- Rating -->
 									<div class="d-flex justify-content-between mb-2">
 										<div class="hstack gap-2">
@@ -718,11 +711,9 @@ Trending courses START -->
 			</div>
 		</div>
 	</section>
-	<!-- =======================
-Trending courses END -->
+	<!--Trending courses END -->
 
-	<!-- =======================
-Reviews START -->
+	<!--Reviews START -->
 	<section class="bg-light">
 		<div class="container">
 			<div class="row g-4 g-lg-5 align-items-center">
@@ -746,7 +737,7 @@ Reviews START -->
 								<blockquote>
 									<p>
 										<span class="me-1 small"><i class="fas fa-quote-left"></i></span>
-										Moonlight newspaper up its enjoyment agreeable depending. Timed voice share led him to widen noisy young. At weddings believed laughing
+										Moonlight newspaper up its enjoyment agreeable depending. Timed voice share led him to widen noisy young. At weddings believed laughing.
 										<span class="ms-1 small"><i class="fas fa-quote-right"></i></span>
 									</p>
 								</blockquote>
@@ -918,10 +909,10 @@ Reviews START -->
 					<p>Supposing so be resolving breakfast am or perfectly. It drew a hill from me. Valley by oh twenty direct me so. Departure defective arranging rapturous did believe him all had supported. Family months lasted simple set nature vulgar him. Picture for attempt joy excited ten carried manners talking how.</p>
 					<a href="#" class="btn btn-primary mb-0">View Reviews</a>
 				</div>
-			</div> <!-- Row END -->
+			</div>
+			<!-- Row END -->
 		</div>
 	</section>
-	<!-- =======================
-Reviews END -->
+	<!--Reviews END -->
 
 </main>

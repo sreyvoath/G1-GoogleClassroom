@@ -1,12 +1,15 @@
 <?php
-function getClasses() : array
+// function get classes
+function getClasses(): array
 {
     global $connection;
     $statement = $connection->prepare("select * from classes order by id desc");
     $statement->execute();
     return $statement->fetchAll();
 }
-function createClass(string $title, string $section, string $subject, int $user_id, int $category_id, string $image) : bool
+
+// function create class
+function createClass(string $title, string $section, string $subject, int $user_id, int $category_id, string $image): bool
 {
     global $connection;
 
@@ -18,11 +21,13 @@ function createClass(string $title, string $section, string $subject, int $user_
         ':user_id' => $user_id,
         ':archive' => 0,
         ':category_id' => $category_id,
-        ":image" => $image
+        ':image' => $image
     ]);
 
     return $statement->rowCount() > 0;
 }
+
+// function get class by id
 function getClass(int $id)
 {
     global $connection;
@@ -32,7 +37,8 @@ function getClass(int $id)
     
 }
 
-function updateClass(string $title, string $section, string $subject, int $id) : bool
+// function update class
+function updateClass(string $title, string $section, string $subject, int $id): bool
 {
     global $connection;
     $statement = $connection->prepare("update classes set title = :title, section = :section, subject = :subject where id = :id");
@@ -46,7 +52,9 @@ function updateClass(string $title, string $section, string $subject, int $id) :
 
     return $statement->rowCount() > 0;
 }
-function deleteClass(int $id) : bool
+
+// function delete class
+function deleteClass(int $id): bool
 {
     global $connection;
     $statement = $connection->prepare("delete from classes where id = :id");

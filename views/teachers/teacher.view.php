@@ -37,6 +37,7 @@
 			</div>
 		</div>
 	</section>
+	
 	<div class="container">
 
 		<div class="row mb-4  align-items-center">
@@ -58,6 +59,7 @@
 
 
 			?>
+
 			<div class="col-sm-6 col-xl-3 mt-3 mt-lg-0">
 				<form class="bg-body shadow rounded p-2 input-borderless">
 					<select class="form-select form-select-sm js-choice" aria-label=".form-select-sm">
@@ -74,7 +76,7 @@
 
 
 
-
+			
 			<!-- Select option -->
 			<div class="col-sm-6 col-xl-3 mt-3 mt-xl-0">
 				<form class="bg-body shadow rounded p-2 input-borderless">
@@ -118,7 +120,6 @@
 										<a class="list-group-item active" href="/trainer-student"><i class="bi bi-people fa-fw me-2"></i>Students</a>
 
 										<a class="list-group-item" href="/trainer-review"><i class="bi bi-star fa-fw me-2"></i>Reviews</a>
-										<!-- <a class="list-group-item" href="#"><i class="bi bi-pencil-square fa-fw me-2"></i>Edit Profile</a> -->
 
 										<a class="list-group-item text-danger bg-danger-soft-hover" href="/user-signin"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Sign Out</a>
 									</div>
@@ -149,7 +150,7 @@
 											<h6><a href="#">Bootstrap 5 From Scratch</a></h6>
 											<!-- Info -->
 											<div class="d-sm-flex">
-												<p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i>0 lectures</p>
+												<p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i>0 Lectures</p>
 												<p class="h6 fw-light mb-0 small"><i class="fas fa-check-circle text-success me-2"></i>0 Completed</p>
 											</div>
 										</div>

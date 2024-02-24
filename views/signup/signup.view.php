@@ -89,7 +89,7 @@ session_start();
 										<input type="file" name="image" id="inputImages" class="form-control">
 										<span class="text-danger"><?= isset($_SESSION['name']) ? $_SESSION['name'] : "" ?></span>
 									</div>
-									
+
 									<!-- Button -->
 									<div class="align-items-center mt-0">
 										<div class="d-grid d-flex justify-content-between">
