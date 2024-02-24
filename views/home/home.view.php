@@ -371,7 +371,7 @@ Popular course START -->
 									<div class="col-sm-6 col-lg-4 col-xl-3">
 										<div class="card shadow h-100">
 											<!-- Image -->
-											<img src="../../assets/images/classes/<?= $class['image'] ?>" class="card-img-top" alt="course image" style="width:400px; height:250px">
+											<img src="../../assets/images/classes/<?= $class['image'] ?>" class="card-img-top" alt="course image" style="width:350px; height:200px">
 											<!-- Card body -->
 											<div class="nav-item dropdown d-flex justify-content-end">
 												<a class="nav-link " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
