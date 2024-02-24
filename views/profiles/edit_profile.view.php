@@ -1,7 +1,6 @@
 <?php
 session_start();
 $user = $_SESSION['user'];
-
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +67,7 @@ $user = $_SESSION['user'];
                     </div>
                     <div class="card-body d-flex justify-content-center pb-5 pt-3">
                         <form class="card-body" action="../../controllers/profiles/update_profile.controller.php" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="id" id="id" value="<?= isset($user['id']) ? $user['id'] : "" ?>">
+                            <input type="hidden" name="id" id="id" value="<?= isset($user['id']) ? $user['id'] : 1 ?>">
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Name*</label>
                                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name" placeholder="User Name" value="<?= $user['name'] ?>">

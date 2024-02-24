@@ -1,5 +1,6 @@
 <?php
 
+//<======== To create user account=======>
 function createAccount(string $name, string $email, string $password, string $image) : bool
 {
     global $connection;
@@ -17,7 +18,20 @@ function createAccount(string $name, string $email, string $password, string $im
     return $statement->rowCount() > 0;
 }
 
+//<======== To check if account exist=======>
 function accountExists(string $email): array
+{
+    global $connection;
+    $statement = $connection->prepare("select * from users where email = :email");
+    $statement->execute([':email' => $email]);
+    if ($statement->rowCount() > 0) {
+        return $statement->fetch();
+    } else {
+        return [];
+    }
+}
+
+function getUserEmail(string $email)
 {
     global $connection;
     $statement = $connection->prepare("select * from users where email = :email");

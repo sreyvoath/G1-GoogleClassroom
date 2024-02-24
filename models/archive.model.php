@@ -31,6 +31,7 @@ function restoreClass(int $id): bool
     }
 }
 
+//<========To delete archive=======>
 function deleteArchive(int $id) : bool
 {
     global $connection;
@@ -39,6 +40,7 @@ function deleteArchive(int $id) : bool
     return $statement->rowCount() > 0;
 }
 
+//<========if archive = 1 true=======>
 function nounClass(): array
 {
     global $connection;
@@ -55,7 +57,7 @@ function nounClass(): array
 }
 
 
-function nounclassHOme(): array
+function nounclassHome(): array
 {
     global $connection;
     try {

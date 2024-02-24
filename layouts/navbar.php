@@ -1,8 +1,13 @@
 <?php
 $user = $_SESSION['user'];
-$classes = $_SESSION['class'];
 
+if (isset($_SESSION['class'])) {
+	$classes = $_SESSION['class'];
+}
 
+require 'database/database.php';
+require 'models/category.model.php';
+$categories = getCategories();
 ?>
 <!-- Header START -->
 <header class="navbar-light navbar-sticky header-static">
@@ -143,7 +148,7 @@ $classes = $_SESSION['class'];
 						<div class="d-flex align-items-center">
 							<!-- Avatar -->
 							<div class="avatar me-3">
-								<img class="avatar-img rounded-circle shadow" src="../../assets/images/profiles/<?=$user['image']?>" alt="profiles">
+								<img class="avatar-img rounded-circle shadow" src="../../assets/images/profiles/<?= $user['image'] ?>" alt="profiles">
 							</div>
 							<div>
 								<a class="h6" href="#"><?= $user['name'] ?></a>
@@ -151,7 +156,7 @@ $classes = $_SESSION['class'];
 							</div>
 						</div>
 						<hr>
-					
+
 					</li>
 					<!-- Links -->
 					<li><a class="dropdown-item" href="../views/profiles/edit_profile.view.php"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
@@ -205,9 +210,10 @@ $classes = $_SESSION['class'];
 						<label for="categories" class="form-label">Categories*</label>
 						<select class="form-control" id="categories" name="category">
 							<option disabled selected>Select Category</option>
-							<option value="IT">IT</option>
-							<option value="English">English</option>
-							<option value="PL">PL</option>
+							<?php foreach($categories as $category): ?>
+							<option value="<?= $category['name']?>"> <?= $category['name']?></option>
+							<?php endforeach?>
+							
 						</select>
 					</div>
 					<div class="mb-4">

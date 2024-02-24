@@ -1,4 +1,6 @@
 <?php
+
+//<======== To delete class in archive page=======>
 require '../../database/database.php';
 require '../../models/archive.model.php';
 $id = $_GET['id'] ? $_GET['id'] : null;
