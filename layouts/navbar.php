@@ -100,12 +100,6 @@ $categories = getCategories();
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item " href="/teacher"><i class="fas fa-user-tie fa-fw me-1"></i>Personal</a>
 							</li>
-							<li>
-								<hr class="dropdown-divider">
-							</li>
-							<li> <a class="dropdown-item" href="instructor-edit-profile.html"><i class="fas fa-fw fa-edit me-1"></i>Edit Profile</a> </li>
-							<li> <a class="dropdown-item" href="instructor-setting.html"><i class="fas fa-fw fa-cog me-1"></i>Settings</a> </li>
-							<li> <a class="dropdown-item" href="instructor-delete-account.html"><i class="fas fa-fw fa-trash-alt me-1"></i>Delete Profile</a> </li>
 						</ul>
 					</li>
 

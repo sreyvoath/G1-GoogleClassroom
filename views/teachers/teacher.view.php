@@ -113,14 +113,14 @@
 									<!-- Dashboard menu -->
 									<div class="list-group list-group-dark list-group-borderless">
 
-										<a class="list-group-item" href="/teacher"><i class="bi bi-basket fa-fw me-2"></i>My Classroom</a>
+										<a class="list-group-item <?= urlIs("/teacher")? "active" : "" ?> " href="/teacher"><i class="bi bi-basket fa-fw me-2"></i>My Classroom</a>
 
-										<a class="list-group-item active" href="/trainer-student"><i class="bi bi-people fa-fw me-2"></i>Students</a>
+										<a class="list-group-item " href="#"><i class="bi bi-people fa-fw me-2"></i>Students</a>
 
-										<a class="list-group-item" href="/trainer-review"><i class="bi bi-star fa-fw me-2"></i>Reviews</a>
+										<a class="list-group-item " href="#"><i class="bi bi-star fa-fw me-2"></i>Reviews</a>
 										<!-- <a class="list-group-item" href="#"><i class="bi bi-pencil-square fa-fw me-2"></i>Edit Profile</a> -->
 
-										<a class="list-group-item text-danger bg-danger-soft-hover" href="/user-signin"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Sign Out</a>
+										<a class="list-group-item text-danger bg-danger-soft-hover" href="/user-signout"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Sign Out</a>
 									</div>
 								</div>
 							</div>
@@ -135,31 +135,33 @@
 						<div class="card-header border-bottom">
 							<h3 class="mb-0">My Classroom List</h3>
 						</div>
-						<tbody>
-							<tr>
-								<!-- Course item -->
-								<td>
-									<div class="d-flex align-items-center">
-										<!-- Image -->
-										<div class="w-100px">
-											<img src="assets/images/courses/4by3/10.jpg" class="rounded" alt="">
-										</div>
-										<div class="mb-0 ms-2">
-											<!-- Title -->
-											<h6><a href="#">Bootstrap 5 From Scratch</a></h6>
-											<!-- Info -->
-											<div class="d-sm-flex">
-												<p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i>0 lectures</p>
-												<p class="h6 fw-light mb-0 small"><i class="fas fa-check-circle text-success me-2"></i>0 Completed</p>
+						<?php foreach ($classes as $class) : ?>
+							<tbody >
+								<tr>
+									<!-- Course item -->
+									<td>
+										<div class="d-flex align-items-center">
+											<!-- Image -->
+											<div class="w-100px">
+												<img src="../../assets/images/classes/<?=$class['image']?>" class="rounded" alt="">
+											</div>
+											<div class="mb-0 ms-2">
+												<!-- Title -->
+												<h6><a href="#"><?= $class['title'] ?></a></h6>
+												<!-- Info -->
+												<div class="d-sm-flex">
+													<p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i>0 lectures</p>
+													<p class="h6 fw-light mb-0 small"><i class="fas fa-check-circle text-success me-2"></i>0 Completed</p>
+												</div>
 											</div>
 										</div>
-									</div>
-								</td>
-								<td>
-									<div class="badge bg-secondary bg-opacity-10 text-secondary">Disable</div>
-								</td>
-							</tr>
-						</tbody>
+									</td>
+									<td>
+										<div class="badge bg-secondary bg-opacity-10 text-secondary">Disable</div>
+									</td>
+								</tr>
+							</tbody>
+						<?php endforeach; ?>
 					</div>
 					<!-- Card END -->
 				</div>
