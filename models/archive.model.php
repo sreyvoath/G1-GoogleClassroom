@@ -71,6 +71,5 @@ function nounclassHome(): array
         return false;
     }
 }
-
 ?>
 
