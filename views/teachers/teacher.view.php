@@ -1,5 +1,4 @@
 <main>
-
 	<section class="pt-0">
 		<!-- Main banner background image -->
 		<div class="container-fluid px-0">
@@ -44,7 +43,7 @@
 			<div class="col-sm-6 col-xl-4">
 				<form class="bg-body shadow rounded p-2">
 					<div class="input-group input-borderless">
-						<input class="form-control me-1" type="search" placeholder="Search instructor">
+						<input class="form-control me-1 search" type="search" placeholder="Search instructor">
 						<button type="button" class="btn btn-primary mb-0 rounded"><i class="fas fa-search"></i></button>
 					</div>
 				</form>
@@ -113,7 +112,7 @@
 									<!-- Dashboard menu -->
 									<div class="list-group list-group-dark list-group-borderless">
 
-										<a class="list-group-item <?= urlIs("/teacher")? "active" : "" ?> " href="/teacher"><i class="bi bi-basket fa-fw me-2"></i>My Classroom</a>
+										<a class="list-group-item <?= urlIs("/teacher") ? "active" : "" ?> " href="/teacher"><i class="bi bi-basket fa-fw me-2"></i>My Classroom</a>
 
 										<a class="list-group-item " href="#"><i class="bi bi-people fa-fw me-2"></i>Students</a>
 
@@ -136,14 +135,14 @@
 							<h3 class="mb-0">My Classroom List</h3>
 						</div>
 						<?php foreach ($classes as $class) : ?>
-							<tbody >
+							<tbody>
 								<tr>
 									<!-- Course item -->
 									<td>
 										<div class="d-flex align-items-center">
 											<!-- Image -->
 											<div class="w-100px">
-												<img src="../../assets/images/classes/<?=$class['image']?>" class="rounded" alt="">
+												<img src="../../assets/images/classes/<?= $class['image'] ?>" class="rounded" alt="">
 											</div>
 											<div class="mb-0 ms-2">
 												<!-- Title -->
@@ -170,3 +169,4 @@
 <!-- Main content END -->
 </div><!-- Row END -->
 </div>
+

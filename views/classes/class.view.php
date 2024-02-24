@@ -42,25 +42,6 @@
                                 <div class="card shadow h-100">
                                     <!-- Image -->
                                     <img src="assets/images/courses/4by3/08.jpg" class="card-img-top" alt="course image">
-                                    <!-- <li class="dropdown-submenu dropend">
-                        </li> -->
-                                    <!-- Card body -->
-                                    <div class="nav-item dropdown d-flex justify-content-end">
-                                        <a class="nav-link " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-                                        <ul class="dropdown-menu" aria-labelledby="accounntMenu">
-                                            <li class="dropdown-submenu dropend">
-                                                <a class="dropdown-item " href="">Create</a>
-                                            </li>
-                                            <li class="dropdown-submenu dropend">
-                                                <a class="dropdown-item " href="#">Delete</a>
-                                            </li>
-                                            <li class="dropdown-submenu dropend">
-                                                <a class="dropdown-item " href="#">Edit</a>
-                                            </li>
-
-                                        </ul>
-
-                                    </div>
                                     <div class="card-body pb-0">
                                         <!-- Title -->
                                         <h5 class="card-title fw-normal"><a class="text-decoration-none" href="#"><?= $class['title']; ?></a></h5>

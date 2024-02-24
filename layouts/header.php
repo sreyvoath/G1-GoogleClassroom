@@ -42,6 +42,9 @@ if(!isset($_SESSION['user'])){
 	<link id="style-switch" rel="stylesheet" type="text/css" href="vendor/css/style.css">
 	<link id="style-switch" rel="stylesheet" type="text/css" href="vendor/css/create.css">
 
+	<!-- Theme JS -->
+	
+
 
 
 
