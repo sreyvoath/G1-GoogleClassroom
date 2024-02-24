@@ -1,4 +1,6 @@
 <?php
+
+//<======== To get all classes=======>
 function getClasses() : array
 {
     global $connection;
@@ -6,6 +8,8 @@ function getClasses() : array
     $statement->execute();
     return $statement->fetchAll();
 }
+
+//<======== To create classes=======>
 function createClass(string $title, string $section, string $subject, int $user_id, int $category_id, string $image) : bool
 {
     global $connection;
@@ -23,6 +27,8 @@ function createClass(string $title, string $section, string $subject, int $user_
 
     return $statement->rowCount() > 0;
 }
+
+//<======== To get single class=======>
 function getClass(int $id)
 {
     global $connection;
@@ -32,6 +38,7 @@ function getClass(int $id)
     
 }
 
+//<======== To update  class=======>
 function updateClass(string $title, string $section, string $subject, int $id) : bool
 {
     global $connection;
@@ -46,6 +53,8 @@ function updateClass(string $title, string $section, string $subject, int $id) :
 
     return $statement->rowCount() > 0;
 }
+
+//<======== To delete class=======>
 function deleteClass(int $id) : bool
 {
     global $connection;

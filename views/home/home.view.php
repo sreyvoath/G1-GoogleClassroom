@@ -353,11 +353,11 @@ Popular course START -->
 				<!-- Content START -->
 				<div class="tab-pane fade show active" id="course-pills-tabs-1" role="tabpanel" aria-labelledby="course-pills-tab-1">
 					<div class="row g-4">
-						<!-- Card item START -->
+						<!-- Card class  -->
 						<?php
 						require "database/database.php";
 						require 'models/class.model.php';
-						$classes = nounclassHOme();
+						$classes = nounclassHome();
 						$_SESSION['class'] = $classes;
 						if (count($classes) == 0) {
 						?>
@@ -366,14 +366,12 @@ Popular course START -->
 						} else {
 
 							foreach ($classes as $class) :
-								if ($class['archive'] == 0):
-						?>
-								<div class="col-sm-6 col-lg-4 col-xl-3">
-									<div class="card shadow h-100">
-										<!-- Image -->
-										<img src="../../assets/images/classes/<?= $class['image']?>" class="card-img-top" alt="course image">
-										<!-- <li class="dropdown-submenu dropend">
-								</li> -->
+								if ($class['archive'] == 0) :
+							?>
+									<div class="col-sm-6 col-lg-4 col-xl-3">
+										<div class="card shadow h-100">
+											<!-- Image -->
+											<img src="../../assets/images/classes/<?= $class['image'] ?>" class="card-img-top" alt="course image">
 											<!-- Card body -->
 											<div class="nav-item dropdown d-flex justify-content-end">
 												<a class="nav-link " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>

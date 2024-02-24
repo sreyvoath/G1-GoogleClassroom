@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_id = 3;
     $category_id = 1;
     $image = $_FILES['image'];
-    // var_dump($image);
 
     if (!empty($title) && !empty($section) && !empty($subject) && !empty($image)) {
         $directory = "../../assets/images/classes/";

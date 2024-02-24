@@ -1,5 +1,5 @@
 <?php
-
+//<========To get value from categories table=======>
 function getCategories() : array
 {
     global $connection;

@@ -1,5 +1,5 @@
 <?php
-
+//<======== To user by id=======>
 function getUser(string $id): array
 {
     global $connection;
@@ -12,6 +12,7 @@ function getUser(string $id): array
     }
 }
 
+//<======== To update profile=======>
 function updateProfile(string $name, string $email, string $image, int $id) : bool
 {
     global $connection;
@@ -25,4 +26,17 @@ function updateProfile(string $name, string $email, string $image, int $id) : bo
     ]);
 
     return $statement->rowCount() > 0;
+}
+
+//<======== To check if account exist=======>
+function getUserEmail(string $email): array
+{
+    global $connection;
+    $statement = $connection->prepare("select * from users where email = :email");
+    $statement->execute([':email' => $email]);
+    if ($statement->rowCount() > 0) {
+        return $statement->fetch();
+    } else {
+        return [];
+    }
 }
