@@ -1,5 +1,5 @@
 <?php
-// function get user
+//========== function get user========
 function getUser(string $email): array
 {
     global $connection;
@@ -12,7 +12,7 @@ function getUser(string $email): array
     }
 }
 
-// function get user id
+//=========== function get user id===============
 function getUserId(string $id): array
 {
     global $connection;

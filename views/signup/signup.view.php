@@ -49,7 +49,7 @@ session_start();
 								<h1 class="fs-2">Register here!</h1>
 								<p class="lead mb-4">Nice to see you! Please create with new account.</p>
 
-								<!-- Form START -->
+								<!-- Form START --><!-- Form START -->
 								<form action="../../controllers/signup/signup_process.controller.php" method="post" enctype="multipart/form-data">
 									<!-- Name -->
 									<div class="mb-4">
@@ -98,7 +98,7 @@ session_start();
 										</div>
 									</div>
 								</form>
-
+								<!-- Form START -->
 							</div>
 						</div> <!-- Row END -->
 					</div>

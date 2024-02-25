@@ -13,7 +13,7 @@ function createClass(string $title, string $section, string $subject, int $user_
 {
     global $connection;
 
-    $statement = $connection->prepare("insert into classes(title, section, subject, archive, user_id, category_id, image) values(:title, :section, :subject,  :archive,  :user_id,:category_id, :image )");
+    $statement = $connection->prepare("insert into classes(title, section, subject, archive, user_id, category_id, image) values(:title, :section, :subject, :archive, :user_id,:category_id, :image)");
     $statement->execute([
         ':title' => $title,
         ':section' => $section,

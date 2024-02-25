@@ -1,5 +1,5 @@
 <?php
-// function get category
+//========= function get category===========
 function getCategories() : array
 {
     global $connection;

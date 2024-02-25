@@ -71,19 +71,19 @@ $user = $_SESSION['user'];
                     <div class="card-body d-flex justify-content-center pb-5 pt-3">
                         <form class="card-body" action="../../controllers/profiles/update_profile.controller.php" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="id" id="id" value="<?= isset($user['id']) ? $user['id'] : "" ?>">
-                            <!-- name user -->
+                            <!-- user name  -->
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Name*</label>
                                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name" placeholder="User Name" value="<?= $user['name'] ?>">
                                 <span class="text-danger"><?= isset($_SESSION['profile_err']) ? $_SESSION['profile_err'] : "" ?></span>
                             </div>
-                            <!-- email user -->
+                            <!-- user email  -->
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Email*</label>
                                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Email" value="<?= $user['email'] ?>">
                                 <span class="text-danger"><?= isset($_SESSION['profile_err']) ? $_SESSION['profile_err'] : "" ?></span>
                             </div>
-                            <!-- image uaer -->
+                            <!-- uaer image  -->
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Image*</label>
                                 <input type="file" class="form-control" id="exampleInputPassword1" name="image">

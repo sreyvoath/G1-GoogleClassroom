@@ -1,5 +1,5 @@
 <?php
-// function create post
+//============function create post====================
 function createPost(string $title, string $description): bool
 {
     global $connection;
@@ -13,7 +13,7 @@ function createPost(string $title, string $description): bool
     return $statement->rowCount() > 0;
 }
 
-// function get post by id
+//==============function get post by id==============
 function getPost(int $id): array
 {
     global $connection;
@@ -22,7 +22,7 @@ function getPost(int $id): array
     return $statement->fetch();
 }
 
-// function get posts
+// ============function get posts====================
 function getPosts(): array
 {
     global $connection;
@@ -31,7 +31,7 @@ function getPosts(): array
     return $statement->fetchAll();
 }
 
-// function update posts
+// ============function update posts====================
 function updatePost(string $title, string $description, int $id): bool
 {
     global $connection;
@@ -46,7 +46,7 @@ function updatePost(string $title, string $description, int $id): bool
     return $statement->rowCount() > 0;
 }
 
-// function delete post
+// =============function delete post====================
 function deletePost(int $id): bool
 {
     global $connection;
