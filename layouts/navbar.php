@@ -6,8 +6,6 @@ if (isset($_SESSION['class'])) {
 }
 
 require 'database/database.php';
-require 'models/category.model.php';
-$categories = getCategories();
 ?>
 <!-- Header START -->
 <header class="navbar-light navbar-sticky header-static">
@@ -199,16 +197,6 @@ $categories = getCategories();
 					<div class="mb-3">
 						<label for="subject" class="form-label">Subject*</label>
 						<input type="text" class="form-control" id="subject" placeholder="Enter a subject" name="subject">
-					</div>
-					<div class="mb-3">
-						<label for="categories" class="form-label">Categories*</label>
-						<select class="form-control" id="categories" name="category">
-							<option disabled selected>Select Category</option>
-							<?php foreach($categories as $category): ?>
-							<option value="<?= $category['name']?>"> <?= $category['name']?></option>
-							<?php endforeach?>
-							
-						</select>
 					</div>
 					<div class="mb-4">
 						<label for="inputImage" class="form-label">Profile Image *</label>

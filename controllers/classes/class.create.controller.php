@@ -8,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $subject = $_POST['subject'];
     $archive = 1;
     $user_id = 3;
-    $category_id = 1;
     $image = $_FILES['image'];
 
     if (!empty($title) && !empty($section) && !empty($subject) && !empty($image)) {
@@ -27,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $nameInDirectory = $directory . $newFileName . '.' . $imageExtension;
                 $nameInDB = $newFileName . '.' . $imageExtension;
                 move_uploaded_file($_FILES["image"]["tmp_name"], $nameInDirectory);
-                createClass($title,  $section,  $subject, $user_id,  $category_id, $nameInDB);
+                createClass($title,  $section,  $subject, $user_id, $nameInDB);
                 header('Location: /home');
                 exit;
             }
