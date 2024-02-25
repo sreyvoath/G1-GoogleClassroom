@@ -26,20 +26,6 @@ require "../../layouts/header.php";
                             <input type="text" class="form-control" name="subject" id="subject" required placeholder="Enter a subject" value="<?= $class['subject'] ?>">
                         </div>
 
-                        <div class="mb-3">
-                            <label for="category" class="form-label">Category*</label>
-                            <select class="form-select" name="category" id="category" required>
-                                <option value="Information Technoloy">Information Technoloy</option>
-                                <option value="Professional Life">Professional Life</option>
-                                <option value="English">English</option>
-                            </select>
-                        </div>
-                        <!-- image -->
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Image*</label>
-                            <input type="file" class="form-control" id="exampleInputPassword1" name="image">
-                            <span class="text-danger"><?= isset($_SESSION['image']) ? $_SESSION['image'] : "" ?></span>
-                        </div>
                         <!-- Button -->
                         <div class="align-items-center mt-0">
                             <div class="d-grid d-flex justify-content-end ">

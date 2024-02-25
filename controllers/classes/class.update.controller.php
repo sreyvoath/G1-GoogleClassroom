@@ -27,6 +27,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
 
+<<<<<<< HEAD
+    if (!empty($_POST['classname']) and !empty($_POST['section']) and !empty($_POST['subject']) ) {
+        $title = $_POST['classname'];
+        $section = $_POST['section'];
+        $subject = $_POST['subject'];
+        $id = $_POST['id'];
+        updateClass($title, $section, $subject, $id);
+=======
+>>>>>>> 7d5ffd0141cc214f8f804a988a1cd17e9d0bf9ed
         header('location: /home');
     } else {
         $_SESSION['profile_err'] = "Please Enter all fields";
