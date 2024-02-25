@@ -38,15 +38,16 @@ function getClass(int $id)
 }
 
 //<======== To update  class=======>
-function updateClass(string $title, string $section, string $subject, int $id) : bool
+function updateClass(string $title, string $section, string $subject, int $id, string $image) : bool
 {
     global $connection;
-    $statement = $connection->prepare("update classes set title = :title, section = :section, subject = :subject where id = :id");
+    $statement = $connection->prepare("update classes set title = :title, section = :section, subject = :subject,image = :image where id = :id");
     $statement->execute([
         ':title' => $title,
         ':section' => $section,
         ':subject' => $subject,
-        ':id' => $id
+        ':id' => $id,
+        ":image" => $image
 
     ]);
 
