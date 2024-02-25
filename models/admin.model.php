@@ -1,5 +1,6 @@
 <?php
 
+// ==== Create Post insert to database ====
 function createPost(string $title, string $description) : bool
 {
     global $connection;
@@ -7,12 +8,11 @@ function createPost(string $title, string $description) : bool
     $statement->execute([
         ':title' => $title,
         ':description' => $description
-
     ]);
-
     return $statement->rowCount() > 0;
 }
 
+// ========Get single post============
 function getPost(int $id) : array
 {
     global $connection;
@@ -21,6 +21,7 @@ function getPost(int $id) : array
     return $statement->fetch();
 }
 
+// ========Get all posts============
 function getPosts() : array
 {
     global $connection;
@@ -37,12 +38,11 @@ function updatePost(string $title, string $description, int $id) : bool
         ':title' => $title,
         ':description' => $description,
         ':id' => $id
-
     ]);
-
     return $statement->rowCount() > 0;
 }
 
+// ========Delete post============
 function deletePost(int $id) : bool
 {
     global $connection;

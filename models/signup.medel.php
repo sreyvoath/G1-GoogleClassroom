@@ -1,6 +1,6 @@
 <?php
 
-//<======== To create user account=======>
+//<======== create user account =======>
 function createAccount(string $name, string $email, string $password, string $image) : bool
 {
     global $connection;
@@ -12,13 +12,11 @@ function createAccount(string $name, string $email, string $password, string $im
         ':password' => $password,
         ':role' => $role,
         ':image' => $image
-
     ]);
-
     return $statement->rowCount() > 0;
 }
 
-//<======== To check if account exist=======>
+//<======== check exist account =======>
 function accountExists(string $email): array
 {
     global $connection;
@@ -31,6 +29,7 @@ function accountExists(string $email): array
     }
 }
 
+// =========== get users by email ============
 function getUserEmail(string $email)
 {
     global $connection;
