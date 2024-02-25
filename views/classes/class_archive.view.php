@@ -8,7 +8,8 @@ Popular course START -->
 			<!-- Title -->
 			<div class="row mb-4">
 				<div class="col-lg-8 mx-auto text-center">
-					<h2 class="fs-1">Archive Classroom</h2>
+					<h3 class="fs-2 text-secondary" style="margin-top: -50px;">Archive Classroom</h3>
+					<p>Choose your classroom archive to restore! </p>
 				</div>
 			</div>
 			<!-- Tabs content START -->
