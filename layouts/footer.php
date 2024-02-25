@@ -2,7 +2,7 @@
 <footer class="pt-5">
 	<div class="container">
 		<div class="row g-4">
-			<!-- Widget 1 START -->
+			<!-- page classroom -->
 			<div class="col-lg-3">
 				<!-- logo -->
 				<a class="me-0" href="/home">
@@ -18,7 +18,7 @@
 					<li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-linkedin" href="#"><i class="fab fa-fw fa-linkedin-in"></i></a> </li>
 				</ul>
 			</div>
-			<!-- Widget 1 END -->
+			<!--page classroom -->
 
 			<!-- Widget 2 START -->
 			<div class="col-lg-6">

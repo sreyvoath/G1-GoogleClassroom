@@ -18,7 +18,6 @@ require 'database/database.php';
 					<img src="../assets/images/avatar/16.png" alt="" class="mb-2">
 					<span class="fs-2 mx-2">Classroom</span>
 				</h3>
-
 			</a>
 			<!-- Logo END -->
 
@@ -55,11 +54,7 @@ require 'database/database.php';
 						<a class="nav-link dropdown-toggle " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Classes</a>
 						<ul class="dropdown-menu" aria-labelledby="accounntMenu">
 							<li class="dropdown-submenu dropend">
-								<!-- <a class="dropdown-item " href="/views/classes/class.view.php">Create Class</a> -->
-								<!-- Button trigger modal -->
-								<button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
-									Create Class
-								</button>
+								<button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Create Class</button>
 							</li>
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item " href="#">Join Class</a>
@@ -67,16 +62,12 @@ require 'database/database.php';
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item text-primary" href="/classes">View all Class</a>
 							</li>
-
 						</ul>
-
 					</li>
-
 					<!-- Nav item 2 Pages -->
 					<li class="nav-item dropdown">
 						<a class="nav-link d-none" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Teaching</a>
 					</li>
-
 					<!-- Nav item 3 Account -->
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="accounntMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Enrolled</a>
@@ -85,7 +76,6 @@ require 'database/database.php';
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item " href="/todo"><i class="far fa-address-card fa-fw me-1"></i>To do</a>
 							</li>
-
 							<!-- Dropdown submenu -->
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item dropdown-toggle" href="#"><i class="bi bi-easel2 fa-fw me-1"></i>All Classes</a>
@@ -100,8 +90,6 @@ require 'database/database.php';
 							</li>
 						</ul>
 					</li>
-
-
 					<!-- Nav item 4 Megamenu-->
 					<li class="nav-item">
 						<a class="nav-link" href="/calendar">Calendar</a>
@@ -173,10 +161,7 @@ require 'database/database.php';
 			<!-- Profile START -->
 		</div>
 	</nav>
-	<!-- Logo Nav END -->
-	<!-- <script src="vendor/js/mode.js" defer ></script> -->
 </header>
-
 
 <!-- Header END --><!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

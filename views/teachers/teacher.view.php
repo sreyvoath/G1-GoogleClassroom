@@ -27,7 +27,6 @@
 										<li class="list-inline-item h6 fw-light me-3 mb-1 mb-sm-0"><i class="fas fa-book text-purple me-2"></i>4 Modules</li>
 									</ul>
 								</div>
-
 							</div>
 						</div>
 					</div>
@@ -37,7 +36,6 @@
 		</div>
 	</section>
 	<div class="container">
-
 		<div class="row mb-4  align-items-center">
 			<!-- Search bar -->
 			<script src="../../js/main.js"></script>
@@ -49,14 +47,11 @@
 					</div>
 				</form>
 			</div>
-
 			<!-- Select option -->
 			<?php
 			require_once "models/class.model.php";
 			require_once "database/database.php";
 			$classes = getClasses();
-
-
 			?>
 			<div class="col-sm-6 col-xl-3 mt-3 mt-lg-0">
 				<form class="bg-body shadow rounded p-2 input-borderless">
@@ -69,10 +64,6 @@
 					</select>
 				</form>
 			</div>
-
-
-
-
 			<!-- Select option -->
 			<div class="col-sm-6 col-xl-3 mt-3 mt-xl-0">
 				<form class="bg-body shadow rounded p-2 input-borderless">
@@ -94,7 +85,6 @@
 	<section class="pt-0">
 		<div class="container">
 			<div class="row">
-
 				<!-- Right sidebar START -->
 				<div class="col-xl-3">
 					<!-- Responsive offcanvas body START -->
@@ -110,14 +100,9 @@
 								<div class="bg-dark border rounded-3 pb-0 p-3 w-100">
 									<!-- Dashboard menu -->
 									<div class="list-group list-group-dark list-group-borderless">
-
 										<a class="list-group-item <?= urlIs("/teacher") ? "active" : "" ?> " href="/teacher"><i class="bi bi-basket fa-fw me-2"></i>My Classroom</a>
-
 										<a class="list-group-item " href="#"><i class="bi bi-people fa-fw me-2"></i>Students</a>
-
 										<a class="list-group-item " href="#"><i class="bi bi-star fa-fw me-2"></i>Reviews</a>
-										<!-- <a class="list-group-item" href="#"><i class="bi bi-pencil-square fa-fw me-2"></i>Edit Profile</a> -->
-
 										<a class="list-group-item text-danger bg-danger-soft-hover" href="/user-signout"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Sign Out</a>
 									</div>
 								</div>
@@ -169,8 +154,7 @@
 					</div>
 					<!-- Card END -->
 				</div>
+			</div>
+		</div>
+	</section>
 </main>
-</section>
-<!-- Main content END -->
-</div><!-- Row END -->
-</div>
