@@ -162,17 +162,7 @@
 				</table>
 					</div>
 				</div>
-<<<<<<< HEAD
-				<!-- Card END -->
-			</div>
-</main>
-</section>
-<!-- Main content END -->
-</div><!-- Row END -->
-</div>
-=======
 			</div>
 		</div>
 	</section>
 </main>
->>>>>>> ae5f1984cfab10abaf498b3494b43ab01b366a3d
