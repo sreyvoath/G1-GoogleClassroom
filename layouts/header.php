@@ -11,7 +11,6 @@ if(!isset($_SESSION['user'])){
 
 <head>
 	<title>Classroom</title>
-
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -53,6 +52,7 @@ if(!isset($_SESSION['user'])){
 		gtag('js', new Date());
 
 		gtag('config', 'G-7N7LGGGWT1');
+		
 	</script>
 
 </head>

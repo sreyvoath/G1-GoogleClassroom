@@ -2,13 +2,12 @@
 require "../../database/database.php";
 require "../../models/archive.model.php";
 
+// ========check class id=======
 if (!empty($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Call the archiveClass function to archive the class with the given ID
+// ==========call function restore archive===========
     $success = restoreClass($id);
-
-    // Check if archiving was successful or not
     header('location: /archive');
 }
  

@@ -94,3 +94,4 @@ $user = $_SESSION['user'];
         </div>
     </div>
     <?php unset($_SESSION['profile_err']) ?>
+</body>
