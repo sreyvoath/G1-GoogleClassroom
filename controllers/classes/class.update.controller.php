@@ -1,18 +1,22 @@
 <?php
 require "../../database/database.php";
 require "../../models/class.model.php";
+
+// ========== get value by post ========
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = $_POST['classname'];
     $section = $_POST['section'];
     $subject = $_POST['subject'];
     $id = $_POST['id'];
     $image = $_FILES['image'];
-   
+
+    // ============= check value update ==============
     if (!empty($title) && !empty($section) && !empty($subject) && !empty($id) && !empty($image)) {
         $directory = "../../assets/images/classes/";
         $target_file = $directory . '.' . basename($_FILES['image']['name']);
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         $checkImageSize = getimagesize($_FILES["image"]["tmp_name"]);
+
         if ($checkImageSize) {
             if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
                 $_SESSION['error'] = "Wrong Image extension!";

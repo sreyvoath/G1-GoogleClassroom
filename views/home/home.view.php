@@ -1,7 +1,6 @@
 <main>
 
-	<!-- =======================
-Main Banner START -->
+	<!-- ===Main Banner START -->
 	<section class="position-relative overflow-hidden pt-5 pt-lg-3">
 		<!-- SVG START -->
 		<figure class="position-absolute top-50 start-0 translate-middle-y ms-n7 d-none d-xxl-block">
@@ -148,17 +147,14 @@ Main Banner START -->
 							<!-- SVG END -->
 						</span>
 					</h1>
-
 					<!-- Content -->
 					<p class="my-4 lead">A great way to organize, structure and manage your classroom. It encourages paperless sharing and provides a platform for communicating with students.</p>
-
 					<!-- Info -->
 					<ul class="list-inline position-relative justify-content-center justify-content-lg-start mb-4">
 						<li class="list-inline-item me-2"> <i class="bi bi-patch-check-fill h6 me-1"></i>Provides real-time feedback</li>
 						<li class="list-inline-item me-2"> <i class="bi bi-patch-check-fill h6 me-1"></i>Encourages collaboration</li>
 						<li class="list-inline-item mt-2"> <i class="bi bi-patch-check-fill h6 me-1"></i>Return graded papers</li>
 					</ul>
-
 				</div>
 				<!-- Left content END -->
 
@@ -170,14 +166,12 @@ Main Banner START -->
 							<path class="fill-primary" d="M423.3,77.2c49.5,32.5,100.4,67.2,118.4,114.5s3.5,107.1-15.4,165.7c-18.7,58.6-41.8,116.1-84,148.6 c-42.5,32.8-104.2,40.2-163.8,37.3c-59.5-3.2-116.8-17.1-164.7-47.9c-48.3-30.6-87.2-78.2-102-131.6C-3,310.5,6.6,251,25.3,194.7 C43.6,138,70.7,84.3,114.1,49.5C157.2,14.8,216.7-1,270.8,6.4C324.8,14.2,373.4,44.7,423.3,77.2z" />
 						</svg>
 					</figure>
-
 					<!-- SVG decoration -->
 					<figure class="position-absolute bottom-0 start-50 translate-middle-x mb-n5 z-index-9">
 						<svg width="686px" height="298px">
 							<path class="fill-body" d="M60.971,0.000 L-0.000,0.000 C-0.000,0.000 80.068,266.854 184.934,294.154 C184.934,294.154 568.841,306.828 588.786,286.150 C588.786,286.150 698.888,112.106 684.750,0.000 L611.777,0.000 C611.777,0.000 569.027,161.864 505.816,209.110 C505.816,209.110 394.427,296.341 195.930,203.102 C195.930,203.102 66.072,143.180 60.971,0.000 Z" />
 						</svg>
 					</figure>
-
 					<!-- SVG decoration -->
 					<figure class="position-absolute top-50 start-50 translate-middle mt-n7">
 						<svg class="fill-warning">
@@ -221,7 +215,6 @@ Main Banner START -->
 							</div>
 						</div>
 					</div>
-
 					<!-- Active student -->
 					<div class="p-3 bg-success d-inline-block rounded-4 shadow-lg position-absolute top-50 end-0 translate-middle-y mt-n7 z-index-1 d-none d-md-block" style="background:url(assets/images/pattern/01.png) no-repeat center center; background-size:cover;">
 						<p class="text-white">Our daily new students</p>
@@ -256,11 +249,9 @@ Main Banner START -->
 		</div>
 		<!-- Content END -->
 	</section>
-	<!-- =======================
-Main Banner END -->
+<!-- =====Main Banner END========== -->
 
-	<!-- =======================
-Counter START -->
+<!-- =============Counter START=========== -->
 	<section class="py-0 py-xl-5">
 		<div class="container">
 			<div class="row g-4">
@@ -319,16 +310,15 @@ Counter START -->
 			</div>
 		</div>
 	</section>
-	<!-- =======================
-Counter END -->
-	<!-- =======================
-Popular course START -->
+<!-- ======================Counter END============= -->
+
+<!-- ====================Popular course START ===========-->
 	<section>
 		<div class="container">
 			<!-- Title -->
 			<div class="row mb-4">
 				<div class="col-lg-8 mx-auto text-center">
-					<h2 class="fs-1">Current Classroom</h2>
+					<h2 class="fs-2 text-primary">Current Classroom</h2>
 					<p class="mb-0">Choose your classroom each courses you learn </p>
 				</div>
 			</div>
@@ -393,15 +383,9 @@ Popular course START -->
 						<!-- Card item END -->
 					</div>
 				</div>
-				<!-- Content END -->
-				<!-- Tabs content END -->
 			</div>
 	</section>
-	<!-- =======================
-Popular course END -->
-
-	<!-- =======================
-Action box START -->
+<!-- =========Action box START -->
 	<section class="pt-0 pt-lg-5">
 		<div class="container position-relative">
 			<!-- SVG decoration START -->
@@ -414,7 +398,6 @@ Action box START -->
 				</svg>
 			</figure>
 			<!-- SVG decoration END -->
-
 			<div class="row">
 				<div class="col-12">
 					<div class="bg-info p-4 p-sm-5 rounded-3">
@@ -445,11 +428,9 @@ Action box START -->
 			</div> <!-- Row END -->
 		</div>
 	</section>
-	<!-- =======================
-Action box END -->
+<!-- =============Action box END ============-->
 
-	<!-- =======================
-Trending courses START -->
+<!-- ==========Trending courses START ==============-->
 	<section class="pb-5 pt-0 pt-lg-5">
 		<div class="container">
 			<!-- Title -->
@@ -698,11 +679,9 @@ Trending courses START -->
 			</div>
 		</div>
 	</section>
-	<!-- =======================
-Trending courses END -->
+<!-- ======Trending courses END============ -->
 
-	<!-- =======================
-Reviews START -->
+<!-- =========Reviews START ==========-->
 	<section class="bg-light">
 		<div class="container">
 			<div class="row g-4 g-lg-5 align-items-center">
@@ -898,10 +877,8 @@ Reviews START -->
 					<p>Supposing so be resolving breakfast am or perfectly. It drew a hill from me. Valley by oh twenty direct me so. Departure defective arranging rapturous did believe him all had supported. Family months lasted simple set nature vulgar him. Picture for attempt joy excited ten carried manners talking how.</p>
 					<a href="#" class="btn btn-primary mb-0">View Reviews</a>
 				</div>
-			</div> <!-- Row END -->
+			</div> 
 		</div>
 	</section>
-	<!-- =======================
-Reviews END -->
-
+<!-- ===========Reviews END============= -->
 </main>

@@ -1,5 +1,4 @@
 <main>
-
     <section class="pt-0">
         <!-- Main banner background image -->
         <div class="container-fluid px-0">
@@ -38,7 +37,6 @@
         </div>
     </section>
     <div class="container">
-
         <div class="row mb-4  align-items-center">
             <!-- Search bar -->
             <div class="col-sm-6 col-xl-4">
@@ -49,14 +47,11 @@
                     </div>
                 </form>
             </div>
-
             <!-- Select option -->
             <?php
             require_once "models/class.model.php";
             require_once "database/database.php";
             $classes = getClasses();
-
-
             ?>
             <div class="col-sm-6 col-xl-3 mt-3 mt-lg-0">
                 <form class="bg-body shadow rounded p-2 input-borderless">
@@ -65,16 +60,9 @@
                         <?php foreach ($classes as $class) : ?>
                             <option><?= $class['title'] ?></option>
                         <?php endforeach; ?>
-
-
-
                     </select>
                 </form>
             </div>
-
-
-
-
             <!-- Select option -->
             <div class="col-sm-6 col-xl-3 mt-3 mt-xl-0">
                 <form class="bg-body shadow rounded p-2 input-borderless">
@@ -86,7 +74,6 @@
                     </select>
                 </form>
             </div>
-
             <!-- Button -->
             <div class="col-sm-6 col-xl-2 mt-3 mt-xl-0 d-grid">
                 <a href="#" class="btn btn-lg btn-primary mb-0">Filter Results</a>
@@ -96,7 +83,6 @@
     <section class="pt-0">
         <div class="container">
             <div class="row">
-
                 <!-- Right sidebar START -->
                 <div class="col-xl-3">
                     <!-- Responsive offcanvas body START -->
@@ -163,8 +149,7 @@
                     </div>
                     <!-- Card END -->
                 </div>
+            </div>
+        </div>
+    </section>
 </main>
-</section>
-<!-- Main content END -->
-</div><!-- Row END -->
-</div>
