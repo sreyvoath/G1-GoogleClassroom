@@ -65,7 +65,6 @@
 						<?php foreach ($classes as $class) : ?>
 							<option><?= $class['title'] ?></option>
 						<?php endforeach; ?>
-
 					</select>
 				</form>
 			</div>
@@ -143,32 +142,43 @@
 											<tr>
 												<!-- Course item -->
 												<td>
-													<div class="d-flex align-items-center">
-														<!-- Image -->
-														<div class="w-100px">
-															<img src="../../assets/images/classes/<?= $class['image'] ?>" class="rounded" alt="">
-														</div>
-														<div class="mb-0 ms-2">
-															<!-- Title -->
-															<h6><a href="#"><?= $class['title'] ?></a></h6>
-															<!-- Info -->
-															<div class="d-sm-flex">
-																<p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i>0 lectures</p>
-																<p class="h6 fw-light mb-0 small"><i class="fas fa-check-circle text-success me-2"></i>0 Completed</p>
+													<div class="d-flex align-items-center justify-content-between">
+														<!-- Content -->
+														<div class="d-flex align-items-center">
+															<!-- Image -->
+															<div class="w-100px">
+																<img src="../../assets/images/classes/<?= $class['image'] ?>" class="rounded" alt="">
+															</div>
+															<div class="mb-0 ms-2">
+																<!-- Title -->
+																<h6><a href="#"><?= $class['title'] ?></a></h6>
+																<!-- Info -->
+																<div class="d-sm-flex">
+																	<p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i>0 lectures</p>
+																	<p class="h6 fw-light mb-0 small"><i class="fas fa-check-circle text-success me-2"></i>0 Completed</p>
+																</div>
 															</div>
 														</div>
+														<!-- Buttons -->
+														<div class="d-flex">
+															<a href="../../controllers/teachers/teacher_edit.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-info text-white"><i class="bi bi-pen text-dark "></i></a>
+															<a href="../../controllers/teachers/teacher_delete.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-trash text-dark"></i></a>
+														</div>
 													</div>
-												</td>
-											</tr>
-										</tbody>
-									<?php endif ?>
-								<?php endforeach; ?>
-								<!-- PHP loop for classes END -->
-							</table>
+
+
 						</div>
+						</td>
+						</tr>
+						</tbody>
+					<?php endif ?>
+				<?php endforeach; ?>
+				<!-- PHP loop for classes END -->
+				</table>
 					</div>
-					<!-- Card END -->
 				</div>
+				<!-- Card END -->
+			</div>
 </main>
 </section>
 <!-- Main content END -->
