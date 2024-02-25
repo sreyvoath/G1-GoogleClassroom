@@ -1,10 +1,11 @@
 <?php
-//<========if archive = 1 the classes is archived======>
+
+// ===== classs archive =====
 function archiveClass(int $id): bool
 {
     global $connection;
     try {
-        $statement = $connection->prepare("UPDATE classes SET archive = 1 WHERE id = :id");
+        $statement = $connection->prepare("update classes set archive = 1 where id = :id");
         $statement->execute([
             ':id' => $id
         ]);
@@ -15,12 +16,12 @@ function archiveClass(int $id): bool
     }
 }
 
-//<========if archive = 0 is not archive=======>
+// =======restore classs from archive page ======
 function restoreClass(int $id): bool
 {
     global $connection;
     try {
-        $statement = $connection->prepare("UPDATE classes SET archive = 0 WHERE id = :id");
+        $statement = $connection->prepare("update classes set archive = 0 where id = :id");
         $statement->execute([
             ':id' => $id
         ]);
@@ -31,7 +32,7 @@ function restoreClass(int $id): bool
     }
 }
 
-//<========To delete archive=======>
+//<======== delete archive class =======>
 function deleteArchive(int $id) : bool
 {
     global $connection;
@@ -40,12 +41,12 @@ function deleteArchive(int $id) : bool
     return $statement->rowCount() > 0;
 }
 
-//<========if archive = 1 true=======>
+//<======== get archive class=======>
 function nounClass(): array
 {
     global $connection;
     try {
-        $statement = $connection->prepare("SELECT * FROM classes WHERE archive = :id");
+        $statement = $connection->prepare("select * from classes where archive = :id");
         $statement->execute([
             ':id' => 1
         ]);
@@ -56,12 +57,12 @@ function nounClass(): array
     }
 }
 
-
+// ==== hide class =========
 function nounclassHome(): array
 {
     global $connection;
     try {
-        $statement = $connection->prepare("SELECT * FROM classes WHERE archive = :id");
+        $statement = $connection->prepare("select * from classes where archive = :id");
         $statement->execute([
             ':id' => 0
         ]);

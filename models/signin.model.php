@@ -1,6 +1,6 @@
 <?php
 
-//<======== To get user if email no exist=======>
+//<======== get users (no exist email) =======>
 function getUser(string $email): array
 {
     global $connection;
@@ -13,7 +13,7 @@ function getUser(string $email): array
     }
 }
 
-//<======== To get user by id=======>
+//<======== get user by id=======>
 function getUserId(string $id): array
 {
     global $connection;

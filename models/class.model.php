@@ -1,6 +1,6 @@
 <?php
 
-//<======== To get all classes=======>
+//<======== get classes=======>
 function getClasses() : array
 {
     global $connection;
@@ -9,11 +9,10 @@ function getClasses() : array
     return $statement->fetchAll();
 }
 
-//<======== To create classes=======>
+//<======== create classes=======>
 function createClass(string $title, string $section, string $subject, int $user_id, string $image) : bool
 {
     global $connection;
-
     $statement = $connection->prepare("insert into classes(title, section, subject, archive, user_id, image) values(:title, :section, :subject,  :archive,  :user_id, :image )");
     $statement->execute([
         ':title' => $title,
@@ -23,21 +22,19 @@ function createClass(string $title, string $section, string $subject, int $user_
         ':archive' => 0,
         ":image" => $image
     ]);
-
     return $statement->rowCount() > 0;
 }
 
-//<======== To get single class=======>
+//<======== get single class=======>
 function getClass(int $id)
 {
     global $connection;
     $statement = $connection->prepare("select * from classes where id = :id");
     $statement->execute([':id' => $id]);
     return $statement->fetch();
-    
 }
 
-//<======== To update  class=======>
+//<======== update class=======>
 function updateClass(string $title, string $section, string $subject, int $id, string $image) : bool
 {
     global $connection;
@@ -48,13 +45,11 @@ function updateClass(string $title, string $section, string $subject, int $id, s
         ':subject' => $subject,
         ':id' => $id,
         ":image" => $image
-
     ]);
-
     return $statement->rowCount() > 0;
 }
 
-//<======== To delete class=======>
+//<======== delete class=======>
 function deleteClass(int $id) : bool
 {
     global $connection;
