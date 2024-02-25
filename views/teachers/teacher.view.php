@@ -37,19 +37,14 @@
 		</div>
 	</section>
 	<div class="container">
-	
+
 		<div class="row mb-4  align-items-center">
 			<!-- Search bar -->
 			<script src="../../js/main.js"></script>
 			<div class="col-sm-6 col-xl-4">
 				<form class="bg-body shadow rounded p-2">
-<<<<<<< HEAD
-					<div class="input-group input-borderless" id="card">
-						<input class="form-control me-1 search" type="text" placeholder="Search instructor" id="search" value="">
-=======
 					<div class="input-group input-borderless">
 						<input class="form-control me-1" id="search" type="search" placeholder="Search instructor">
->>>>>>> 6f269b3f7c98dc718441686a2ca924f735de9651
 						<button type="button" class="btn btn-primary mb-0 rounded"><i class="fas fa-search"></i></button>
 					</div>
 				</form>
@@ -138,56 +133,39 @@
 						<div class="card-header border-bottom">
 							<h3 class="mb-0">My Classroom List</h3>
 						</div>
-						<?php foreach ($classes as $class) : ?>
-<<<<<<< HEAD
-							<tbody>
-								<tr>
-									<!-- Course item -->
-									<td>
-										<div class="d-flex align-items-center">
-											<!-- Image -->
-											<div class="w-100px">
-												<img src="../../assets/images/classes/<?= $class['image'] ?>" class="rounded" alt="">
-											</div>
-											<div class="mb-0 ms-2" >
-												<!-- Title -->
-												<h6><?= $class['title'] ?></h6>
-												<!-- Info -->
-												<div class="d-sm-flex">
-													<p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i>0 lectures</p>
-													<p class="h6 fw-light mb-0 small"><i class="fas fa-check-circle text-success me-2"></i>0 Completed</p>
-=======
-							<?php
-							if ($class['archive'] == 0) :
-							?>
-								<tbody>
-									<tr>
-										<!-- Course item -->
-										<td>
-											<div class="d-flex align-items-center " id="tbodySearch">
-												<!-- Image -->
-												<div class="w-100px">
-													<img src="../../assets/images/classes/<?= $class['image'] ?>" class="rounded" alt="">
-												</div>
-												<div class="mb-0 ms-2">
-													<!-- Title -->
-													<h6><a href="#"><?= $class['title'] ?></a></h6>
-													<!-- Info -->
-													<div class="d-sm-flex">
-														<p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i>0 lectures</p>
-														<p class="h6 fw-light mb-0 small"><i class="fas fa-check-circle text-success me-2"></i>0 Completed</p>
+						<!-- Table body START -->
+						<div class="card-body">
+							<table class="table">
+								<!-- PHP loop for classes START -->
+								<?php foreach ($classes as $class) : ?>
+									<?php if ($class['archive'] == 0) : ?>
+										<tbody class="tbodySearch" id="tbodySearch">
+											<tr>
+												<!-- Course item -->
+												<td>
+													<div class="d-flex align-items-center">
+														<!-- Image -->
+														<div class="w-100px">
+															<img src="../../assets/images/classes/<?= $class['image'] ?>" class="rounded" alt="">
+														</div>
+														<div class="mb-0 ms-2">
+															<!-- Title -->
+															<h6><a href="#"><?= $class['title'] ?></a></h6>
+															<!-- Info -->
+															<div class="d-sm-flex">
+																<p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i>0 lectures</p>
+																<p class="h6 fw-light mb-0 small"><i class="fas fa-check-circle text-success me-2"></i>0 Completed</p>
+															</div>
+														</div>
 													</div>
->>>>>>> 6f269b3f7c98dc718441686a2ca924f735de9651
-												</div>
-											</div>
-										</td>
-										<td>
-											<div class="badge bg-secondary bg-opacity-10 text-secondary">Disable</div>
-										</td>
-									</tr>
-								</tbody>
-							<?php endif ?>
-						<?php endforeach; ?>
+												</td>
+											</tr>
+										</tbody>
+									<?php endif ?>
+								<?php endforeach; ?>
+								<!-- PHP loop for classes END -->
+							</table>
+						</div>
 					</div>
 					<!-- Card END -->
 				</div>
