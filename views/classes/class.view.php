@@ -22,9 +22,8 @@
                             <div class="col-sm-6 col-lg-4 col-xl-3">
                                 <div class="card shadow h-100">
                                     <!-- Image -->
-                                    <img src="../../assets/images/classes/<?= $class['image'] ?>"  class="card-img-top" alt="course image" style='width:350px; height:200px'>
-                                    <!-- <li class="dropdown-submenu dropend">
-                        </li> -->
+                                    <img src="../../assets/images/classes/<?= $class['image'] ?>" class="card-img-top" alt="course image" style='width:350px; height:200px'>
+
                                     <!-- Card body -->
                                     <div class="nav-item dropdown d-flex justify-content-end">
                                         <a class="nav-link " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
@@ -38,9 +37,7 @@
                                             <li class="dropdown-submenu dropend">
                                                 <a class="dropdown-item " href="#">Edit</a>
                                             </li>
-
                                         </ul>
-
                                     </div>
                                     <div class="card-body pb-0">
                                         <!-- Title -->
@@ -57,13 +54,10 @@
                                     </div>
                                 </div>
                             </div>
-
                         <?php endif ?>
                     <?php endforeach ?>
                     <!-- Card item END -->
                 </div>
             </div>
-            <!-- Content END -->
-            <!-- Tabs content END -->
         </div>
 </section>

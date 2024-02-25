@@ -1,7 +1,10 @@
 <?php
+
 session_start();
 require "../../database/database.php";
 require "../../models/signup.medel.php";
+
+// ====== funtion make data to Security =========
 function secureData($data)
 {
     $data = trim($data);
@@ -9,7 +12,7 @@ function secureData($data)
     return $data;
 };
 
-// Check if the form is submitted
+//========== Check if the form is submitted======
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $image = $_FILES['image'];
     $password = $_POST["password"];
@@ -17,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name = $_POST['name'];
     $email = $_POST['email'];
 
-    // // Image upload
+// ========= Image upload ================
     if (!empty($name) && (!empty($email)) && (!empty($password)) && !empty($image)) {
         $directory = "../../assets/images/profiles/";
         $target_file = $directory . '.' . basename($_FILES['image']['name']);
@@ -48,12 +51,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         }
     }
+
     if (!preg_match('/^(?=.*[!@#$])[a-zA-Z0-9!@#$]{8,}+$/', secureData($password))) {
         $_SESSION['password'] = "Password is not secure!";
         $_SESSION['name'] = "It's require!";
         header("Location:/user-signup");
         exit;
     }
+
     if (!empty($name) && (!empty($email)) && (!empty($password)) && !empty($image)) {
         createAccount($name, $email, $passwordEncript, $image);
         header("Location:/home");
@@ -72,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     };
 } else {
-    // Redirect to the login page if the form is not submitted
+    //============== Redirect to form login page is not submitted===========
     header("Location: /user-signup");
     exit;
 }
