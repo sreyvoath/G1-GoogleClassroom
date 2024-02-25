@@ -1,5 +1,4 @@
 <?php
-
 require "../../layouts/header.php";
 ?>
 <div class="container mt-5">
@@ -9,7 +8,8 @@ require "../../layouts/header.php";
             <div class="card mt-6">
                 <h3 class="modal-title" id="exampleModalLabel"> <i class="bi bi-pencil-square mx-3 text-info fs-2"></i>Update Class</h3>
                 <div class="card-body">
-                    <form method="POST" action="../../controllers/classes/class.update.controller.php">
+                    
+                    <form method="POST" action="../../controllers/classes/class.update.controller.php" enctype="multipart/form-data">
                         <input type="hidden" id="id" name="id" value="<?= $class['id'] ?>">
                         <div class="mb-3">
                             <label for="classname" class="form-label">Class Name*</label>
@@ -33,6 +33,12 @@ require "../../layouts/header.php";
                                 <option value="Professional Life">Professional Life</option>
                                 <option value="English">English</option>
                             </select>
+                        </div>
+                        <!-- image -->
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Image*</label>
+                            <input type="file" class="form-control" id="exampleInputPassword1" name="image">
+                            <span class="text-danger"><?= isset($_SESSION['image']) ? $_SESSION['image'] : "" ?></span>
                         </div>
                         <!-- Button -->
                         <div class="align-items-center mt-0">
