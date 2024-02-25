@@ -6,8 +6,6 @@ if (isset($_SESSION['class'])) {
 }
 
 require 'database/database.php';
-require 'models/category.model.php';
-$categories = getCategories();
 ?>
 <!-- Header START -->
 <header class="navbar-light navbar-sticky header-static">
@@ -49,7 +47,7 @@ $categories = getCategories();
 				<ul class="navbar-nav navbar-nav-scroll me-auto">
 					<!-- Nav item 1 Demos -->
 					<li class="nav-item dropdown">
-						<a class="nav-link active" href="/home">Home</a>
+						<a class="nav-link" href="/home">Home</a>
 					</li>
 
 					<!-- Nav item 2 Pages -->
@@ -85,7 +83,7 @@ $categories = getCategories();
 						<ul class="dropdown-menu" aria-labelledby="accounntMenu">
 							<!-- Dropdown submenu -->
 							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item " href="#"><i class="far fa-address-card fa-fw me-1"></i>To do</a>
+								<a class="dropdown-item " href="/todo"><i class="far fa-address-card fa-fw me-1"></i>To do</a>
 							</li>
 
 							<!-- Dropdown submenu -->
@@ -163,7 +161,7 @@ $categories = getCategories();
 					<!-- Dark mode switch START -->
 					<li>
 						<div class="modeswitch-wrap" id="darkModeSwitch">
-							<div class="modeswitch-item">
+							<div class="modeswitch-item" id = "toggle">
 								<div class="modeswitch-icon"></div>
 							</div>
 							<span>Dark mode</span>
@@ -176,7 +174,9 @@ $categories = getCategories();
 		</div>
 	</nav>
 	<!-- Logo Nav END -->
+	<!-- <script src="vendor/js/mode.js" defer ></script> -->
 </header>
+
 
 <!-- Header END --><!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -199,16 +199,6 @@ $categories = getCategories();
 					<div class="mb-3">
 						<label for="subject" class="form-label">Subject*</label>
 						<input type="text" class="form-control" id="subject" placeholder="Enter a subject" name="subject">
-					</div>
-					<div class="mb-3">
-						<label for="categories" class="form-label">Categories*</label>
-						<select class="form-control" id="categories" name="category">
-							<option disabled selected>Select Category</option>
-							<?php foreach($categories as $category): ?>
-							<option value="<?= $category['name']?>"> <?= $category['name']?></option>
-							<?php endforeach?>
-							
-						</select>
 					</div>
 					<div class="mb-4">
 						<label for="inputImage" class="form-label">Profile Image *</label>

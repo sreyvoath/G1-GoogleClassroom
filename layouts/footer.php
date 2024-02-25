@@ -1,10 +1,7 @@
-<!-- =======================
-Footer START -->
+<!-- Footer START --> 
 <footer class="pt-5">
 	<div class="container">
-		<!-- Row START -->
 		<div class="row g-4">
-
 			<!-- Widget 1 START -->
 			<div class="col-lg-3">
 				<!-- logo -->
@@ -82,11 +79,10 @@ Footer START -->
 					<div class="col-6 col-sm-4 col-md-3 col-lg-6">
 						<a href="#"> <img src="assets/images/client/app-store.svg" alt="app-store"> </a>
 					</div>
-				</div> <!-- Row END -->
+				</div>
 			</div>
 			<!-- Widget 3 END -->
-		</div><!-- Row END -->
-
+		</div>
 		<!-- Divider -->
 		<hr class="mt-4 mb-0">
 

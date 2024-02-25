@@ -8,25 +8,6 @@
                 <p class="mb-0">Choose your classroom each courses you learn </p>
             </div>
         </div>
-
-        <!-- Tabs START -->
-        <ul class="nav nav-pills nav-pills-bg-soft justify-content-sm-center mb-4 px-3" id="course-pills-tab" role="tablist">
-            <!-- Tab item -->
-            <li class="nav-item me-2 me-sm-5">
-                <button class="nav-link mb-2 mb-md-0 active" id="course-pills-tab-1" data-bs-toggle="pill" data-bs-target="#course-pills-tabs-1" type="button" role="tab" aria-controls="course-pills-tabs-1" aria-selected="false">IT Skills</button>
-            </li>
-            <!-- Tab item -->
-            <li class="nav-item me-2 me-sm-5">
-                <button class="nav-link mb-2 mb-md-0" id="course-pills-tab-4" data-bs-toggle="pill" data-bs-target="#course-pills-tabs-4" type="button" role="tab" aria-controls="course-pills-tabs-4" aria-selected="false">Professional Life</button>
-            </li>
-            <!-- Tab item -->
-            <li class="nav-item me-2 me-sm-5">
-                <button class="nav-link mb-2 mb-md-0" id="course-pills-tab-5" data-bs-toggle="pill" data-bs-target="#course-pills-tabs-5" type="button" role="tab" aria-controls="course-pills-tabs-5" aria-selected="false">English</button>
-            </li>
-        </ul>
-        <!-- Tabs END -->
-
-
         <!-- Tabs content START -->
         <div class="tab-content" id="course-pills-tabContent">
             <!-- Content START -->
