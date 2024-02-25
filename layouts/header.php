@@ -41,8 +41,10 @@ if(!isset($_SESSION['user'])){
 	<!-- Theme CSS -->
 	<link id="style-switch" rel="stylesheet" type="text/css" href="vendor/css/style.css">
 	<link id="style-switch" rel="stylesheet" type="text/css" href="vendor/css/create.css">
+	<link id="style-switch" rel="stylesheet" type="text/css" href="vendor/css/dark_mode.vendor.css">
 
 	<!-- Theme JS -->
+	<script src="vendor/js/dark_mode.vendor.js" defer></script>
 	
 
 

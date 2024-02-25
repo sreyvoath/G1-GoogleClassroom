@@ -47,7 +47,7 @@ require 'database/database.php';
 				<ul class="navbar-nav navbar-nav-scroll me-auto">
 					<!-- Nav item 1 Demos -->
 					<li class="nav-item dropdown">
-						<a class="nav-link active" href="/home">Home</a>
+						<a class="nav-link" href="/home">Home</a>
 					</li>
 
 					<!-- Nav item 2 Pages -->
@@ -161,7 +161,7 @@ require 'database/database.php';
 					<!-- Dark mode switch START -->
 					<li>
 						<div class="modeswitch-wrap" id="darkModeSwitch">
-							<div class="modeswitch-item">
+							<div class="modeswitch-item" id = "toggle">
 								<div class="modeswitch-icon"></div>
 							</div>
 							<span>Dark mode</span>
@@ -174,7 +174,9 @@ require 'database/database.php';
 		</div>
 	</nav>
 	<!-- Logo Nav END -->
+	<!-- <script src="vendor/js/mode.js" defer ></script> -->
 </header>
+
 
 <!-- Header END --><!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
