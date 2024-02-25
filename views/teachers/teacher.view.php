@@ -140,7 +140,7 @@
 									<tr>
 										<!-- Course item -->
 										<td>
-											<div class="d-flex align-items-center">
+											<div class="d-flex align-items-center " id="tbodySearch">
 												<!-- Image -->
 												<div class="w-100px">
 													<img src="../../assets/images/classes/<?= $class['image'] ?>" class="rounded" alt="">
