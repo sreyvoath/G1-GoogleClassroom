@@ -40,21 +40,10 @@ if(!isset($_SESSION['user'])){
 
 	<!-- Theme CSS -->
 	<link id="style-switch" rel="stylesheet" type="text/css" href="vendor/css/style.css">
-	<link id="style-switch" rel="stylesheet" type="text/css" href="vendor/css/create.css">
-	<link id="style-switch" rel="stylesheet" type="text/css" href="vendor/css/dark_mode.vendor.css">
-
-	<!-- Theme JS -->
-	<script src="vendor/js/dark_mode.vendor.js" defer></script>
 	
+	<!-- Theme JS  -->
+	<script src="vendor/js/search.js" defer></script>
 
-
-
-
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-7N7LGGGWT1"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> -->
 	<script>
 		window.dataLayer = window.dataLayer || [];
 

@@ -43,7 +43,7 @@
 			<div class="col-sm-6 col-xl-4">
 				<form class="bg-body shadow rounded p-2">
 					<div class="input-group input-borderless">
-						<input class="form-control me-1 search" type="search" placeholder="Search instructor">
+						<input class="form-control me-1" id="search" type="search" placeholder="Search instructor">
 						<button type="button" class="btn btn-primary mb-0 rounded"><i class="fas fa-search"></i></button>
 					</div>
 				</form>
@@ -64,8 +64,6 @@
 						<?php foreach ($classes as $class) : ?>
 							<option><?= $class['title'] ?></option>
 						<?php endforeach; ?>
-
-
 
 					</select>
 				</form>
