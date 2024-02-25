@@ -12,6 +12,9 @@ $routes = [
     '/archive' => 'controllers/classes/archive.view.controller.php',
     '/teacher' => 'controllers/teachers/teacher.controller.php',
     '/teacher-student' => 'controllers/teachers/teacher_student.controller.php',
+    '/calendar' => 'controllers/calendar/calendar.controller.php',
+    '/todo' => 'controllers/todos/todo.controller.php',
+
 ];
 
 if (array_key_exists($uri, $routes)) {

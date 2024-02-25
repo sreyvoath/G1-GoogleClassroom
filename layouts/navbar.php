@@ -85,7 +85,7 @@ $categories = getCategories();
 						<ul class="dropdown-menu" aria-labelledby="accounntMenu">
 							<!-- Dropdown submenu -->
 							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item " href="#"><i class="far fa-address-card fa-fw me-1"></i>To do</a>
+								<a class="dropdown-item " href="/todo"><i class="far fa-address-card fa-fw me-1"></i>To do</a>
 							</li>
 
 							<!-- Dropdown submenu -->

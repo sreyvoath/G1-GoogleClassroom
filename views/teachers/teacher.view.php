@@ -43,7 +43,7 @@
 			<div class="col-sm-6 col-xl-4">
 				<form class="bg-body shadow rounded p-2">
 					<div class="input-group input-borderless">
-						<input class="form-control me-1 search" type="search" placeholder="Search instructor">
+						<input class="form-control me-1" id="search" type="search" placeholder="Search instructor">
 						<button type="button" class="btn btn-primary mb-0 rounded"><i class="fas fa-search"></i></button>
 					</div>
 				</form>
@@ -64,8 +64,6 @@
 						<?php foreach ($classes as $class) : ?>
 							<option><?= $class['title'] ?></option>
 						<?php endforeach; ?>
-
-
 
 					</select>
 				</form>
@@ -135,18 +133,18 @@
 							<h3 class="mb-0">My Classroom List</h3>
 						</div>
 						<?php foreach ($classes as $class) : ?>
-							<tbody>
+							<tbody >
 								<tr>
 									<!-- Course item -->
 									<td>
-										<div class="d-flex align-items-center">
+										<div class="d-flex align-items-center" id="tbodySearch">
 											<!-- Image -->
-											<div class="w-100px">
+											<div class="w-100px"  >
 												<img src="../../assets/images/classes/<?= $class['image'] ?>" class="rounded" alt="">
 											</div>
 											<div class="mb-0 ms-2">
 												<!-- Title -->
-												<h6><a href="#"><?= $class['title'] ?></a></h6>
+												<h6><a href="#"  id="searchTitle"><?= $class['title'] ?></a></h6>
 												<!-- Info -->
 												<div class="d-sm-flex">
 													<p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i>0 lectures</p>
