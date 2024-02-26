@@ -2,14 +2,14 @@
 
 require_once '../../database/database.php';
 require_once('../../models/class.model.php');
-
+session_start();
 // ========== get post value ======
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $section = $_POST['section'];
     $subject = $_POST['subject'];
     $archive = 1;
-    $user_id = 3;
+    $user_id = $_SESSION['user']['id'];
     $image = $_FILES['image'];
 
     // =======check value  and upload image to database ========

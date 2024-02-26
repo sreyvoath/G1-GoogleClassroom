@@ -46,12 +46,12 @@ require 'database/database.php';
 				<ul class="navbar-nav navbar-nav-scroll me-auto">
 					<!-- Nav item 1 Demos -->
 					<li class="nav-item dropdown">
-						<a class="nav-link" href="/home">Home</a>
+						<a class="nav-link <?= urlIs("/home") ? "active" : "" ?> " href="/home">Home</a>
 					</li>
 
 					<!-- Nav item 2 Pages -->
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Classes</a>
+						<a class="nav-link dropdown-toggle <?= urlIs("/classes") ? "active" : "" ?>  " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Classes</a>
 						<ul class="dropdown-menu" aria-labelledby="accounntMenu">
 							<li class="dropdown-submenu dropend">
 								<button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Create Class</button>
@@ -60,7 +60,7 @@ require 'database/database.php';
 								<a class="dropdown-item " href="#">Join Class</a>
 							</li>
 							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item text-primary" href="/classes">View all Class</a>
+								<a class="dropdown-item text-primary " href="/classes">View all Class</a>
 							</li>
 						</ul>
 					</li>
@@ -70,7 +70,7 @@ require 'database/database.php';
 					</li>
 					<!-- Nav item 3 Account -->
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="accounntMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Enrolled</a>
+						<a class="nav-link dropdown-toggle <?= urlIs("/teacher") ? "active" : "" ?> " href="#" id="accounntMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Enrolled</a>
 						<ul class="dropdown-menu" aria-labelledby="accounntMenu">
 							<!-- Dropdown submenu -->
 							<li class="dropdown-submenu dropend">
@@ -92,12 +92,12 @@ require 'database/database.php';
 					</li>
 					<!-- Nav item 4 Megamenu-->
 					<li class="nav-item">
-						<a class="nav-link" href="/calendar">Calendar</a>
+						<a class="nav-link <?= urlIs("/calendar") ? "active" : "" ?> " href="/calendar">Calendar</a>
 
 					</li>
 					<!-- Nav item 2 Pages -->
 					<li class="nav-item dropdown">
-						<a class="nav-link " href="/archive">Archive</a>
+						<a class="nav-link <?= urlIs("/archive") ? "active" : "" ?> " href="/archive">Archive</a>
 					</li>
 
 				</ul>
