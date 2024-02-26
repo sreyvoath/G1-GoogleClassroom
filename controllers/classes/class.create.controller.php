@@ -38,4 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     }
+    else {
+        echo "<script>alert('You must complete all fields.');</script>";
+        header('refresh:0; url=/home');
+    }
 }
