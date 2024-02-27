@@ -364,15 +364,15 @@
 											</div>
 											<div class="card-body pb-0">
 												<!-- Title -->
-												<h5 class="card-title fw-normal"><a class="text-decoration-none" href="#"><?= $class['title']; ?></a></h5>
+												<h5 class="card-title fw-normal"><a class="text-decoration-none" href="/stream"><?= $class['title']; ?></a></h5>
 												<p class="mb-2 text-truncate-2"><?= $class['section']; ?></p>
 											</div>
 											<!-- Card footer -->
 											<div class="card-footer pt-3 pb-3">
 												<div class="d-flex">
 													<a href="../../controllers/classes/class.edit.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-info text-white"><i class="bi bi-pen text-dark "></i></a>
-													<a href="../../controllers/classes/class.delete.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-trash text-danegr "></i></a>
-													<a href="../../controllers/classes/class.archive.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-secondary"><i class="bi bi-archive-fill"></i></a>
+													<a href="../../controllers/classes/class.delete.controller.php?id=<?= $class['id'] ?>"onclick="if (!confirm('Are you sure to Delete it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-trash text-danegr "></i></a>
+													<a href="../../controllers/classes/class.archive.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to archive it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-secondary"><i class="bi bi-archive-fill"></i></a>
 												</div>
 											</div>
 										</div>

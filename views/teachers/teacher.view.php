@@ -147,7 +147,7 @@
 														<!-- Buttons -->
 														<div class="d-flex">
 															<a href="../../controllers/teachers/teacher_edit.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-info text-white"><i class="bi bi-pen text-dark "></i></a>
-															<a href="../../controllers/teachers/teacher_delete.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-trash text-dark"></i></a>
+															<a href="../../controllers/teachers/teacher_delete.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to delete it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-trash text-dark"></i></a>
 														</div>
 													</div>
 
