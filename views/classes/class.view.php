@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="card-body pb-0">
                                         <!-- Title -->
-                                        <h5 class="card-title fw-normal"><a class="text-decoration-none" href="#"><?= $class['title']; ?></a></h5>
+                                        <h5 class="card-title fw-normal"><a class="text-decoration-none" href="/stream"><?= $class['title']; ?></a></h5>
                                         <p class="mb-2 text-truncate-2"><?= $class['section']; ?></p>
                                     </div>
                                     <!-- Card footer -->
