@@ -46,8 +46,8 @@
 											<!-- Card footer -->
 											<div class="card-footer pt-3 pb-3">
 												<div class="d-flex">
-													<a href="../../controllers/classes/archive.delete.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-trash text-danegr "></i></a>
-													<a href="../../controllers/classes/restore.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-secondary"><i class="bi bi-bootstrap-reboot"></i></a>
+													<a href="../../controllers/classes/archive.delete.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to delete it?')) { return false; }"  class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-trash text-danegr "></i></a>
+													<a href="../../controllers/classes/restore.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to archive it?')) { return false; }"  class="btn mx-1 h6 fw-light mb-0 btn-outline-secondary"><i class="bi bi-bootstrap-reboot"></i></a>
 												</div>
 											</div>
 										</div>
