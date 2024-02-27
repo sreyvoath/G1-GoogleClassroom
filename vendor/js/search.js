@@ -25,3 +25,36 @@ let search = document.querySelector('#search');
 
 // Add an event listener to the search input field for keyup events
 search.addEventListener('keyup', searchBar);
+// Function to filter data based on class selection
+function filterData() {
+    let selectedClass = document.querySelector('#selectedClass').value;
+    let tRows = document.querySelectorAll('#tbodySearch');
+    for (let tr of tRows) {
+        let classTitle = tr.firstElementChild.firstElementChild.firstElementChild.firstElementChild.lastElementChild.firstElementChild.textContent;
+        console.log(classTitle);
+        if (classTitle === selectedClass || selectedClass === 'All Classes') {
+            show(tr);
+        } else {
+            hide(tr);
+        }
+    }
+}
+
+// Function to clear the class filter
+function clearFilter() {
+    let tRows = document.querySelectorAll('tbody tr');
+    for (let tr of tRows) {
+        show(tr);
+    }
+    document.getElementById('selectedClass').value = 'All Classes';
+}
+
+// Function to show an element
+function show(element) {
+    element.style.display = '';
+}
+
+// Function to hide an element
+function hide(element) {
+    element.style.display = 'none';
+}
