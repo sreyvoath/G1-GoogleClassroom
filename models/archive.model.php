@@ -62,7 +62,7 @@ function nounclassHome(): array
 {
     global $connection;
     try {
-        $statement = $connection->prepare("select * from classes where archive = :id");
+        $statement = $connection->prepare("select * from classes where archive = :id order by id desc");
         $statement->execute([
             ':id' => 0
         ]);

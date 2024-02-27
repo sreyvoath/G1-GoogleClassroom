@@ -6,8 +6,8 @@
 			<div class="col-lg-3">
 				<!-- logo -->
 				<a class="me-0" href="/home">
-					<img src="../assets/images/avatar/16.png" alt="" class=" mb-3">
-					<span class="fs-2 mx-2 ">Classroom</span>
+					<img src="../assets/images/avatar/15.png" alt="" class=" mb-3">
+					<span class="fs-2 mx-1 ">Classroom</span>
 				</a>
 				<p class="my-3">Classroom education theme, built specifically for the education centers which is dedicated to teaching and involve learners.</p>
 				<!-- Social media icon -->

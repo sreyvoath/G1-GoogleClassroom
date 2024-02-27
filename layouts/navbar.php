@@ -15,7 +15,7 @@ require 'database/database.php';
 			<!-- Logo START -->
 			<a class="navbar-brand" href="/home">
 				<h3>
-					<img src="../assets/images/avatar/16.png" alt="" class="mb-2">
+					<img src="../assets/images/avatar/15.png" alt="" class="mb-2">
 					<span class="fs-2 mx-2">Classroom</span>
 				</h3>
 			</a>
