@@ -51,7 +51,7 @@
 			<?php
 			require_once "models/class.model.php";
 			require_once "database/database.php";
-			$classes = getClasses();
+			$classes = getClasses($_SESSION['user']['id']);
 			?>
 			<div class="col-sm-6 col-xl-3 mt-3 mt-lg-0">
 				<form class="bg-body shadow rounded p-2 input-borderless">

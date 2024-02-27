@@ -26,17 +26,6 @@
 											<!-- Card body -->
 											<div class="nav-item dropdown d-flex justify-content-end">
 												<a class="nav-link " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-												<ul class="dropdown-menu" aria-labelledby="accounntMenu">
-													<li class="dropdown-submenu dropend">
-														<a class="dropdown-item " href="">Create</a>
-													</li>
-													<li class="dropdown-submenu dropend">
-														<a class="dropdown-item " href="#">Delete</a>
-													</li>
-													<li class="dropdown-submenu dropend">
-														<a class="dropdown-item " href="#">Edit</a>
-													</li>
-												</ul>
 											</div>
 											<div class="card-body pb-0">
 												<!-- Title -->

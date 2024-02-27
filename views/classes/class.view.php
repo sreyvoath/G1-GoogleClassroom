@@ -15,7 +15,7 @@
                 <div class="row g-4">
                     <!-- Card item START -->
                     <?php
-                    $classes = getClasses();
+                    $classes = getClasses($_SESSION['user']['id']);
                     foreach ($classes as $class) :
                         if ($class['archive'] == 0) :
                     ?>
