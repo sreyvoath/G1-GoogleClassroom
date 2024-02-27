@@ -332,6 +332,7 @@
 						require "database/database.php";
 						require 'models/class.model.php';
 						$classes = nounclassHome();
+						$id = $_SESSION['user']['id'];
 						$_SESSION['class'] = $classes;
 						if (count($classes) == 0) {
 						?>

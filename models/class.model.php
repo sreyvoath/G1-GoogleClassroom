@@ -1,11 +1,11 @@
 <?php
 
 //<======== get classes=======>
-function getClasses() : array
+function getClasses(int $id) : array
 {
     global $connection;
-    $statement = $connection->prepare("select * from classes order by id desc");
-    $statement->execute();
+    $statement = $connection->prepare("select * from classes where user_id = :id order by id desc");
+    $statement->execute([":id"=>$id]);
     return $statement->fetchAll();
 }
 
