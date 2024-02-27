@@ -18,7 +18,7 @@
                     <h3 class="bg-info p-2 text-white text-center" style="border-radius: 30px; margin-top:-53px; margin-left:-53px;">Update Class</h3>
                     <img class="border border-info border-3 mt-3 " src="../../assets/images/classes/<?= $class['image'] ?>" alt="" style="width:270px; height:300px; border-radius: 20px; margin-left:-25px;">
                 </div>
-                <form method="POST" action="../../controllers/classes/class.update.controller.php" enctype="multipart/form-data" class="" style="width:100%; height:auto">
+                <form method="POST" action="../../controllers/classes/class.update.controller.php" enctype="multipart/form-data" class="" style="width:100%; height:auto; object-fit: cover;">
                     <input type="hidden" id="id" name="id" value="<?= $class['id'] ?>">
                     <div class="mb-3">
                         <label for="classname" class="form-label">Class Name*</label>
