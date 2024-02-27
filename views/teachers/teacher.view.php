@@ -55,10 +55,12 @@
 			?>
 			<div class="col-sm-6 col-xl-3 mt-3 mt-lg-0">
 				<form class="bg-body shadow rounded p-2 input-borderless">
-					<select class="form-select form-select-sm js-choice" aria-label=".form-select-sm">
+					<select class="form-select form-select-sm js-choice" aria-label=".form-select-sm" id="selectedClass" onchange="filterData()">
 						<option disabled selected>All Classes</option>
 						<?php foreach ($classes as $class) : ?>
-							<option><?= $class['title'] ?></option>
+							<?php if ($class['archive'] == 0) : ?>
+								<option value="<?= $class['title'] ?>"><?= $class['title'] ?></option>
+							<?php endif ?>
 						<?php endforeach; ?>
 					</select>
 				</form>
@@ -77,7 +79,7 @@
 
 			<!-- Button -->
 			<div class="col-sm-6 col-xl-2 mt-3 mt-xl-0 d-grid">
-				<a href="#" class="btn btn-lg btn-primary mb-0">Filter Results</a>
+				<a href="/teacher" class="btn btn-lg btn-primary mb-0">Filter Results</a>
 			</div>
 		</div>
 	</div>
