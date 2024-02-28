@@ -15,8 +15,13 @@ $routes = [
     '/calendar' => 'controllers/calendar/calendar.controller.php',
     '/todo' => 'controllers/todos/todo.controller.php',
     '/stream' => 'controllers/assignment/stream/stream.contorller.php',
+<<<<<<< HEAD
     '/classwork' => 'controllers/classworks/class_work.controller.php',
     '/create-work' => 'controllers/classworks/create_classwork.controller.php',
+=======
+    '/people' => 'controllers/assignment/stream/people.controller.php',
+
+>>>>>>> 4ccaed4bc4b50a53354b31f9e0428578dc4d403b
 
 ];
 
