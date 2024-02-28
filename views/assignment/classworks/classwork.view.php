@@ -30,8 +30,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Profile banner END -->
                 </div>
+
             </div>
         </div>
     </section>
@@ -45,23 +45,13 @@
                         <a href="/stream"><button type="button" class="btn btn-outline-primary">Stream</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
-<<<<<<< HEAD
-                        <a href=""><button type="button" class="btn btn-outline-info ">Classwork</button></a>
-                    </div>
-                    <div class="btn-group me-4" role="group" aria-label="Second group">
-                        <a href=""><button type="button" class="btn btn-outline-secondary">Poeple</button></a>
-                    </div>
-                    <div class="btn-group me-4" role="group" aria-label="Third group">
-                        <a href=""><button type="button" class="btn btn-outline-success">Grades</button></a>
-=======
                         <a href="/classwork"><button type="button" class="btn btn-outline-info ">Classwork</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
-                        <a href="/people"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "" ?> ">Poeple</button></a>
+                        <a href="/people"><button type="button" class="btn btn-outline-secondary">Poeple</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Third group">
-                        <a href="/point"><button type="button" class="btn btn-outline-success <?= urlIs("/point") ? "active" : "" ?> ">Grades</button></a>
->>>>>>> 7a2aaa5d2fdcadf04e0c63e33f7dfee8ca822d67
+                        <a href="/point"><button type="button" class="btn btn-outline-success">Grades</button></a>
                     </div>
                 </div>
             </ul>
@@ -70,48 +60,19 @@
     <section class="pt-0">
         <div class="container">
             <div class="row">
-                <!-- Right sidebar START -->
-                <div class="col-xl-3">
-                    <!-- Responsive offcanvas body START -->
-                    <nav class="navbar navbar-light navbar-expand-xl mx-0">
-                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                            <!-- Offcanvas header -->
-                            <div class="offcanvas-header bg-light">
-                                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">My profile</h5>
-                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                            </div>
-                            <!-- Offcanvas body -->
-                            <div class="offcanvas-body p-3 p-xl-0">
-                                <div class="bg-dark border rounded-3 pb-0 p-3 w-100">
-                                    <!-- Dashboard menu -->
-                                    <div class="list-group list-group-dark list-group-borderless">
-                                        <p>Class code</p>
-                                        <a class="mb-4 gap-2 col-1 mx-auto" href="#"><span>4xfi6pn</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="offcanvas-body p-3 p-xl-0">
-                                <div class="bg-dark border rounded-3 pb-0 p-3 w-100">
-                                    <!-- Dashboard menu -->
-                                    <div class="list-group list-group-dark list-group-borderless">
-                                        <p>Upcoming</p>
-                                        <p>No work due soon</p>
-                                        <a class="mb-4 gap-2 col-001 mx-auto" href="#"><span>Niew all</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </nav>
-                    <!-- Responsive offcanvas body END -->
-                </div>
-                <div class="col-xl-9">
+                <div class="col-xl-2"></div>
+                <div class="col-xl-8 " style="margin-top: -40px;">
                     <!-- Card START -->
+                    <div class="assignment  mb-3">
+                        <a href="/create-work"><button class="btn btn-info">Create assignment</button></a>
+                    </div>
                     <div class="card border rounded-3">
                         <!-- Card header START -->
-                        <div class="card-header border-bottom">
-                            <h3 class="mb-0">My Classroom List</h3>
+                        <div class="card-header border-bottom bg-purple">
+                            <h3 class=" text-white mb-0">Assignment</h3>
                         </div>
+                    </div>
+                    <div class="dropdown-submenu dropend">
                         <!-- Table body START -->
                         <div class="card-body">
                             <table class="table">
@@ -122,28 +83,23 @@
                                         <td>
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <!-- Content -->
-                                                <div class="d-flex align-items-center">
-                                                    <!-- Image -->
-                                                    <div class="w-100px">
-                                                        <img src="assets/images/avatar/01.jpg" class="rounded" alt="">
-                                                    </div>
-                                                    <div class="mb-0 ms-2">
+                                                <div class="d-flex align-items-center w-100">
+                                                    <div class="col-8 mb-0 ms-2">
                                                         <!-- Title -->
-                                                        <h6><a href="/instruction">My subject</a></h6>
+                                                        <div class="title d-flex gap-3">
+                                                            <span class="material-symbols-outlined gap-5">assignment</span>
+                                                            <h6><a href="#">Title</a></h6>
+                                                        </div>
                                                         <!-- Info -->
                                                         <div class="d-sm-flex">
-                                                            <p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i>0 lectures</p>
-                                                            <p class="h6 fw-light mb-0 small"><i class="fas fa-check-circle text-success me-2"></i>0 Completed</p>
+                                                            <p class="h6 fw-light mb-0 small me-3 mt-2"><i class="fas fa-table text-orange me-2"></i>No due date</p>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <!-- Buttons -->
-                                                <div class="d-flex">
-                                                    <a href="../../controllers/teachers/teacher_edit.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-info text-white"><i class="bi bi-pen text-dark "></i></a>
-                                                    <a href="../../controllers/teachers/teacher_delete.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-trash text-dark"></i></a>
+                                                    <div class="col-4 mb-0 text-center">
+                                                        <p>post september</p>
+                                                    </div>
                                                 </div>
                                             </div>
-
                                         </td>
                                     </tr>
                                 </tbody>
@@ -152,6 +108,7 @@
                         <!-- PHP loop for classes END -->
                     </div>
                 </div>
+                <div class="col-xl-2"></div>
             </div>
         </div>
     </section>
