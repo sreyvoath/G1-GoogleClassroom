@@ -15,7 +15,7 @@ $routes = [
     '/calendar' => 'controllers/calendar/calendar.controller.php',
     '/todo' => 'controllers/todos/todo.controller.php',
     '/stream' => 'controllers/assignment/stream/stream.contorller.php',
-    '/classwork' => 'controllers/assignment/stream/class_work.controller.php',
+    '/classwork' => 'controllers/classworks/class_work.controller.php',
 
 ];
 
