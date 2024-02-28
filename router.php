@@ -16,6 +16,7 @@ $routes = [
     '/todo' => 'controllers/todos/todo.controller.php',
     '/stream' => 'controllers/assignment/stream/stream.contorller.php',
     '/classwork' => 'controllers/classworks/class_work.controller.php',
+    '/create-work' => 'controllers/classworks/create_classwork.controller.php',
 
 ];
 
