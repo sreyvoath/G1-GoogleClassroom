@@ -249,9 +249,9 @@
 		</div>
 		<!-- Content END -->
 	</section>
-<!-- =====Main Banner END========== -->
+	<!-- =====Main Banner END========== -->
 
-<!-- =============Counter START=========== -->
+	<!-- =============Counter START=========== -->
 	<section class="py-0 py-xl-5">
 		<div class="container">
 			<div class="row g-4">
@@ -310,9 +310,9 @@
 			</div>
 		</div>
 	</section>
-<!-- ======================Counter END============= -->
+	<!-- ======================Counter END============= -->
 
-<!-- ====================Popular course START ===========-->
+	<!-- ====================Popular course START ===========-->
 	<section>
 		<div class="container">
 			<!-- Title -->
@@ -323,6 +323,8 @@
 				</div>
 			</div>
 			<!-- Tabs content START -->
+			<!---connection with javascript----->
+			<script src="../../vendor/js/move_class.js" defer></script>
 			<div class="tab-content" id="course-pills-tabContent">
 				<!-- Content START -->
 				<div class="tab-pane fade show active" id="course-pills-tabs-1" role="tabpanel" aria-labelledby="course-pills-tab-1">
@@ -331,18 +333,17 @@
 						<?php
 						require "database/database.php";
 						require 'models/class.model.php';
-						// $classes = nounclassHome();
 						$id = $_SESSION['user']['id'];
 						$classes = getClasses($id);
-						
+
 						$_SESSION['class'] = $classes;
 						$result = 0;
-						foreach ( $classes as $class){
-							if (  $class['archive'] == 1){
-								$result+=1;
+						foreach ($classes as $class) {
+							if ($class['archive'] == 1) {
+								$result += 1;
 							}
 						}
-						if (count($classes) == $result ) {
+						if (count($classes) == $result) {
 						?>
 							<img src="../../assets/images/about/25.png" alt="" style="width: 400px; height: 300px; display:flex; margin:auto; padding-top:100px">
 							<?php
@@ -351,7 +352,7 @@
 							foreach ($classes as $class) :
 								if ($class['archive'] == 0) :
 							?>
-									<div class="col-sm-6 col-lg-4 col-xl-3">
+									<div class="col-sm-6 col-lg-4 col-xl-3" id="card" draggable="true" ondragstart="drag(event)">
 										<div class="card shadow h-100">
 											<!-- Image -->
 											<img src="../../assets/images/classes/<?= $class['image'] ?>" class="card-img-top" alt="course image" style="width:350px; height:200px; object-fit: cover;">
@@ -380,7 +381,7 @@
 											<div class="card-footer pt-3 pb-3">
 												<div class="d-flex">
 													<a href="../../controllers/classes/class.edit.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-info text-white"><i class="bi bi-pen text-dark "></i></a>
-													<a href="../../controllers/classes/class.delete.controller.php?id=<?= $class['id'] ?>"onclick="if (!confirm('Are you sure to Delete it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-trash text-danegr "></i></a>
+													<a href="../../controllers/classes/class.delete.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to Delete it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-trash text-danegr "></i></a>
 													<a href="../../controllers/classes/class.archive.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to archive it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-secondary"><i class="bi bi-archive-fill"></i></a>
 												</div>
 											</div>
@@ -394,7 +395,7 @@
 				</div>
 			</div>
 	</section>
-<!-- =========Action box START -->
+	<!-- =========Action box START -->
 	<section class="pt-0 pt-lg-5">
 		<div class="container position-relative">
 			<!-- SVG decoration START -->
@@ -437,9 +438,9 @@
 			</div> <!-- Row END -->
 		</div>
 	</section>
-<!-- =============Action box END ============-->
+	<!-- =============Action box END ============-->
 
-<!-- ==========Trending courses START ==============-->
+	<!-- ==========Trending courses START ==============-->
 	<section class="pb-5 pt-0 pt-lg-5">
 		<div class="container">
 			<!-- Title -->
@@ -688,9 +689,9 @@
 			</div>
 		</div>
 	</section>
-<!-- ======Trending courses END============ -->
+	<!-- ======Trending courses END============ -->
 
-<!-- =========Reviews START ==========-->
+	<!-- =========Reviews START ==========-->
 	<section class="bg-light">
 		<div class="container">
 			<div class="row g-4 g-lg-5 align-items-center">
@@ -886,8 +887,8 @@
 					<p>Supposing so be resolving breakfast am or perfectly. It drew a hill from me. Valley by oh twenty direct me so. Departure defective arranging rapturous did believe him all had supported. Family months lasted simple set nature vulgar him. Picture for attempt joy excited ten carried manners talking how.</p>
 					<a href="#" class="btn btn-primary mb-0">View Reviews</a>
 				</div>
-			</div> 
+			</div>
 		</div>
 	</section>
-<!-- ===========Reviews END============= -->
+	<!-- ===========Reviews END============= -->
 </main>
