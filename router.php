@@ -15,9 +15,9 @@ $routes = [
     '/calendar' => 'controllers/calendar/calendar.controller.php',
     '/todo' => 'controllers/todos/todo.controller.php',
     '/stream' => 'controllers/assignment/stream/stream.contorller.php',
-    '/classwork' => 'controllers/classworks/class_work.controller.php',
-    '/create-work' => 'controllers/classworks/create_classwork.controller.php',
-    '/people' => 'controllers/assignment/stream/people.controller.php',
+    '/classwork' => 'controllers/assignment/classworks/classwork.controller.php',
+    '/create-work' => 'controllers/assignment/classworks/create_classwork.controller.php',
+    '/people' => 'controllers/assignment/peoples/people.controller.php',
 
 
 ];
