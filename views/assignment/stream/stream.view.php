@@ -20,7 +20,7 @@
                             <!-- Profile info -->
                             <div class="col d-md-flex justify-content-between align-items-center mt-4">
                                 <div>
-                                    <h1 class="my-1 fs-4"><?= $_SESSION['user']['name'] ?><i class="bi bi-patch-check-fill text-info small"></i></h1>
+                                    <h1 class="my-1 fs-4">Phal<i class="bi bi-patch-check-fill text-info small"></i></h1>
                                     <ul class="list-inline mb-0">
                                         <li class="list-inline-item h6 fw-light me-3 mb-1 mb-sm-0"><i class="fas fa-star text-warning me-2"></i>4.5/5.0</li>
                                         <li class="list-inline-item h6 fw-light me-3 mb-1 mb-sm-0"><i class="fas fa-user-graduate text-orange me-2"></i>75+ Enrolled Students</li>
@@ -42,9 +42,18 @@
             <ul class="nav nav-pills nav-pills-bg-soft justify-content-sm-center mb-4 px-3" id="course-pills-tab" role="tablist">
                 <div class="btn-toolbar align-items-center justify-content-evenly" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group me-4" role="group" aria-label="First group">
-                        <a href="/stream"><button type="button" class="btn btn-outline-primary <?= urlIs("/stream") ? "active" : "" ?> ">Stream</button></a>
+                        <a href="/stream"><button type="button" class="btn btn-outline-primary">Stream</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
+<<<<<<< HEAD
+                        <a href=""><button type="button" class="btn btn-outline-info ">Classwork</button></a>
+                    </div>
+                    <div class="btn-group me-4" role="group" aria-label="Second group">
+                        <a href=""><button type="button" class="btn btn-outline-secondary">Poeple</button></a>
+                    </div>
+                    <div class="btn-group me-4" role="group" aria-label="Third group">
+                        <a href=""><button type="button" class="btn btn-outline-success">Grades</button></a>
+=======
                         <a href="/classwork"><button type="button" class="btn btn-outline-info ">Classwork</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
@@ -52,6 +61,7 @@
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Third group">
                         <a href="/point"><button type="button" class="btn btn-outline-success <?= urlIs("/point") ? "active" : "" ?> ">Grades</button></a>
+>>>>>>> 7a2aaa5d2fdcadf04e0c63e33f7dfee8ca822d67
                     </div>
                 </div>
             </ul>
@@ -119,7 +129,7 @@
                                                     </div>
                                                     <div class="mb-0 ms-2">
                                                         <!-- Title -->
-                                                        <h6><a href="#">My subject</a></h6>
+                                                        <h6><a href="/instruction">My subject</a></h6>
                                                         <!-- Info -->
                                                         <div class="d-sm-flex">
                                                             <p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i>0 lectures</p>
