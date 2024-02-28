@@ -51,7 +51,7 @@
             <ul class="nav nav-pills nav-pills-bg-soft justify-content-sm-center mb-4 px-3" id="course-pills-tab" role="tablist">
                 <div class="btn-toolbar align-items-center justify-content-evenly" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group me-4" role="group" aria-label="First group">
-                        <a href="/stream"><button type="button" class="btn btn-outline-primary <?= urlIs("/stream") ? "active" : "active" ?> ">Stream</button></a>
+                        <a href="/stream?id=<?=$_SESSION['class_id']?>"><button type="button" class="btn btn-outline-primary <?= urlIs("/stream") ? "active" : "active" ?> ">Stream</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
                         <a href="/classwork"><button type="button" class="btn btn-outline-info ">Classwork</button></a>
@@ -130,11 +130,7 @@
                                                     </div>
                                                     <div class="mb-0 ms-2">
                                                         <!-- Title -->
-<<<<<<< HEAD
                                                         <h6><a href="#"><?= $assignment['title'] ?></a></h6>
-=======
-                                                        <h6><a href="/instruction">My subject</a></h6>
->>>>>>> e5590a8cf95557cc7e411465e3328549325029cd
                                                         <!-- Info -->
                                                         <div class="d-sm-flex">
                                                             <p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i><?= $assignment['deadline'] ?></p>
