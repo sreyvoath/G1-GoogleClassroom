@@ -61,15 +61,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-2"></div>
-                <div class="col-xl-8 ">
+                <div class="col-xl-8 " style="margin-top: -40px;">
                     <!-- Card START -->
-                    <div class="assignment">
-                        <button class="btn btn-info">Create assignment</button>
+                    <div class="assignment  mb-3">
+                        <a href="/create-work"><button class="btn btn-info">Create assignment</button></a>
                     </div>
                     <div class="card border rounded-3">
-                        <!-- btn create -->
                         <!-- Card header START -->
-                        <div class="card-header d-flex border-bottom bg-purple">
+                        <div class="card-header border-bottom bg-purple">
                             <h3 class=" text-white mb-0">Assignment</h3>
                         </div>
                     </div>
