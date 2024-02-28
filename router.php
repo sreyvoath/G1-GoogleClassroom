@@ -15,6 +15,8 @@ $routes = [
     '/calendar' => 'controllers/calendar/calendar.controller.php',
     '/todo' => 'controllers/todos/todo.controller.php',
     '/stream' => 'controllers/assignment/stream/stream.contorller.php',
+    '/instruction' => 'controllers/assignment/stream/instruction/instruction.controller.php',
+
 
 ];
 
