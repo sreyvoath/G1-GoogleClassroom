@@ -48,7 +48,7 @@
                         <a href=""><button type="button" class="btn btn-outline-info ">Classwork</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
-                        <a href=""><button type="button" class="btn btn-outline-secondary">Poeple</button></a>
+                        <a href="/people"><button type="button" class="btn btn-outline-secondary">Poeple</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Third group">
                         <a href=""><button type="button" class="btn btn-outline-success">Grades</button></a>
