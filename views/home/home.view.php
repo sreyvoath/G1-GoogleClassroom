@@ -331,10 +331,18 @@
 						<?php
 						require "database/database.php";
 						require 'models/class.model.php';
-						$classes = nounclassHome();
+						// $classes = nounclassHome();
 						$id = $_SESSION['user']['id'];
+						$classes = getClasses($id);
+						
 						$_SESSION['class'] = $classes;
-						if (count($classes) == 0) {
+						$result = 0;
+						foreach ( $classes as $class){
+							if (  $class['archive'] == 1){
+								$result+=1;
+							}
+						}
+						if (count($classes) == $result ) {
 						?>
 							<img src="../../assets/images/about/25.png" alt="" style="width: 400px; height: 300px; display:flex; margin:auto; padding-top:100px">
 							<?php

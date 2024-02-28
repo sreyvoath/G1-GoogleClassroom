@@ -37,7 +37,7 @@
         </div>
     </section>
     <div class="container">
-        <div class="row mb-4  align-items-center">
+        <div class="row mb-4 d-flex align-items-center justify-content-center">
             <!-- Search bar -->
             <div class="col-sm-6 col-xl-4">
                 <form class="bg-body shadow rounded p-2">
@@ -51,7 +51,7 @@
             <?php
             require_once "models/class.model.php";
             require_once "database/database.php";
-            $classes = getClasses();
+            $classes = getClasses($_SESSION['user']['id']);
             ?>
             <div class="col-sm-6 col-xl-3 mt-3 mt-lg-0">
                 <form class="bg-body shadow rounded p-2 input-borderless">
@@ -60,17 +60,6 @@
                         <?php foreach ($classes as $class) : ?>
                             <option><?= $class['title'] ?></option>
                         <?php endforeach; ?>
-                    </select>
-                </form>
-            </div>
-            <!-- Select option -->
-            <div class="col-sm-6 col-xl-3 mt-3 mt-xl-0">
-                <form class="bg-body shadow rounded p-2 input-borderless">
-                    <select class="form-select form-select-sm js-choice" aria-label=".form-select-sm">
-                        <option value="">Sort by</option>
-                        <option>Most popular</option>
-                        <option>Most viewed</option>
-                        <option>Top rated</option>
                     </select>
                 </form>
             </div>
