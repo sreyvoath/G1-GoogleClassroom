@@ -9,7 +9,7 @@
 
 <body>
     <div class="container">
-        <button type="button" class="btn btn-purple float-end" style="width: 100px; margin-top:-50px;">Assign</button>
+        <button type="button" class="btn btn-purple float-end" style="width: 100px; margin-top:-50px; ">Assign</button>
         <div class="row  mt-5">
             <div class="col-8">
                 <form class="border boder-light rounded p-5 bg-body shadow" style=" height:100%;">
@@ -20,7 +20,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="intro" class="form-label">Introduction (optional)</label>
-                        <textarea name="introduction" class="form-control bg-light" id="intro" id="" cols="30" rows="10"></textarea>
+                        <textarea name="introduction" class="form-control bg-light" id="intro" id="" cols="30" rows="5"></textarea>
                     </div>
                     <div class="mb-3">
                         <input type="file" class="form-control bg-light" style="width: 100%;">
@@ -29,7 +29,7 @@
                 </form>
             </div>
             <div class="info col-4">
-                <form class="border boder-light rounded p-5 bg-body shadow" style="height:100%;">
+                <form action="" method="post" class="border boder-light rounded p-5 bg-body shadow" style="height:100%;">
                     <!-- <div class="col-4"> -->
                     <div class="btn-for">
                         <label for="intro" class="form-label">for</label>

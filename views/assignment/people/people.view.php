@@ -225,7 +225,7 @@
             <div class="modal-body">
                 <form id="myForm" action="controllers/classes/class.create.controller.php" method="post" enctype="multipart/form-data">
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="title" placeholder="Type a name or email" name="title">
+                        <input type="email" class="form-control" id="email" placeholder="Type a name or email" name="email">
                     </div>
                 </form>
             </div>
