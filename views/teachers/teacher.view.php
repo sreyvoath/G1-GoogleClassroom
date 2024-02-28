@@ -36,7 +36,7 @@
 		</div>
 	</section>
 	<div class="container">
-		<div class="row mb-4  align-items-center">
+		<div class="row mb-4 d-flex align-items-center justify-content-center">
 			<!-- Search bar -->
 			<script src="../../js/main.js"></script>
 			<div class="col-sm-6 col-xl-4">
@@ -62,17 +62,6 @@
 								<option value="<?= $class['title'] ?>"><?= $class['title'] ?></option>
 							<?php endif ?>
 						<?php endforeach; ?>
-					</select>
-				</form>
-			</div>
-			<!-- Select option -->
-			<div class="col-sm-6 col-xl-3 mt-3 mt-xl-0">
-				<form class="bg-body shadow rounded p-2 input-borderless">
-					<select class="form-select form-select-sm js-choice" aria-label=".form-select-sm">
-						<option value="">Sort by</option>
-						<option>Most popular</option>
-						<option>Most viewed</option>
-						<option>Top rated</option>
 					</select>
 				</form>
 			</div>
