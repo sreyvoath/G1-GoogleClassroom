@@ -63,14 +63,17 @@
                 <div class="col-xl-2"></div>
                 <div class="col-xl-8 ">
                     <!-- Card START -->
+                    <div class="assignment">
+                        <button class="btn btn-info">Create assignment</button>
+                    </div>
                     <div class="card border rounded-3">
+                        <!-- btn create -->
                         <!-- Card header START -->
-                        <div class="card-header border-bottom bg-purple">
+                        <div class="card-header d-flex border-bottom bg-purple">
                             <h3 class=" text-white mb-0">Assignment</h3>
                         </div>
-                        <div class="dropdown-submenu dropend">
-                            
-                        </div>
+                    </div>
+                    <div class="dropdown-submenu dropend">
                         <!-- Table body START -->
                         <div class="card-body">
                             <table class="table">
