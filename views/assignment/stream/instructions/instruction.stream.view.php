@@ -45,7 +45,7 @@ if (isset($_GET['id'])) {
                                     </div>
                                     <div class="mb-0 ms-2 mt-2">
                                         <!-- Title -->
-                                        <h3><a href="#"><?= $assignment['title'] ?></a></h3>
+                                        <h3><a href="/instruction?id=<?php $assignment['id']?>"><?= $assignment['title'] ?></a></h3>
                                         <!-- Info -->
                                         <div>
                                             <p class="h6 fw-light mb-0 small me-3"><?= $_SESSION['user']['name'] ?> <?= $assignment['start_date'] ?></p>
