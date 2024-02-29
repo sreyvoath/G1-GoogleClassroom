@@ -57,7 +57,7 @@
                             <!-- point -->
                             <div class="btn-point d-flex flex-column mt-4">
                                 <label for="title" class="form-label">Point</label>
-                                <input type="number"  class="bg-light text-center"style="width:120px; height:40px;border:none;" placeholder="score">
+                                <input type="number" class="bg-light text-center" style="width:120px; height:40px;border:none;" placeholder="score">
                             </div>
                             <!-- date -->
                             <div class="btn-date mt-5">
@@ -67,8 +67,8 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </form>
-    </div>
     </div>
 </body>
 

@@ -1,8 +1,10 @@
 <?php
 
 // ==== Create Post insert to database ====
-function createAssign(string $title, string $content, int $score, DateTime $start_date, DateTime $deadline, int $class_id) : bool
+function createAssign(string $title, string $content, int $score, DateTime $deadline, int $class_id): bool
 {
+    $Object = new DateTime();
+    $start_date = $Object->format("d-m-Y h:i a");
     global $connection;
     $statement = $connection->prepare("insert into assignments (title, content, score, start_date, dealine, class_id) values (:title, :content, :score, :start_date, :deadline, :class_id)");
     $statement->execute([
@@ -17,41 +19,41 @@ function createAssign(string $title, string $content, int $score, DateTime $star
 }
 
 // ========Get single post============
-function getAssign(int $id) : array
+function getAssign(int $id): array
 {
     global $connection;
-    $statement = $connection->prepare("select * from posts where id = :id");
+    $statement = $connection->prepare("select * from assignments where id = :id");
     $statement->execute([':id' => $id]);
     return $statement->fetch();
 }
 
 // ========Get all posts============
-function getAssigns($id) : array
-{   
+function getAssigns($id): array
+{
 
     global $connection;
     $statement = $connection->prepare("select * from assignments where class_id=:id");
-    $statement->execute([":id"=>$id]);
+    $statement->execute([":id" => $id]);
     return $statement->fetchAll();
 }
 
-function updateAssign(string $title, string $description, int $id) : bool
+function updateAssign(string $title, string $content, int $id): bool
 {
     global $connection;
-    $statement = $connection->prepare("update posts set title = :title, description = :description where id = :id");
+    $statement = $connection->prepare("update assignments set title = :title, content = :content where id = :id");
     $statement->execute([
         ':title' => $title,
-        ':description' => $description,
+        ':content' => $content,
         ':id' => $id
     ]);
     return $statement->rowCount() > 0;
 }
 
 // ========Delete post============
-function deleteAssign(int $id) : bool
+function deleteAssign(int $id): bool
 {
     global $connection;
-    $statement = $connection->prepare("delete from posts where id = :id");
+    $statement = $connection->prepare("delete from assignments where id = :id");
     $statement->execute([':id' => $id]);
     return $statement->rowCount() > 0;
 }
