@@ -104,10 +104,9 @@
                         <!-- Card header START -->
                         <div class="card-header border-bottom bg-purple text-white  d-flex text-align-center justify-content-between">
                             <h2 class="mb-0 text-white">Students</h2>
-                            <div>
+                            <div class="invite" data-bs-toggle="modal" data-bs-target="#inputtageStudent">
                                 <span class="material-symbols-outlined" style="font-size: 30px;">group_add</span>
                             </div>
-
                         </div>
                         <!-- Table body START -->
                         <div class="card-body">
@@ -214,7 +213,7 @@
 </main>
 
 
-<!-- input tag box -->
+<!-- input tag teacher box -->
 <div class="modal fade" id="inputTag" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -223,15 +222,49 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="myForm" action="controllers/classes/class.create.controller.php" method="post" enctype="multipart/form-data">
+                <form id="myForm" action="controllers/classes/class.create.controller.php" method="post" enctype="multipart/form-data g-3">
                     <div class="mb-3">
                         <input type="email" class="form-control" id="email" placeholder="Type a name or email" name="email">
                     </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label"></label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
+                    </div>
                 </form>
             </div>
-            
             <div class="modal-footer">
-                <p>welcome to invite people</p>
+                <a href="/people" class="me-3 btn border-secondary btn-light mb-0" type="button">Cancel</a>
+                <!-- <button type="button" class="btn btn-light">cancel</button> -->
+                <button type="button" class="btn btn-primary">invite</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- input tag student box -->
+
+<div class="modal fade" id="inputtageStudent" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> invite students</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="myForm" action="controllers/classes/class.create.controller.php" method="post" enctype="multipart/form-data g-3">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="title" placeholder="Type a name or email" name="title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label"></label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="/people" class="me-3 btn border-secondary btn-light mb-0" type="button">Cancel</a>
+                <!-- <button type="button" class="btn btn-light">cancel</button> -->
+                <button type="button" class="btn btn-primary">invite</button>
             </div>
         </div>
     </div>

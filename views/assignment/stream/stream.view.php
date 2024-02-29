@@ -48,7 +48,7 @@ if (isset($_GET['id'])) {
             <!-- Search bar -->
             <script src="../../js/main.js"></script>
             <ul class="nav nav-pills nav-pills-bg-soft justify-content-sm-center mb-4 px-3" id="course-pills-tab" role="tablist">
-                <div class="btn-toolbar align-items-center justify-content-evenly" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-toolbar " role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group me-4" role="group" aria-label="First group">
                         <a href="/stream?id=<?= $_SESSION['class_id'] ?>"><button type="button" class="btn btn-outline-primary <?= urlIs("/stream") ? "active" : "active" ?> ">Stream</button></a>
                     </div>
