@@ -1,40 +1,4 @@
 <main>
-    <section class="pt-0">
-        <!-- Main banner background image -->
-        <div class="container-fluid px-0">
-            <div class="bg-blue h-100px h-md-200px rounded-0" style="background:url(assets/images/pattern/04.png) no-repeat center center; background-size:cover;">
-            </div>
-        </div>
-        <div class="container mt-n4">
-            <div class="row">
-                <!-- Profile banner START -->
-                <div class="col-12">
-                    <div class="card bg-transparent card-body p-0">
-                        <div class="row d-flex justify-content-between">
-                            <!-- Avatar -->
-                            <div class="col-auto mt-4 mt-md-0">
-                                <div class="avatar avatar-xxl mt-n3">
-                                    <img class="avatar-img rounded-circle border border-white border-3 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
-                                </div>
-                            </div>
-                            <!-- Profile info -->
-                            <div class="col d-md-flex justify-content-between align-items-center mt-4">
-                                <div>
-                                    <h1 class="my-1 fs-4">Phal<i class="bi bi-patch-check-fill text-info small"></i></h1>
-                                    <ul class="list-inline mb-0">
-                                        <li class="list-inline-item h6 fw-light me-3 mb-1 mb-sm-0"><i class="fas fa-star text-warning me-2"></i>4.5/5.0</li>
-                                        <li class="list-inline-item h6 fw-light me-3 mb-1 mb-sm-0"><i class="fas fa-user-graduate text-orange me-2"></i>75+ Enrolled Students</li>
-                                        <li class="list-inline-item h6 fw-light me-3 mb-1 mb-sm-0"><i class="fas fa-book text-purple me-2"></i>4 Modules</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
     <div class="container">
         <div class="row mb-5 align-items-center ">
             <!-- Search bar -->
@@ -60,11 +24,20 @@
     <section class="pt-0">
         <div class="container">
             <div class="row">
-                <div class="col-xl-2"></div>
-                <div class="col-xl-8 " style="margin-top: -40px;">
+
+                <div class="col-xl-12 " style="margin-top: -40px;">
                     <!-- Card START -->
-                    <div class="assignment  mb-3">
-                        <a href="/create-work"><button class="btn btn-info">Create assignment</button></a>
+
+                    <div class="dropdown">
+                        <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><button class="btn btn-info"><span class="material-symbols-outlined" style="font-size: 30px;">add </span>Create</button></a>
+                        <ul class="dropdown-menu" aria-labelledby="accounntMenu">
+                            <li class="dropdown-submenu dropend">
+                                <a class="dropdown-item d-flex text-center" href="#" ><span class="material-symbols-outlined"> assignment</span>Assignment</a>
+                            </li>
+                            <li class="dropdown-submenu dropend">
+                                <a class="dropdown-item " href="#">Question</a>
+                            </li>
+                        </ul>
                     </div>
                     <div class="card border rounded-3">
                         <!-- Card header START -->
@@ -108,8 +81,8 @@
                         <!-- PHP loop for classes END -->
                     </div>
                 </div>
-                <div class="col-xl-2"></div>
             </div>
+        </div>
         </div>
     </section>
 </main>
