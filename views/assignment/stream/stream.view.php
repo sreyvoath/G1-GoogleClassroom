@@ -1,3 +1,11 @@
+<?php
+if (isset($_GET['id'])) {
+    $_SESSION['class_id'] = $_GET['id'];
+    $id = $_GET['id'];
+    $assignments = getAssigns($id);
+    $_SESSION['assignments'] = $assignments;
+}
+?>
 <main>
     <section class="pt-0">
         <!-- Main banner background image -->
@@ -20,7 +28,7 @@
                             <!-- Profile info -->
                             <div class="col d-md-flex justify-content-between align-items-center mt-4">
                                 <div>
-                                    <h1 class="my-1 fs-4"><?= $_SESSION['user']['name'] ?><i class="bi bi-patch-check-fill text-info small"></i></h1>
+                                    <h1 class="my-1 fs-4">Phal<i class="bi bi-patch-check-fill text-info small"></i></h1>
                                     <ul class="list-inline mb-0">
                                         <li class="list-inline-item h6 fw-light me-3 mb-1 mb-sm-0"><i class="fas fa-star text-warning me-2"></i>4.5/5.0</li>
                                         <li class="list-inline-item h6 fw-light me-3 mb-1 mb-sm-0"><i class="fas fa-user-graduate text-orange me-2"></i>75+ Enrolled Students</li>
@@ -42,7 +50,7 @@
             <ul class="nav nav-pills nav-pills-bg-soft justify-content-sm-center mb-4 px-3" id="course-pills-tab" role="tablist">
                 <div class="btn-toolbar " role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group me-4" role="group" aria-label="First group">
-                        <a href="/stream"><button type="button" class="btn btn-outline-primary <?= urlIs("/stream") ? "active" : "" ?> ">Stream</button></a>
+                        <a href="/stream?id=<?= $_SESSION['class_id'] ?>"><button type="button" class="btn btn-outline-primary <?= urlIs("/stream") ? "active" : "active" ?> ">Stream</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
                         <a href="/classwork"><button type="button" class="btn btn-outline-info ">Classwork</button></a>
@@ -87,7 +95,7 @@
                                     <div class="list-group list-group-dark list-group-borderless">
                                         <p>Upcoming</p>
                                         <p>No work due soon</p>
-                                        <a class="mb-4 gap-2 col-001 mx-auto" href="#"><span>Niew all</span></a>
+                                        <a class="mb-4 gap-2 col-001 mx-auto" href="#"><span>View all</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -100,43 +108,47 @@
                     <div class="card border rounded-3">
                         <!-- Card header START -->
                         <div class="card-header border-bottom">
-                            <h3 class="mb-0">My Classroom List</h3>
+                            <h3 class="mb-0">My Assignments List</h3>
                         </div>
                         <!-- Table body START -->
                         <div class="card-body">
                             <table class="table">
                                 <!-- PHP loop for classes START -->
+
                                 <tbody class="tbodySearch" id="tbodySearch">
-                                    <tr>
-                                        <!-- Course item -->
-                                        <td>
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <!-- Content -->
-                                                <div class="d-flex align-items-center">
-                                                    <!-- Image -->
-                                                    <div class="w-100px">
-                                                        <img src="assets/images/avatar/01.jpg" class="rounded" alt="">
-                                                    </div>
-                                                    <div class="mb-0 ms-2">
-                                                        <!-- Title -->
-                                                        <h6><a href="#">My subject</a></h6>
-                                                        <!-- Info -->
-                                                        <div class="d-sm-flex">
-                                                            <p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i>0 lectures</p>
-                                                            <p class="h6 fw-light mb-0 small"><i class="fas fa-check-circle text-success me-2"></i>0 Completed</p>
+                                    <?php foreach ($assignments as $assignment) : ?>
+                                        <tr>
+                                            <!-- Course item -->
+                                            <td>
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <!-- Content -->
+                                                    <div class="d-flex align-items-center">
+                                                        <!-- Image -->
+                                                        <div class="w-100px">
+                                                            <img src="assets/images/avatar/01.jpg" class="rounded" alt="">
+                                                        </div>
+                                                        <div class="mb-0 ms-2">
+                                                            <!-- Title -->
+                                                            <h6><a href="#"><?= $assignment['title'] ?></a></h6>
+                                                            <!-- Info -->
+                                                            <div class="d-sm-flex">
+                                                                <p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i><?= $assignment['deadline'] ?></p>
+                                                                <p class="h6 fw-light mb-0 small"><i class="fas fa-check-circle text-success me-2"></i>0 Completed</p>
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <!-- Buttons -->
+                                                    <div class="d-flex">
+                                                        <a href="../../controllers/teachers/teacher_edit.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-info text-white"><i class="bi bi-pen text-dark "></i></a>
+                                                        <a href="../../controllers/teachers/teacher_delete.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-trash text-dark"></i></a>
+                                                    </div>
                                                 </div>
-                                                <!-- Buttons -->
-                                                <div class="d-flex">
-                                                    <a href="../../controllers/teachers/teacher_edit.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-info text-white"><i class="bi bi-pen text-dark "></i></a>
-                                                    <a href="../../controllers/teachers/teacher_delete.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-trash text-dark"></i></a>
-                                                </div>
-                                            </div>
 
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
+
                             </table>
                         </div>
                         <!-- PHP loop for classes END -->

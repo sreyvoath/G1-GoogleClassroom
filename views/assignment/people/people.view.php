@@ -6,16 +6,16 @@
             <ul class="nav nav-pills nav-pills-bg-soft justify-content-sm-center mb-4 px-3" id="course-pills-tab" role="tablist">
                 <div class="btn-toolbar align-items-center justify-content-evenly" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group me-4" role="group" aria-label="First group">
-                        <a href="/stream"><button type="button" class="btn btn-outline-primary">Stream</button></a>
+                        <a href="/stream?id=<?=$_SESSION['class_id']?>"><button type="button" class="btn btn-outline-primary <?= urlIs("/stream") ? "active" : "" ?> ">Stream</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
-                        <a href="/classwork"><button type="button" class="btn btn-outline-info ">Classwork</button></a>
+                        <a href="/classwork"><button type="button" class="btn btn-outline-info <?= urlIs("/classwork") ? "active" : "" ?> ">Classwork</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
-                        <a href="/people"><button type="button" class="btn btn-outline-secondary">Poeple</button></a>
+                        <a href="/people"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "" ?> ">Poeple</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Third group">
-                        <a href="/point"><button type="button" class="btn btn-outline-success">Grades</button></a>
+                        <a href="/point"><button type="button" class="btn btn-outline-success <?= urlIs("/point") ? "active" : "" ?> ">Grades</button></a>
                     </div>
                 </div>
             </ul>
@@ -224,7 +224,7 @@
             <div class="modal-body">
                 <form id="myForm" action="controllers/classes/class.create.controller.php" method="post" enctype="multipart/form-data g-3">
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="title" placeholder="Type a name or email" name="title">
+                        <input type="email" class="form-control" id="email" placeholder="Type a name or email" name="email">
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label"></label>
