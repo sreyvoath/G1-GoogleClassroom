@@ -1,3 +1,13 @@
+<?php
+require "database/database.php";
+require "models/assignments/assignment.model.php";
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $_SESSION['assign_id'] = $id;
+    $assignment = getAssign($id);
+}
+
+?>
 <main>
     <div class="container">
         <div class="row mb-5 align-items-center ">
@@ -6,7 +16,7 @@
             <ul class="nav nav-pills nav-pills-bg-soft justify-content-sm-center mb-4 px-3" id="course-pills-tab" role="tablist">
                 <div class="btn-toolbar align-items-center justify-content-evenly" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group me-4" role="group" aria-label="First group">
-                        <a href="/instruction"><button type="button" class="btn btn-outline-primary <?= urlIs("/instruction") ? "active" : "" ?> ">Instructions</button></a>
+                        <a href="/instruction?id=<?=$_SESSION['assign_id'] ?>"><button type="button" class="btn btn-outline-primary <?= urlIs("/instruction") ? "active" : "active" ?> ">Instructions</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
                         <a href="/student-work"><button type="button" class="btn btn-outline-info <?= urlIs("/student-work") ? "active" : "" ?>  ">Student work</button></a>
@@ -15,12 +25,14 @@
             </ul>
         </div>
     </div>
-   
+
     <section class="pt-0">
         <div class="container">
+
             <table class="table">
                 <!-- PHP loop for classes START -->
                 <tbody class="tbodySearch" id="tbodySearch">
+
                     <tr>
                         <!-- Course item -->
                         <td>
@@ -28,28 +40,31 @@
                                 <!-- Content -->
                                 <div class="d-flex  ">
                                     <!-- Image -->
-                                    <div class="w-100px">
+                                    <div class="w-100px " style="margin-right: -13px;">
                                         <img src="assets/images/about/download (2).png" class="rounded" alt="">
                                     </div>
-                                    <div class="mb-0 ms-2">
+                                    <div class="mb-0 ms-2 mt-2">
                                         <!-- Title -->
-                                        <h3><a href="#">Homework</a></h3>
+                                        <h3><a href="#"><?= $assignment['title'] ?></a></h3>
                                         <!-- Info -->
                                         <div>
-                                            <p class="h6 fw-light mb-0 small me-3">PHAL HIM 7:51 AM</p>
+                                            <p class="h6 fw-light mb-0 small me-3"><?= $_SESSION['user']['name'] ?> <?= $assignment['start_date'] ?></p>
                                             <br>
-                                            <p class="h6 fw-light mb-0 small"></i>100 points</p>
+                                            <p class="h6 fw-light mb-0 small"></i><?= $assignment['score'] ?> Points</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </td>
                     </tr>
+
                 </tbody>
+
                 <!-- PHP loop for classes END -->
             </table>
-            <div class="mb-0 ms-8">
-                <p>hello</p>
+            <div class="mb-0 ms-8" style="margin-left: -20px;">
+                <p><?= $assignment['content'] ?></p>
+                <h5>Document PDF</h5>
             </div>
             <hr>
             <div class="mb-0 ms-8">
@@ -57,11 +72,12 @@
             </div>
 
             <div class="ms-7 d-flex flex-row">
-                <div>
-                    <img src="assets/images/avatar/01.jpg" class="rounded-circle" alt="..." style="width: 300px;">
+                <div class="avatar avatar-lg mt-n3">
+                    <img src="assets/images/profiles/<?= $_SESSION['user']['image'] ?>" class="avatar-img rounded-circle border " alt="..." style="width: 300px;">
                 </div>
+
                 <div class="border ms-4 " style="width: 700%;">
-                    <div class="" >
+                    <div class="">
                         <nav class="navbar">
                             <div class="container-fluid ">
                                 <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
