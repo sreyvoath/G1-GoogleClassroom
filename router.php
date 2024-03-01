@@ -19,7 +19,9 @@ $routes = [
     '/classwork' => 'controllers/assignment/classworks/classwork.controller.php',
     '/create-work' => 'controllers/assignment/classworks/create_classwork.controller.php',
     '/people' => 'controllers/assignment/peoples/people.controller.php',
-
+    '/grade' => 'controllers/assignment/grades/grade.controller.php',
+    '/what-todo' => 'controllers/assignment/grades/what-todo.controller.php',
+   
 
 ];
 

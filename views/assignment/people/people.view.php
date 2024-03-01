@@ -15,7 +15,7 @@
                         <a href="/people"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "" ?> ">Poeple</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Third group">
-                        <a href="/point"><button type="button" class="btn btn-outline-success <?= urlIs("/point") ? "active" : "" ?> ">Grades</button></a>
+                        <a href="/grade"><button type="button" class="btn btn-outline-success <?= urlIs("/point") ? "active" : "" ?> ">Grades</button></a>
                     </div>
                 </div>
             </ul>
@@ -137,10 +137,6 @@
                                                             </li>
                                                         </ul>
                                                     </div>
-
-                                                    <div class="mb-0 ms-2">
-
-                                                    </div>
                                                 </div>
                                             </div>
                                         </td>
@@ -211,7 +207,7 @@
             </div>
     </section>
 </main>
-
+Action
 
 <!-- input tag teacher box -->
 <div class="modal fade" id="inputTag" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
