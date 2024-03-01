@@ -28,7 +28,7 @@ if (isset($_GET['id'])) {
                             <!-- Profile info -->
                             <div class="col d-md-flex justify-content-between align-items-center mt-4">
                                 <div>
-                                    <h1 class="my-1 fs-4"><?= $_SESSION['user']['name']?><i class="bi bi-patch-check-fill text-info small"></i></h1>
+                                    <h1 class="my-1 fs-4"><?= $_SESSION['user']['name'] ?><i class="bi bi-patch-check-fill text-info small"></i></h1>
                                     <ul class="list-inline mb-0">
                                         <li class="list-inline-item h6 fw-light me-3 mb-1 mb-sm-0"><i class="fas fa-star text-warning me-2"></i>4.5/5.0</li>
                                         <li class="list-inline-item h6 fw-light me-3 mb-1 mb-sm-0"><i class="fas fa-user-graduate text-orange me-2"></i>75+ Enrolled Students</li>
@@ -116,37 +116,61 @@ if (isset($_GET['id'])) {
                                 <!-- PHP loop for classes START -->
 
                                 <tbody class="tbodySearch" id="tbodySearch">
-                                    <?php foreach ($assignments as $assignment) : ?>
-                                        <tr>
-                                            <!-- Course item -->
-                                            <td>
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <!-- Content -->
-                                                    <div class="d-flex align-items-center">
-                                                        <!-- Image -->
-                                                        <div class="w-100px">
-                                                            <img src="assets/images/avatar/01.jpg" class="rounded" alt="">
-                                                        </div>
-                                                        <div class="mb-0 ms-2">
-                                                            <!-- Title -->
-                                                            <h6><a href="/instruction?id=<?=$assignment['id']?>"><?= $assignment['title'] ?></a></h6>
-                                                            <!-- Info -->
-                                                            <div class="d-sm-flex">
-                                                                <p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i><?= $assignment['deadline'] ?></p>
-                                                                <p class="h6 fw-light mb-0 small"><i class="fas fa-check-circle text-success me-2"></i>0 Completed</p>
+
+                                    <?php if (count($assignments) == 0) { ?>
+                                        <div class="d-flex">
+                                            <img src="assets/images/bg/04.png" alt="">
+                                            <div class="txt d-flex flex-column mt-5">
+                                                <p class="text-info fs-4">This is where you can talk to your class</p>
+                                                <p>Use the stream to share announcements, post assignments, and respond to student questions</p>
+
+                                            </div>
+                                        </div>
+                                        <?php
+                                    } else {
+                                        foreach ($assignments as $assignment) :
+                                        ?>
+                                            <tr>
+                                                <!-- Course item -->
+                                                <td>
+                                                    <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-2 border-start border-primary">
+                                                        <!-- Content -->
+                                                        <div class="d-flex align-items-center">
+                                                            <!-- Image -->
+                                                            <div class="w-70px me-2">
+                                                                <img src="assets/images/avatar/16.png" class="rounded" alt="">
+                                                            </div>
+                                                            <div class="mb-0 ms-2">
+                                                                <!-- Title -->
+                                                                <p><a class="text-dark" href="/instruction?id=<?= $assignment['id'] ?>"> <?= $_SESSION['user']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
+                                                                <!-- Info -->
+                                                                <div class="d-sm-flex">
+                                                                    <p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i><?= $assignment['deadline'] ?></p>
+                                                                    <p class="h6 fw-light mb-0 small"><i class="fas fa-check-circle text-success me-2"></i>0 Completed</p>
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        <!-- Buttons -->
+                                                        <div class="dropdown mt-2 d-flex">
+                                                            <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
+                                                            <ul class="dropdown-menu" aria-labelledby="accounntMenu">
+                                                                <li class="dropdown-submenu dropend">
+                                                                    <a class="dropdown-item " href="#">Move to top</a>
+                                                                </li>
+                                                                <li class="dropdown-submenu dropend">
+                                                                    <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php">Edit</a>
+                                                                </li>
+                                                                <li class="dropdown-submenu dropend">
+                                                                    <a class="dropdown-item " href="# ">Copy Link</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
-                                                    <!-- Buttons -->
-                                                    <div class="d-flex">
-                                                        <a href="../../controllers/teachers/teacher_edit.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-info text-white"><i class="bi bi-pen text-dark "></i></a>
-                                                        <a href="../../controllers/teachers/teacher_delete.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-trash text-dark"></i></a>
-                                                    </div>
-                                                </div>
 
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php }; ?>
                                 </tbody>
 
                             </table>
