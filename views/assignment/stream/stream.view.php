@@ -3,7 +3,7 @@ if (isset($_GET['id'])) {
     $_SESSION['class_id'] = $_GET['id'];
     $id = $_GET['id'];
     $assignments = getAssigns($id);
-    $_SESSION['assignments'] = $assignments;
+    $_SESSION['ass_id'] = $id;
 }
 ?>
 <main>

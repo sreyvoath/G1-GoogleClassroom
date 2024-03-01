@@ -15,7 +15,7 @@
                         <a href="/people"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "" ?>">Poeple</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Third group">
-                        <a href="/point"><button type="button" class="btn btn-outline-success <?= urlIs("/grade") ? "active" : "" ?>">Grades</button></a>
+                        <a href="/grade"><button type="button" class="btn btn-outline-success <?= urlIs("/grade") ? "active" : "" ?>">Grades</button></a>
                     </div>
                 </div>
             </ul>
@@ -33,7 +33,10 @@
                     </a>
                 </div>
                 <?php
-                    $assignments = $_SESSION['assignments'];
+                    require "database/database.php";
+                    require "models/assignments/assignment.model.php";
+                    $id = $_SESSION['ass_id'];
+                    $assignments = getAssigns($id);
                 ?>
                 <?php if (count($assignments) == 0) { ?>
                     <hr>
