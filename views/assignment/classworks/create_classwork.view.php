@@ -63,7 +63,11 @@
                             <!-- date -->
                             <div class="btn-date mt-5">
                                 <label for="date" class="form-label mt-3">Due</label>
-                                <input type="date" id="date" name="deadline" class="form-control" style="width: 250px;">
+                                <input type="date" id="date" name="end_date" class="form-control" style="width: 250px;">
+                            </div>
+                            <div class="btn-date mt-5">
+                                <label for="date" class="form-label mt-3">Time</label>
+                                <input type="time" id="date" name="end_time" class="form-control" style="width: 250px;">
                             </div>
                         </div>
                     </div>
