@@ -158,7 +158,7 @@ if (isset($_GET['id'])) {
                                                                     <a class="dropdown-item " href="#">Move to top</a>
                                                                 </li>
                                                                 <li class="dropdown-submenu dropend">
-                                                                    <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php">Edit</a>
+                                                                    <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?=$assignment['id']?>">Edit</a>
                                                                 </li>
                                                                 <li class="dropdown-submenu dropend">
                                                                     <a class="dropdown-item " href="# ">Copy Link</a>

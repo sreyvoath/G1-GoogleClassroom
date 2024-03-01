@@ -9,26 +9,31 @@
 </head>
 
 <body>
-    <div class="container mt-5" style="margin-top: 20px;">
+    <div class="container" style="margin-top: 50px;">
 
-        <form action="../../controllers/assignment/update_assignment.ontroller.php" method="post">
-            <input type="hidden" name="id" id="id" value="<?= $assignment['id']?>">
-            <button type="submit" class="btn btn-purple float-end" style="width: 100px; margin-top:-50px;">Update</button>
-            <div class="row mt-5">
+        <form action="../../controllers/assignment/update_assignment.ontroller.php" method="post" class="d-flex flex-column">
+            <input type="hidden" name="id" id="id" value="<?= $assignment['id'] ?>">
+            <div class="button me-2">
+                <button type="submit" class="btn btn-primary float-end col-1">Update</button>
+                <a href="/classwork" class="btn btn-primary float-end col-1 me-3">Back</a>
+                
+            </div>
+
+            <div class="row mt-2">
                 <div class="col-8">
                     <div class="assignment border boder-light rounded p-5 bg-body shadow" style=" height:100%;">
                         <h3 class="assignment-title text-center mb-3" style="margin-top: -20px;">Assignment</h3>
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
-                            <input type="text" name="title" class="form-control bg-light" id="title" aria-describedby="emailHelp" placeholder="Title" value="<?= $assignment['title']?>">
+                            <input type="text" name="title" class="form-control bg-light" id="title" aria-describedby="emailHelp" placeholder="Title" value="<?= $assignment['title'] ?>">
                         </div>
                         <div class="mb-3 ">
                             <label for="intro" class="form-label">Introduction (optional)</label>
-                            <textarea name="content" class="form-control bg-light" id="intro" id="" cols="30" rows="10" style=" height:100px;"><?= $assignment['content']?></textarea>
+                            <textarea name="content" class="form-control bg-light" id="intro" id="" cols="30" rows="10" style=" height:100px;"><?= $assignment['content'] ?></textarea>
                         </div>
                         <div class="mb-3 mt-2">
                             <label for="intro" class="form-label">Upload file</label>
-                            <input type="file" name="document" class="form-control bg-light" style="width: 100%;" value="<?= $assignment['document']?>">
+                            <input type="file" name="document" class="form-control bg-light" style="width: 100%;" value="<?= $assignment['document'] ?>">
                         </div>
                     </div>
                 </div>
@@ -60,12 +65,12 @@
                             <!-- point -->
                             <div class="btn-point d-flex flex-column mt-4">
                                 <label for="title" class="form-label">Point</label>
-                                <input type="number" name="score" class="bg-light text-center" style="width:120px; height:40px;border:none;" placeholder="score" value="<?= $assignment['score']?>">
+                                <input type="number" name="score" class="bg-light text-center" style="width:120px; height:40px;border:none;" placeholder="score" value="<?= $assignment['score'] ?>">
                             </div>
                             <!-- date -->
                             <div class="btn-date mt-5">
                                 <label for="date" class="form-label mt-3">Due</label>
-                                <input type="date" id="date" name="deadline" class="form-control" style="width: 250px;" value="<?= $assignment['deadline']?>">
+                                <input type="date" id="date" name="deadline" class="form-control" style="width: 250px;" value="<?= $assignment['deadline'] ?>">
                             </div>
                         </div>
                     </div>
