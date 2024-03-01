@@ -127,7 +127,7 @@
 															</div>
 															<div class="mb-0 ms-2">
 																<!-- Title -->
-																<h6><a href="#"><?= $class['title'] ?></a></h6>
+																<h6><a href="/stream?id=<?=$class['id'] ?>"><?= $class['title'] ?></a></h6>
 																<!-- Info -->
 																<div class="d-sm-flex">
 																	<p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i>0 lectures</p>
