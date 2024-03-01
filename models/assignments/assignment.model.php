@@ -1,15 +1,16 @@
 <?php
 
 // ==== Create Post insert to database ====
-function createAssign(string $title, string $content, int $score, DateTime $deadline, int $class_id): bool
+function createAssign(string $title, string $content, string $document, int $score, string $deadline, int $class_id): bool
 {
     $Object = new DateTime();
     $start_date = $Object->format("d-m-Y h:i a");
     global $connection;
-    $statement = $connection->prepare("insert into assignments (title, content, score, start_date, dealine, class_id) values (:title, :content, :score, :start_date, :deadline, :class_id)");
+    $statement = $connection->prepare("insert into assignments (title, content, document, score, start_date, deadline, class_id) values (:title, :content, :document, :score, :start_date, :deadline, :class_id)");
     $statement->execute([
         ':title' => $title,
         ':content' => $content,
+        ':document' => $document,
         ':score' => $score,
         ':start_date' => $start_date,
         ':deadline' => $deadline,
@@ -37,14 +38,18 @@ function getAssigns($id): array
     return $statement->fetchAll();
 }
 
-function updateAssign(string $title, string $content, int $id): bool
+function updateAssign(string $title, string $content, string $document, int $score, string $deadline, int $class_id, int $id): bool
 {
     global $connection;
-    $statement = $connection->prepare("update assignments set title = :title, content = :content where id = :id");
+    $statement = $connection->prepare("update assignments set title = :title, content = :content, document=:document, score=:score, deadline=:deadline, class_id=:class_id where id = :id");
     $statement->execute([
         ':title' => $title,
         ':content' => $content,
-        ':id' => $id
+        ':document' => $document,
+        ':score' => $score,
+        ':deadline' => $deadline,
+        ':class_id' => $class_id,
+        ':id' => $id,
     ]);
     return $statement->rowCount() > 0;
 }
