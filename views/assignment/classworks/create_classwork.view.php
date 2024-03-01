@@ -35,7 +35,7 @@
 
                         <div class="col-4">
                             <div class="btn-for">
-                                <label for="intro" class="form-label mt-4">for</label>
+                                <label for="intro" class="form-label mt-4">For</label>
                                 <div class="btn-group d-flex justify-content-between" style="gap:20px;">
                                     <div class="btn-group">
                                         <button class="bg-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width:120px; height:40px; border:none;">

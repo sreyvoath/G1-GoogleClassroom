@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-xl-12 d-flex justify-content-end " style="margin-top: -40px; ">
+                <div class="col-xl-12 mb-2 d-flex justify-content-end " style="margin-top: -40px; ">
                     <!-- Card START -->
                     <a href="/create-work" class="btn btn-primary shadow" style="border-radius: 50px;">
                         <i class="bi bi-plus-lg me-2 "></i>
@@ -33,11 +33,27 @@
                     </a>
                 </div>
                 <?php
-                $assigments = $_SESSION['assignments'];
-                foreach ($assigments as $assigment) :
+                    $assignments = $_SESSION['assignments'];
+                ?>
+                <?php if (count($assignments) == 0) { ?>
+                    <hr>
+                    <div class="d-flex mx-5">
+                        <img src="assets/images/bg/05.png" alt="">
+                        <div class="txt d-flex flex-column mt-5">
+                            <p class="text-info fs-4">This is where you'll assign work</p>
+                            <p>You can add assignments and other work for the class, then organize it into topics</p>
+
+                        </div>
+
+                    </div>
+
+                <?php
+                }
+                else{    
+                foreach ($assignments as $assigment) :
                 ?>  
                 
-                    <div class="dropdown-submenu dropend shadow-sm mb-3 bg-body rounded px-4 py-2 d-flex justify-content-between">
+                    <div class="dropdown-submenu dropend shadow-sm mb-3 bg-body rounded px-4 py-2 d-flex justify-content-between border-start border-2 border-primary">
                         <div class="left d-flex gap-3">
                             <div class="circle bg-info col-1 text-center" style="width: 50px; border-radius: 50px;">
                                 <span class="material-symbols-outlined fs-2 text-white pt-2">assignment</span>
@@ -65,6 +81,7 @@
 
                     </div>
                 <?php endforeach; ?>
+                <?php }; ?>
             </div>
 
         </div>
