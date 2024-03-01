@@ -1,19 +1,18 @@
 <?php
 
 // ==== Create Post insert to database ====
-function createAssign(string $title, string $content, string $document, int $score, string $deadline, int $class_id): bool
+function createAssign(string $title, string $content, string $document, int $score, string $end_date, string $end_time, int $class_id): bool
 {
-    $Object = new DateTime();
-    $start_date = $Object->format("d-m-Y h:i a");
+
     global $connection;
-    $statement = $connection->prepare("insert into assignments (title, content, document, score, start_date, deadline, class_id) values (:title, :content, :document, :score, :start_date, :deadline, :class_id)");
+    $statement = $connection->prepare("insert into assignments (title, content, document, score, end_date, end_time, class_id) values (:title, :content, :document, :score, :end_date, :end_time, :class_id)");
     $statement->execute([
         ':title' => $title,
         ':content' => $content,
         ':document' => $document,
         ':score' => $score,
-        ':start_date' => $start_date,
-        ':deadline' => $deadline,
+        ':end_date' => $end_date,
+        ':end_time' => $end_time,
         ':class_id' => $class_id,
     ]);
     return $statement->rowCount() > 0;

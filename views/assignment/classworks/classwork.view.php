@@ -33,10 +33,12 @@
                     </a>
                 </div>
                 <?php
-                    require "database/database.php";
-                    require "models/assignments/assignment.model.php";
-                    $id = $_SESSION['ass_id'];
-                    $assignments = getAssigns($id);
+                require "database/database.php";
+                require "models/assignments/assignment.model.php";
+                $id = $_SESSION['ass_id'];
+                date_default_timezone_set('Asia/Phnom_Penh');
+                $assignments = getAssigns($id);
+
                 ?>
                 <?php if (count($assignments) == 0) { ?>
                     <hr>
@@ -50,40 +52,41 @@
 
                     </div>
 
-                <?php
-                }
-                else{    
-                foreach ($assignments as $assigment) :
-                ?>  
-                
-                    <div class="dropdown-submenu dropend shadow-sm mb-3 bg-body rounded px-4 py-2 d-flex justify-content-between border-start border-2 border-primary">
-                        <div class="left d-flex gap-3">
-                            <div class="circle bg-info col-1 text-center" style="width: 50px; border-radius: 50px;">
-                                <span class="material-symbols-outlined fs-2 text-white pt-2">assignment</span>
-                            </div>
-                            <div class="title mt-3">
-                                <h6><a href="#"><?= $assigment['title'] ?></a></h6>
-                            </div>
-                        </div>
-                        
-                        <div class="dropdown mt-2 d-flex">
-                            <div class="mt-1">Posted <?= $assigment['start_date']?></div>
-                            <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
-                            <ul class="dropdown-menu" aria-labelledby="accounntMenu">
-                                <li class="dropdown-submenu dropend">
-                                    <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?=$assigment['id']?>">Edit</a>
-                                </li>
-                                <li class="dropdown-submenu dropend">
-                                    <a class="dropdown-item " href="controllers/assignment/delete_assignment.controller.php?id=<?=$assigment['id']?> " onclick="if (!confirm('Are you sure to Delete it?')) { return false; }">Delete</a>
-                                </li>
-                                <li class="dropdown-submenu dropend">
-                                    <a class="dropdown-item " href="# ">Copy Link</a>
-                                </li>
-                            </ul>
-                        </div>
+                    <?php
+                } else {
+                    foreach ($assignments as $assigment) :
+                        $date = date('F j, Y', strtotime($assigment['end_date']));
+                        $time = date('g:i A', strtotime($assigment['end_time']));
+                    ?>
 
-                    </div>
-                <?php endforeach; ?>
+                        <div class="dropdown-submenu dropend shadow-sm mb-3 bg-body rounded px-4 py-2 d-flex justify-content-between border-start border-2 border-primary">
+                            <div class="left d-flex gap-3">
+                                <div class="circle bg-info col-1 text-center" style="width: 50px; border-radius: 50px;">
+                                    <span class="material-symbols-outlined fs-2 text-white pt-2">assignment</span>
+                                </div>
+                                <div class="title mt-3">
+                                    <h6><a href="#"><?= $assigment['title'] ?></a></h6>
+                                </div>
+                            </div>
+
+                            <div class="dropdown mt-2 d-flex">
+                                <div class="mt-1">Posted <?= $assigment['start_date'] ?></div>
+                                <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
+                                <ul class="dropdown-menu" aria-labelledby="accounntMenu">
+                                    <li class="dropdown-submenu dropend">
+                                        <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $assigment['id'] ?>">Edit</a>
+                                    </li>
+                                    <li class="dropdown-submenu dropend">
+                                        <a class="dropdown-item " href="controllers/assignment/delete_assignment.controller.php?id=<?= $assigment['id'] ?> " onclick="if (!confirm('Are you sure to Delete it?')) { return false; }">Delete</a>
+                                    </li>
+                                    <li class="dropdown-submenu dropend">
+                                        <a class="dropdown-item " href="# ">Copy Link</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    <?php endforeach; ?>
                 <?php }; ?>
             </div>
 

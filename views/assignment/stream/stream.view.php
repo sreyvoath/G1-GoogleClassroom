@@ -2,6 +2,7 @@
 if (isset($_GET['id'])) {
     $_SESSION['class_id'] = $_GET['id'];
     $id = $_GET['id'];
+    date_default_timezone_set('Asia/Phnom_Penh');
     $assignments = getAssigns($id);
     $_SESSION['ass_id'] = $id;
 }
@@ -129,6 +130,8 @@ if (isset($_GET['id'])) {
                                         <?php
                                     } else {
                                         foreach ($assignments as $assignment) :
+                                            $date = date('F j, Y', strtotime($assignment['end_date']));
+                                            $time = date('g:i A', strtotime($assignment['end_time']));
                                         ?>
                                             <tr>
                                                 <!-- Course item -->
@@ -145,7 +148,7 @@ if (isset($_GET['id'])) {
                                                                 <p><a class="text-dark" href="/instruction?id=<?= $assignment['id'] ?>"> <?= $_SESSION['user']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
                                                                 <!-- Info -->
                                                                 <div class="d-sm-flex">
-                                                                    <p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i><?= $assignment['deadline'] ?></p>
+                                                                    <p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i><?= $assignment['end_date'] ?></p>
                                                                     <p class="h6 fw-light mb-0 small"><i class="fas fa-check-circle text-success me-2"></i>0 Completed</p>
                                                                 </div>
                                                             </div>
@@ -158,7 +161,7 @@ if (isset($_GET['id'])) {
                                                                     <a class="dropdown-item " href="#">Move to top</a>
                                                                 </li>
                                                                 <li class="dropdown-submenu dropend">
-                                                                    <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?=$assignment['id']?>">Edit</a>
+                                                                    <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $assignment['id'] ?>">Edit</a>
                                                                 </li>
                                                                 <li class="dropdown-submenu dropend">
                                                                     <a class="dropdown-item " href="# ">Copy Link</a>
