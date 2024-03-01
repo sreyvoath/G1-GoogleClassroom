@@ -16,10 +16,10 @@ if (isset($_GET['id'])) {
             <ul class="nav nav-pills nav-pills-bg-soft justify-content-sm-center mb-4 px-3" id="course-pills-tab" role="tablist">
                 <div class="btn-toolbar align-items-center justify-content-evenly" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group me-4" role="group" aria-label="First group">
-                        <a href="/instruction?id=<?=$_SESSION['assign_id'] ?>"><button type="button" class="btn btn-outline-primary <?= urlIs("/instruction") ? "active" : "active" ?> ">Instructions</button></a>
+                        <a href="/instruction?id=<?= $_SESSION['assign_id'] ?>"><button type="button" class="btn btn-outline-primary <?= urlIs("/instruction") ? "active" : "active" ?> ">Instructions</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
-                        <a href="/student-work"><button type="button" class="btn btn-outline-info <?= urlIs("/student-work") ? "active" : "" ?>  ">Student work</button></a>
+                        <a href="/student_work"><button type="button" class="btn btn-outline-info <?= urlIs("/student_work") ? "active" : "" ?>  ">Student work</button></a>
                     </div>
                 </div>
             </ul>
@@ -45,7 +45,7 @@ if (isset($_GET['id'])) {
                                     </div>
                                     <div class="mb-0 ms-2 mt-2">
                                         <!-- Title -->
-                                        <h3><a href="/instruction?id=<?php $assignment['id']?>"><?= $assignment['title'] ?></a></h3>
+                                        <h3><a href="/instruction?id=<?php $assignment['id'] ?>"><?= $assignment['title'] ?></a></h3>
                                         <!-- Info -->
                                         <div>
                                             <p class="h6 fw-light mb-0 small me-3"><?= $_SESSION['user']['name'] ?> <?= $assignment['start_date'] ?></p>
@@ -72,11 +72,11 @@ if (isset($_GET['id'])) {
             </div>
 
             <div class="ms-7 d-flex flex-row">
-                <div class="avatar avatar-lg mt-n3">
-                    <img src="assets/images/profiles/<?= $_SESSION['user']['image'] ?>" class="avatar-img rounded-circle border " alt="..." style="width: 300px;">
+                <div class="avatar avatar-xl mt-n1 d-flex justify-content-center align-items-center">
+                    <img class="avatar-xl rounded-circle border border-white border-1 shadow" style=" object-fit:cover; border-radius: 10%; margin-top: -1px " src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="avatar">
                 </div>
 
-                <div class="border ms-4 " style="width: 700%;">
+                <div class="border ms-4 " style="width: 1000px; height:120px;" >
                     <div class="">
                         <nav class="navbar">
                             <div class="container-fluid ">
