@@ -36,6 +36,7 @@ if(!isset($_SESSION['user'])){
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap-icons/bootstrap-icons.css">
 	<link rel="stylesheet" type="text/css" href="vendor/tiny-slider/tiny-slider.css">
 	<link rel="stylesheet" type="text/css" href="vendor/glightbox/css/glightbox.css">
+	<link rel="stylesheet" type="text/css" href="vendor/css/hover.css">
 
 	<!-- Theme CSS -->
 	<link id="style-switch" rel="stylesheet" type="text/css" href="vendor/css/style.css">
