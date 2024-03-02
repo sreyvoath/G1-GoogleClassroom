@@ -40,9 +40,11 @@ if(!isset($_SESSION['user'])){
 
 	<!-- Theme CSS -->
 	<link id="style-switch" rel="stylesheet" type="text/css" href="vendor/css/style.css">
+	<link id="style-switch" rel="stylesheet" type="text/css" href="vendor/css/todos.css">
 	
 	<!-- Theme JS  -->
 	<script src="vendor/js/search.js" defer></script>
+	<script src="vendor/js/todos.js" defer></script>
 
 	<script>
 		window.dataLayer = window.dataLayer || [];
