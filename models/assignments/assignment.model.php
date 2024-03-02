@@ -27,7 +27,7 @@ function getAssign(int $id): array
     return $statement->fetch();
 }
 
-// ========Get all posts============
+// ========Get all posts by id class============
 function getAssigns($id): array
 {
 
@@ -36,17 +36,27 @@ function getAssigns($id): array
     $statement->execute([":id" => $id]);
     return $statement->fetchAll();
 }
+// ========Get all posts============
+function getAssignments()
+{
 
-function updateAssign(string $title, string $content, string $document, int $score, string $deadline, int $class_id, int $id): bool
+    global $connection;
+    $statement = $connection->prepare("select * from assignments");
+    $statement->execute();
+    return $statement->fetchAll();
+}
+
+function updateAssign(string $title, string $content, string $document, int $score, string $end_date, string $end_time, int $class_id, int $id): bool
 {
     global $connection;
-    $statement = $connection->prepare("update assignments set title = :title, content = :content, document=:document, score=:score, deadline=:deadline, class_id=:class_id where id = :id");
+    $statement = $connection->prepare("update assignments set title = :title, content = :content, document=:document, score=:score, end_date=:end_date, end_time=:end_time, class_id= :class_id where id = :id");
     $statement->execute([
         ':title' => $title,
         ':content' => $content,
         ':document' => $document,
         ':score' => $score,
-        ':deadline' => $deadline,
+        ':end_date' => $end_date,
+        ':end_time' => $end_time,
         ':class_id' => $class_id,
         ':id' => $id,
     ]);

@@ -4,21 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>create</title>
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
 <body>
-    <div class="container">
+    <form action="/controllers/assignment/create_assignment.controller.php" method="post">
+        <div class="body">
+            <div class="back d-flex justify-content-between align-items-center shadow-sm p-3 mb-5 bg-body rounded">
+                <div class="nav-left d-flex gap-3">
+                    <a class="text-dark" href="/classwork"><span class="material-symbols-outlined">close</span></a>
+                    <div class="title d-flex gap-1">
+                        <div class="bg py-1 px-2 d-flex justify-content-enter align-items-center rounded-circle" style=" margin-top: -7px; background-color: purple;">
+                            <span class="material-symbols-outlined text-white">description</span>
+                        </div>
+                        <p class="fs-4 mb-1" style="margin-top: -7px;">Assignment</p>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <button type="submit" class="btn btn-primary px-4">Assign</button>
+                </div>
 
-        <form action="controllers/assignment/create_assignment.controller.php" method="post">
-            <button type="submit" class="btn btn-purple float-end" style="width: 100px; margin-top:-50px;">Assign</button>
-            <div class="row mt-5">
-                <div class="col-8">
+            </div>
+            <div action="" class="d-flex m-3">
+                <div class="form-left col-8 ">
                     <div class="assignment border boder-light rounded p-5 bg-body shadow" style=" height:100%;">
-                        <h3 class="assignment-title text-center mb-3" style="margin-top: -20px;">Assignment</h3>
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
-                            <input type="text" name="title" class="form-control bg-light" id="title" aria-describedby="emailHelp" placeholder="Title">
+                            <input type="text" name="title" class="form-control " id="title" aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3 ">
                             <label for="intro" class="form-label">Introduction (optional)</label>
@@ -30,51 +44,72 @@
                         </div>
                     </div>
                 </div>
-                <div class="info col-4">
+                <div class="form-right col-4" style="margin-top: -48px; margin-left: 20px;">
                     <div class="assignment border boder-light rounded p-5 bg-body shadow" style=" height:100%;">
+                        <div class="d-flex flex-column">
+                            <p style="margin-top: -8px;">For</p>
+                            <div class="btn d-flex justify-content-between " style="margin-left: -18px; margin-top: -10px;">
 
-                        <div class="col-4">
-                            <div class="btn-for">
-                                <label for="intro" class="form-label mt-4">For</label>
-                                <div class="btn-group d-flex justify-content-between" style="gap:20px;">
-                                    <div class="btn-group">
-                                        <button class="bg-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width:120px; height:40px; border:none;">
-                                            List-class
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            ...
-                                        </ul>
-                                    </div>
-                                    <div class="btn-group">
-                                        <button class="bg-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width:120px; height:40px;border:none;">
-                                            All Students
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            ...
-                                        </ul>
-                                    </div>
+                                <div class="btn-group">
+                                    <button class="bg-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width:120px; height:40px;border:none;">
+                                        All Classes
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item dropdown d-flex text-center justify-content-center align-items-center">
+                                            <input type="checkbox" class="me-2 mb-1">
+                                            <div class="bg bg-primary py-1 px-2" style="border-radius: 50px;">
+                                                <span class="material-symbols-outlined text-white">group</span>
+                                            </div>
+                                            <a class="nav-link" href="#">All Students</a>
+                                        </li>
+
+                                    </ul>
                                 </div>
+
+                                <div class="btn-group">
+                                    <button class="bg-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width:120px; height:40px;border:none;">
+                                        All Students
+                                    </button>
+                                    <ul class="dropdown-menu">
+
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link " href="#">list-classes</a>
+                                        </li>
+                                    </ul>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item dropdown d-flex text-center justify-content-center align-items-center">
+                                            <input type="checkbox" class="me-2 mb-1">
+                                            <div class="bg bg-primary py-1 px-2" style="border-radius: 50px;">
+                                                <span class="material-symbols-outlined text-white">group</span>
+                                            </div>
+                                            <a class="nav-link" href="#">All students</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
                             </div>
                             <!-- point -->
                             <div class="btn-point d-flex flex-column mt-4">
                                 <label for="title" class="form-label">Point</label>
-                                <input type="number" name="score" class="bg-light text-center" style="width:120px; height:40px;border:none;" placeholder="score">
+                                <input type="number" name="score" class="bg-light text-center" style=" width:120px; height:40px;border:none; border-bottom:1px solid gray;" placeholder="score" value="100">
                             </div>
                             <!-- date -->
-                            <div class="btn-date mt-5">
+                            <div class="btn-date mt-2">
                                 <label for="date" class="form-label mt-3">Due</label>
                                 <input type="date" id="date" name="end_date" class="form-control" style="width: 250px;">
                             </div>
-                            <div class="btn-date mt-5">
-                                <label for="date" class="form-label mt-3">Time</label>
+                            <!-- time -->
+                            <div class="btn-date mt-2">
+                                <label for="time" class="form-label mt-3">Time</label>
                                 <input type="time" id="date" name="end_time" class="form-control" style="width: 250px;">
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-        </form>
-    </div>
+    </form>
 </body>
 
 </html>

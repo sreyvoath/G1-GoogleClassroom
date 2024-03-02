@@ -8,7 +8,7 @@
             <ul class="nav nav-pills nav-pills-bg-soft justify-content-sm-center mb-4 px-3" id="course-pills-tab" role="tablist">
                 <div class="btn-toolbar align-items-center justify-content-evenly" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group me-4" role="group" aria-label="First group">
-                        <a href="/instruction"><button type="button" class="btn btn-outline-primary<?= urlIs("/instruction") ? "active" : "" ?> ">Instruction</button></a>
+                        <a href="/instruction?id=<?= $_SESSION['assign_id'] ?>"><button type="button" class="btn btn-outline-primary<?= urlIs("/instruction") ? "active" : "" ?> ">Instruction</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
                         <a href="/student_work"><button type="button" class="btn btn-outline-info <?= urlIs("/student_work") ? "active" : "" ?> ">Student work</button></a>
@@ -19,7 +19,7 @@
     </div>
     <hr>
     <div class="container">
-        <div class="row mb-5 align-items-center  ">
+        <div class="row mb-5 align-items-center">
             <!-- Search bar -->
             <script src="../../js/main.js"></script>
             <!-- <ul class="nav nav-pills nav-pills-bg-soft justify-content-sm-center mb-4 px-3" id="course-pills-tab" role="tablist"> -->

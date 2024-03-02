@@ -27,7 +27,7 @@
 
                 <div class="col-xl-12 mb-2 d-flex justify-content-end " style="margin-top: -40px; ">
                     <!-- Card START -->
-                    <a href="/create-work" class="btn btn-primary shadow" style="border-radius: 50px;">
+                    <a href="views/assignment/classworks/create_classwork.view.php" class="btn btn-primary shadow" style="border-radius: 50px;">
                         <i class="bi bi-plus-lg me-2 "></i>
                         <span>Assignment</span>
                     </a>
@@ -38,7 +38,6 @@
                 $id = $_SESSION['ass_id'];
                 date_default_timezone_set('Asia/Phnom_Penh');
                 $assignments = getAssigns($id);
-
                 ?>
                 <?php if (count($assignments) == 0) { ?>
                     <hr>
