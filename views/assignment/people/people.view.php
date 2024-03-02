@@ -55,7 +55,7 @@
 
                                                     <div class="mb-0 ms-2">
                                                         <!-- Title -->
-                                                        <h6><a href="#">this is account gmail</a></h6>
+                                                        <h6><a href="#"><?= $_SESSION['user']['name']?></a></h6>
                                                     </div>
                                                 </div>
                                                 <!-- Buttons -->
@@ -75,7 +75,7 @@
 
                                                     <div class="mb-0 ms-2">
                                                         <!-- Title -->
-                                                        <h6><a href="#">orther invite</a></h6>
+                                                        <h6><a href="#">Teacher invited</a></h6>
                                                     </div>
                                                 </div>
                                                 <!-- Buttons -->
@@ -207,7 +207,6 @@
             </div>
     </section>
 </main>
-Action
 
 <!-- input tag teacher box -->
 <div class="modal fade" id="inputTag" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

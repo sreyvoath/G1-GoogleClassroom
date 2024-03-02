@@ -80,9 +80,14 @@ require 'database/database.php';
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item dropdown-toggle" href="#"><i class="bi bi-easel2 fa-fw me-1"></i>All Classes</a>
 								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
-									<?php foreach ($classes as $class) : ?>
+									<?php foreach ($classes as $class) : 
+											if ($class['archive']==0):
+									?>
 										<li> <a class="dropdown-item" href="/stream?id=<?= $class['id']?>"><i class="bi bi-book fa-fw me-1"></i><?= $class['title'] ?></a> </li>
-									<?php endforeach ?>
+									<?php 
+									endif;
+									endforeach ;
+									?>
 								</ul>
 							</li>
 							<li class="dropdown-submenu dropend">

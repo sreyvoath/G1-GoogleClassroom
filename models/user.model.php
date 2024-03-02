@@ -39,3 +39,16 @@ function getUserEmail(string $email): array
         return [];
     }
 }
+
+//======== check account exist=======
+function getUserStudent(): array
+{
+    global $connection;
+    $statement = $connection->prepare("select * from users where role = :role");
+    $statement->execute([':role' => "student"]);
+    if ($statement->rowCount() > 0) {
+        return $statement->fetch();
+    } else {
+        return [];
+    }
+}

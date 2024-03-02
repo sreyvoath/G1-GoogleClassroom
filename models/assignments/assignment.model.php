@@ -1,6 +1,6 @@
 <?php
 
-// ==== Create Post insert to database ====
+// ==== Create assignment insert to database ====
 function createAssign(string $title, string $content, string $document, int $score, string $end_date, string $end_time, int $class_id): bool
 {
 
@@ -18,7 +18,7 @@ function createAssign(string $title, string $content, string $document, int $sco
     return $statement->rowCount() > 0;
 }
 
-// ========Get single post============
+// ========Get single assignment============
 function getAssign(int $id): array
 {
     global $connection;
@@ -27,7 +27,7 @@ function getAssign(int $id): array
     return $statement->fetch();
 }
 
-// ========Get all posts by id class============
+// ========Get all assignments by id class============
 function getAssigns($id): array
 {
 
@@ -36,7 +36,8 @@ function getAssigns($id): array
     $statement->execute([":id" => $id]);
     return $statement->fetchAll();
 }
-// ========Get all posts============
+
+// ========Get all assignments============
 function getAssignments()
 {
 
@@ -46,6 +47,7 @@ function getAssignments()
     return $statement->fetchAll();
 }
 
+// ========Update  assignment============
 function updateAssign(string $title, string $content, string $document, int $score, string $end_date, string $end_time, int $class_id, int $id): bool
 {
     global $connection;
@@ -63,7 +65,7 @@ function updateAssign(string $title, string $content, string $document, int $sco
     return $statement->rowCount() > 0;
 }
 
-// ========Delete post============
+// ========Delete assignment============
 function deleteAssign(int $id): bool
 {
     global $connection;

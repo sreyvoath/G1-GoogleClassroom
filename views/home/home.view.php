@@ -1,3 +1,27 @@
+<?php
+require "database/database.php";
+require 'models/class.model.php';
+require 'models/user.model.php';
+$id = $_SESSION['user']['id'];
+$classes = getClasses($id);
+$_SESSION['class'] = $classes;
+$students = getUserStudent();
+$result = 0;
+$class_number = 0;
+$student_number =count($students);
+foreach ($classes as $class) {
+	if ($class['archive'] == 1) {
+		$result += 1;
+	} else {
+		$class_number += 1;
+	}
+}
+
+
+require "models/assignments/assignment.model.php";
+$assignments = getAssignments();
+$assign_number= count($assignments);
+?>
 <main>
 
 	<!-- ===Main Banner START -->
@@ -274,7 +298,7 @@
 						<span class="display-6 lh-1 text-purple mb-0"><i class="fas fa-user-graduate"></i></span>
 						<div class="ms-4 h6 fw-normal">
 							<div class="d-flex">
-								<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="200" data-purecounter-delay="200">0</h5>
+								<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?=$student_number?>" data-purecounter-delay="200">0</h5>
 								<span class="mb-0 h5">+</span>
 							</div>
 							<p class="mb-0">Students</p>
@@ -287,7 +311,7 @@
 						<span class="display-6 lh-1 text-warning mb-0"><i class="fas fa-tv"></i></span>
 						<div class="ms-4 h6 fw-normal">
 							<div class="d-flex">
-								<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="60" data-purecounter-delay="200">0</h5>
+								<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?= $class_number ?>" data-purecounter-delay="200">0</h5>
 								<span class="mb-0 h5">+</span>
 							</div>
 							<p class="mb-0">Classes</p>
@@ -297,13 +321,13 @@
 				<!-- Counter item -->
 				<div class="col-sm-6 col-xl-3">
 					<div class="d-flex justify-content-center align-items-center p-4 bg-info bg-opacity-10 rounded-3">
-						<span class="display-6 lh-1 text-info mb-0"><i class="bi bi-patch-check-fill"></i></span>
+						<span class="display-6 lh-1 text-info mb-0"><i class="bi bi-book-half"></i></span>
 						<div class="ms-4 h6 fw-normal">
 							<div class="d-flex">
-								<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="6" data-purecounter-delay="300">0</h5>
+								<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?= $assign_number ?>" data-purecounter-delay="300">0</h5>
 								<span class="mb-0 h5">+</span>
 							</div>
-							<p class="mb-0">Archives</p>
+							<p class="mb-0">Assignments</p>
 						</div>
 					</div>
 				</div>
@@ -331,18 +355,7 @@
 					<div class="row g-4">
 						<!-- Card class  -->
 						<?php
-						require "database/database.php";
-						require 'models/class.model.php';
-						$id = $_SESSION['user']['id'];
-						$classes = getClasses($id);
 
-						$_SESSION['class'] = $classes;
-						$result = 0;
-						foreach ($classes as $class) {
-							if ($class['archive'] == 1) {
-								$result += 1;
-							}
-						}
 						if (count($classes) == $result) {
 						?>
 							<img src="../../assets/images/about/25.png" alt="" style="width: 400px; height: 300px; display:flex; margin:auto; padding-top:100px">
@@ -439,11 +452,7 @@
 		</div>
 	</section>
 	<!-- =============Action box END ============-->
-	<?php
-	require "database/database.php";
-	require "models/assignments/assignment.model.php";
-	$assignments = getAssignments();
-	?>
+
 	<!-- ==========Trending courses START ==============-->
 	<section class="pb-5 pt-0 pt-lg-5">
 		<div class="container">
@@ -459,46 +468,46 @@
 				<div class="tiny-slider arrow-round arrow-blur arrow-hover">
 					<div class="tiny-slider-inner pb-1" data-autoplay="true" data-arrow="true" data-edge="2" data-dots="false" data-items="3" data-items-lg="2" data-items-sm="1">
 						<!-- Card item START -->
-						<?php foreach( $assignments as $assignment):?>
-						<div>
-							<div class="card action-trigger-hover border">
-								<!-- Image -->
-								<img src="assets/images/courses/4by3/14.jpg" class="card-img-top" alt="course image">
-								
-								<!-- Card body -->
-								<div class="card-body pb-0">
-									
-									<!-- Title -->
-									<p class="card-title "><a class="text-dark fs-5" href="/instruction?id=<?= $assignment['id']?>"></i></i><?= $assignment['title']?>: <?= $assignment['content']?></a></p>
-									
-									<!-- Time -->
-									<div class="hstack gap-3">
-										<span class="h6 fw-light mb-0"><i class="far fa-clock text-danger me-2"></i><?= $assignment['end_time']?></span>
-										<span class="h6 fw-light mb-0"><i class="fas fa-table text-orange me-2"></i><?= $assignment['end_date']?></span>
-									</div>
-								</div>
-								<!-- Card footer -->
-								<div class="card-footer pt-0">
-									<hr>
-									<!-- Avatar and Price -->
-									<div class="d-flex justify-content-between align-items-center">
-										<!-- Avatar -->
-										<div class="d-flex align-items-center">
-											<div class="avatar avatar-sm">
-												<img class="avatar-img rounded-1" src="assets/images/avatar/10.jpg" alt="avatar">
-											</div>
-											<p class="mb-0 ms-2"><a href="#" class="h6 fw-light mb-0">Larry Lawson</a></p>
+						<?php foreach ($assignments as $assignment) : ?>
+							<div>
+								<div class="card action-trigger-hover border">
+									<!-- Image -->
+									<img src="assets/images/courses/4by3/14.jpg" class="card-img-top" alt="course image">
+
+									<!-- Card body -->
+									<div class="card-body pb-0">
+
+										<!-- Title -->
+										<p class="card-title "><a class="text-dark fs-5" href="/instruction?id=<?= $assignment['id'] ?>"></i></i><?= $assignment['title'] ?>: <?= $assignment['content'] ?></a></p>
+
+										<!-- Time -->
+										<div class="hstack gap-3">
+											<span class="h6 fw-light mb-0"><i class="far fa-clock text-danger me-2"></i><?= $assignment['end_time'] ?></span>
+											<span class="h6 fw-light mb-0"><i class="fas fa-table text-orange me-2"></i><?= $assignment['end_date'] ?></span>
 										</div>
-										<!-- Price -->
-										<div>
-											<h4 class="text-success mb-0 item-show">Free</h4>
-											<a href="#" class="btn-sm btn-success-soft item-show-hover"><i class="fas fa-shopping-cart me-2"></i>Add to cart</a>
+									</div>
+									<!-- Card footer -->
+									<div class="card-footer pt-0">
+										<hr>
+										<!-- Avatar and Price -->
+										<div class="d-flex justify-content-between align-items-center">
+											<!-- Avatar -->
+											<div class="d-flex align-items-center">
+												<div class="avatar avatar-sm">
+													<img class="avatar-img rounded-1" src="assets/images/avatar/10.jpg" alt="avatar">
+												</div>
+												<p class="mb-0 ms-2"><a href="#" class="h6 fw-light mb-0">Larry Lawson</a></p>
+											</div>
+											<!-- Price -->
+											<div>
+												<h4 class="text-success mb-0 item-show">Free</h4>
+												<a href="#" class="btn-sm btn-success-soft item-show-hover"><i class="fas fa-shopping-cart me-2"></i>Add to cart</a>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<!-- Card item END -->
+							<!-- Card item END -->
 						<?php endforeach; ?>
 					</div>
 				</div>
