@@ -26,7 +26,6 @@
                 .table th {
                     padding-left: 20px;
                 }
-
             </style>
 
             <thead>
@@ -64,13 +63,26 @@
                 </tr>
                 <tr>
                     <th scope="row">
+                    
                         <div class="avatar avatar-lg  mt-2">
                             <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
                             <a href="/what-todo">Sran cute 💋</a>
                         </div>
 
                     </th>
-                    <td>12</td>
+                    <td>
+                        <div class="dropdown d-flex justify-content-end">
+                            <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
+                            <ul class="dropdown-menu" aria-labelledby="accounntMenu">
+                                <li class="dropdown-submenu dropend">
+                                    <a class="dropdown-item " href="#">Email</a>
+                                </li>
+                                <li class="dropdown-submenu dropend">
+                                    <a class="dropdown-item " href="#">Remove</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
                     <td>..\100</td>
                     <td>@fat</td>
                 </tr>

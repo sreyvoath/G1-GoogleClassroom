@@ -31,43 +31,55 @@
             width: 500px;
         }
     </style>
-    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-        <option selected class="mg-3">All</option>
+    <select id="filterSelect" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option value="0" selected>All</option>
         <option value="1">Turned in</option>
         <option value="2">Returned</option>
         <option value="3">Missing</option>
     </select>
-    <div class="dropdown ms-3">
-        <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Action
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="accounntMenu">
-            <li class="dropdown-submenu dropend">
-                <h5><a class="dropdown-item " href="#">Email</a></h5>
-            </li>
-            <li class="dropdown-submenu dropend">
-                <h5><a class="dropdown-item " href="#">Remove</a></h5>
-            </li>
-        </ul>
+    <!-- ------------------------------------------------------------- -->
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <div data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-4 border-start border-primary">
+                    <div class="d-flex align-items-center">
+                        <h6>scrum lop hery</h6>  
+                    </div>
+                    <h6>ka</h6>
+                </div>
+            </div>
+
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-4 border-start border-primary">
+                    <div class="d-flex align-items-center">
+                        <div class="w-70px me-2">
+                            ewyuio
+                        </div>
+                        <p>reaction</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-4 border-start border-primary">
+                    <div class="d-flex align-items-center">
+                        <div class="w-70px me-2">
+                            ewyuio
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-    <table class="table">
-        <tbody>
-            <tr>
-                <td class=''><h6 class="mr-4">Mark</h6></td>
-                <td class=''><h6>Mark</h6></</td>
-            </tr>
-            <tr>
-                
-                <td >Jacob</td>
-                <td class='pd-5'>Jacob</td>
-    
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-            </tr>
-        </tbody>
-    </table>
+
+
+
+
+
+    <!-- -------------------------------------------------------------- -->
+
+
+
+
+
 
 
 </div>
