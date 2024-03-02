@@ -27,6 +27,7 @@ $routes = [
     '/people' => 'controllers/assignment/peoples/people.controller.php',
     '/grade' => 'controllers/assignment/grades/grade.controller.php',
     '/what-todo' => 'controllers/assignment/grades/what-todo.controller.php',
+    '/assignment_student' => 'controllers/assignment/assignment_student/assignment_student.cotroller.php',
    
 
 ];
