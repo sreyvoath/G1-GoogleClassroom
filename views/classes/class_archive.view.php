@@ -20,7 +20,7 @@
 							foreach ($classNoun as $class) {
 								if ($class['archive'] == 1) { ?>
 									<div class="col-sm-6 col-lg-4 col-xl-3">
-										<div class="card shadow h-100">
+										<div class=" card_class card shadow h-100">
 											<!-- Image -->
 											<img src="../../assets/images/classes/<?= $class['image'] ?>" class="card-img-top" alt="course image" style='width:350px; height:200px; object-fit: cover;'>
 											<!-- Card body -->
