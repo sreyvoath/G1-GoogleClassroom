@@ -86,6 +86,25 @@
                                 </ul>
                             </div>
 
+                            </div>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-4 border-start border-primary">
+                                    <div class="align-items-center">
+                                        <p>No due date(sran lop)</p>
+                                        <p>do for exercise</p>
+                                    </div>
+                                    <div class="p-2 d-flex text-center">
+                                        <h1>0</h1>
+                                        <div class="vr" style="height: 100px;"></div>
+                                        <h1>1</h1>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-4  border-primary">
+                                    <div class="align-items-center">
+                                        <button type="button" class="btn btn-light"><a href="#">View instructions</a></button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     <?php endforeach; ?>
                 <?php }; ?>
