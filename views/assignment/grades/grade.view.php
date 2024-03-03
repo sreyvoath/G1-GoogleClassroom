@@ -63,10 +63,10 @@
                 </tr>
                 <tr>
                     <th scope="row">
-                    
+
                         <div class="avatar avatar-lg  mt-2">
                             <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
-                            <a href="/what-todo">Zran cute 💋</a>
+                            <a href="/what-todo"><?= $_SESSION['user']['name'] ?></a>
                         </div>
 
                     </th>
@@ -84,13 +84,18 @@
                         </div>
                     </td>
                     <td>..\100</td>
-                    <td>@fat</td>
+                    <td>23</td>
                 </tr>
                 <tr>
-                    <th scope="row">3</th>
-                    <td>Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
+                    <th scope="row">
+                        <div class="avatar avatar-lg  mt-2">
+                            <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
+                            <a href="/what-todo"><?= $_SESSION['user']['name'] ?></a>
+                        </div>
+                    </th>
+                    <td>18</td>
+                    <td>25</td>
+                    <td>..\100</td>
                 </tr>
             </tbody>
         </table>
