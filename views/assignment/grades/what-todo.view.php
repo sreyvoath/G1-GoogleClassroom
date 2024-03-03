@@ -16,7 +16,7 @@
 
                             <div class="mb-0 ms-2">
                                 <!-- Title -->
-                                <h6><a href="#">this is account gmail</a></h6>
+                                <h6><?= $_SESSION['user']['name'] ?></h6>
                             </div>
                         </div>
                         <!-- Buttons -->
@@ -27,9 +27,6 @@
         </tbody>
     </table>
     <style>
-        .form-select {
-            width: 500px;
-        }
     </style>
     <select id="filterSelect" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
         <option value="0" selected>All</option>
@@ -37,49 +34,39 @@
         <option value="2">Returned</option>
         <option value="3">Missing</option>
     </select>
-    <!-- ------------------------------------------------------------- -->
-    <div class="accordion" id="accordionExample">
+
+    <!-- ----for display when select option all--------------------------------------------------------- -->
+    <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item">
-            <div data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-4 border-start border-primary">
-                    <div class="d-flex align-items-center">
-                        <h6>scrum lop hery</h6>  
+            <div data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                <div class="d-flex align-items-center justify-content-between shadow-sm mb-1 bg-body rounded px-4 py-2 border-start border-primary">
+                    <div class=" align-items-center">
+                        <p>name(homework)</p>
+                        <p>No due date</p>
                     </div>
-                    <h6>ka</h6>
+                    <h6>Assigned</h6>
                 </div>
             </div>
-
-            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-4 border-start border-primary">
-                    <div class="d-flex align-items-center">
-                        <div class="w-70px me-2">
-                            ewyuio
-                        </div>
-                        <p>reaction</p>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="d-flex align-items-center justify-content-between shadow-sm mb-1 bg-body rounded px-4 py-3 border-start border-primary">
+                    <div class=" align-items-center">
+                        <p>No work has been attached</p>
                     </div>
                 </div>
-                <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-4 border-start border-primary">
+                <div class="d-flex align-items-center justify-content-between shadow-sm mb-1 bg-body rounded px-4 py-3 border-start border-primary">
                     <div class="d-flex align-items-center">
-                        <div class="w-70px me-2">
-                            ewyuio
+                        <div class="align-items-center">
+                            <button type="button" class="btn btn-light"><a href="#">View instructions</a></button>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
-
-
-
-
-    <!-- -------------------------------------------------------------- -->
-
-
-
-
-
+    <!-- -------to do for display when select returned------------------------------------------------------- -->
 
 
 </div>
+
