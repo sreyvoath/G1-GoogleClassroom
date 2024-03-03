@@ -1,8 +1,6 @@
-
-			<!-- Right sidebar END -->
-
-			<!-- Main content START -->
-			<div class="col-xl-9">
+<div class="container">
+	<div class="row">
+		<div class="col-12">
 				<!-- Card START -->
 				<div class="card border rounded-3">
 					<!-- Card header START -->
@@ -19,7 +17,7 @@
 							<!-- Search -->
 							<div class="col-md-8">
 								<form class="rounded position-relative">
-									<input class="form-control pe-5 bg-transparent" type="search" placeholder="Search" aria-label="Search">
+									<input id="search_student" class="form-control pe-5 bg-transparent" type="search" placeholder="Search" aria-label="Search">
 									<button class="btn bg-transparent px-2 py-0 position-absolute top-50 end-0 translate-middle-y" type="submit"><i class="fas fa-search fs-6 "></i></button>
 								</form>
 							</div>
@@ -29,10 +27,10 @@
 								<!-- Short by filter -->
 								<form>
 									<select class="form-select js-choice border-0 z-index-9 bg-transparent" aria-label=".form-select-sm">
-										<option value="">Sort by</option>
-										<option>Free</option>
-										<option>Newest</option>
-										<option>Oldest</option>
+										<option value="">All students</option>
+										<option>class name</option>
+										<option>class name</option>
+										<option>class name</option>
 									</select>
 								</form>
 							</div>
@@ -46,8 +44,8 @@
 								<thead>
 									<tr>
 										<th scope="col" class="border-0 rounded-start">Student name</th>
-										<th scope="col" class="border-0">Progress</th>
-										<th scope="col" class="border-0">Courses</th>
+										<th scope="col" class="border-0">Email</th>
+										<th scope="col" class="border-0">Class</th>
 										<th scope="col" class="border-0">Enrolled date</th>
 										<th scope="col" class="border-0 rounded-end">Action</th>
 									</tr>
@@ -327,18 +325,9 @@
 								</ul>
 							</nav>
 						</div>
-						<!-- Pagination END -->
 					</div>
-					<!-- Card body START -->
 				</div>
-				<!-- Card END -->
-			</div>
-			<!-- Main content END -->
-		</div><!-- Row END -->
+		</div>
 	</div>
-</section>
-<!-- =======================
-Inner part END -->
 
-</main>
-<!-- **************** MAIN CONTENT END **************** -->
+</div>

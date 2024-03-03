@@ -66,7 +66,7 @@
                     
                         <div class="avatar avatar-lg  mt-2">
                             <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
-                            <a href="/what-todo">Sran cute 💋</a>
+                            <a href="/what-todo">Zran cute 💋</a>
                         </div>
 
                     </th>

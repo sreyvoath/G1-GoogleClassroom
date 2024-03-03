@@ -13,6 +13,7 @@ $routes = [
     '/teacher' => 'controllers/teachers/teacher.controller.php',
     '/teacher-student' => 'controllers/teachers/teacher_student.controller.php',
     '/calendar' => 'controllers/calendar/calendar.controller.php',
+
     // todos
     '/todo' => 'controllers/todos/todo.controller.php',
     '/missing' => 'controllers/todos/todo_missing.controller.php',
@@ -28,7 +29,13 @@ $routes = [
     '/grade' => 'controllers/assignment/grades/grade.controller.php',
     '/what-todo' => 'controllers/assignment/grades/what-todo.controller.php',
     '/assignment_student' => 'controllers/assignment/assignment_student/assignment_student.cotroller.php',
-   
+
+    //students
+    '/student' => 'controllers/students/student.controller.php',
+
+
+    //teacher 
+    '/teacher_join' => 'controllers/teachers/teacher_join_class/teacher.controller.php',
 
 ];
 

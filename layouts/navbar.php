@@ -93,6 +93,9 @@ require 'database/database.php';
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item " href="/teacher"><i class="fas fa-user-tie fa-fw me-1"></i>Personal</a>
 							</li>
+							<li class="dropdown-submenu dropend">
+								<a class="dropdown-item " href="/student"><i class="fas fa-user-tie fa-fw me-1"></i>Students</a>
+							</li>
 						</ul>
 					</li>
 					<!-- Nav item 4 Megamenu-->

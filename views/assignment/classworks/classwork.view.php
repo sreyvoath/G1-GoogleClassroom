@@ -39,7 +39,7 @@
                 $id = $_SESSION['ass_id'];
                 date_default_timezone_set('Asia/Phnom_Penh');
                 $assignments = getAssigns($id);
-                $_SESSION['assignments']=$assigments;
+                $_SESSION['assignments']=$assignments;
                 ?>
                 <?php if (count($assignments) == 0) { ?>
                     <hr>
