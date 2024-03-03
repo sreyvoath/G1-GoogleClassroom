@@ -21,6 +21,7 @@
             </ul>
         </div>
     </div>
+
     <section class="pt-0">
         <div class="container">
             <div class="row">
@@ -38,6 +39,7 @@
                 $id = $_SESSION['ass_id'];
                 date_default_timezone_set('Asia/Phnom_Penh');
                 $assignments = getAssigns($id);
+                $_SESSION['assignments']=$assigments;
                 ?>
                 <?php if (count($assignments) == 0) { ?>
                     <hr>
@@ -88,9 +90,8 @@
                     <?php endforeach; ?>
                 <?php }; ?>
             </div>
+        </div>
 
-        </div>
-        </div>
         </div>
     </section>
 </main>
