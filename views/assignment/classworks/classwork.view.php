@@ -15,7 +15,7 @@
                         <a href="/people"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "" ?>">Poeple</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Third group">
-                        <a href="/grade"><button type="button" class="btn btn-outline-success <?= urlIs("/grade") ? "active" : "" ?>">Grades</button></a>
+                        <a href="/point"><button type="button" class="btn btn-outline-success <?= urlIs("/grade") ? "active" : "" ?>">Grades</button></a>
                     </div>
                 </div>
             </ul>
@@ -28,18 +28,13 @@
 
                 <div class="col-xl-12 mb-2 d-flex justify-content-end " style="margin-top: -40px; ">
                     <!-- Card START -->
-                    <a href="views/assignment/classworks/create_classwork.view.php" class="btn btn-primary shadow" style="border-radius: 50px;">
+                    <a href="/create-work" class="btn btn-primary shadow" style="border-radius: 50px;">
                         <i class="bi bi-plus-lg me-2 "></i>
                         <span>Assignment</span>
                     </a>
                 </div>
                 <?php
-                require "database/database.php";
-                require "models/assignments/assignment.model.php";
-                $id = $_SESSION['ass_id'];
-                date_default_timezone_set('Asia/Phnom_Penh');
-                $assignments = getAssigns($id);
-                $_SESSION['assignments']=$assignments;
+                $assignments = $_SESSION['assignments'];
                 ?>
                 <?php if (count($assignments) == 0) { ?>
                     <hr>
@@ -56,36 +51,34 @@
                     <?php
                 } else {
                     foreach ($assignments as $assigment) :
-                        $date = date('F j, Y', strtotime($assigment['end_date']));
-                        $time = date('g:i A', strtotime($assigment['end_time']));
-                    ?>
-
-                        <div class="dropdown-submenu dropend shadow-sm mb-3 bg-body rounded px-4 py-2 d-flex justify-content-between border-start border-2 border-primary">
-                            <div class="left d-flex gap-3">
-                                <div class="circle bg-info col-1 text-center" style="width: 50px; border-radius: 50px;">
-                                    <span class="material-symbols-outlined fs-2 text-white pt-2">assignment</span>
+                    ?><!-- -------------------------------------------------------------------------------- -->
+                        <div class="accordion-item">
+                            <div data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                <div class="dropdown-submenu dropend shadow-sm mb-3 bg-body rounded px-4 py-2 d-flex justify-content-between border-start border-2 border-primary">
+                                    <div class="left d-flex gap-3">
+                                        <div class="circle bg-info col-1 text-center" style="width: 50px; border-radius: 50px;">
+                                            <span class="material-symbols-outlined fs-2 text-white pt-2">assignment</span>
+                                        </div>
+                                        <div class="title mt-3">
+                                            <h6><a href="#"><?= $assigment['title'] ?></a></h6>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown mt-2 d-flex">
+                                        <div class="mt-1">Posted <?= $assigment['start_date'] ?></div>
+                                        <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
+                                        <ul class="dropdown-menu" aria-labelledby="accounntMenu">
+                                            <li class="dropdown-submenu dropend">
+                                                <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $assigment['id'] ?>">Edit</a>
+                                            </li>
+                                            <li class="dropdown-submenu dropend">
+                                                <a class="dropdown-item " href="controllers/assignment/delete_assignment.controller.php?id=<?= $assigment['id'] ?> " onclick="if (!confirm('Are you sure to Delete it?')) { return false; }">Delete</a>
+                                            </li>
+                                            <li class="dropdown-submenu dropend">
+                                                <a class="dropdown-item " href="# ">Copy Link</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="title mt-3">
-                                    <h6><a href="#"><?= $assigment['title'] ?></a></h6>
-                                </div>
-                            </div>
-
-                            <div class="dropdown mt-2 d-flex">
-                                <div class="mt-1">Posted <?= $assigment['start_date'] ?></div>
-                                <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
-                                <ul class="dropdown-menu" aria-labelledby="accounntMenu">
-                                    <li class="dropdown-submenu dropend">
-                                        <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $assigment['id'] ?>">Edit</a>
-                                    </li>
-                                    <li class="dropdown-submenu dropend">
-                                        <a class="dropdown-item " href="controllers/assignment/delete_assignment.controller.php?id=<?= $assigment['id'] ?> " onclick="if (!confirm('Are you sure to Delete it?')) { return false; }">Delete</a>
-                                    </li>
-                                    <li class="dropdown-submenu dropend">
-                                        <a class="dropdown-item " href="# ">Copy Link</a>
-                                    </li>
-                                </ul>
-                            </div>
-
                             </div>
                             <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-4 border-start border-primary">
@@ -109,8 +102,6 @@
                     <?php endforeach; ?>
                 <?php }; ?>
             </div>
-        </div>
-
         </div>
     </section>
 </main>
