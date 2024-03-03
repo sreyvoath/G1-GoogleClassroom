@@ -59,9 +59,11 @@ if (isset($_GET['id'])) {
                     <div class="btn-group me-4" role="group" aria-label="Second group">
                         <a href="/people"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "" ?> ">Poeple</button></a>
                     </div>
-                    <div class="btn-group me-4" role="group" aria-label="Third group">
-                        <a href="/grade"><button type="button" class="btn btn-outline-success <?= urlIs("/point") ? "active" : "" ?> ">Grades</button></a>
-                    </div>
+                    <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
+                        <div class="btn-group me-4" role="group" aria-label="Third group">
+                            <a href="/grade"><button type="button" class="btn btn-outline-success <?= urlIs("/point") ? "active" : "" ?> ">Grades</button></a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </ul>
         </div>
@@ -80,6 +82,7 @@ if (isset($_GET['id'])) {
                                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
                             <!-- Offcanvas body -->
+                            <?php if($_SESSION['user']['role']=='teacher'):?>
                             <div class="offcanvas-body p-3 p-xl-0">
                                 <div class="bg-dark border rounded-3 pb-0 p-3 w-100">
                                     <!-- Dashboard menu -->
@@ -89,6 +92,7 @@ if (isset($_GET['id'])) {
                                     </div>
                                 </div>
                             </div>
+                            <?php endif; ?>
                             <br>
                             <div class="offcanvas-body p-3 p-xl-0">
                                 <div class="bg-dark border rounded-3 pb-0 p-3 w-100">
@@ -96,7 +100,7 @@ if (isset($_GET['id'])) {
                                     <div class="list-group list-group-dark list-group-borderless">
                                         <p>Upcoming</p>
                                         <p>No work due soon</p>
-                                        <a class="mb-4 gap-2 col-001 mx-auto" href="#"><span>View all</span></a>
+                                        <a class="mb-4 gap-2 col-001 mx-auto " href="/todo"><span>View all</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -149,25 +153,31 @@ if (isset($_GET['id'])) {
                                                                 <!-- Info -->
                                                                 <div class="d-sm-flex">
                                                                     <p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i><?= $assignment['end_date'] ?></p>
+                                                                    <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
                                                                     <p class="h6 fw-light mb-0 small"><i class="fas fa-check-circle text-success me-2"></i>0 Completed</p>
+                                                                    <?php endif; ?>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <!-- Buttons -->
+
                                                         <div class="dropdown mt-2 d-flex">
                                                             <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
                                                             <ul class="dropdown-menu" aria-labelledby="accounntMenu">
-                                                                <li class="dropdown-submenu dropend">
-                                                                    <a class="dropdown-item " href="#">Move to top</a>
-                                                                </li>
-                                                                <li class="dropdown-submenu dropend">
-                                                                    <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $assignment['id'] ?>">Edit</a>
-                                                                </li>
+                                                                <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
+                                                                    <li class="dropdown-submenu dropend">
+                                                                        <a class="dropdown-item " href="#">Move to top</a>
+                                                                    </li>
+                                                                    <li class="dropdown-submenu dropend">
+                                                                        <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $assignment['id'] ?>">Edit</a>
+                                                                    </li>
+                                                                <?php endif; ?>
                                                                 <li class="dropdown-submenu dropend">
                                                                     <a class="dropdown-item " href="# ">Copy Link</a>
                                                                 </li>
                                                             </ul>
                                                         </div>
+
                                                     </div>
 
                                                 </td>

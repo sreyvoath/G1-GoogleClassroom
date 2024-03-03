@@ -6,7 +6,7 @@ require 'models/class.model.php';
 require 'models/trainers/trainer.model.php';
 require 'models/user_join_class/student.model.php';
 require 'models/user_join_class/class.model.php';
-
+require "models/assignments/assignment.model.php";
 
 
 $id = $_SESSION['user']['id'];
@@ -23,7 +23,6 @@ foreach ($classes as $class) {
 }
 
 //count assignment 
-require "models/assignments/assignment.model.php";
 $assignments = getAssignments();
 $assign_number = count($assignments);
 
@@ -36,9 +35,10 @@ $student_number = count($students);
 if ($_SESSION['user']['role'] == "student") {
 	$student = getStudent($_SESSION['user']['id']);
 	$class_id = $student['class_id'];
-
+	
 	//get class buy class_id
 	$classJoin = studentJoinClass($class_id);
+	$_SESSION['class_join'] = $classJoin;
 	$resultJoin = 0;
 	foreach ($classJoin as $class) {
 		if ($class['archive'] == 1) {

@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 if (count($user) == 0) {
                     createAccount($name, $email, $passwordEncript, $nameInDB);
                     $newUser = getUserEmail($email);
-                    $_SESSION['user'] = ['name'=>$name, 'email'=>$email, 'image'=>$nameInDB,'id'=>$newUser['id']];
+                    $_SESSION['user'] = ['name'=>$name, 'email'=>$email, 'image'=>$nameInDB,'id'=>$newUser['id'], 'role'=>$newUser['role']];
                     header('Location: /user-signin');
                     $_SESSION['success'] = "Account successfully created";
                 } else {
