@@ -14,9 +14,11 @@
                     <div class="btn-group me-4" role="group" aria-label="Second group">
                         <a href="/people"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "" ?>">Poeple</button></a>
                     </div>
+                    <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
                     <div class="btn-group me-4" role="group" aria-label="Third group">
                         <a href="/point"><button type="button" class="btn btn-outline-success <?= urlIs("/grade") ? "active" : "" ?>">Grades</button></a>
                     </div>
+                    <?php endif; ?>
                 </div>
             </ul>
         </div>
@@ -28,10 +30,18 @@
 
                 <div class="col-xl-12 mb-2 d-flex justify-content-end " style="margin-top: -40px; ">
                     <!-- Card START -->
-                    <a href="/create-work" class="btn btn-primary shadow" style="border-radius: 50px;">
-                        <i class="bi bi-plus-lg me-2 "></i>
-                        <span>Assignment</span>
-                    </a>
+
+                    <?php if ($_SESSION['user']['role'] == 'teacher') { ?>
+                        <a href="/create-work" class="btn btn-primary shadow" style="border-radius: 50px;">
+                            <i class="bi bi-plus-lg me-2 "></i>
+                            <span>Assignment</span>
+                        </a>
+                    <?php } else { ?>
+                        <a href="/my-info" class="btn shadow" style="background-color: gainsboro;">
+                            <i class="bi bi-person-workspace text-primary"></i>
+                            <span class="text-primary">View your work</span>
+                        </a>
+                    <?php } ?>
                 </div>
                 <?php
                 require "database/database.php";
@@ -68,21 +78,24 @@
                                             <h6><a href="#"><?= $assigment['title'] ?></a></h6>
                                         </div>
                                     </div>
+
                                     <div class="dropdown mt-2 d-flex">
                                         <div class="mt-1">Posted <?= $assigment['start_date'] ?></div>
                                         <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
-                                        <ul class="dropdown-menu" aria-labelledby="accounntMenu">
-                                            <li class="dropdown-submenu dropend">
-                                                <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $assigment['id'] ?>">Edit</a>
-                                            </li>
-                                            <li class="dropdown-submenu dropend">
-                                                <a class="dropdown-item " href="controllers/assignment/delete_assignment.controller.php?id=<?= $assigment['id'] ?> " onclick="if (!confirm('Are you sure to Delete it?')) { return false; }">Delete</a>
-                                            </li>
-                                            <li class="dropdown-submenu dropend">
-                                                <a class="dropdown-item " href="# ">Copy Link</a>
-                                            </li>
-                                        </ul>
+                                        <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
+                                            <ul class="dropdown-menu" aria-labelledby="accounntMenu">
+                                                <li class="dropdown-submenu dropend">
+                                                    <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $assigment['id'] ?>">Edit</a>
+                                                </li>
+                                                <li class="dropdown-submenu dropend">
+                                                    <a class="dropdown-item " href="controllers/assignment/delete_assignment.controller.php?id=<?= $assigment['id'] ?> " onclick="if (!confirm('Are you sure to Delete it?')) { return false; }">Delete</a>
+                                                </li>
+                                                <li class="dropdown-submenu dropend">
+                                                    <a class="dropdown-item " href="# ">Copy Link</a>
+                                                </li>
+                                            </ul>
                                     </div>
+                                <?php endif; ?>
                                 </div>
                             </div>
                             <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">

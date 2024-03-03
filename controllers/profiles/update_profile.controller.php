@@ -28,7 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $nameInDB = $newFileName . '.' . $imageExtension;
                 move_uploaded_file($_FILES["image"]["tmp_name"], $nameInDirectory);
                 updateProfile($name, $email, $nameInDB, $id);
-                $_SESSION['user'] = ['name' => $name, 'email' => $email, 'image' => $nameInDB, 'id' => $id];
+                $newUser = getUserEmail($email);
+                $_SESSION['user'] = ['name' => $name, 'email' => $email, 'image' => $nameInDB, 'id' => $id, 'role'=>$newUser['role']];
             }
         }
         header('location: /home');
