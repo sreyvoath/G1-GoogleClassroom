@@ -1,5 +1,4 @@
 <?php
-
 //<======== create user account =======>
 function createAccount(string $name, string $email, string $password, string $image) : bool
 {

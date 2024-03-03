@@ -1,14 +1,19 @@
 <?php
+
+// import database and models
 require "database/database.php";
 require 'models/class.model.php';
-require 'models/user.model.php';
+require 'models/trainers/trainer.model.php';
+require 'models/user_join_class/student.model.php';
+require 'models/user_join_class/class.model.php';
+
+
+
 $id = $_SESSION['user']['id'];
 $classes = getClasses($id);
 $_SESSION['class'] = $classes;
-$students = getUserStudent();
 $result = 0;
 $class_number = 0;
-$student_number =count($students);
 foreach ($classes as $class) {
 	if ($class['archive'] == 1) {
 		$result += 1;
@@ -17,11 +22,35 @@ foreach ($classes as $class) {
 	}
 }
 
-
+//count assignment 
 require "models/assignments/assignment.model.php";
 $assignments = getAssignments();
-$assign_number= count($assignments);
+$assign_number = count($assignments);
+
+//condition of user as a teacher and student 
+$role = $_SESSION['user']['role'];
+$students = getStudents();
+$student_number = count($students);
+
+// get user is staying website
+if ($_SESSION['user']['role'] == "student") {
+	$student = getStudent($_SESSION['user']['id']);
+	$class_id = $student['class_id'];
+
+	//get class buy class_id
+	$classJoin = studentJoinClass($class_id);
+	$resultJoin = 0;
+	foreach ($classJoin as $class) {
+		if ($class['archive'] == 1) {
+			$resultJoin += 1;
+		} else {
+			$class_number += 1;
+		}
+	}
+}
+
 ?>
+
 <main>
 
 	<!-- ===Main Banner START -->
@@ -298,7 +327,7 @@ $assign_number= count($assignments);
 						<span class="display-6 lh-1 text-purple mb-0"><i class="fas fa-user-graduate"></i></span>
 						<div class="ms-4 h6 fw-normal">
 							<div class="d-flex">
-								<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?=$student_number?>" data-purecounter-delay="200">0</h5>
+								<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?= $student_number ?>" data-purecounter-delay="200">0</h5>
 								<span class="mb-0 h5">+</span>
 							</div>
 							<p class="mb-0">Students</p>
@@ -355,14 +384,63 @@ $assign_number= count($assignments);
 					<div class="row g-4">
 						<!-- Card class  -->
 						<?php
+						if ($role == "teacher") {
+							if (count($classes) == $result) {
+						?>
+								<img src="../../assets/images/about/25.png" alt="" style="width: 400px; height: 300px; display:flex; margin:auto; padding-top:100px">
+								<?php
+							} else {
 
-						if (count($classes) == $result) {
+								foreach ($classes as $class) :
+									if ($class['archive'] == 0) :
+								?>
+										<div class="col-sm-6 col-lg-4 col-xl-3" id="card" draggable="true" ondragstart="drag(event)">
+											<div class=" card_class card shadow h-100">
+												<!-- Image -->
+												<img src="../../assets/images/classes/<?= $class['image'] ?>" class="card-img-top" alt="course image" style="width:350px; height:200px; object-fit: cover;">
+												<!-- Card body -->
+												<div class="nav-item dropdown d-flex justify-content-end">
+													<a class="nav-link " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+													<ul class="dropdown-menu" aria-labelledby="accounntMenu">
+														<li class="dropdown-submenu dropend">
+															<a class="dropdown-item " href="">Create</a>
+														</li>
+														<li class="dropdown-submenu dropend">
+															<a class="dropdown-item " href="#">Delete</a>
+														</li>
+														<li class="dropdown-submenu dropend">
+															<a class="dropdown-item " href="#">Edit</a>
+														</li>
+													</ul>
+
+												</div>
+												<div class="card-body pb-0">
+													<!-- Title -->
+													<h5 class="card-title fw-normal"><a class="text-decoration-none" href="/stream?id=<?= $class['id'] ?>"><?= $class['title']; ?></a></h5>
+													<p class="mb-2 text-truncate-2"><?= $class['section']; ?></p>
+												</div>
+												<!-- Card footer -->
+												<div class="card-footer pt-3 pb-3">
+													<div class="d-flex">
+														<a href="../../controllers/classes/class.edit.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-info text-white"><i class="bi bi-pen text-dark "></i></a>
+														<a href="../../controllers/classes/class.delete.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to Delete it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-trash text-danegr "></i></a>
+														<a href="../../controllers/classes/class.archive.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to archive it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-secondary"><i class="bi bi-archive-fill"></i></a>
+													</div>
+												</div>
+											</div>
+										</div>
+									<?php endif ?>
+								<?php endforeach ?>
+							<?php } ?>
+						<?php } else
+							
+							if (count($classJoin) == $resultJoin) {
 						?>
 							<img src="../../assets/images/about/25.png" alt="" style="width: 400px; height: 300px; display:flex; margin:auto; padding-top:100px">
 							<?php
 						} else {
 
-							foreach ($classes as $class) :
+							foreach ($classJoin as $class) :
 								if ($class['archive'] == 0) :
 							?>
 									<div class="col-sm-6 col-lg-4 col-xl-3" id="card" draggable="true" ondragstart="drag(event)">
@@ -393,14 +471,14 @@ $assign_number= count($assignments);
 											<!-- Card footer -->
 											<div class="card-footer pt-3 pb-3">
 												<div class="d-flex">
-													<a href="../../controllers/classes/class.edit.controller.php?id=<?= $class['id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-info text-white"><i class="bi bi-pen text-dark "></i></a>
-													<a href="../../controllers/classes/class.delete.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to Delete it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-trash text-danegr "></i></a>
+													<a href="../../controllers/classes/class.delete.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to Uneroll it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-ban text-danegr fs-5 "></i></a>
 													<a href="../../controllers/classes/class.archive.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to archive it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-secondary"><i class="bi bi-archive-fill"></i></a>
 												</div>
 											</div>
 										</div>
 									</div>
 								<?php endif ?>
+
 							<?php endforeach ?>
 						<?php } ?>
 						<!-- Card item END -->
