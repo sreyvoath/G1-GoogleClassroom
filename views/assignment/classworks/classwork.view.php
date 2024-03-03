@@ -98,17 +98,12 @@
                                     <div class="align-items-center">
                                         <button type="button" class="btn btn-light"><a href="#">View instructions</a></button>
                                     </div>
-
                                 </div>
                             </div>
-
-
                         </div>
+                    <?php endforeach; ?>
+                <?php }; ?>
             </div>
         </div>
-
-        </div>
-    <?php endforeach; ?>
-<?php }; ?>
     </section>
 </main>
