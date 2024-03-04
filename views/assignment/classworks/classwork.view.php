@@ -15,9 +15,9 @@
                         <a href="/people"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "" ?>">Poeple</button></a>
                     </div>
                     <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
-                    <div class="btn-group me-4" role="group" aria-label="Third group">
-                        <a href="/point"><button type="button" class="btn btn-outline-success <?= urlIs("/grade") ? "active" : "" ?>">Grades</button></a>
-                    </div>
+                        <div class="btn-group me-4" role="group" aria-label="Third group">
+                            <a href="/point"><button type="button" class="btn btn-outline-success <?= urlIs("/grade") ? "active" : "" ?>">Grades</button></a>
+                        </div>
                     <?php endif; ?>
                 </div>
             </ul>
@@ -67,9 +67,9 @@
                 } else {
                     foreach ($assignments as $assigment) :
                     ?><!-- -------------------------------------------------------------------------------- -->
-                        <div class="accordion-item">
+                        <div class=" accordion-item">
                             <div data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                <div class="dropdown-submenu dropend shadow-sm mb-3 bg-body rounded px-4 py-2 d-flex justify-content-between border-start border-2 border-primary">
+                                <div class=" card_class  dropdown-submenu dropend shadow-sm mb-3 bg-body rounded px-4 py-2 d-flex justify-content-between border-start border-2 border-primary">
                                     <div class="left d-flex gap-3">
                                         <div class="circle bg-info col-1 text-center" style="width: 50px; border-radius: 50px;">
                                             <span class="material-symbols-outlined fs-2 text-white pt-2">assignment</span>

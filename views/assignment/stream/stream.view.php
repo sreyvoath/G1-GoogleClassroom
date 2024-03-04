@@ -140,9 +140,9 @@ if (isset($_GET['id'])) {
                                             <tr>
                                                 <!-- Course item -->
                                                 <td>
-                                                    <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-2 border-start border-primary">
+                                                    <div class=" card_class d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-2 border-start border-primary">
                                                         <!-- Content -->
-                                                        <div class="d-flex align-items-center">
+                                                        <div class="  d-flex align-items-center">
                                                             <!-- Image -->
                                                             <div class="w-70px me-2">
                                                                 <img src="assets/images/avatar/16.png" class="rounded" alt="">
