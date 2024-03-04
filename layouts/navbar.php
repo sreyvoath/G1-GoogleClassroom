@@ -57,7 +57,7 @@ require 'database/database.php';
 								<button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Create Class</button>
 							</li>
 							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item " href="#">Join Class</a>
+								<a class="dropdown-item " href="../views/classes/join_class.view.php">Join Class</a>
 							</li>
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item text-primary " href="/classes">View all Class</a>

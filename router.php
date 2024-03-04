@@ -18,6 +18,10 @@ $routes = [
     '/todo' => 'controllers/todos/todo.controller.php',
     '/missing' => 'controllers/todos/todo_missing.controller.php',
     '/done' => 'controllers/todos/todo_done.controller.php',
+    
+    // join class
+    // '/join-class' => 'controllers/classes/join_class.controller.php',
+
 
     // assignment
     '/stream' => 'controllers/assignment/stream/stream.contorller.php',
