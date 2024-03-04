@@ -118,7 +118,7 @@
 											<tr>
 												<!-- Course item -->
 												<td>
-													<div class="d-flex align-items-center justify-content-between">
+													<div class="  card_class d-flex align-items-center justify-content-between">
 														<!-- Content -->
 														<div class="d-flex align-items-center">
 															<!-- Image -->

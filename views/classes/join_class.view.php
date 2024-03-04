@@ -41,7 +41,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Class</h5>
                         <p class="card-text">Ask your teacher for the class code,then enter it here</p>
-                        <input type="text" name="code" class="form-control w-50 p-3" id="class-code" placeholder="Class code" aria-label="Username" aria-describedby="basic-addon2">
+                        <input type="text" name="" class="form-control w-50 p-3" id="class-code" placeholder="Class code" aria-label="Username" aria-describedby="basic-addon2">
                     </div>
                 </div>
                 <div class="bottom mt-3" style="margin-left: 30px;">
@@ -53,9 +53,14 @@
                     <p>If you have trouble joining the class, go to the Help Center article</p>
                 </div>
             </div>
-
         </div>
     </form>
+    <script>
+        const joinBotton = document.getElementById("btn-join");
+        let input = document.querySelector("#class-code");
+        console.log(joinBotton);
+        console.log(input);
+    </script>
 </body>
 
 </html>

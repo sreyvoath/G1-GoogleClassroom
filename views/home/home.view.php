@@ -310,7 +310,7 @@ if ($_SESSION['user']['role'] == "student") {
 			<div class="row g-4">
 				<!-- Counter item -->
 				<div class="col-sm-6 col-xl-3">
-					<div class="d-flex justify-content-center align-items-center p-4 bg-warning bg-opacity-15 rounded-3">
+					<div class="card_class d-flex justify-content-center align-items-center p-4 bg-warning bg-opacity-15 rounded-3">
 						<span class="display-6 lh-1 text-blue mb-0"><i class="fas fa-user-tie"></i></span>
 						<div class="ms-4 h6 fw-normal">
 							<div class="d-flex">
@@ -323,7 +323,7 @@ if ($_SESSION['user']['role'] == "student") {
 				</div>
 				<!-- Counter item -->
 				<div class="col-sm-6 col-xl-3">
-					<div class="d-flex justify-content-center align-items-center p-4 bg-blue bg-opacity-10 rounded-3">
+					<div class="card_class  d-flex justify-content-center align-items-center p-4 bg-blue bg-opacity-10 rounded-3">
 						<span class="display-6 lh-1 text-purple mb-0"><i class="fas fa-user-graduate"></i></span>
 						<div class="ms-4 h6 fw-normal">
 							<div class="d-flex">
@@ -336,7 +336,7 @@ if ($_SESSION['user']['role'] == "student") {
 				</div>
 				<!-- Counter item -->
 				<div class="col-sm-6 col-xl-3">
-					<div class="d-flex justify-content-center align-items-center p-4 bg-purple bg-opacity-10 rounded-3">
+					<div class=" card_class d-flex justify-content-center align-items-center p-4 bg-purple bg-opacity-10 rounded-3">
 						<span class="display-6 lh-1 text-warning mb-0"><i class="fas fa-tv"></i></span>
 						<div class="ms-4 h6 fw-normal">
 							<div class="d-flex">
