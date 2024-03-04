@@ -82,16 +82,16 @@ if (isset($_GET['id'])) {
                                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
                             <!-- Offcanvas body -->
-                            <?php if($_SESSION['user']['role']=='teacher'):?>
-                            <div class="offcanvas-body p-3 p-xl-0">
-                                <div class="bg-dark border rounded-3 pb-0 p-3 w-100">
-                                    <!-- Dashboard menu -->
-                                    <div class="list-group list-group-dark list-group-borderless">
-                                        <p>Class code</p>
-                                        <a class="mb-4 gap-2 col-1 mx-auto" href="#"><span>4xfi6pn</span></a>
+                            <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
+                                <div class="offcanvas-body p-3 p-xl-0">
+                                    <div class="bg-dark border rounded-3 pb-0 p-3 w-100">
+                                        <!-- Dashboard menu -->
+                                        <div class="list-group list-group-dark list-group-borderless">
+                                            <p>Class code</p>
+                                            <a class="mb-4 gap-2 col-1 mx-auto" href="#"><span>4xfi6pn</span></a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             <?php endif; ?>
                             <br>
                             <div class="offcanvas-body p-3 p-xl-0">
@@ -121,7 +121,6 @@ if (isset($_GET['id'])) {
                                 <!-- PHP loop for classes START -->
 
                                 <tbody class="tbodySearch" id="tbodySearch">
-
                                     <?php if (count($assignments) == 0) { ?>
                                         <div class="d-flex">
                                             <img src="assets/images/bg/04.png" alt="">
@@ -137,24 +136,28 @@ if (isset($_GET['id'])) {
                                             $date = date('F j, Y', strtotime($assignment['end_date']));
                                             $time = date('g:i A', strtotime($assignment['end_time']));
                                         ?>
-                                            <tr>
+                                            <tr onclick="window.location='/instruction?id=<?= $assignment['id'] ?>';" style="cursor:pointer;">
+
                                                 <!-- Course item -->
                                                 <td>
-                                                    <div class=" card_class d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-2 border-start border-primary">
+                                                    <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-2 border-start border-primary">
                                                         <!-- Content -->
-                                                        <div class="  d-flex align-items-center">
+                                                        <div class="d-flex align-items-center">
                                                             <!-- Image -->
                                                             <div class="w-70px me-2">
                                                                 <img src="assets/images/avatar/16.png" class="rounded" alt="">
                                                             </div>
                                                             <div class="mb-0 ms-2">
                                                                 <!-- Title -->
-                                                                <p><a class="text-dark" href="/instruction?id=<?= $assignment['id'] ?>"> <?= $_SESSION['user']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
-                                                                <!-- Info -->
+                                                                <?php if ($_SESSION['user']['role'] == "teacher") { ?>
+                                                                    <p><a class="text-dark" href="/instruction?id=<?= $assignment['id'] ?>"> <?= $_SESSION['user']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
+                                                                <?php } else { ?>
+                                                                    <p><a class="text-dark" href="/assignment_student?id=<?= $assignment['id'] ?>"> <?= $_SESSION['user']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
+                                                                <?php } ?>
                                                                 <div class="d-sm-flex">
                                                                     <p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i><?= $assignment['end_date'] ?></p>
                                                                     <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
-                                                                    <p class="h6 fw-light mb-0 small"><i class="fas fa-check-circle text-success me-2"></i>0 Completed</p>
+                                                                        <p class="h6 fw-light mb-0 small"><i class="fas fa-check-circle text-success me-2"></i>0 Completed</p>
                                                                     <?php endif; ?>
                                                                 </div>
                                                             </div>
@@ -181,6 +184,7 @@ if (isset($_GET['id'])) {
                                                     </div>
 
                                                 </td>
+                                                </a>
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php }; ?>
