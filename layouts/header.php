@@ -45,7 +45,7 @@ if(!isset($_SESSION['user'])){
 	<!-- Theme JS  -->
 	<script src="vendor/js/search.js" defer></script>
 	<script src="vendor/js/todos.js" defer></script>
-	<!-- <script src="vendor/js/join_class.js" defer></script> -->
+	<script src="vendor/js/join_class.js"defer></script>
 
 	<script>
 		window.dataLayer = window.dataLayer || [];

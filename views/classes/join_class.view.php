@@ -19,7 +19,7 @@ if (isset($_SESSION['user'])) {
 ?>
 
 <body>
-    <form action="/controllers/assignment/create_assignment.controller.php" method="post">
+    <form action="controllers/classes/join_class.controller.php" method="post">
         <div class="join-class" style="margin:auto;">
             <div class="back d-flex justify-content-between align-items-center shadow-sm p-3 mb-5 bg-body rounded">
                 <div class="nav-left d-flex gap-3">
@@ -29,7 +29,7 @@ if (isset($_SESSION['user'])) {
                     </div>
                 </div>
                 <div class="nav-right">
-                    <button type="submit" name="" class="btn btn-primary px-4" id="btn-join">Join</button>
+                    <button type="submit" disabled name="" class="btn btn-primary px-4" id="btn-join">Join</button>
                 </div>
             </div>
             <div class="d-flex flex-column" style="width:50%;margin:auto; margin-top:-25px;">
@@ -50,7 +50,7 @@ if (isset($_SESSION['user'])) {
                     <div class="card-body">
                         <h5 class="card-title">Class</h5>
                         <p class="card-text">Ask your teacher for the class code,then enter it here</p>
-                        <input type="text" name="code" class="form-control w-50 p-3" id="class-code" placeholder="Class code" aria-label="Username" aria-describedby="basic-addon2">
+                        <input type="text" name="" class="form-control w-50 p-3" id="class-code" placeholder="Class code" aria-label="Username" aria-describedby="basic-addon2">
                     </div>
                 </div>
                 <div class="bottom mt-3" style="margin-left: 30px;">
@@ -62,9 +62,9 @@ if (isset($_SESSION['user'])) {
                     <p>If you have trouble joining the class, go to the Help Center article</p>
                 </div>
             </div>
-
         </div>
     </form>
+
 </body>
 
 </html>
