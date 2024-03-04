@@ -471,7 +471,7 @@ if ($_SESSION['user']['role'] == "student") {
 											<!-- Card footer -->
 											<div class="card-footer pt-3 pb-3">
 												<div class="d-flex">
-													<a href="../../controllers/classes/class.delete.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to Uneroll it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-ban text-danegr fs-5 "></i></a>
+													<a href="../../controllers/classes/class.delete.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to Uneroll it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-ban text-danegr "></i></a>
 													<a href="../../controllers/classes/class.archive.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to archive it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-secondary"><i class="bi bi-archive-fill"></i></a>
 												</div>
 											</div>
@@ -572,9 +572,9 @@ if ($_SESSION['user']['role'] == "student") {
 											<!-- Avatar -->
 											<div class="d-flex align-items-center">
 												<div class="avatar avatar-sm">
-													<img class="avatar-img rounded-1" src="assets/images/avatar/10.jpg" alt="avatar">
+													<img class="avatar-img rounded-1" src="assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="avatar">
 												</div>
-												<p class="mb-0 ms-2"><a href="#" class="h6 fw-light mb-0">Larry Lawson</a></p>
+												<p class="mb-0 ms-2"><a href="#" class="h6 fw-light mb-0"><?= $_SESSION['user']['name'] ?></a></p>
 											</div>
 											<!-- Price -->
 											<div>

@@ -113,7 +113,7 @@ $studentJoined = studentJoinedClass($_SESSION['class_id']);
                                             <img src="assets/images/avatar/17.png" alt="">
                                         </div>
                                         <p class="d-flex justify-content-center fs-5">Add student to this class</p>
-                                        
+
                                     <?php endif; ?>
                                     <?php foreach ($studentJoined as $student) : ?>
                                         <tr>
@@ -155,9 +155,7 @@ $studentJoined = studentJoinedClass($_SESSION['class_id']);
 
                                                         </div>
                                                     <?php } else { ?>
-                                                        <a href="#" class="bg p-1 px-2" style="background-color: gainsboro; border-radius: 50px;">
-                                                            <i class="bi bi-envelope fs-5"></i>
-                                                        </a>
+                                                        <a href="#" class="btn btn-success-soft btn-round me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="<?= $student['email']?>"><i class="far fa-envelope"></i></a>
                                                     <?php } ?>
                                                 </div>
                                             </td>
