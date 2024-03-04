@@ -1,5 +1,4 @@
 <div class="container">
-
     <table class="table">
         <!-- PHP loop for classes START -->
         <tbody class="tbodySearch" id="tbodySearch">
@@ -23,12 +22,9 @@
                     </div>
                 </td>
             </tr>
-
         </tbody>
     </table>
-    <style>
-    </style>
-    <select id="filterSelect" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+    <select id="filterSelect" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" onchange="filterItems()">
         <option value="0" selected>All</option>
         <option value="1">Turned in</option>
         <option value="2">Returned</option>
@@ -36,7 +32,8 @@
     </select>
 
     <!-- ----for display when select option all--------------------------------------------------------- -->
-    <div class="accordion accordion-flush" id="accordionFlushExample">
+    
+    <div id="allItems" class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item">
             <div data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                 <div class="d-flex align-items-center justify-content-between shadow-sm mb-1 bg-body rounded px-4 py-2 border-start border-primary">
@@ -64,9 +61,56 @@
             </div>
         </div>
     </div>
-
     <!-- -------to do for display when select returned------------------------------------------------------- -->
+    <div class="container d-flex justify-content-center">
 
 
+
+
+        <div id="turnedInItems" style="display:none;">
+            <img src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="Turned in">
+        </div>
+    
+        <div id="returnedItems" style="display:none;">
+            <h2>hello Turned in</h2>
+            <!-- Add your returned items content here -->
+        </div>
+        <div id="missingItems" style="display:none;">
+            <h2>hello Sran bek tnam</h2>
+            <!-- Add your returned items content here -->
+        </div>
+    </div>
 </div>
 
+<script>
+    function filterItems() {
+        var filter = document.getElementById('filterSelect').value;
+        var allItems = document.getElementById('allItems');
+        var turnedInItems = document.getElementById('turnedInItems');
+        var returnedItems = document.getElementById('returnedItems');
+        var missingItems =document.getElementById('missingItems')
+
+        if (filter === '0') {
+            allItems.style.display = 'block';
+            turnedInItems.style.display = 'none';
+            returnedItems.style.display = 'none';
+            missingItems.style.display = 'none';
+        } else if (filter === '1') {
+            allItems.style.display = 'none';
+            turnedInItems.style.display = 'block';
+            returnedItems.style.display = 'none';
+            missingItems.style.display = 'none';
+        } else if (filter === '2') {
+            allItems.style.display = 'none';
+            turnedInItems.style.display = 'none';
+            returnedItems.style.display = 'block';
+            missingItems.style.display = 'none';
+        } else if (filter === '3') {
+            allItems.style.display = 'none';
+            turnedInItems.style.display = 'none';
+            returnedItems.style.display = 'none';
+            missingItems.style.display = 'block';
+            // Add logic for displaying missing items
+        }
+    }
+</script>

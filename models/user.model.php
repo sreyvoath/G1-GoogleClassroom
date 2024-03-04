@@ -12,7 +12,6 @@ function getUser(string $id): array
         return [];
     }
 }
-
 // ==============update profile==================
 function updateProfile(string $name, string $email, string $image, int $id) : bool
 {

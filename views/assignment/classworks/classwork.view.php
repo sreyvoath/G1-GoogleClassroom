@@ -68,7 +68,7 @@
                     foreach ($assignments as $assigment) :
                     ?><!-- -------------------------------------------------------------------------------- -->
                         <div class="accordion-item">
-                            <div data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            <div data-bs-toggle="collapse" data-bs-target="#flush-collapse<?= $assigment['id'] ?>" aria-expanded="false" aria-controls="flush-collapseTwo">
                                 <div class="dropdown-submenu dropend shadow-sm mb-3 bg-body rounded px-4 py-2 d-flex justify-content-between border-start border-2 border-primary">
                                     <div class="left d-flex gap-3">
                                         <div class="circle bg-info col-1 text-center" style="width: 50px; border-radius: 50px;">
@@ -98,7 +98,7 @@
                                 <?php endif; ?>
                                 </div>
                             </div>
-                            <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                            <div id="flush-collapse<?= $assigment['id'] ?>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-4 border-start border-primary">
                                     <div class="align-items-center">
                                         <p>No due date(sran lop)</p>
