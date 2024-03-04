@@ -11,10 +11,10 @@
     <div class="container mt-3">
         <form action="" class="bg-body shadow">
             <div class="row ">
-                <div class="nav-todo d-flex mt-2 p-2" style="width:97%; margin:auto;">
-                    <a href="/todo" class="mx-3" style="width: 100px; height:30px;">Assigned</a>
-                    <a href="/missing" class="mx-3" style="width: 100px; height:30px;">Missing</a>
-                    <a href="/done" class="mx-3" style="width: 100px; height:30px;">Done</a>
+                <div class="nav-todo d-flex mt-2 p-2">
+                    <a href="/todo" class="mx-3" style="<?= urlIs("/todo") ? "border-bottom: 3px solid purple;" : "" ?>">Assigned</a>
+                    <a href="/missing" class="mx-3" style="<?= urlIs("/missing") ? "border-bottom: 3px solid purple;" : "" ?>">Missing</a>
+                    <a href="/done" class="mx-3" style="<?= urlIs("/done") ? "border-bottom: 3px solid purple;" : "" ?>">Done</a>
                 </div>
                 <hr style="width: 97%;margin:auto;">
                 <div class="class">

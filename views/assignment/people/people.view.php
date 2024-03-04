@@ -8,6 +8,8 @@ require "models/user_join_class/student.model.php";
 $userCreated = getUserCreateClass($_SESSION['class_id']);
 $studentJoined = studentJoinedClass($_SESSION['class_id']);
 
+$_SESSION['user_created'] = $userCreated;
+
 
 ?>
 
