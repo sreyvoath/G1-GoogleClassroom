@@ -87,7 +87,6 @@
 
                                     </ul>
                                 </div>
-
                             </div>
                             <!-- point -->
                             <div class="btn-point d-flex flex-column mt-4">
