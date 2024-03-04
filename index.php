@@ -1,13 +1,10 @@
 <?php
 require 'utils/url.php';
 require 'database/database.php';
-if (urlIs("/teacher-assigment")  || urlIs("/trainer-student") || urlIs("/trainer-review")) { 
+if (urlIs("/teacher-assigment")  || urlIs("/trainer-student") || urlIs("/trainer-review")) {
     require "teacher_router.php";
-} else if (urlIs('/user-signin') || urlIs('/user-signup') || urlIs('/') || urlIs("/user-signout")){
+} else if (urlIs('/user-signin') || urlIs('/user-signup') || urlIs('/') || urlIs("/user-signout")) {
     require "admin_router.php";
-}
-else{
+} else {
     require 'router.php';
 }
-
-

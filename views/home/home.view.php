@@ -335,7 +335,7 @@ if ($_SESSION['user']['role'] == "student") {
 					</div>
 				</div>
 				<!-- Counter item -->
-				<div class="col-sm-6 col-xl-3">
+				<div class=" col-sm-6 col-xl-3">
 					<div class=" card_class d-flex justify-content-center align-items-center p-4 bg-purple bg-opacity-10 rounded-3">
 						<span class="display-6 lh-1 text-warning mb-0"><i class="fas fa-tv"></i></span>
 						<div class="ms-4 h6 fw-normal">
@@ -349,7 +349,7 @@ if ($_SESSION['user']['role'] == "student") {
 				</div>
 				<!-- Counter item -->
 				<div class="col-sm-6 col-xl-3">
-					<div class="d-flex justify-content-center align-items-center p-4 bg-info bg-opacity-10 rounded-3">
+					<div class=" card_class d-flex justify-content-center align-items-center p-4 bg-info bg-opacity-10 rounded-3">
 						<span class="display-6 lh-1 text-info mb-0"><i class="bi bi-book-half"></i></span>
 						<div class="ms-4 h6 fw-normal">
 							<div class="d-flex">

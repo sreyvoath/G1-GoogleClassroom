@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form action="/controllers/assignment/create_assignment.controller.php" method="post">
+    <form action="controllers/classes/join_class.controller.php" method="post">
         <div class="join-class" style="margin:auto;">
             <div class="back d-flex justify-content-between align-items-center shadow-sm p-3 mb-5 bg-body rounded">
                 <div class="nav-left d-flex gap-3">
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="nav-right">
-                    <button type="submit" name="" class="btn btn-primary px-4" id="btn-join">Join</button>
+                    <button type="submit" disabled name="" class="btn btn-primary px-4" id="btn-join">Join</button>
                 </div>
             </div>
             <div class="d-flex flex-column" style="width:50%;margin:auto; margin-top:-25px;">
@@ -55,12 +55,7 @@
             </div>
         </div>
     </form>
-    <script>
-        const joinBotton = document.getElementById("btn-join");
-        let input = document.querySelector("#class-code");
-        console.log(joinBotton);
-        console.log(input);
-    </script>
+
 </body>
 
 </html>
