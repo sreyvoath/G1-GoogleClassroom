@@ -62,7 +62,7 @@ if(isset($_SESSION['class_join'])){
 								</li>
 							<?php endif; ?>
 							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item " href="#">Join Class</a>
+								<a class="dropdown-item " href="../views/classes/join_class.view.php">Join Class</a>
 							</li>
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item text-primary " href="/classes">View all Class</a>
