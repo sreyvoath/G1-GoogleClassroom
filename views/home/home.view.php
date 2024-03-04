@@ -572,9 +572,9 @@ if ($_SESSION['user']['role'] == "student") {
 											<!-- Avatar -->
 											<div class="d-flex align-items-center">
 												<div class="avatar avatar-sm">
-													<img class="avatar-img rounded-1" src="assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="avatar">
+													<img class="avatar-img rounded-1" src="assets/images/profiles/<?= $_SESSION['user_created']['image'] ?>" alt="avatar">
 												</div>
-												<p class="mb-0 ms-2"><a href="#" class="h6 fw-light mb-0"><?= $_SESSION['user']['name'] ?></a></p>
+												<p class="mb-0 ms-2"><a href="#" class="h6 fw-light mb-0"><?= $_SESSION['user_created']['name'] ?></a></p>
 											</div>
 											<!-- Price -->
 											<div>

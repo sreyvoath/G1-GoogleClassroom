@@ -61,9 +61,11 @@ if(isset($_SESSION['class_join'])){
 									<button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Create Class</button>
 								</li>
 							<?php endif; ?>
+							<?php if ($_SESSION['user']['role'] == 'student') : ?>
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item " href="../views/classes/join_class.view.php">Join Class</a>
 							</li>
+							<?php endif; ?>
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item text-primary " href="/classes">View all Class</a>
 							</li>
@@ -75,7 +77,7 @@ if(isset($_SESSION['class_join'])){
 					</li>
 					<!-- Nav item 3 Account -->
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle <?= urlIs("/teacher") ? "active" : "" ?> " href="#" id="accounntMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Enrolled</a>
+						<a class="nav-link dropdown-toggle <?= urlIs("/teacher") || urlIs("/todo") || urlIs("/student") ? "active" : "" ?> " href="#" id="accounntMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Enrolled</a>
 						<ul class="dropdown-menu" aria-labelledby="accounntMenu">
 							<!-- Dropdown submenu -->
 							<li class="dropdown-submenu dropend">

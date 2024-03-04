@@ -29,7 +29,7 @@ if (isset($_GET['id'])) {
                             <!-- Profile info -->
                             <div class="col d-md-flex justify-content-between align-items-center mt-4">
                                 <div>
-                                    <h1 class="my-1 fs-4"><?= $_SESSION['user']['name'] ?><i class="bi bi-patch-check-fill text-info small"></i></h1>
+                                    <h1 class="my-1 fs-4"><?= strtoupper($_SESSION['user']['name']) ?><i class="bi bi-patch-check-fill text-info small mx-2"></i></h1>
                                     <ul class="list-inline mb-0">
                                         <li class="list-inline-item h6 fw-light me-3 mb-1 mb-sm-0"><i class="fas fa-star text-warning me-2"></i>4.5/5.0</li>
                                         <li class="list-inline-item h6 fw-light me-3 mb-1 mb-sm-0"><i class="fas fa-user-graduate text-orange me-2"></i>75+ Enrolled Students</li>
@@ -149,7 +149,7 @@ if (isset($_GET['id'])) {
                                                             </div>
                                                             <div class="mb-0 ms-2">
                                                                 <!-- Title -->
-                                                                <p><a class="text-dark" href="/instruction?id=<?= $assignment['id'] ?>"> <?= $_SESSION['user']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
+                                                                <p><a class="text-dark" href="/instruction?id=<?= $assignment['id'] ?>"> <?= $_SESSION['user_created']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
                                                                 <!-- Info -->
                                                                 <div class="d-sm-flex">
                                                                     <p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i><?= $assignment['end_date'] ?></p>
