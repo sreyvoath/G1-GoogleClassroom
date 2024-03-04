@@ -76,7 +76,7 @@
                 <div class="col-xl-3">
                     <!-- Responsive offcanvas body START -->
                     <nav class="navbar navbar-light navbar-expand-xl mx-0">
-                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div class=" offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                             <!-- Offcanvas header -->
                             <div class="offcanvas-header bg-light">
                                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">My profile</h5>

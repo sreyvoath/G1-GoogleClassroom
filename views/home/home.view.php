@@ -257,7 +257,7 @@
 			<div class="row g-4">
 				<!-- Counter item -->
 				<div class="col-sm-6 col-xl-3">
-					<div class="d-flex justify-content-center align-items-center p-4 bg-warning bg-opacity-15 rounded-3">
+					<div class="card_class d-flex justify-content-center align-items-center p-4 bg-warning bg-opacity-15 rounded-3">
 						<span class="display-6 lh-1 text-blue mb-0"><i class="fas fa-user-tie"></i></span>
 						<div class="ms-4 h6 fw-normal">
 							<div class="d-flex">
@@ -270,7 +270,7 @@
 				</div>
 				<!-- Counter item -->
 				<div class="col-sm-6 col-xl-3">
-					<div class="d-flex justify-content-center align-items-center p-4 bg-blue bg-opacity-10 rounded-3">
+					<div class="card_class  d-flex justify-content-center align-items-center p-4 bg-blue bg-opacity-10 rounded-3">
 						<span class="display-6 lh-1 text-purple mb-0"><i class="fas fa-user-graduate"></i></span>
 						<div class="ms-4 h6 fw-normal">
 							<div class="d-flex">
@@ -283,7 +283,7 @@
 				</div>
 				<!-- Counter item -->
 				<div class="col-sm-6 col-xl-3">
-					<div class="d-flex justify-content-center align-items-center p-4 bg-purple bg-opacity-10 rounded-3">
+					<div class=" card_class d-flex justify-content-center align-items-center p-4 bg-purple bg-opacity-10 rounded-3">
 						<span class="display-6 lh-1 text-warning mb-0"><i class="fas fa-tv"></i></span>
 						<div class="ms-4 h6 fw-normal">
 							<div class="d-flex">
@@ -295,8 +295,8 @@
 					</div>
 				</div>
 				<!-- Counter item -->
-				<div class="col-sm-6 col-xl-3">
-					<div class="d-flex justify-content-center align-items-center p-4 bg-info bg-opacity-10 rounded-3">
+				<div class=" col-sm-6 col-xl-3">
+					<div class=" card_class d-flex justify-content-center align-items-center p-4 bg-info bg-opacity-10 rounded-3">
 						<span class="display-6 lh-1 text-info mb-0"><i class="bi bi-patch-check-fill"></i></span>
 						<div class="ms-4 h6 fw-normal">
 							<div class="d-flex">
@@ -374,7 +374,7 @@
 											</div>
 											<div class="card-body pb-0">
 												<!-- Title -->
-												<h5 class="card-title fw-normal"><a class="text-decoration-none" href="/stream?id=<?=$class['id']?>"><?= $class['title']; ?></a></h5>
+												<h5 class="card-title fw-normal"><a class="text-decoration-none" href="/stream?id=<?= $class['id'] ?>"><?= $class['title']; ?></a></h5>
 												<p class="mb-2 text-truncate-2"><?= $class['section']; ?></p>
 											</div>
 											<!-- Card footer -->
