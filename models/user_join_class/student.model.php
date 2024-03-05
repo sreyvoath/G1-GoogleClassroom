@@ -48,7 +48,7 @@ function getStudent(int $id)
         ":role" => "student",
         ":id" => $id
     ]);
-    return $statement->fetch();
+    return $statement->fetchAll();
 }
 
 function studentJoinedClass(int $class_id)

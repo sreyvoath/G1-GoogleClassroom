@@ -212,7 +212,7 @@ $studentJoined = studentJoinedClass($_SESSION['class_id']);
             <div class="modal-body">
                 <form id="myForm" action="controllers/classes/class.create.controller.php" method="post" enctype="multipart/form-data g-3">
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="title" placeholder="Type a name or email" name="title">
+                        <input type="email" class="form-control" id="title" placeholder="Type a name or email" name="title">
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label"></label>

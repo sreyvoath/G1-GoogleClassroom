@@ -32,12 +32,12 @@
                     <!-- Card START -->
 
                     <?php if ($_SESSION['user']['role'] == 'teacher') { ?>
-                        <a href="/create-work" class="btn btn-primary shadow" style="border-radius: 50px;">
+                        <a href="/views/assignment/classworks/create_classwork.view.php" class="btn btn-primary shadow" style="border-radius: 50px;">
                             <i class="bi bi-plus-lg me-2 "></i>
                             <span>Assignment</span>
                         </a>
                     <?php } else { ?>
-                        <a href="/my-info" class="btn shadow" style="background-color: gainsboro;">
+                        <a href="/what-todo" class="btn shadow" style="background-color: gainsboro;">
                             <i class="bi bi-person-workspace text-primary"></i>
                             <span class="text-primary">View your work</span>
                         </a>

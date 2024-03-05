@@ -25,7 +25,7 @@
                                                 <p class="h6 fw-light mb-0 small"> 100 Points</p>
                                             </div>
                                             <div>
-                                                <h5>Due Jan 25, 11:00 AM</h5>
+                                                <h5>Due Jan 25, 11:00 AM</h5>
                                             </div>
 
                                         </div>

@@ -5,6 +5,7 @@ if (isset($_GET['id'])) {
     date_default_timezone_set('Asia/Phnom_Penh');
     $assignments = getAssigns($id);
     $_SESSION['ass_id'] = $id;
+   
 }
 ?>
 <main>
@@ -135,10 +136,13 @@ if (isset($_GET['id'])) {
                                         foreach ($assignments as $assignment) :
                                             $date = date('F j, Y', strtotime($assignment['end_date']));
                                             $time = date('g:i A', strtotime($assignment['end_time']));
-                                        ?>
+                                        ?>  
+                                            <?php if ($_SESSION['user']['role'] == "teacher")  {?>
                                             <tr onclick="window.location='/instruction?id=<?= $assignment['id'] ?>';" style="cursor:pointer;">
-
+                                            <?php } else { ?>
+                                                <tr onclick="window.location='/assignment_student?id=<?= $assignment['id'] ?>';" style="cursor:pointer;">
                                                 <!-- Course item -->
+                                                <?php }?>
                                                 <td>
                                                     <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-2 border-start border-primary">
                                                         <!-- Content -->
@@ -149,11 +153,7 @@ if (isset($_GET['id'])) {
                                                             </div>
                                                             <div class="mb-0 ms-2">
                                                                 <!-- Title -->
-                                                                <?php if ($_SESSION['user']['role'] == "teacher") { ?>
-                                                                    <p><a class="text-dark" href="/instruction?id=<?= $assignment['id'] ?>"> <?= $_SESSION['user']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
-                                                                <?php } else { ?>
-                                                                    <p><a class="text-dark" href="/assignment_student?id=<?= $assignment['id'] ?>"> <?= $_SESSION['user']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
-                                                                <?php } ?>
+                                                                    <p><a class="text-dark" href="#"> <?= $_SESSION['user']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
                                                                 <div class="d-sm-flex">
                                                                     <p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i><?= $assignment['end_date'] ?></p>
                                                                     <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
@@ -163,7 +163,7 @@ if (isset($_GET['id'])) {
                                                             </div>
                                                         </div>
                                                         <!-- Buttons -->
-
+                                                
                                                         <div class="dropdown mt-2 d-flex">
                                                             <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
                                                             <ul class="dropdown-menu" aria-labelledby="accounntMenu">

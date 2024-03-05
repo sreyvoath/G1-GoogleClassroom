@@ -33,20 +33,8 @@ $student_number = count($students);
 
 // get user is staying website
 if ($_SESSION['user']['role'] == "student") {
-	$student = getStudent($_SESSION['user']['id']);
-	$class_id = $student['class_id'];
-	
-	//get class buy class_id
-	$classJoin = studentJoinClass($class_id);
-	$_SESSION['class_join'] = $classJoin;
-	$resultJoin = 0;
-	foreach ($classJoin as $class) {
-		if ($class['archive'] == 1) {
-			$resultJoin += 1;
-		} else {
-			$class_number += 1;
-		}
-	}
+	$studentsJoin = getStudent($_SESSION['user']['id']);
+	$_SESSION['student_join'] = $studentsJoin;
 }
 
 ?>
@@ -384,6 +372,7 @@ if ($_SESSION['user']['role'] == "student") {
 					<div class="row g-4">
 						<!-- Card class  -->
 						<?php
+
 						if ($role == "teacher") {
 							if (count($classes) == $result) {
 						?>
@@ -432,55 +421,82 @@ if ($_SESSION['user']['role'] == "student") {
 									<?php endif ?>
 								<?php endforeach ?>
 							<?php } ?>
-						<?php } else
-							
+							<?php } else {
+							//get class buy class_id
+							foreach ($studentsJoin as $student) {
+								$class_id = $student['class_id'];
+								$classJoin = studentJoinClass($class_id);
+								$resultJoin = 0;
+								foreach ($classJoin as $class) {
+									if ($class['archive'] == 1) {
+										$resultJoin += 1;
+									} else {
+										$class_number += 1;
+									}
+								}
+							}
+
 							if (count($classJoin) == $resultJoin) {
-						?>
-							<img src="../../assets/images/about/25.png" alt="" style="width: 400px; height: 300px; display:flex; margin:auto; padding-top:100px">
-							<?php
-						} else {
-
-							foreach ($classJoin as $class) :
-								if ($class['archive'] == 0) :
 							?>
-									<div class="col-sm-6 col-lg-4 col-xl-3" id="card" draggable="true" ondragstart="drag(event)">
-										<div class=" card_class card shadow h-100">
-											<!-- Image -->
-											<img src="../../assets/images/classes/<?= $class['image'] ?>" class="card-img-top" alt="course image" style="width:350px; height:200px; object-fit: cover;">
-											<!-- Card body -->
-											<div class="nav-item dropdown d-flex justify-content-end">
-												<a class="nav-link " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-												<ul class="dropdown-menu" aria-labelledby="accounntMenu">
-													<li class="dropdown-submenu dropend">
-														<a class="dropdown-item " href="">Create</a>
-													</li>
-													<li class="dropdown-submenu dropend">
-														<a class="dropdown-item " href="#">Delete</a>
-													</li>
-													<li class="dropdown-submenu dropend">
-														<a class="dropdown-item " href="#">Edit</a>
-													</li>
-												</ul>
+								<img src="../../assets/images/about/25.png" alt="" style="width: 400px; height: 300px; display:flex; margin:auto; padding-top:100px">
+								<?php
+							} else {
+								//get class buy class_id
+								foreach ($studentsJoin as $student) {
+									$class_id = $student['class_id'];
+									$classJoin = studentJoinClass($class_id);
+									$resultJoin = 0;
+									$_SESSION['class_join'] = $classJoin;
+									foreach ($classJoin as $class) {
+										if ($class['archive'] == 1) {
+											$resultJoin += 1;
+										} else {
+											$class_number += 1;
+										}
+									}
 
-											</div>
-											<div class="card-body pb-0">
-												<!-- Title -->
-												<h5 class="card-title fw-normal"><a class="text-decoration-none" href="/stream?id=<?= $class['id'] ?>"><?= $class['title']; ?></a></h5>
-												<p class="mb-2 text-truncate-2"><?= $class['section']; ?></p>
-											</div>
-											<!-- Card footer -->
-											<div class="card-footer pt-3 pb-3">
-												<div class="d-flex">
-													<a href="../../controllers/classes/class.delete.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to Uneroll it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-ban text-danegr "></i></a>
-													<a href="../../controllers/classes/class.archive.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to archive it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-secondary"><i class="bi bi-archive-fill"></i></a>
+									foreach ($classJoin as $class) :
+										if ($class['archive'] == 0) :
+								?>
+											<div class="col-sm-6 col-lg-4 col-xl-3" id="card" draggable="true" ondragstart="drag(event)">
+												<div class=" card_class card shadow h-100">
+													<!-- Image -->
+													<img src="../../assets/images/classes/<?= $class['image'] ?>" class="card-img-top" alt="course image" style="width:350px; height:200px; object-fit: cover;">
+													<!-- Card body -->
+													<div class="nav-item dropdown d-flex justify-content-end">
+														<a class="nav-link " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+														<ul class="dropdown-menu" aria-labelledby="accounntMenu">
+															<li class="dropdown-submenu dropend">
+																<a class="dropdown-item " href="">Create</a>
+															</li>
+															<li class="dropdown-submenu dropend">
+																<a class="dropdown-item " href="#">Delete</a>
+															</li>
+															<li class="dropdown-submenu dropend">
+																<a class="dropdown-item " href="#">Edit</a>
+															</li>
+														</ul>
+
+													</div>
+													<div class="card-body pb-0">
+														<!-- Title -->
+														<h5 class="card-title fw-normal"><a class="text-decoration-none" href="/stream?id=<?= $class['id'] ?>"><?= $class['title']; ?></a></h5>
+														<p class="mb-2 text-truncate-2"><?= $class['section']; ?></p>
+													</div>
+													<!-- Card footer -->
+													<div class="card-footer pt-3 pb-3">
+														<div class="d-flex">
+															<a href="../../controllers/classes/class.delete.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to Uneroll it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-ban text-danegr "></i></a>
+														</div>
+													</div>
 												</div>
 											</div>
-										</div>
-									</div>
-								<?php endif ?>
+										<?php endif ?>
 
-							<?php endforeach ?>
-						<?php } ?>
+									<?php endforeach ?>
+						<?php };
+							};
+						} ?>
 						<!-- Card item END -->
 					</div>
 				</div>
