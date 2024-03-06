@@ -1,4 +1,6 @@
 <?php
+require "database/database.php";
+require "models/user_join_class/class.model.php";
 if (isset($_GET['id'])) {
     $_SESSION['class_id'] = $_GET['id'];
     
@@ -6,7 +8,8 @@ if (isset($_GET['id'])) {
     date_default_timezone_set('Asia/Phnom_Penh');
     $assignments = getAssigns($id);
     $_SESSION['ass_id'] = $id;
-   
+    $userCreated = getUserCreateClass($_GET['id']);
+    $_SESSION['user_created'] = $userCreated;
 }
 ?>
 <main>

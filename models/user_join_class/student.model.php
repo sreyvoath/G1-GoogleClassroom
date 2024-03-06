@@ -91,3 +91,35 @@ function checkEmailUser(string $email): array
         return [];
     }
 }
+// check email there are in user table 
+
+function checkEmailUserExits(int $user_id, int $class_id): array
+{
+    global $connection;
+    $statement = $connection->prepare("select c.id, c.title, u.name from classes c 
+    inner join users_join_class uj on c.id = uj.class_id 
+    inner join users u on uj.user_id = u.id 
+    where uj.user_id =:user_id and uj.class_id =:class_id
+    ");
+    $statement->execute([
+        ':user_id' => $user_id,
+        ":class_id" => $class_id
+    ]);
+    if ($statement->rowCount() > 0) {
+        return $statement->fetch();
+    } else {
+        return [];
+    }
+}
+
+//<======== delete class=======>
+function deleteStudent(int $user_id, int $class_id) : bool
+{
+    global $connection;
+    $statement = $connection->prepare("delete from users_join_class where user_id = :user_id and class_id = :class_id");
+    $statement->execute([
+        ':user_id' => $user_id,
+        ':class_id' => $class_id
+    ]);
+    return $statement->rowCount() > 0;
+}

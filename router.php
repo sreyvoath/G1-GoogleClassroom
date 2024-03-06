@@ -36,6 +36,8 @@ $routes = [
 
     //students
     '/student' => 'controllers/students/student.controller.php',
+    '/message' => 'controllers/message/message.controller.php',
+
 
 
     //teacher 

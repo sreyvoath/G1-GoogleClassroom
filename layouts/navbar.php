@@ -135,13 +135,15 @@ if (isset($_SESSION['class_join'])) {
 				<!-- Nav Search START -->
 				<div class="nav my-3 my-xl-0 px-4 flex-nowrap align-items-center">
 					<div class="nav-item w-100">
-						<?php if ($_SESSION['user']['role'] == 'teacher') : ?>
+						<?php if ($_SESSION['user']['role'] == 'teacher') { ?>
 							<form class="position-relative mt-2">
 								<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
 									<i class="bi bi-plus-circle-fill me-2"></i>Class
 								</button>
 							</form>
-						<?php endif; ?>
+						<?php } else { ?>
+							<a href="/message" class="btn btn-success-soft btn-round me-1 mb-0 fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="Message"><i class="far fa-envelope"></i></a>
+						<?php } ?>
 					</div>
 				</div>
 				<!-- Nav Search END -->
