@@ -12,7 +12,7 @@
                         <a href="/classwork"><button type="button" class="btn btn-outline-info <?= urlIs("/classwork") ? "active" : "" ?> ">Classwork</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
-                        <a href="/people"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "" ?> ">Poeple</button></a>
+                        <a href="/people?id=<?= $_SESSION['class_id']?>"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "" ?> ">Poeple</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Third group">
                         <a href="/grade"><button type="button" class="btn btn-outline-success <?= urlIs("/grade") ? "active" : "" ?> ">Grades</button></a>

@@ -1,15 +1,5 @@
 <?php
 
-// ========Get all students============
-function studentJoinClass(int $id)
-{
-
-    global $connection;
-    $statement = $connection->prepare("select * from classes where id = :id order by id desc");
-    $statement->execute([":id"=>$id]);
-    return $statement->fetchAll();
-}
-
 //<======== get single class=======>
 function getUserCreateClass(int $id)
 {
@@ -17,4 +7,19 @@ function getUserCreateClass(int $id)
     $statement = $connection->prepare("select u.name, u.image from users u inner join classes c on u.id = c.user_id where c.id = :id");
     $statement->execute([':id' => $id]);
     return $statement->fetch();
+}
+
+
+//<================check id user were id user in join class==============>
+
+function checkId(string $id): array
+{
+    global $connection;
+    $statement = $connection->prepare("select * from users_join_class where user_id=:id");
+    $statement->execute([':id' => $id]);
+    if ($statement->rowCount() > 0) {
+        return $statement->fetch();
+    } else {
+        return [];
+    }
 }

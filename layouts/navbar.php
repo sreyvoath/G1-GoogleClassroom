@@ -4,10 +4,9 @@ $user = $_SESSION['user'];
 if (isset($_SESSION['class'])) {
 	$classes = $_SESSION['class'];
 }
-if(isset($_SESSION['class_join'])){
+if (isset($_SESSION['class_join'])) {
 	$classJoin = $_SESSION['class_join'];
 }
-
 
 ?>
 <!-- Header START -->
@@ -92,28 +91,31 @@ if(isset($_SESSION['class_join'])){
 											if ($class['archive'] == 0) :
 									?>
 												<li> <a class="dropdown-item" href="/stream?id=<?= $class['id'] ?>"><i class="bi bi-book fa-fw me-1"></i><?= $class['title'] ?></a> </li>
-											<?php
+												<?php
 											endif;
 										endforeach;
 									} else
-										foreach ($classJoin as $class) :
-											if ($class['archive'] == 0) :
-											?>
-											<li> <a class="dropdown-item" href="/stream?id=<?= $class['id'] ?>"><i class="bi bi-book fa-fw me-1"></i><?= $class['title'] ?></a> </li>
+									if (isset($_SESSION['idUser'])) {
+										if (count($_SESSION['idUser']) > 0) {
+											foreach ($classJoin as $class) :
+												if ($class['archive'] == 0) :
+												?>
+													<li> <a class="dropdown-item" href="/stream?id=<?= $class['id'] ?>"><i class="bi bi-book fa-fw me-1"></i><?= $class['title'] ?></a> </li>
 									<?php
-											endif;
-										endforeach;
-									?>
+												endif;
+											endforeach;
+										};
+									} ?>
 
 								</ul>
 							</li>
-							<?php  if($_SESSION['user']['role']=='teacher'): ?>
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item " href="/teacher"><i class="fas fa-user-tie fa-fw me-1"></i>Personal</a>
-							</li>
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item " href="/student"><i class="fas fa-user-tie fa-fw me-1"></i>Students</a>
-							</li>
+							<?php if ($_SESSION['user']['role'] == 'teacher') : ?>
+								<li class="dropdown-submenu dropend">
+									<a class="dropdown-item " href="/teacher"><i class="fas fa-user-tie fa-fw me-1"></i>Personal</a>
+								</li>
+								<li class="dropdown-submenu dropend">
+									<a class="dropdown-item " href="/student"><i class="fas fa-user-tie fa-fw me-1"></i>Students</a>
+								</li>
 							<?php endif; ?>
 						</ul>
 					</li>
@@ -133,12 +135,12 @@ if(isset($_SESSION['class_join'])){
 				<!-- Nav Search START -->
 				<div class="nav my-3 my-xl-0 px-4 flex-nowrap align-items-center">
 					<div class="nav-item w-100">
-						<?php if($_SESSION['user']['role']=='teacher'):?>
-						<form class="position-relative mt-2">
-							<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-								<i class="bi bi-plus-circle-fill me-2"></i>Class
-							</button>
-						</form>
+						<?php if ($_SESSION['user']['role'] == 'teacher') : ?>
+							<form class="position-relative mt-2">
+								<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+									<i class="bi bi-plus-circle-fill me-2"></i>Class
+								</button>
+							</form>
 						<?php endif; ?>
 					</div>
 				</div>

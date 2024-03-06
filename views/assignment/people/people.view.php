@@ -28,7 +28,7 @@ $studentJoined = studentJoinedClass($_SESSION['class_id']);
                         <a href="/classwork"><button type="button" class="btn btn-outline-info <?= urlIs("/classwork") ? "active" : "" ?> ">Classwork</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
-                        <a href="/people"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "" ?> ">Poeple</button></a>
+                        <a href="/people?id=<?= $_SESSION['class_id']?>"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "" ?> ">Poeple</button></a>
                     </div>
                     <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
                         <div class="btn-group me-4" role="group" aria-label="Third group">
@@ -210,9 +210,9 @@ $studentJoined = studentJoinedClass($_SESSION['class_id']);
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="myForm" action="controllers/classes/class.create.controller.php" method="post" enctype="multipart/form-data g-3">
+                <form id="myForm2" action="controllers/assignment/invite/student_invite.controller.php" method="post">
                     <div class="mb-3">
-                        <input type="email" class="form-control" id="title" placeholder="Type a name or email" name="title">
+                        <input type="email" class="form-control" id="email" placeholder="Type a name or email" name="email">
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label"></label>
@@ -223,7 +223,7 @@ $studentJoined = studentJoinedClass($_SESSION['class_id']);
             <div class="modal-footer">
                 <a href="/people" class="me-3 btn border-secondary btn-light mb-0" type="button">Cancel</a>
                 <!-- <button type="button" class="btn btn-light">cancel</button> -->
-                <button type="button" class="btn btn-primary">invite</button>
+                <button type="submit" class="btn btn-primary" form="myForm2">Invite</button>
             </div>
         </div>
     </div>

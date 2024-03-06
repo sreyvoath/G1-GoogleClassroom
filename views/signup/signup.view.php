@@ -43,7 +43,7 @@ session_start();
 					<!-- Right -->
 					<div class="col-12 col-lg-6 m-auto ">
 						<div class="row my-3">
-							<div class="col-sm-10 col-xl-8 m-auto border shadow-lg p-3 mb-5 bg-body rounded bordered">
+							<div class="col-sm-12 col-xl-10 m-auto border shadow-lg p-3 mb-5 bg-body rounded bordered">
 								<!-- Title -->
 								<span class="mb-0 fs-1">👋</span>
 								<h1 class="fs-2">Register here!</h1>
@@ -55,7 +55,7 @@ session_start();
 									<div class="mb-4">
 										<label for="exampleInputEmail1" class="form-label">User Name*</label>
 										<div class="input-group input-group-lg">
-											<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-envelope-fill"></i></span>
+											<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-person-check-fill"></i></span>
 											<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="U-name" id="exampleInputEmail1" name="name">
 										</div>
 										<span class="text-danger"><?= isset($_SESSION['name']) ? $_SESSION['name'] : "" ?></span>
@@ -69,6 +69,19 @@ session_start();
 										</div>
 										<span class="text-danger"><?= isset($_SESSION['name']) ? $_SESSION['name'] : "" ?></span>
 										<span class="text-danger"><?= isset($_SESSION['exist']) ? $_SESSION['exist'] : "" ?></span>
+									</div>
+									<!-- Role -->
+									<div class="mb-4">
+										<label for="exampleInputEmail1" class="form-label">Email address *</label>
+										<div class="input-group input-group-lg">
+											<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-person-fill"></i></span>
+											<select name="role" id="rile" class="form-control border-0 bg-light rounded-end ps-1">
+												<option disabled selected>Select your role</option>
+												<option value="teacher">Teacher</option>
+												<option value="student">Student</option>
+											</select>
+										</div>
+										<span class="text-danger"><?= isset($_SESSION['name']) ? $_SESSION['name'] : "" ?></span>
 									</div>
 									<!-- Password -->
 									<div class="mb-4">

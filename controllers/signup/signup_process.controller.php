@@ -15,10 +15,11 @@ function secureData($data)
 //========== Check if the form is submitted======
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $image = $_FILES['image'];
-    $password = $_POST["password"];
-    $passwordEncript = password_hash($password, PASSWORD_BCRYPT);
-    $name = $_POST['name'];
-    $email = $_POST['email'];
+    $password = htmlspecialchars($_POST["password"]);
+    $passwordEncript =password_hash($password, PASSWORD_BCRYPT);
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $role = htmlspecialchars($_POST['role']);
 
 // ========= Image upload ================
     if (!empty($name) && (!empty($email)) && (!empty($password)) && !empty($image)) {
@@ -39,9 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 move_uploaded_file($_FILES["image"]["tmp_name"], $nameInDirectory);
                 $user = accountExists($email);
                 if (count($user) == 0) {
-                    createAccount($name, $email, $passwordEncript, $nameInDB);
+                    createAccount($name, $email, $role, $passwordEncript, $nameInDB);
                     $newUser = getUserEmail($email);
-                    $_SESSION['user'] = ['name'=>$name, 'email'=>$email, 'image'=>$nameInDB,'id'=>$newUser['id'], 'role'=>$newUser['role']];
+                    $_SESSION['user'] = ['name'=>$name, 'email'=>$email, 'role'=>$role, 'image'=>$nameInDB,'id'=>$newUser['id'], 'role'=>$newUser['role']];
                     header('Location: /user-signin');
                     $_SESSION['success'] = "Account successfully created";
                 } else {
@@ -60,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     if (!empty($name) && (!empty($email)) && (!empty($password)) && !empty($image)) {
-        createAccount($name, $email, $passwordEncript, $image);
+        createAccount($name, $email, $role, $passwordEncript, $image);
         header("Location:/home");
     } else {
         header("Location:/user-signup");
@@ -69,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
    
     if (empty($error['password'])) {
-        createAccount($name, $email, $passwordEncript, $image);
+        createAccount($name, $email, $role, $passwordEncript, $image);
         header("Location:/home");
         exit;
     } else {

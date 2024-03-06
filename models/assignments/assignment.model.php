@@ -32,7 +32,7 @@ function getAssigns($id): array
 {
 
     global $connection;
-    $statement = $connection->prepare("select * from assignments where class_id=:id");
+    $statement = $connection->prepare("select * from assignments where class_id=:id order by id desc");
     $statement->execute([":id" => $id]);
     return $statement->fetchAll();
 }
@@ -42,7 +42,7 @@ function getAssignments()
 {
 
     global $connection;
-    $statement = $connection->prepare("select * from assignments");
+    $statement = $connection->prepare("select * from assignments order by id desc");
     $statement->execute();
     return $statement->fetchAll();
 }

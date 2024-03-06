@@ -1,9 +1,8 @@
 <?php
 //<======== create user account =======>
-function createAccount(string $name, string $email, string $password, string $image) : bool
+function createAccount(string $name, string $email, string $role, string $password, string $image) : bool
 {
     global $connection;
-    $role = "student";
     $statement = $connection->prepare("insert into users (name,email, password, role, image) values (:name, :email, :password, :role, :image)");
     $statement->execute([
         ':name' => $name,

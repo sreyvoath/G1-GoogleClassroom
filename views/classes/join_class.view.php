@@ -28,7 +28,7 @@
                     <div class="card-body">
                         <p class="text">You're currently signed in as</p>
                         <div class="email d-flex ">
-                            <img src="../../assets/images/profiles/65d433a6899f9.jpg" class="avatar-img rounded-circle border border-white border-3 shadow" alt="" style="width: 50px; height:50px;">
+                            <img src="../../assets/images/profiles/<?= $_SESSION['user']['image']?>" class="avatar-img rounded-circle border border-white border-3 shadow" alt="" style="width: 50px; height:50px; object-fit:cover;">
                             <div class="uerName" style="margin-left: 10px;">
                                 <h6 style="margin-bottom: -5px;"><?= strtoupper($_SESSION['user']['name'])?></h6>
                                 <p class="mt-2"><?= $_SESSION['user']['email']?></p>
