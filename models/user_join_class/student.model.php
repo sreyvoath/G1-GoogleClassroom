@@ -77,3 +77,17 @@ function studentJoinClass(int $id)
     $statement->execute([":id"=>$id]);
     return $statement->fetchAll();
 }
+
+// check email there are in user table 
+
+function checkEmailUser(string $email): array
+{
+    global $connection;
+    $statement = $connection->prepare("select * from users where email = :email");
+    $statement->execute([':email' => $email]);
+    if ($statement->rowCount() > 0) {
+        return $statement->fetch();
+    } else {
+        return [];
+    }
+}

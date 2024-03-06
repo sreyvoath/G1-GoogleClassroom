@@ -23,3 +23,20 @@ function checkId(string $id): array
         return [];
     }
 }
+
+//<================insert user to join class==============>
+
+function createUserJoinClass(string $user_id, $class_id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("insert into users_join_class (user_id, class_id) values (:user_id, :class_id)");
+    $statement->execute([
+        ':user_id' => $user_id,
+        ':class_id' => $class_id
+    ]);
+    return $statement->rowCount() > 0;
+
+    
+}
+
+
