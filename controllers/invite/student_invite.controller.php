@@ -3,23 +3,27 @@ session_start();
 require_once '../../database/database.php';
 require_once('../../models/user_join_class/student.model.php');
 require_once('../../models/user_join_class/class.model.php');
+require_once('../../models/invites/invite.model.php');
+
 $classId = $_SESSION['class_id'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['email'])) {
         $email = htmlspecialchars($_POST['email']);
         $checkEmail = checkEmailUser($email);
-        $id = $checkEmail['id'];
         if (count($checkEmail) > 0) {
-            createUserJoinClass($id, $classId);
-            echo '<script>alert("User joined class successfully");</script>';
+            $id = $checkEmail['id'];
+            $checkEmailExits = checkEmailUserExits($id, $classId);
+            if (count($checkEmailExits) > 0) {
+                $_SESSION['err_exist_join'] = "This user already joined!";
+                header("location:/people");
+            }
+            if (count($checkEmail) > 0 and count($checkEmailExits) == 0) {
+                createMessage("Invited you", $id, $classId, $_SESSION['user']['id']);
+                
+            }
+        } else {
+            echo '<script>alert("User not found!");</script>';
         }
-    } else {
-        // JavaScript alert when email is empty
-        echo '<script>alert("You must complete the field");</script>';
-        header("location:/people");
     }
+    header("location:/people");
 }
-
-?>
-<!-- Your HTML form here -->
-
