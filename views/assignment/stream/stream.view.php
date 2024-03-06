@@ -1,6 +1,7 @@
 <?php
 if (isset($_GET['id'])) {
     $_SESSION['class_id'] = $_GET['id'];
+    
     $id = $_GET['id'];
     date_default_timezone_set('Asia/Phnom_Penh');
     $assignments = getAssigns($id);
@@ -153,7 +154,7 @@ if (isset($_GET['id'])) {
                                                             </div>
                                                             <div class="mb-0 ms-2">
                                                                 <!-- Title -->
-                                                                    <p><a class="text-dark" href="#"> <?= $_SESSION['user']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
+                                                                    <p><a class="text-dark" href="#"> <?= $_SESSION['user_created']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
                                                                 <div class="d-sm-flex">
                                                                     <p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i><?= $assignment['end_date'] ?></p>
                                                                     <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
