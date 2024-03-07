@@ -1,7 +1,4 @@
 <?php
-// get class by id
-  $class = getClass($id);
-  $classCode = $class['classCode'];
 
 if (isset($_GET['id'])) {
     $_SESSION['class_id'] = $_GET['id'];
@@ -92,11 +89,14 @@ if (isset($_GET['id'])) {
                                 <div class="offcanvas-body p-3 p-xl-0">
                                     <div class="bg-dark border rounded-3 pb-0 p-3 w-100">
                                         <!-- Dashboard menu -->
+                                        <?php
+                                         $classCode = $class['code'];
+                                         ?>
 
                                         <!--  class code -->
                                         <div class="list-group list-group-dark list-group-borderless">
                                             <p>Class code</p>
-                                            <a class="mb-4 gap-2 col-1 mx-auto" href="#"><span><?php $classCode ?></span></a>
+                                            <a class="mb-4 gap-2 col-1 mx-auto" href="#"><span> <?php echo $class['code'];?></span></a>
                                         </div>
                                     </div>
                                 </div>
