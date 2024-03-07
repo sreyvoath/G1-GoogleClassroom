@@ -1,12 +1,15 @@
 <?php
+// get class by id
+  $class = getClass($id);
+  $classCode = $class['classCode'];
+
 if (isset($_GET['id'])) {
     $_SESSION['class_id'] = $_GET['id'];
-    
+
     $id = $_GET['id'];
     date_default_timezone_set('Asia/Phnom_Penh');
     $assignments = getAssigns($id);
     $_SESSION['ass_id'] = $id;
-   
 }
 ?>
 <main>
@@ -59,7 +62,7 @@ if (isset($_GET['id'])) {
                         <a href="/classwork"><button type="button" class="btn btn-outline-info ">Classwork</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
-                        <a href="/people?id=<?= $_SESSION['class_id']?>"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "" ?> ">Poeple</button></a>
+                        <a href="/people?id=<?= $_SESSION['class_id'] ?>"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "" ?> ">Poeple</button></a>
                     </div>
                     <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
                         <div class="btn-group me-4" role="group" aria-label="Third group">
@@ -83,18 +86,22 @@ if (isset($_GET['id'])) {
                                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">My profile</h5>
                                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
+
                             <!-- Offcanvas body -->
                             <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
                                 <div class="offcanvas-body p-3 p-xl-0">
                                     <div class="bg-dark border rounded-3 pb-0 p-3 w-100">
                                         <!-- Dashboard menu -->
+
+                                        <!--  class code -->
                                         <div class="list-group list-group-dark list-group-borderless">
                                             <p>Class code</p>
-                                            <a class="mb-4 gap-2 col-1 mx-auto" href="#"><span>4xfi6pn</span></a>
+                                            <a class="mb-4 gap-2 col-1 mx-auto" href="#"><span><?php $classCode ?></span></a>
                                         </div>
                                     </div>
                                 </div>
                             <?php endif; ?>
+
                             <br>
                             <div class="offcanvas-body p-3 p-xl-0">
                                 <div class="bg-dark border rounded-3 pb-0 p-3 w-100">
@@ -137,13 +144,13 @@ if (isset($_GET['id'])) {
                                         foreach ($assignments as $assignment) :
                                             $date = date('F j, Y', strtotime($assignment['end_date']));
                                             $time = date('g:i A', strtotime($assignment['end_time']));
-                                        ?>  
-                                            <?php if ($_SESSION['user']['role'] == "teacher")  {?>
-                                            <tr onclick="window.location='/instruction?id=<?= $assignment['id'] ?>';" style="cursor:pointer;">
-                                            <?php } else { ?>
+                                        ?>
+                                            <?php if ($_SESSION['user']['role'] == "teacher") { ?>
+                                                <tr onclick="window.location='/instruction?id=<?= $assignment['id'] ?>';" style="cursor:pointer;">
+                                                <?php } else { ?>
                                                 <tr onclick="window.location='/assignment_student?id=<?= $assignment['id'] ?>';" style="cursor:pointer;">
-                                                <!-- Course item -->
-                                                <?php }?>
+                                                    <!-- Course item -->
+                                                <?php } ?>
                                                 <td>
                                                     <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-2 border-start border-primary">
                                                         <!-- Content -->
@@ -154,7 +161,7 @@ if (isset($_GET['id'])) {
                                                             </div>
                                                             <div class="mb-0 ms-2">
                                                                 <!-- Title -->
-                                                                    <p><a class="text-dark" href="#"> <?= $_SESSION['user_created']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
+                                                                <p><a class="text-dark" href="#"> <?= $_SESSION['user_created']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
                                                                 <div class="d-sm-flex">
                                                                     <p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i><?= $assignment['end_date'] ?></p>
                                                                     <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
@@ -164,7 +171,7 @@ if (isset($_GET['id'])) {
                                                             </div>
                                                         </div>
                                                         <!-- Buttons -->
-                                                
+
                                                         <div class="dropdown mt-2 d-flex">
                                                             <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
                                                             <ul class="dropdown-menu" aria-labelledby="accounntMenu">
@@ -186,9 +193,9 @@ if (isset($_GET['id'])) {
 
                                                 </td>
                                                 </a>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    <?php }; ?>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        <?php }; ?>
                                 </tbody>
 
                             </table>

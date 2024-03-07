@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <?php session_start() ?>
+
 <body>
     <form action="controllers/classes/join_class.controller.php" method="post">
         <div class="join-class" style="margin:auto;">
@@ -28,10 +29,10 @@
                     <div class="card-body">
                         <p class="text">You're currently signed in as</p>
                         <div class="email d-flex ">
-                            <img src="../../assets/images/profiles/<?= $_SESSION['user']['image']?>" class="avatar-img rounded-circle border border-white border-3 shadow" alt="" style="width: 50px; height:50px; object-fit:cover;">
+                            <img src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" class="avatar-img rounded-circle border border-white border-3 shadow" alt="" style="width: 50px; height:50px; object-fit:cover;">
                             <div class="uerName" style="margin-left: 10px;">
-                                <h6 style="margin-bottom: -5px;"><?= strtoupper($_SESSION['user']['name'])?></h6>
-                                <p class="mt-2"><?= $_SESSION['user']['email']?></p>
+                                <h6 style="margin-bottom: -5px;"><?= strtoupper($_SESSION['user']['name']) ?></h6>
+                                <p class="mt-2"><?= $_SESSION['user']['email'] ?></p>
                             </div>
                         </div>
                         <p class="switch-account w-25 mt-2 p-2 text-primary" style="border: 1px solid lightgray; border-radius:3px; text-align: center;">Switch account</p>
@@ -55,7 +56,19 @@
             </div>
         </div>
     </form>
-
+    <script>
+        const joinBtn = document.getElementById("btn-join");
+        let input = document.getElementById("class-code");
+        input.addEventListener("input", (e) => {
+            let valueInput = e.target.value.toLowerCase();
+            let code = /^[a-z0-9]{5,}$/;
+            if ((valueInput !== "" && valueInput.length !== 7) || valueInput.length > 7 && valueInput.match(code)) {
+                joinBtn.disabled = true;
+            } else {
+                joinBtn.disabled = false;
+            }
+        });
+    </script>
 </body>
 
 </html>
