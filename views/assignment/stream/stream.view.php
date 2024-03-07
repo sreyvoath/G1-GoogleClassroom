@@ -1,5 +1,4 @@
 <?php
-
 if (isset($_GET['id'])) {
     $_SESSION['class_id'] = $_GET['id'];
 
@@ -89,9 +88,6 @@ if (isset($_GET['id'])) {
                                 <div class="offcanvas-body p-3 p-xl-0">
                                     <div class="bg-dark border rounded-3 pb-0 p-3 w-100">
                                         <!-- Dashboard menu -->
-                                        <?php
-                                         $classCode = $class['code'];
-                                         ?>
 
                                         <!--  class code -->
                                         <div class="list-group list-group-dark list-group-borderless">

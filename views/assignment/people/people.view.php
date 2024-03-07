@@ -9,6 +9,7 @@ $userCreated = getUserCreateClass($_SESSION['class_id']);
 $studentJoined = studentJoinedClass($_SESSION['class_id']);
 
 $_SESSION['user_created'] = $userCreated;
+
 ?>
 
 
@@ -141,21 +142,14 @@ $_SESSION['user_created'] = $userCreated;
                                                     <!-- Buttons -->
                                                     <?php if ($_SESSION['user']['role'] == 'teacher') {  ?>
                                                         <div class="dropdown">
-                                                            <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
 
-                                                            <ul class="dropdown-menu" aria-labelledby="accounntMenu">
-                                                                <li class="dropdown-submenu dropend">
-                                                                    <a class="dropdown-item " href="#">Email</a>
-                                                                </li>
-                                                                <li class="dropdown-submenu dropend">
-                                                                    <a class="dropdown-item " href="#">Remove</a>
-                                                                </li>
-                                                            </ul>
+                                                            <a href="#" class="btn btn-success-soft btn-round me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="<?= $student['email'] ?>"><i class="far fa-envelope"></i></a>
+                                                            <a href="controllers/students/delete_student.controller.php?id=<?= $student['id'] ?>" class="btn btn-danger-soft btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fas fa-trash"></i></a>
 
 
                                                         </div>
                                                     <?php } else { ?>
-                                                        <a href="#" class="btn btn-success-soft btn-round me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="<?= $student['email']?>"><i class="far fa-envelope"></i></a>
+                                                        <a href="#" class="btn btn-success-soft btn-round me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="<?= $student['email'] ?>"><i class="far fa-envelope"></i></a>
                                                     <?php } ?>
                                                 </div>
                                             </td>
@@ -194,7 +188,7 @@ $_SESSION['user_created'] = $userCreated;
             <div class="modal-footer">
                 <a href="/people" class="me-3 btn border-secondary btn-light mb-0" type="button">Cancel</a>
                 <!-- <button type="button" class="btn btn-light">cancel</button> -->
-                <button type="button"  class="btn btn-primary">invite</button>
+                <button type="button" class="btn btn-primary">invite</button>
             </div>
         </div>
     </div>
@@ -223,7 +217,7 @@ $_SESSION['user_created'] = $userCreated;
             <div class="modal-footer">
                 <a href="/people" class="me-3 btn border-secondary btn-light mb-0" type="button">Cancel</a>
                 <!-- <button type="button" class="btn btn-light">cancel</button> -->
-                <button type="submit" class="btn btn-primary" form="myForm2" >Invite</button>
+                <button type="submit" class="btn btn-primary" form="myForm2">Invite</button>
             </div>
         </div>
     </div>
