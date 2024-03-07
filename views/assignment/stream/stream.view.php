@@ -1,4 +1,6 @@
 <?php
+require "database/database.php";
+require "models/class.model.php";
 if (isset($_GET['id'])) {
     $_SESSION['class_id'] = $_GET['id'];
 
@@ -6,6 +8,13 @@ if (isset($_GET['id'])) {
     date_default_timezone_set('Asia/Phnom_Penh');
     $assignments = getAssigns($id);
     $_SESSION['ass_id'] = $id;
+    $classes = getClasses($_SESSION['user']['id']);
+    $classCode = "No class code";
+    foreach ($classes as $class){
+        if(strval($class['id'])== $_GET['id']){
+            $classCode = $class['code'];
+        }
+    }
 }
 ?>
 <main>
@@ -92,7 +101,7 @@ if (isset($_GET['id'])) {
                                         <!--  class code -->
                                         <div class="list-group list-group-dark list-group-borderless">
                                             <p>Class code</p>
-                                            <a class="mb-4 gap-2 col-1 mx-auto" href="#"><span> <?php echo $class['code'];?></span></a>
+                                            <a class="mb-4 gap-2 col-1 mx-auto" href="#"><span> <?=$classCode?></span></a>
                                         </div>
                                     </div>
                                 </div>

@@ -31,7 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $nameInDirectory = $directory . $newFileName . '.' . $imageExtension;
                 $nameInDB = $newFileName . '.' . $imageExtension;
                 move_uploaded_file($_FILES["image"]["tmp_name"], $nameInDirectory);
-                createClass($title,  $section,  $subject, $user_id, $nameInDB);
+                $code = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 7);
+                createClass($title,  $section,  $subject, $user_id, $nameInDB, $code);
 
                 header('Location: /home');
                 exit;

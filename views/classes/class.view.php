@@ -39,6 +39,7 @@ if ($role == "student") {
                     <?php
                     if ($_SESSION['user']['role'] == 'teacher') {
                         $classes = getClasses($_SESSION['user']['id']);
+                        
 
                         foreach ($classes as $class) :
                             if ($class['archive'] == 0) :
