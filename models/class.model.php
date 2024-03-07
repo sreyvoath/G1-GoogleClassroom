@@ -13,14 +13,16 @@ function getClasses(int $id) : array
 function createClass(string $title, string $section, string $subject, int $user_id, string $image) : bool
 {
     global $connection;
-    $statement = $connection->prepare("insert into classes(title, section, subject, archive, user_id, image) values(:title, :section, :subject,  :archive,  :user_id, :image )");
+    $code = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 7);
+    $statement = $connection->prepare("insert into classes(title, section, subject, archive, user_id, image, code) values(:title, :section, :subject,  :archive,  :user_id, :image, :code)");
     $statement->execute([
         ':title' => $title,
         ':section' => $section,
         ':subject' => $subject,
         ':user_id' => $user_id,
         ':archive' => 0,
-        ":image" => $image
+        ':image' => $image,
+        ':code' => $code
     ]);
     return $statement->rowCount() > 0;
 }
@@ -44,7 +46,7 @@ function updateClass(string $title, string $section, string $subject, int $id, s
         ':section' => $section,
         ':subject' => $subject,
         ':id' => $id,
-        ":image" => $image
+        ':image' => $image
     ]);
     return $statement->rowCount() > 0;
 }
