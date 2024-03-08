@@ -8,7 +8,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
-<?php session_start() ?>
+<?php
+session_start() ;
+if(isset($_SESSION['err-code'])){
+    echo "<script>alert('Code not found!');</script>";
+}
+unset($_SESSION['err-code']);
+?>
 
 <body>
     <form action="../../controllers/classes/join_class.controller.php" method="post">

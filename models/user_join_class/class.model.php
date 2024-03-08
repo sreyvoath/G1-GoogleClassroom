@@ -39,4 +39,25 @@ function createUserJoinClass(string $student_id, $class_id): bool
     
 }
 
+//<======== delete class joined=======>
+function deleteClassJoin(int $id) : bool
+{
+    global $connection;
+    $statement = $connection->prepare("delete from users_join_class where class_id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->rowCount() > 0;
+}
+
+//<======== delete class joined=======>
+function unEnrolledClass(int $student_id, int $class_id) : bool
+{
+    global $connection;
+    $statement = $connection->prepare("delete from users_join_class where user_id = :user_id and class_id = :class_id");
+    $statement->execute([
+        ':user_id' => $student_id,
+        ':class_id' => $class_id
+    ]);
+    return $statement->rowCount() > 0;
+}
+
 

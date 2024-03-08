@@ -1,6 +1,7 @@
 <?php
 require "database/database.php";
 require "models/class.model.php";
+require "models/user_join_class/class.model.php";
 if (isset($_GET['id'])) {
     $_SESSION['class_id'] = $_GET['id'];
 
@@ -10,11 +11,13 @@ if (isset($_GET['id'])) {
     $_SESSION['ass_id'] = $id;
     $classes = getClasses($_SESSION['user']['id']);
     $classCode = "No class code";
-    foreach ($classes as $class){
-        if(strval($class['id'])== $_GET['id']){
+    foreach ($classes as $class) {
+        if (strval($class['id']) == $_GET['id']) {
             $classCode = $class['code'];
         }
     }
+    $userCreated = getUserCreateClass($_SESSION['class_id']);
+    $_SESSION['user_created'] = $userCreated;
 }
 ?>
 <main>
@@ -101,7 +104,7 @@ if (isset($_GET['id'])) {
                                         <!--  class code -->
                                         <div class="list-group list-group-dark list-group-borderless">
                                             <p>Class code</p>
-                                            <a class="mb-4 gap-2 col-1 mx-auto" href="#"><span> <?=$classCode?></span></a>
+                                            <a class="mb-4 gap-2 col-1 mx-auto" href="#"><span> <?= $classCode ?></span></a>
                                         </div>
                                     </div>
                                 </div>
