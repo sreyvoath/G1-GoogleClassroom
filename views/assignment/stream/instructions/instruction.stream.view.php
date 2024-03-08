@@ -76,17 +76,23 @@ if (isset($_GET['id'])) {
 
                 <!-- PHP loop for classes END -->
             </table>
-            <div class="mb-0 ms-8" style="margin-left: -20px;">
+            <div class="mb-0 ms-8" style="margin-left: -10px; padding-bottom: 30px;">
                 <p><?= $assignment['content'] ?></p>
-                <h5>
-                    <span class="border border-1 d-inline-block" style="height: 50px; width: 400px;">
-                        <a href="assets/images/upload/<?= $assignment['document'] ?>">
-                            <i class="fab fa-google-drive" style="color: #FFD43B; font-size: 40px;"></i>
-                            Your Homework here
+                <div class="p-3">
+                    <span class="d-inline-block" style="height: 50px; width: 400px;">
+                        <a class="d-flex border" style="border-radius: 10px; margin-left: -30px;" href="assets/images/upload/<?= $assignment['document'] ?>">
+                            <div class="bg p-2 border" style="border-radius: 10px 0 0 10px;">
+                                <img src="/assets/images/bg/06.png" alt="">
+                            </div>
+                            <div class="title mx-3" style="margin-top: 30px;">
+                                <h5><?= $assignment['title'] ?></h5>
+                                <p><?= $assignment['document'] ?></p>
+                            </div>
+
                         </a>
                     </span>
 
-                </h5>
+                </div>
             </div>
             <hr>
             <div class="mb-0 ms-8">
@@ -94,8 +100,9 @@ if (isset($_GET['id'])) {
             </div>
 
             <div class="ms-7 d-flex flex-row">
-                <div class="avatar avatar-xl mt-n1 d-flex justify-content-center align-items-center">
-                    <img class="avatar-xl rounded-circle border border-white border-1 shadow" style=" object-fit:cover; border-radius: 10%; margin-top: -1px " src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="avatar">
+                <!-- Image -->
+                <div class="avatar avatar-lg ">
+                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
                 </div>
 
                 <div class="border ms-4 " style="width: 1000px; height:120px;">

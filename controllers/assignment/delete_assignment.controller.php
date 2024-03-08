@@ -7,6 +7,6 @@ $id = $_GET['id'] ? $_GET['id'] : null;
 if (isset($id)) {
 
     deleteAssign($id);
-    header('Location: /classwork');
+    header('Location: /stream');
 }
 ?>

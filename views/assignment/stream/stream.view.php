@@ -160,7 +160,7 @@ if (isset($_GET['id'])) {
                                                     <!-- Course item -->
                                                 <?php } ?>
                                                 <td class=" ">
-                                                    <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 rounded px-4 py-2 border-start border-primary" >
+                                                    <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 rounded px-4 py-2 border-start border-primary">
                                                         <!-- Content -->
                                                         <div class="d-flex align-items-center" class="">
                                                             <!-- Image -->
@@ -184,12 +184,14 @@ if (isset($_GET['id'])) {
                                                             <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
                                                             <ul class="dropdown-menu" aria-labelledby="accounntMenu">
                                                                 <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
-                                                                    <li class="dropdown-submenu dropend">
-                                                                        <a class="dropdown-item " href="#">Move to top</a>
-                                                                    </li>
+
                                                                     <li class="dropdown-submenu dropend">
                                                                         <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $assignment['id'] ?>">Edit</a>
                                                                     </li>
+                                                                    <li class="dropdown-submenu dropend">
+                                                                        <a class="dropdown-item " href="controllers/assignment/delete_assignment.controller.php?id=<?= $assignment['id'] ?> " onclick="if (!confirm('Are you sure to Delete it?')) { return false; }">Delete</a>
+                                                                    </li>
+                                                                    
                                                                 <?php endif; ?>
                                                                 <li class="dropdown-submenu dropend">
                                                                     <a class="dropdown-item " href="# ">Copy Link</a>
