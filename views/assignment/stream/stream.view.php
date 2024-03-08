@@ -10,8 +10,8 @@ if (isset($_GET['id'])) {
     $_SESSION['ass_id'] = $id;
     $classes = getClasses($_SESSION['user']['id']);
     $classCode = "No class code";
-    foreach ($classes as $class){
-        if(strval($class['id'])== $_GET['id']){
+    foreach ($classes as $class) {
+        if (strval($class['id']) == $_GET['id']) {
             $classCode = $class['code'];
         }
     }
@@ -101,7 +101,7 @@ if (isset($_GET['id'])) {
                                         <!--  class code -->
                                         <div class="list-group list-group-dark list-group-borderless">
                                             <p>Class code</p>
-                                            <a class="mb-4 gap-2 col-1 mx-auto" href="#"><span> <?=$classCode?></span></a>
+                                            <a class="mb-4 gap-2 col-1 mx-auto" href="#"><span> <?= $classCode ?></span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -151,22 +151,22 @@ if (isset($_GET['id'])) {
                                             $time = date('g:i A', strtotime($assignment['end_time']));
                                         ?>
                                             <?php if ($_SESSION['user']['role'] == "teacher") { ?>
-                                                <tr onclick="window.location='/instruction?id=<?= $assignment['id'] ?>';" style="cursor:pointer;">
-                                                <?php } else { ?>
+                                                <!-- <tr onclick="window.location='/instruction?id=<?= $assignment['id'] ?>';" style="cursor:pointer;"> -->
+                                            <?php } else { ?>
                                                 <tr onclick="window.location='/assignment_student?id=<?= $assignment['id'] ?>';" style="cursor:pointer;">
                                                     <!-- Course item -->
                                                 <?php } ?>
-                                                <td>
-                                                    <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-2 border-start border-primary">
+                                                <td class=" ">
+                                                    <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 rounded px-4 py-2 border-start border-primary btn-outline-secondary" >
                                                         <!-- Content -->
-                                                        <div class="d-flex align-items-center">
+                                                        <div class="d-flex align-items-center" class="">
                                                             <!-- Image -->
                                                             <div class="w-70px me-2">
                                                                 <img src="assets/images/avatar/16.png" class="rounded" alt="">
                                                             </div>
                                                             <div class="mb-0 ms-2">
                                                                 <!-- Title -->
-                                                                <p><a class="text-dark" href="#"> <?= $_SESSION['user_created']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
+                                                                <p><a class="text-dark" href="/instruction?id=<?= $assignment['id'] ?>"> <?= $_SESSION['user_created']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
                                                                 <div class="d-sm-flex">
                                                                     <p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i><?= $assignment['end_date'] ?></p>
                                                                     <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
