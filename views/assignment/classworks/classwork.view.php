@@ -12,7 +12,7 @@
                         <a href="/classwork"><button type="button" class="btn btn-outline-info <?= urlIs("/classwork") ? "active" : "" ?> ">Classwork</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
-                        <a href="/people?id=<?= $_SESSION['class_id']?>"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "" ?>">Poeple</button></a>
+                        <a href="/people?id=<?= $_SESSION['class_id'] ?>"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "" ?>">Poeple</button></a>
                     </div>
                     <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
                         <div class="btn-group me-4" role="group" aria-label="Third group">
@@ -83,17 +83,7 @@
                                         <div class="mt-1">Posted <?= $assigment['start_date'] ?></div>
                                         <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
                                         <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
-                                            <ul class="dropdown-menu" aria-labelledby="accounntMenu">
-                                                <li class="dropdown-submenu dropend">
-                                                    <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $assigment['id'] ?>">Edit</a>
-                                                </li>
-                                                <li class="dropdown-submenu dropend">
-                                                    <a class="dropdown-item " href="controllers/assignment/delete_assignment.controller.php?id=<?= $assigment['id'] ?> " onclick="if (!confirm('Are you sure to Delete it?')) { return false; }">Delete</a>
-                                                </li>
-                                                <li class="dropdown-submenu dropend">
-                                                    <a class="dropdown-item " href="# ">Copy Link</a>
-                                                </li>
-                                            </ul>
+                                            
                                     </div>
                                 <?php endif; ?>
                                 </div>

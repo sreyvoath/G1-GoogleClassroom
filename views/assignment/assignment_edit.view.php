@@ -9,14 +9,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
-
+<?php session_start() ?>
 <body>
     <form action="/controllers/assignment/update_assignment.ontroller.php" method="post">
     <input type="hidden" name="id" id="id" value="<?= $assignment['id'] ?>">
         <div class="body">
             <div class="back d-flex justify-content-between align-items-center shadow-sm p-3 mb-5 bg-body rounded">
                 <div class="nav-left d-flex gap-3">
-                    <a class="text-dark" href="/classwork"><span class="material-symbols-outlined">close</span></a>
+                    <a class="text-dark" href="/stream?id=<?= $_SESSION['class_id']?>"><span class="material-symbols-outlined">close</span></a>
                     <div class="title d-flex gap-1">
                         <div class="bg py-1 px-2 d-flex justify-content-enter align-items-center rounded-circle" style=" margin-top: -7px; background-color: purple;">
                             <span class="material-symbols-outlined text-white">description</span>

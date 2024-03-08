@@ -60,9 +60,11 @@ if (isset($_SESSION['class_join'])) {
 									<button type="button" class="btn btn-primary dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Create Class</button>
 								</li>
 							<?php endif; ?>
+							<?php if ($_SESSION['user']['role'] == 'student') : ?>
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item " href="../views/classes/join_class.view.php">Join Class</a>
 							</li>
+							<?php endif; ?>
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item text-primary " href="/classes">View all Class</a>
 							</li>
