@@ -54,6 +54,20 @@ if (isset($_GET['id'])) {
                                         </div>
                                     </div>
                                 </div>
+                                <div class="dropdown mt-2 d-flex">
+                                    <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
+                                    <ul class="dropdown-menu" aria-labelledby="accounntMenu">
+                                        <li class="dropdown-submenu dropend">
+                                            <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $assigment['id'] ?>">Edit</a>
+                                        </li>
+                                        <li class="dropdown-submenu dropend">
+                                            <a class="dropdown-item " href="controllers/assignment/delete_assignment.controller.php?id=<?= $assigment['id'] ?> " onclick="if (!confirm('Are you sure to Delete it?')) { return false; }">Delete</a>
+                                        </li>
+                                        <li class="dropdown-submenu dropend">
+                                            <a class="dropdown-item " href="# ">Copy Link</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </td>
                     </tr>
@@ -64,7 +78,15 @@ if (isset($_GET['id'])) {
             </table>
             <div class="mb-0 ms-8" style="margin-left: -20px;">
                 <p><?= $assignment['content'] ?></p>
-                <h5>Document PDF</h5>
+                <h5>
+                    <span class="border border-1 d-inline-block" style="height: 50px; width: 400px;">
+                        <a href="assets/images/upload/<?= $assignment['document'] ?>">
+                            <i class="fab fa-google-drive" style="color: #FFD43B; font-size: 40px;"></i>
+                            Your Homework here
+                        </a>
+                    </span>
+
+                </h5>
             </div>
             <hr>
             <div class="mb-0 ms-8">
@@ -76,13 +98,14 @@ if (isset($_GET['id'])) {
                     <img class="avatar-xl rounded-circle border border-white border-1 shadow" style=" object-fit:cover; border-radius: 10%; margin-top: -1px " src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="avatar">
                 </div>
 
-                <div class="border ms-4 " style="width: 1000px; height:120px;" >
+                <div class="border ms-4 " style="width: 1000px; height:120px;">
                     <div class="">
                         <nav class="navbar">
                             <div class="container-fluid ">
-                                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <input type="text" class="form-control" name="classname" id="classname" required placeholder="Add class comment">
-                                </button>
+                                <dive class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <input type="text" style="width: 400%;" class="form-control bg-white col-6" name="classname" id="classname" required placeholder="Add class comment">
+                                </dive>
+                                <button type="submit" class="btn btn-outline-primary"><i class="bi bi-send-fill"></i></button>
                             </div>
                         </nav>
                         <div class="collapse" id="navbarToggleExternalContent">

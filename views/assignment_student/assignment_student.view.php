@@ -97,7 +97,7 @@
                 <p class="card-text">Turned in</p>
             </div>
             <div class="card-body rounded">
-                <div class="d-flex ">
+                <div class="">
                     <div class="d-flex rounded border border-primary">
                         <div class="flex-shrink-0 border border-primary">
                             <img src="assets/images/about/download.png" alt="..." style="width: 50px;">
@@ -106,10 +106,23 @@
                             This is some content from a media component.
                         </div>
                     </div>
+                    <hr>
+                    <dt class="nav-item dropdown">
+                        <a class="nav-link  " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button type="button" class="btn border border-primary " style="width: 100%;"><i class="fa fa-plus me-3" aria-hidden="true"></i> <span>Add or create</span></button>
+                        </a>
+                        </ul>
+                    </dt>
                 </div>
             </div>
             <div class="card-body ">
-                <button type="button" class="btn btn-primary" style="width: 100%;">Unsubmit</button>
+
+                <dt class="nav-item dropdown">
+                    <a class="nav-link " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="button" class="btn btn-primary" style="width: 100%;">Unsubmit</button>
+                    </a>
+                    </ul>
+                </dt>
             </div>
             <div class="card-body text-center">
                 <p>Your teacher is not accepting work at this time</p>
