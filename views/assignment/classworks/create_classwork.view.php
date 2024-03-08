@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form action="/controllers/assignment/create_assignment.controller.php" method="post">
+    <form action="/controllers/assignment/create_assignment.controller.php" method="post" enctype="multipart/form-data">
         <div class="body">
             <div class="back d-flex justify-content-between align-items-center shadow-sm p-3 mb-5 bg-body rounded">
                 <div class="nav-left d-flex gap-3">
