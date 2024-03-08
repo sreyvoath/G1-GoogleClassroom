@@ -157,7 +157,7 @@ if (isset($_GET['id'])) {
                                                     <!-- Course item -->
                                                 <?php } ?>
                                                 <td class=" ">
-                                                    <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 rounded px-4 py-2 border-start border-primary btn-outline-secondary" >
+                                                    <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 rounded px-4 py-2 border-start border-primary" >
                                                         <!-- Content -->
                                                         <div class="d-flex align-items-center" class="">
                                                             <!-- Image -->
