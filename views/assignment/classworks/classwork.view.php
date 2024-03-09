@@ -66,6 +66,11 @@
                     <?php
                 } else {
                     foreach ($assignments as $assigment) :
+                        if ($assigment['id']) {
+                            $endDateTime = date($assigment['end_date'] . ' ' . $assigment['end_time']);
+                            $currentDateTime = date('Y-m-d H:i:s');
+                            $dateLineTime = ($endDateTime < $currentDateTime);
+                        }
                     ?><!-- -------------------------------------------------------------------------------- -->
                         <div class="accordion-item">
                             <div data-bs-toggle="collapse" data-bs-target="#flush-collapse<?= $assigment['id'] ?>" aria-expanded="false" aria-controls="flush-collapseTwo">
@@ -80,7 +85,16 @@
                                     </div>
 
                                     <div class="dropdown mt-2 d-flex">
-                                        <div class="mt-1">Posted <?= $assigment['start_date'] ?></div>
+                                        <div class="miss">
+                                            <div class="mt-1">Posted <?= $assigment['start_date'] ?></div>
+                                            <?php
+                                            if ($dateLineTime) {
+                                                echo '<span style="color: red;">Missing</span>';
+                                            } else {
+                                                echo '<span style="color: red;display:none;">Missing</span>';
+                                            }
+                                            ?>
+                                        </div>
                                         <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
                                         <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
                                             <ul class="dropdown-menu" aria-labelledby="accounntMenu">
