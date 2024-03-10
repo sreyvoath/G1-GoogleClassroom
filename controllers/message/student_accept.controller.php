@@ -4,17 +4,16 @@ require "../../database/database.php";
 require "../../models/user_join_class/class.model.php";
 require "../../models/invites/invite.model.php";
 
-if(isset($_GET['id']) and isset($_SESSION['1user_id']) and isset($_SESSION['1class_id'])){
+
+if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $student_id = $_SESSION['1user_id'];
-    $classId = $_SESSION['1class_id'];
-    createUserJoinClass($student_id, $classId);
+    
+    $messge = getMessage($id);
+    $studentId = $messge['user_id'];
+    $classId = $messge['class_id'];
+    createUserJoinClass($studentId, $classId);
     deleteMessage($id);
     header("location:/home");
-}
-else {
+} else {
     header("location:/message");
 }
-
-
-?>

@@ -42,6 +42,7 @@ function getStudent(int $id)
     inner join users_join_class uj on uj.user_id= u.id
     inner join classes c on uj.class_id = c.id
     where u.role = :role and u.id = :id
+    order by uj.id desc
     ");
 
     $statement->execute([

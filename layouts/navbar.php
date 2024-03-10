@@ -1,4 +1,7 @@
 <?php
+require "database/database.php";
+require "models/invites/invite.model.php";
+require "models/signin.model.php";
 $user = $_SESSION['user'];
 
 if (isset($_SESSION['class'])) {
@@ -7,7 +10,20 @@ if (isset($_SESSION['class'])) {
 if (isset($_SESSION['class_join'])) {
 	$classJoin = $_SESSION['class_join'];
 }
+$studentJoin = getMessages();
+$_SESSION['studentJoint'] = $studentJoin;
+$numberAlert = 0;
+foreach ($studentJoin as $student) {
+	$teacherId = getUserId($student['inviter_id']);
+	if ($student['user_id'] == $_SESSION['user']['id']) {
+		$numberAlert += 1;
+	}
+}
 ?>
+
+
+
+
 <!-- Header START -->
 <header class="navbar-light navbar-sticky header-static">
 	<!-- Logo Nav START -->
@@ -60,9 +76,9 @@ if (isset($_SESSION['class_join'])) {
 								</li>
 							<?php endif; ?>
 							<?php if ($_SESSION['user']['role'] == 'student') : ?>
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item " href="../views/classes/join_class.view.php">Join Class</a>
-							</li>
+								<li class="dropdown-submenu dropend">
+									<a class="dropdown-item " href="../views/classes/join_class.view.php">Join Class</a>
+								</li>
 							<?php endif; ?>
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item text-primary " href="/classes">View all Class</a>
@@ -139,16 +155,13 @@ if (isset($_SESSION['class_join'])) {
 						<?php if ($_SESSION['user']['role'] == 'teacher') { ?>
 							<form class="position-relative mt-2">
 								<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-									<i class="bi bi-plus-circle-fill me-2"></i>
+									<i class="bi bi-plus-circle-fill me-2"></i>Class
 								</button>
 							</form>
 						<?php } else { ?>
-
+							
 							<a href="/message" class="btn btn-success-soft btn-round me-1 mb-0 fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="Message"><i class="far fa-envelope"></i></a>
-							<span class="icon-button__badge" id="badgeCount"><?php
-							echo $_SESSION['alert'];
-							 ?></span>
-
+							<span class="icon-button__badge" id="badgeCount"><?php echo $numberAlert;?></span>
 						<?php } ?>
 						<style>
 							.icon-button__badge {

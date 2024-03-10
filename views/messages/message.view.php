@@ -1,10 +1,8 @@
 <?php
 
-require "database/database.php";
-require "models/invites/invite.model.php";
-require "models/signin.model.php";
-$studentJoin = getMessages();
+$studentJoin = $_SESSION['studentJoint'];
 $_SESSION['number_message'] = count($studentJoin);
+
 
 ?>
 <div class="container">
@@ -23,11 +21,10 @@ $_SESSION['number_message'] = count($studentJoin);
                     <p class="d-flex justify-content-center fs-5">You doesn't have someone invited</p>
                 </div>
                 <?php } else {
-                    $countUser = 0;
                 foreach ($studentJoin as $student) {
-                    $countUser += 1;
                     $_SESSION['1class_id'] = $student['class_id'];
                     $_SESSION['1user_id'] = $student['user_id'];
+                    
                     $teacherId = getUserId($student['inviter_id']) ;
                     if ($student['user_id'] == $_SESSION['user']['id']) { ?>
                         <div class="card-body shadow d-flex justify-content-between">
@@ -49,7 +46,7 @@ $_SESSION['number_message'] = count($studentJoin);
             <?php }
                 }
             };
-            $_SESSION['alert'] = $countUser;
+            
              ?>
         </div>
         <div class="col-1"></div>

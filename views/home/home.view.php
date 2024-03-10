@@ -41,7 +41,6 @@ if ($_SESSION['user']['role'] == "student" and count($idUser) > 0) {
 	$_SESSION['student_join'] = $studentsJoin;
 }
 
-
 if($_SESSION['user']['role']== "student"){
 
 ?>
