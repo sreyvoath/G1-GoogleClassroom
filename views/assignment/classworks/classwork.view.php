@@ -122,6 +122,7 @@
                                             </a>
                                         </span>
                                     </div>
+                                    <?php if ($_SESSION['user']['role']=='teacher'):?>
                                     <div class="turn d-flex gap-3">
                                         <div class="right px-3" style="border-left: 1px solid gray; height: 70px;">
                                             <p class="fs-2">0</p>
@@ -132,6 +133,7 @@
                                             <p style="margin-top: -20px;">Assigned</p>
                                         </div>
                                     </div>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-4  border-primary">
                                     <div class="align-items-center">

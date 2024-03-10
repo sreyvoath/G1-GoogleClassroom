@@ -113,8 +113,9 @@ if (isset($_GET['id'])) {
                             <div class="bg p-2 border text-center" style="border-radius: 10px 0 0 10px;">
                                 <img src="/assets/images/bg/06.png" alt="" width="50px" height="40px">
                             </div>
-                            <div class="title mx-3 mt-2">
+                            <div class="d-flex flex-column title mx-3 mt-2 align-items-start justify-content-center">
                                 <p><?= $assignment['document'] ?></p>
+                                <span style="margin-top: -10px;">PDF</span>
                             </div>
 
                         </a>
@@ -127,7 +128,7 @@ if (isset($_GET['id'])) {
                         <span>Add or create</span>
                         <input id="file-upload" type="file" style="display: none;">
                     </label>
-                    <a class="nav-link " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link mt-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <button type="button" class="btn btn-primary" style="width: 100%;">Submit</button>
                     </a>
                 </div>
