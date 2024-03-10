@@ -104,7 +104,7 @@ if (isset($_GET['id'])) {
                                         <!--  class code -->
                                         <div class="list-group list-group-dark list-group-borderless">
                                             <p class="text-white fs-5 mx-3">Class code</p>
-                                            <a class="mb-4 d-flex gap-4 col-1 mx-auto" href="#" >
+                                            <a class="mb-4 d-flex gap-4 col-1 mx-auto" href="#">
                                                 <h4 class="text-primary" style="margin-left: -100px;"> <?= $classCode ?></h4>
                                                 <span class="material-symbols-outlined mt-1 text-white fs-4">content_copy</span>
                                             </a>
@@ -204,8 +204,8 @@ if (isset($_GET['id'])) {
                                                 </div>
 
                                             </td>
-                                            </a>
-                                            </tr>
+                                            <!-- </a> -->
+                                            <!-- </tr> -->
                                         <?php endforeach; ?>
                                     <?php }; ?>
                                 </tbody>
@@ -218,4 +218,5 @@ if (isset($_GET['id'])) {
             </div>
         </div>
     </section>
+
 </main>
