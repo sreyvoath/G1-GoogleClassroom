@@ -106,19 +106,19 @@
                             <div id="flush-collapse<?= $assigment['id'] ?>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                 <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-4 border-start border-primary">
                                     <div class="align-items-center">
-                                        <p>No due date(sran lop)</p>
-                                        <span class="border border-1 d-inline-block" style="height: 50px; width: 400px;">
+                                        <p>No due date</p>
+                                        <span class="border border-1 d-inline-block " style="height: 60px; width: 400px; border-radius: 10px 0 0 10px;">
                                             <a href="assets/images/upload/<?= $assigment['document'] ?>">
-                                                <i class="fab fa-google-drive" style="color: #FFD43B; font-size: 40px;"></i>
+                                                <img src="/assets/images/bg/06.png" alt="" width="50" height="60">
                                                 Your Homework here
                                             </a>
                                         </span>
+                                        <div class="align-items-center mt-3">
+                                            <button type="button" class="btn btn-light"><a href="#">class comment</a></button>
+                                        </div>
                                     </div>
-                                    <div class="p-2 d-flex text-center">
-                                        <h1>0</h1>
-                                        <div class="vr" style="height: 100px;"></div>
-                                        <h1>1</h1>
-                                    </div>
+
+
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-4  border-primary">
                                     <div class="align-items-center">

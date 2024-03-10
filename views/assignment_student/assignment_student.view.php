@@ -62,7 +62,6 @@ if (isset($_GET['id'])) {
                             <h5><?= $assignment['title'] ?></h5>
                             <p><?= $assignment['document'] ?></p>
                         </div>
-
                     </a>
                 </span>
             </div>
