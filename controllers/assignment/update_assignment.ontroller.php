@@ -16,9 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $end_date = htmlspecialchars($_POST['end_date']);
         $end_time = htmlspecialchars($_POST['end_time']);
 
+        $class_id = $_SESSION['ass_id'];
+
 
         if (updateAssign($title, $content, $document, $filepath, $score, $end_date, $end_time, $class_id, $id)) {
-            header("Location:/stream");
+            header("Location: /stream?id=$class_id");
         } else {
             header("Location:/create-work");
         }
