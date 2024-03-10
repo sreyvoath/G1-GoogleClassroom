@@ -161,15 +161,17 @@ foreach ($studentJoin as $student) {
 						<?php } else { ?>
 							
 							<a href="/message" class="btn btn-success-soft btn-round me-1 mb-0 fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="Message"><i class="far fa-envelope"></i></a>
-							<span class="icon-button__badge" id="badgeCount"><?php echo $numberAlert;?></span>
+							<span class="icon-button__badge" style="font-size: 12px; display: <?php echo ($numberAlert == 0) ? 'none' : 'inline'; ?>" id="badgeCount"><?php echo $numberAlert;?></span>
+
 						<?php } ?>
 						<style>
 							.icon-button__badge {
+								text-align:center;
 								position: absolute;
-								top: 35px;
-								right: 105px;
-								width: 25px;
-								height: 25px;
+								top: 40px;
+								right: 110px;
+								width: 20px;
+								height: 20px;
 								background: red;
 								color: #ffffff;
 								display: flex;
