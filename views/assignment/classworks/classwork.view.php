@@ -49,7 +49,6 @@
                 $id = $_SESSION['ass_id'];
                 date_default_timezone_set('Asia/Phnom_Penh');
                 $assignments = getAssigns($id);
-                // $_SESSION['assignments'] = $assignments;
                 ?>
                 <?php if (count($assignments) == 0) { ?>
                     <hr>
@@ -72,6 +71,7 @@
                             $dateLineTime = ($endDateTime < $currentDateTime);
                         }
                     ?><!-- -------------------------------------------------------------------------------- -->
+
                         <div class="accordion-item">
                             <div data-bs-toggle="collapse" data-bs-target="#flush-collapse<?= $assigment['id'] ?>" aria-expanded="false" aria-controls="flush-collapseTwo">
                                 <div class="dropdown-submenu dropend shadow-sm mb-3 bg-body rounded px-4 py-2 d-flex justify-content-between border-start border-2 border-primary">
@@ -87,17 +87,18 @@
                                     <div class="dropdown mt-2 d-flex">
                                         <div class="miss">
                                             <div class="mt-1">Posted <?= $assigment['start_date'] ?></div>
-                                            <?php
-                                            if ($dateLineTime) {
-                                                echo '<span style="color: red;">Missing</span>';
-                                            } else {
-                                                echo '<span style="color: red;display:none;">Missing</span>';
+                                            <?php if ($_SESSION['user']['role'] == 'student') {
+                                                if ($dateLineTime) {
+                                                    echo '<span style="color: red;">Missing</span>';
+                                                } else {
+                                                    echo '<span style="color: red;display:none;">Missing</span>';
+                                                }
                                             }
                                             ?>
                                         </div>
                                         <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
                                         <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
-                                            
+
                                     </div>
                                 <?php endif; ?>
                                 </div>
