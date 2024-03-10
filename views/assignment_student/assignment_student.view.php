@@ -35,7 +35,7 @@ if (isset($_GET['id'])) {
                                                 <p class="h6 fw-light mb-0 small"><?= $assignment['score'] ?> Points</p>
                                             </div>
                                             <div>
-                                                <h5>Due Jan 25, 11:00 AM</h5>
+                                                <h5><?= $assignment['start_date'] ?></h5>
                                             </div>
 
                                         </div>

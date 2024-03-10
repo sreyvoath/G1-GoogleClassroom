@@ -49,7 +49,7 @@
                 $id = $_SESSION['ass_id'];
                 date_default_timezone_set('Asia/Phnom_Penh');
                 $assignments = getAssigns($id);
-                // $_SESSION['assignments'] = $assignments;
+                
                 ?>
                 <?php if (count($assignments) == 0) { ?>
                     <hr>
@@ -121,7 +121,7 @@
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-4  border-primary">
                                     <div class="align-items-center">
-                                        <button type="button" class="btn btn-light"><a href="#">View instructions</a></button>
+                                        <button type="button" class="btn btn-light"><a href="/instruction?id=<?=$assigment['id']?>">View instructions</a></button>
                                     </div>
                                 </div>
                             </div>
