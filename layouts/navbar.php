@@ -7,7 +7,6 @@ if (isset($_SESSION['class'])) {
 if (isset($_SESSION['class_join'])) {
 	$classJoin = $_SESSION['class_join'];
 }
-
 ?>
 <!-- Header START -->
 <header class="navbar-light navbar-sticky header-static">
@@ -138,12 +137,45 @@ if (isset($_SESSION['class_join'])) {
 						<?php if ($_SESSION['user']['role'] == 'teacher') { ?>
 							<form class="position-relative mt-2">
 								<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-									<i class="bi bi-plus-circle-fill me-2"></i>Class
+									<i class="bi bi-plus-circle-fill me-2"></i>
 								</button>
 							</form>
 						<?php } else { ?>
+
 							<a href="/message" class="btn btn-success-soft btn-round me-1 mb-0 fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="Message"><i class="far fa-envelope"></i></a>
+							<span class="icon-button__badge" id="badgeCount"><?php
+							echo $_SESSION['alert'];
+							 ?></span>
+
 						<?php } ?>
+						<style>
+							.icon-button__badge {
+								position: absolute;
+								top: 35px;
+								right: 105px;
+								width: 25px;
+								height: 25px;
+								background: red;
+								color: #ffffff;
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								border-radius: 50%;
+							}
+						</style>
+						<script>
+							document.addEventListener('DOMContentLoaded', function() {
+								const badge = document.getElementById('badgeCount');
+								let count = 0;
+
+								badge.addEventListener('click', function() {
+									count++;
+									badge.textContent = count + '+';
+								});
+							});
+						</script>
+
+
 					</div>
 				</div>
 				<!-- Nav Search END -->

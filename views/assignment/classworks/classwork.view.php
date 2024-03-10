@@ -85,7 +85,7 @@
                                         <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
                                             <ul class="dropdown-menu" aria-labelledby="accounntMenu">
                                                 <li class="dropdown-submenu dropend">
-                                                    <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $assigment['id'] ?>">Edit</a>
+                                                    <a class="dropdown-item " href="views/assignment/classworks/create_classwork.view.php?id=<?= $assigment['id'] ?>">Edit</a>
                                                 </li>
                                                 <li class="dropdown-submenu dropend">
                                                     <a class="dropdown-item " href="controllers/assignment/delete_assignment.controller.php?id=<?= $assigment['id'] ?> " onclick="if (!confirm('Are you sure to Delete it?')) { return false; }">Delete</a>
