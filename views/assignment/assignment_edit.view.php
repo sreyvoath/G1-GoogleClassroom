@@ -11,7 +11,7 @@
 </head>
 <?php session_start() ?>
 <body>
-    <form action="/controllers/assignment/update_assignment.ontroller.php" method="post">
+    <form action="/controllers/assignment/update_assignment.ontroller.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" id="id" value="<?= $assignment['id'] ?>">
         <div class="body">
             <div class="back d-flex justify-content-between align-items-center shadow-sm p-3 mb-5 bg-body rounded">
