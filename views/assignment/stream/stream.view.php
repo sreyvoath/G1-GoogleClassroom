@@ -100,19 +100,42 @@ if (isset($_GET['id'])) {
                                 <div class="offcanvas-body p-3 p-xl-0">
                                     <div class="bg-dark border rounded-3 pb-0 p-3 w-100">
                                         <!-- Dashboard menu -->
-
-                                        <!--  class code -->
+                                        <script src="vendor/js/search.js"></script>
+                                        <!-- Class code -->
                                         <div class="list-group list-group-dark list-group-borderless">
                                             <p class="text-white fs-5 mx-3">Class code</p>
-                                            <a class="mb-4 d-flex gap-4 col-1 mx-auto" href="#">
-                                                <h4 class="text-primary" style="margin-left: -100px;"> <?= $classCode ?></h4>
-                                                <span class="material-symbols-outlined mt-1 text-white fs-4">content_copy</span>
-                                            </a>
-
+                                            <div class="mb-4 d-flex gap-4 col-1 mx-auto">
+                                                <!-- Add an ID to the <h4> element -->
+                                                <h4 id="classCode" class="text-primary" style="margin-left: -100px;"><?= $classCode ?></h4>
+                                                <button type="button" id="copyButton" class="btn btn-outline" style="width: 50%;">
+                                                    <span class="material-symbols-outlined mt-0 text-white fs-5">content_copy</span>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- Include Clipboard.js library -->
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        var clipboard = new ClipboardJS('#copyButton', {
+                                            text: function() {
+                                                return document.getElementById('classCode').innerText;
+                                            }
+                                        });
+
+                                        clipboard.on('success', function(e) {
+                                            console.info('Copied: ' + e.text);
+                                            e.clearSelection();
+                                        });
+
+                                        clipboard.on('error', function(e) {
+                                            console.error('Error copying text: ' + e.text);
+                                        });
+                                    });
+                                </script>
                             <?php endif; ?>
+
 
                             <br>
                             <div class="offcanvas-body p-3 p-xl-0">
