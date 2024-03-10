@@ -23,7 +23,9 @@ $_SESSION['number_message'] = count($studentJoin);
                     <p class="d-flex justify-content-center fs-5">You doesn't have someone invited</p>
                 </div>
                 <?php } else {
+                    $countUser = 0;
                 foreach ($studentJoin as $student) {
+                    $countUser += 1;
                     $_SESSION['1class_id'] = $student['class_id'];
                     $_SESSION['1user_id'] = $student['user_id'];
                     $teacherId = getUserId($student['inviter_id']) ;
@@ -46,7 +48,9 @@ $_SESSION['number_message'] = count($studentJoin);
                         </div>
             <?php }
                 }
-            }; ?>
+            };
+            $_SESSION['alert'] = $countUser;
+             ?>
         </div>
         <div class="col-1"></div>
     </div>
