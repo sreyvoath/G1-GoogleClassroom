@@ -1,3 +1,13 @@
+<?php
+require "database/database.php";
+require "models/assignments/assignment.model.php";
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $_SESSION['assign_id'] = $id;
+    $assignment = getAssign($id);
+}
+
+?>
 <main class="d-flex " style="width: 100%;">
     <section class="pt-0" style="width: 70%;">
         <div class="container">
@@ -16,13 +26,13 @@
                                     </div>
                                     <div class="mb-0 ms-2 mt-2">
                                         <!-- Title -->
-                                        <h3><a href="/instruction">DATABASE FINAL EXAM</a></h3>
+                                        <h3><a href="/instruction"><?= $assignment['title'] ?></a></h3>
                                         <!-- Info -->
-                                        <p class="h6 fw-light mb-0 small me-3">Him HEY Jan 25 (Edited Jan 25)</p>
+                                        <p class="h6 fw-light mb-0 small me-3"><?= $_SESSION['user']['name'] ?> <?= $assignment['start_date'] ?></p>
                                         <br>
                                         <div class="d-flex justify-content-between align-items-center " style="width: 250%;">
                                             <div>
-                                                <p class="h6 fw-light mb-0 small"> 100 Points</p>
+                                                <p class="h6 fw-light mb-0 small"><?= $assignment['score'] ?> Points</p>
                                             </div>
                                             <div>
                                                 <h5>Due Jan 25, 11:00 AM</h5>
@@ -42,18 +52,19 @@
         <!-- PHP loop for classes END -->
         </table>
         <div class="mb-0 ms-8" style="margin-left: -20px;">
-
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0 border border-primary rounded ">
-                    <div class="col-md-4 border border-primary justify-content-center align-items-sm-center d-flex ">
-                        <img src="assets/images/about/download.png" class="img-fluid rounded-start" alt="..." style="width: 80px;">
-                    </div>
-                    <div class="col-md-8 border border-primary ">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Card title</h5>
+            <div class="p-5">
+                <span class="d-inline-block" style="height: 50px; width: 400px;">
+                    <a class="d-flex border" style="border-radius: 10px; margin-left: -40px;" href="assets/images/upload/<?= $assignment['document'] ?>">
+                        <div class="bg p-2 border" style="border-radius: 10px 0 0 10px;">
+                            <img src="/assets/images/bg/06.png" alt="">
                         </div>
-                    </div>
-                </div>
+                        <div class="title mx-3" style="margin-top: 30px;">
+                            <h5><?= $assignment['title'] ?></h5>
+                            <p><?= $assignment['document'] ?></p>
+                        </div>
+
+                    </a>
+                </span>
             </div>
         </div>
         <hr>
@@ -70,9 +81,10 @@
                 <div class="">
                     <nav class="navbar">
                         <div class="container-fluid ">
-                            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <input type="text" class="form-control" name="classname" id="classname" required placeholder="Add class comment">
-                            </button>
+                            <dive class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <input type="text" style="width: 360%;" class="form-control bg-white col-6" name="classname" id="classname" required placeholder="Add class comment">
+                            </dive>
+                            <button type="submit" class="btn btn-outline-primary"><i class="bi bi-send-fill"></i></button>
                         </div>
                     </nav>
                     <div class="collapse" id="navbarToggleExternalContent">
@@ -98,20 +110,28 @@
             </div>
             <div class="card-body rounded">
                 <div class="">
-                    <div class="d-flex rounded border border-primary">
-                        <div class="flex-shrink-0 border border-primary">
-                            <img src="assets/images/about/download.png" alt="..." style="width: 50px;">
-                        </div>
-                        <div class="flex-grow-1 ms-0 border border-primary">
-                            This is some content from a media component.
-                        </div>
+                    <div class="p-5">
+                        <span class="d-inline-block" style="height: 50px; width: 340px;">
+                            <a class="d-flex border" style="border-radius: 10px; margin-left: -60px;" href="assets/images/upload/<?= $assignment['document'] ?>">
+                                <div class="bg p-2 border" style="border-radius: 10px 0 0 10px;">
+                                    <img src="/assets/images/bg/06.png" alt="">
+                                </div>
+                                <div class="title mx-3" style="margin-top: 30px;">
+                                    <h5><?= $assignment['title'] ?></h5>
+                                    <p><?= $assignment['document'] ?></p>
+                                </div>
+
+                            </a>
+                        </span>
+
                     </div>
                     <hr>
                     <dt class="nav-item dropdown">
-                        <a class="nav-link  " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <button type="button" class="btn border border-primary " style="width: 100%;"><i class="fa fa-plus me-3" aria-hidden="true"></i> <span>Add or create</span></button>
-                        </a>
-                        </ul>
+                        <label for="file-upload" class="btn border border-primary" style="width: 100%; cursor: pointer;">
+                            <i class="fa fa-plus me-3" aria-hidden="true"></i>
+                            <span>Add or create</span>
+                            <input id="file-upload" type="file" style="display: none;">
+                        </label>
                     </dt>
                 </div>
             </div>
@@ -136,9 +156,10 @@
                 <div class="me-3 ">
                     <nav class="navbar">
                         <div class="container-fluid ">
-                            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#private" aria-controls="private" aria-expanded="false" aria-label="Toggle navigation">
-                                <input type="text" class="form-control" name="classname" id="classname" required placeholder="Add private comment">
-                            </button>
+                            <dive class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <input type="text" style="width: 130%;" class="form-control bg-white col-6" name="classname" id="classname" required placeholder="Add class comment">
+                            </dive>
+                            <button type="submit" class="btn btn-outline-primary"><i class="bi bi-send-fill"></i></button>
                         </div>
                     </nav>
                     <div class="collapse" id="private">
@@ -154,6 +175,4 @@
             </div>
         </div>
     </div>
-
-
 </main>
