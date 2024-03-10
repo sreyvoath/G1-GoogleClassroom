@@ -15,7 +15,7 @@ function createMessage(string $message, int $user_id, int $class_id, int $invite
 }
 
 
-// ========Get all students============
+// ========Get all messages============
 function getMessages()
 {
 
@@ -23,13 +23,14 @@ function getMessages()
     $statement = $connection->prepare("select i.id, i.inviter_id, u.name, u.id as user_id, c.id as class_id, c.title, i.message from users u
      inner join invited i on i.user_id = u.id
      inner join classes c on i.class_id = c.id 
+     order by i.id desc
     ");
 
     $statement->execute();
     return $statement->fetchAll();
 }
 
-//<======== delete class=======>
+//<======== delete message=======>
 function deleteMessage(int $id) : bool
 {
     global $connection;

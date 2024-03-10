@@ -31,13 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "Sorry, only PDF, DOCX, and XLSX files are allowed.";
             $uploadOk = 0;
         }
-
-        // Check if file already exists
-        if (file_exists($targetFile)) {
-            echo "Sorry, file already exists.";
-            $uploadOk = 0;
-        }
-
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
             echo "Sorry, your file was not uploaded.";

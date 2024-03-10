@@ -29,7 +29,7 @@ $_SESSION['user_created'] = $userCreated;
                         <a href="/classwork"><button type="button" class="btn btn-outline-info <?= urlIs("/classwork") ? "active" : "" ?> ">Classwork</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
-                        <a href="/people"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "" ?> ">Poeple</button></a>
+                        <a href="/people"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "active" ?> ">Poeple</button></a>
                     </div>
                     <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
                         <div class="btn-group me-4" role="group" aria-label="Third group">
@@ -144,7 +144,7 @@ $_SESSION['user_created'] = $userCreated;
                                                         <div class="dropdown">
 
                                                             <a href="#" class="btn btn-success-soft btn-round me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="<?= $student['email'] ?>"><i class="far fa-envelope"></i></a>
-                                                            <a href="controllers/students/delete_student.controller.php?id=<?= $student['id'] ?>" class="btn btn-danger-soft btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fas fa-trash"></i></a>
+                                                            <a href="controllers/students/delete_student.controller.php?id=<?= $student['id'] ?>" class="btn btn-danger-soft btn-round mb-0" onclick="if (!confirm('Are you sure to Delete it?')) { return false; }"  data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fas fa-trash"></i></a>
 
 
                                                         </div>

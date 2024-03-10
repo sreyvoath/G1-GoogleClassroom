@@ -103,8 +103,12 @@ if (isset($_GET['id'])) {
 
                                         <!--  class code -->
                                         <div class="list-group list-group-dark list-group-borderless">
-                                            <p>Class code</p>
-                                            <a class="mb-4 gap-2 col-1 mx-auto" href="#"><span> <?= $classCode ?></span></a>
+                                            <p class="text-white fs-5 mx-3">Class code</p>
+                                            <a class="mb-4 d-flex gap-4 col-1 mx-auto" href="#" >
+                                                <h4 class="text-primary" style="margin-left: -100px;"> <?= $classCode ?></h4>
+                                                <span class="material-symbols-outlined mt-1 text-white fs-4">content_copy</span>
+                                            </a>
+
                                         </div>
                                     </div>
                                 </div>
@@ -153,59 +157,57 @@ if (isset($_GET['id'])) {
                                             $date = date('F j, Y', strtotime($assignment['end_date']));
                                             $time = date('g:i A', strtotime($assignment['end_time']));
                                         ?>
-                                            <?php if ($_SESSION['user']['role'] == "teacher") { ?>
-                                                <!-- <tr onclick="window.location='/instruction?id=<?= $assignment['id'] ?>';" style="cursor:pointer;"> -->
-                                            <?php } else { ?>
-                                                <tr onclick="window.location='/assignment_student?id=<?= $assignment['id'] ?>';" style="cursor:pointer;">
-                                                    <!-- Course item -->
-                                                <?php } ?>
-                                                <td class=" ">
-                                                    <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 rounded px-4 py-2 border-start border-primary">
-                                                        <!-- Content -->
-                                                        <div class="d-flex align-items-center" class="">
-                                                            <!-- Image -->
-                                                            <div class="w-70px me-2">
-                                                                <img src="assets/images/avatar/16.png" class="rounded" alt="">
-                                                            </div>
-                                                            <div class="mb-0 ms-2">
-                                                                <!-- Title -->
+                                            <td class=" ">
+                                                <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 rounded px-4 py-2 border-start border-primary">
+                                                    <!-- Content -->
+                                                    <div class="d-flex align-items-center" class="">
+                                                        <!-- Image -->
+                                                        <div class="w-70px me-2">
+                                                            <img src="assets/images/avatar/16.png" class="rounded" alt="">
+                                                        </div>
+                                                        <div class="mb-0 ms-2">
+                                                            <!-- Title -->
+                                                            <?php if ($_SESSION['user']['role'] == "teacher") { ?>
                                                                 <p><a class="text-dark" href="/instruction?id=<?= $assignment['id'] ?>"> <?= $_SESSION['user_created']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
-                                                                <div class="d-sm-flex">
-                                                                    <p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i><?= $assignment['end_date'] ?></p>
-                                                                    <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
-                                                                        <p class="h6 fw-light mb-0 small"><i class="fas fa-check-circle text-success me-2"></i>0 Completed</p>
-                                                                    <?php endif; ?>
-                                                                </div>
+                                                            <?php } else { ?>
+                                                                <p><a class="text-dark" href="/assignment_student?id=<?= $assignment['id'] ?>"> <?= $_SESSION['user_created']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
+                                                            <?php } ?>
+                                                            <div class="d-sm-flex">
+                                                                <p class="h6 fw-light mb-0 small me-3"><i class="fas fa-table text-orange me-2"></i><?= $assignment['end_date'] ?></p>
+                                                                <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
+                                                                    <p class="h6 fw-light mb-0 small"><i class="fas fa-check-circle text-success me-2"></i>0 Completed</p>
+                                                                <?php endif; ?>
                                                             </div>
                                                         </div>
-                                                        <!-- Buttons -->
+                                                    </div>
+                                                    <!-- Buttons -->
 
-                                                        <div class="dropdown mt-2 d-flex">
-                                                            <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
-                                                            <ul class="dropdown-menu" aria-labelledby="accounntMenu">
-                                                                <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
+                                                    <div class="dropdown mt-2 d-flex">
+                                                        <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
+                                                        <ul class="dropdown-menu" aria-labelledby="accounntMenu">
+                                                            <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
 
-                                                                    <li class="dropdown-submenu dropend">
-                                                                        <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $assignment['id'] ?>">Edit</a>
-                                                                    </li>
-                                                                    <li class="dropdown-submenu dropend">
-                                                                        <a class="dropdown-item " href="controllers/assignment/delete_assignment.controller.php?id=<?= $assignment['id'] ?> " onclick="if (!confirm('Are you sure to Delete it?')) { return false; }">Delete</a>
-                                                                    </li>
-                                                                    
-                                                                <?php endif; ?>
                                                                 <li class="dropdown-submenu dropend">
-                                                                    <a class="dropdown-item " href="# ">Copy Link</a>
+                                                                    <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $assignment['id'] ?>">Edit</a>
                                                                 </li>
-                                                            </ul>
-                                                        </div>
+                                                                <li class="dropdown-submenu dropend">
+                                                                    <a class="dropdown-item " href="controllers/assignment/delete_assignment.controller.php?id=<?= $assignment['id'] ?> " onclick="if (!confirm('Are you sure to Delete it?')) { return false; }">Delete</a>
+                                                                </li>
 
+                                                            <?php endif; ?>
+                                                            <li class="dropdown-submenu dropend">
+                                                                <a class="dropdown-item " href="# ">Copy Link</a>
+                                                            </li>
+                                                        </ul>
                                                     </div>
 
-                                                </td>
-                                                </a>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        <?php }; ?>
+                                                </div>
+
+                                            </td>
+                                            </a>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php }; ?>
                                 </tbody>
 
                             </table>

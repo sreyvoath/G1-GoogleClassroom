@@ -11,7 +11,6 @@ if(isset($_GET['id']) and isset($_SESSION['1user_id']) and isset($_SESSION['1cla
     createUserJoinClass($student_id, $classId);
     deleteMessage($id);
     header("location:/home");
-
 }
 else {
     header("location:/message");

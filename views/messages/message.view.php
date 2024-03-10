@@ -6,7 +6,6 @@ require "models/signin.model.php";
 $studentJoin = getMessages();
 $_SESSION['number_message'] = count($studentJoin);
 
-
 ?>
 <div class="container">
     <div class="row">
