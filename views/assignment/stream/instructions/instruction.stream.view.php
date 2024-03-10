@@ -79,7 +79,7 @@ if (isset($_GET['id'])) {
             <div class="mb-0 ms-8" style="margin-left: -10px; padding-bottom: 30px;">
                 <p><?= $assignment['content'] ?></p>
                 <div class="p-3">
-                    <span class="d-inline-block" style="height: 50px; width: 400px;">
+                    <span class="d-inline-block" style="height: auto; width: 400px;">
                         <a class="d-flex border" style="border-radius: 10px; margin-left: -30px; margin-top: -20px; margin-bottom: 30px;" href="assets/images/upload/<?= $assignment['document'] ?>">
                             <div class="bg p-2 border" style="border-radius: 10px 0 0 10px;">
                                 <img src="/assets/images/bg/06.png" alt="">

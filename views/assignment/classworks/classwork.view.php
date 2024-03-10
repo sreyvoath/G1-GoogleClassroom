@@ -49,7 +49,7 @@
                 $id = $_SESSION['ass_id'];
                 date_default_timezone_set('Asia/Phnom_Penh');
                 $assignments = getAssigns($id);
-                
+
                 ?>
                 <?php if (count($assignments) == 0) { ?>
                     <hr>
@@ -87,7 +87,7 @@
 
                                     <div class="dropdown mt-2 d-flex">
                                         <div class="miss">
-                                            <div class="mt-1">Posted <?= $assigment['start_date'] ?></div>
+                                            <div class="mt-1">Due <?= $assigment['end_date'] ?></div>
                                             <?php if ($_SESSION['user']['role'] == 'student') {
                                                 if ($dateLineTime) {
                                                     echo '<span style="color: red;">Missing</span>';
@@ -105,25 +105,37 @@
                                 </div>
                             </div>
                             <div id="flush-collapse<?= $assigment['id'] ?>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-4 border-start border-primary">
+                                <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-4 border-start border-white" style="margin-top: -15px;">
                                     <div class="align-items-center">
-                                        <p>No due date</p>
-                                        <span class="border border-1 d-inline-block " style="height: 60px; width: 400px; border-radius: 10px 0 0 10px;">
-                                            <a href="assets/images/upload/<?= $assigment['document'] ?>">
-                                                <img src="/assets/images/bg/06.png" alt="" width="50" height="60">
-                                                Your Homework here
+                                        <p>Posted <?= $assigment['start_date'] ?></p>
+                                        <p style="margin-top: -5px;"> <?= $assigment['content'] ?></p>
+                                        <span class="d-inline-block" style="height: auto; width: 500px;">
+                                            <a class="d-flex border" style="border-radius: 10px; margin-left: -10px;  margin-bottom: 30px;" href="assets/images/upload/<?= $assigment['document'] ?>">
+                                                <div class="bg p-2 border" style="border-radius: 10px 0 0 10px;">
+                                                    <img src="/assets/images/bg/06.png" alt="">
+                                                </div>
+                                                <div class="title mx-3" style="margin-top: 30px;">
+                                                    <h5><?= $assigment['title'] ?></h5>
+                                                    <p><?= $assigment['document'] ?></p>
+                                                </div>
+
                                             </a>
                                         </span>
-                                        <div class="align-items-center mt-3">
-                                            <button type="button" class="btn btn-light"><a href="#">class comment</a></button>
+                                    </div>
+                                    <div class="turn d-flex gap-3">
+                                        <div class="right px-3" style="border-left: 1px solid gray; height: 70px;">
+                                            <p class="fs-2">0</p>
+                                            <p style="margin-top: -20px;">Turned in</p>
+                                        </div>
+                                        <div class="right px-3" style="border-left: 1px solid gray; height: 70px;">
+                                            <p class="fs-2">0</p>
+                                            <p style="margin-top: -20px;">Assigned</p>
                                         </div>
                                     </div>
-
-
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-4  border-primary">
                                     <div class="align-items-center">
-                                        <button type="button" class="btn btn-light"><a href="/instruction?id=<?=$assigment['id']?>">View instructions</a></button>
+                                        <button type="button" class="btn btn-light"><a href="/instruction?id=<?= $assigment['id'] ?>">View instructions</a></button>
                                     </div>
                                 </div>
                             </div>

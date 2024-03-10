@@ -10,8 +10,11 @@ $studentJoined = studentJoinedClass($_SESSION['class_id']);
 
 $_SESSION['user_created'] = $userCreated;
 
+if(isset($_SESSION['err_exist_join'])){
+    echo "<script>alert('This user already joined!');</script>";
+}
+unset($_SESSION['err_exist_join']);
 ?>
-
 
 <main>
     <div class="container">

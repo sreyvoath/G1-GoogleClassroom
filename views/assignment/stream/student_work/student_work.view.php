@@ -140,7 +140,6 @@
                                 Assigned
                             </label>
                         </div>
-
                         <tr>
                             <th scope="col" class="d-flex">
                                 <div class="ms-2">
