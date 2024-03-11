@@ -87,15 +87,17 @@
 
                                     <div class="dropdown mt-2 d-flex">
                                         <div class="miss">
-                                            <div class="mt-1">Due <?= $assigment['end_date'] ?></div>
-                                            <?php if ($_SESSION['user']['role'] == 'student') {
-                                                if ($dateLineTime) {
-                                                    echo '<span style="color: red;">Missing</span>';
-                                                } else {
-                                                    echo '<span style="color: red;display:none;">Missing</span>';
+                                            <div class="mt-1">
+                                                <?php
+                                                if ($_SESSION['user']['role'] == 'student') {
+                                                    if ($dateLineTime) {
+                                                        echo '<s>Due ' . $assigment['end_date'] . '</s>';
+                                                    } else {
+                                                        echo 'Due ' . $assigment['end_date'];
+                                                    }
                                                 }
-                                            }
-                                            ?>
+                                                ?>
+                                            </div>
                                         </div>
                                         <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
                                         <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
@@ -122,17 +124,17 @@
                                             </a>
                                         </span>
                                     </div>
-                                    <?php if ($_SESSION['user']['role']=='teacher'):?>
-                                    <div class="turn d-flex gap-3">
-                                        <div class="right px-3" style="border-left: 1px solid gray; height: 70px;">
-                                            <p class="fs-2">0</p>
-                                            <p style="margin-top: -20px;">Turned in</p>
+                                    <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
+                                        <div class="turn d-flex gap-3">
+                                            <div class="right px-3" style="border-left: 1px solid gray; height: 70px;">
+                                                <p class="fs-2">0</p>
+                                                <p style="margin-top: -20px;">Turned in</p>
+                                            </div>
+                                            <div class="right px-3" style="border-left: 1px solid gray; height: 70px;">
+                                                <p class="fs-2">0</p>
+                                                <p style="margin-top: -20px;">Assigned</p>
+                                            </div>
                                         </div>
-                                        <div class="right px-3" style="border-left: 1px solid gray; height: 70px;">
-                                            <p class="fs-2">0</p>
-                                            <p style="margin-top: -20px;">Assigned</p>
-                                        </div>
-                                    </div>
                                     <?php endif; ?>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-4  border-primary">
