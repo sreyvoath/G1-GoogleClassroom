@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 
             }
         } else {
-            echo '<script>alert("User not found!");</script>';
+            $_SESSION['err_not_found']= "User not found";
         }
     }
     header("location:/people");

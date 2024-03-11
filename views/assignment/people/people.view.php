@@ -14,6 +14,11 @@ if(isset($_SESSION['err_exist_join'])){
     echo "<script>alert('This user already joined!');</script>";
 }
 unset($_SESSION['err_exist_join']);
+
+if(isset($_SESSION['err_not_found'])){
+    echo "<script>alert('User not found');</script>";
+}
+unset($_SESSION['err_not_found']);
 ?>
 
 <main>
