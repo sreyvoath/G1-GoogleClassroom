@@ -180,7 +180,7 @@ if (isset($_GET['id'])) {
                                             $date = date('F j, Y', strtotime($assignment['end_date']));
                                             $time = date('g:i A', strtotime($assignment['end_time']));
                                         ?>
-                                            <td class=" ">
+                                            <td class="d-flex flex-column ">
                                                 <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 rounded px-4 py-2 border-start border-primary">
                                                     <!-- Content -->
                                                     <div class="d-flex align-items-center" class="">
