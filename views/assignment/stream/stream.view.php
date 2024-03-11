@@ -116,6 +116,7 @@ if (isset($_GET['id'])) {
                                 </div>
 
                                 <!-- Include Clipboard.js library -->
+                                <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
                                 <script>
                                     document.addEventListener('DOMContentLoaded', function() {
                                         var clipboard = new ClipboardJS('#copyButton', {
@@ -135,6 +136,8 @@ if (isset($_GET['id'])) {
                                     });
                                 </script>
                             <?php endif; ?>
+
+
 
 
                             <br>
