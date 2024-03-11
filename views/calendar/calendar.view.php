@@ -56,9 +56,6 @@
                     <div class="add-event-input">
                         <input type="text" placeholder="Event Name" class="event-name" />
                     </div>
-                    <!-- <div class="add-event-input">
-                        <input type="text" placeholder="Event Time date" class="event-date" />
-                    </div> -->
                     <div class="add-event-input">
                         <input type="text" placeholder="Event Time From" class="event-time-from" />
                     </div>
