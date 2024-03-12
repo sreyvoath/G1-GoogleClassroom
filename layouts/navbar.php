@@ -152,21 +152,28 @@ foreach ($studentJoin as $student) {
 				<!-- Nav Search START -->
 				<div class="nav my-3 my-xl-0 px-4 flex-nowrap align-items-center">
 					<div class="nav-item w-100">
-						<?php if ($_SESSION['user']['role'] == 'teacher') { ?>
-							<form class="position-relative mt-2">
-								<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-									<i class="bi bi-plus-circle-fill me-2"></i>Class
-								</button>
-							</form>
-						<?php } else { ?>
+						<div class="d-flex align-items-center gap-3">
+							<?php if ($_SESSION['user']['role'] == 'teacher') { ?>
+								<form class="position-relative mt-2">
+									<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+										<i class="bi bi-plus-circle-fill me-2"></i>Class
+									</button>
+								</form>
 							
-							<a href="/message" class="btn btn-success-soft btn-round me-1 mb-0 fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="Message"><i class="far fa-envelope"></i></a>
-							<span class="icon-button__badge" style="font-size: 12px; display: <?php echo ($numberAlert == 0) ? 'none' : 'inline'; ?>" id="badgeCount"><?php echo $numberAlert;?></span>
-
-						<?php } ?>
+							<div class="message">
+								<a href="/teacher_message" class="btn btn-success-soft btn-round me-1 mb-0 fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="Message"><i class="far fa-envelope"></i></a>
+								<span class="icon-button__badge" style="font-size: 12px; display: <?php echo ($numberAlert == 0) ? 'none' : 'inline'; ?>" id="badgeCount"><?php echo $numberAlert; ?></span>
+							</div>
+							<?php } else { ?>
+								<div class="teacher_message">
+								<a href="/student_message" class="btn btn-success-soft btn-round me-1 mb-0 fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="Message"><i class="far fa-envelope"></i></a>
+								<span class="icon-button__badge" style="font-size: 12px; display: <?php echo ($numberAlert == 0) ? 'none' : 'inline'; ?>" id="badgeCount"><?php echo $numberAlert; ?></span>
+							</div>
+							<?php } ?>
+						</div>
 						<style>
 							.icon-button__badge {
-								text-align:center;
+								text-align: center;
 								position: absolute;
 								top: 40px;
 								right: 110px;

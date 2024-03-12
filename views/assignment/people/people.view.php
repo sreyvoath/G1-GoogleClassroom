@@ -7,15 +7,18 @@ require "models/user_join_class/student.model.php";
 //Call function here 
 $userCreated = getUserCreateClass($_SESSION['class_id']);
 $studentJoined = studentJoinedClass($_SESSION['class_id']);
+if (isset($_SESSION['teach_class_id'])) {
+    $teacherJoined = teacherJoinedClass($_SESSION['teach_class_id']);
+}
 
 $_SESSION['user_created'] = $userCreated;
 
-if(isset($_SESSION['err_exist_join'])){
+if (isset($_SESSION['err_exist_join'])) {
     echo "<script>alert('This user already joined!');</script>";
 }
 unset($_SESSION['err_exist_join']);
 
-if(isset($_SESSION['err_not_found'])){
+if (isset($_SESSION['err_not_found'])) {
     echo "<script>alert('User not found');</script>";
 }
 unset($_SESSION['err_not_found']);
@@ -74,6 +77,7 @@ unset($_SESSION['err_not_found']);
                             <table class="table">
                                 <!-- PHP loop for classes START -->
                                 <tbody class="tbodySearch" id="tbodySearch">
+
                                     <tr>
                                         <!-- Course item -->
                                         <td>
@@ -94,6 +98,42 @@ unset($_SESSION['err_not_found']);
                                             </div>
                                         </td>
                                     </tr>
+                                    <?php if (isset($teacherJoined)) {
+                                        foreach ($teacherJoined as $teacher) { ?>
+
+                                            <tr>
+                                                <!-- Course item -->
+                                                <td>
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                        <!-- Content -->
+                                                        <div class="d-flex align-items-center">
+                                                            <!-- Image -->
+                                                            <div class="avatar avatar-lg mt-n3">
+                                                                <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $teacher['image'] ?>" alt="">
+                                                            </div>
+
+                                                            <div class="mb-0 ms-2">
+                                                                <!-- Title -->
+                                                                <h6><a href="#"><?= strtoupper($teacher['name']) ?></a></h6>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Buttons -->
+                                                        <?php if ($_SESSION['user']['role'] == 'teacher') {  ?>
+                                                            <div class="dropdown">
+
+                                                                <a href="#" class="btn btn-success-soft btn-round me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="<?= $teacher['email'] ?>"><i class="far fa-envelope"></i></a>
+                                                                <a href="controllers/students/delete_student.controller.php?id=<?= $student['id'] ?>" class="btn btn-danger-soft btn-round mb-0" onclick="if (!confirm('Are you sure to Delete it?')) { return false; }" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fas fa-trash"></i></a>
+
+
+                                                            </div>
+                                                        <?php } else { ?>
+                                                            <a href="#" class="btn btn-success-soft btn-round me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="<?= $teacher['email'] ?>"><i class="far fa-envelope"></i></a>
+                                                        <?php } ?>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                    <?php }
+                                    } ?>
                                 </tbody>
                                 <!-- PHP loop for classes END -->
                             </table>
@@ -152,7 +192,7 @@ unset($_SESSION['err_not_found']);
                                                         <div class="dropdown">
 
                                                             <a href="#" class="btn btn-success-soft btn-round me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="<?= $student['email'] ?>"><i class="far fa-envelope"></i></a>
-                                                            <a href="controllers/students/delete_student.controller.php?id=<?= $student['id'] ?>" class="btn btn-danger-soft btn-round mb-0" onclick="if (!confirm('Are you sure to Delete it?')) { return false; }"  data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fas fa-trash"></i></a>
+                                                            <a href="controllers/students/delete_student.controller.php?id=<?= $student['id'] ?>" class="btn btn-danger-soft btn-round mb-0" onclick="if (!confirm('Are you sure to Delete it?')) { return false; }" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fas fa-trash"></i></a>
 
 
                                                         </div>
@@ -183,7 +223,7 @@ unset($_SESSION['err_not_found']);
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="myForm" action="controllers/classes/class.create.controller.php" method="post" enctype="multipart/form-data g-3">
+                <form id="myForm1" action="/./controllers/invite/teacher_invite.controller.php" method="post" enctype="multipart/form-data g-3">
                     <div class="mb-3">
                         <input type="email" class="form-control" id="email" placeholder="Type a name or email" name="email">
                     </div>
@@ -195,8 +235,7 @@ unset($_SESSION['err_not_found']);
             </div>
             <div class="modal-footer">
                 <a href="/people" class="me-3 btn border-secondary btn-light mb-0" type="button">Cancel</a>
-                <!-- <button type="button" class="btn btn-light">cancel</button> -->
-                <button type="button" class="btn btn-primary">invite</button>
+                <button type="submit" class="btn btn-primary" form="myForm1">invite</button>
             </div>
         </div>
     </div>
@@ -224,7 +263,6 @@ unset($_SESSION['err_not_found']);
             </div>
             <div class="modal-footer">
                 <a href="/people" class="me-3 btn border-secondary btn-light mb-0" type="button">Cancel</a>
-                <!-- <button type="button" class="btn btn-light">cancel</button> -->
                 <button type="submit" class="btn btn-primary" form="myForm2">Invite</button>
             </div>
         </div>
