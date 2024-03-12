@@ -107,9 +107,11 @@ if (isset($_GET['id'])) {
                                             <div class="mb-4 d-flex gap-4 col-1 mx-auto">
                                                 <!-- Add an ID to the <h4> element -->
                                                 <h4 id="classCode" class="text-primary" style="margin-left: -100px;"><?= $classCode ?></h4>
-                                                <button type="button" id="copyButton" class="btn btn-outline" style="width: 50%;">
-                                                    <span class="material-symbols-outlined mt-0 text-white fs-5">content_copy</span>
-                                                </button>
+                                                <div class="d-flex justify-content-center">
+                                                    <button type="button" id="copyButton" class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                                        <span class="material-symbols-outlined  text-white mr-3" style="font-size: 40px;">content_copy</span>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

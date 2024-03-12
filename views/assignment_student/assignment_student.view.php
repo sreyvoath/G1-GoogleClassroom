@@ -19,7 +19,7 @@ if (isset($_GET['id'])) {
                         <td>
                             <div class="d-flex align-items-center justify-content-between">
                                 <!-- Content -->
-                                <div class="d-flex " >
+                                <div class="d-flex ">
                                     <!-- Image -->
                                     <div class="w-100px " style="margin-right: -13px;">
                                         <img src="assets/images/about/download (2).png" class="rounded" alt="">
@@ -80,20 +80,48 @@ if (isset($_GET['id'])) {
                         <nav class="navbar">
                             <div class="container-fluid ">
                                 <dive class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <input type="text" style="width: 300%;" class="form-control bg-white col-6" name="classname" id="classname" required placeholder="Add class comment">
+                                    <input type="text" style="width: 300%;" class="form-control bg-white col-6" name="classname" id="classname" >
+                                    <!-- <textarea style="width: 300%;" class="form-control bg-white col-6" name="classcomment" id="classcomment" placeholder="Add class comment"></textarea> -->
                                 </dive>
                                 <button type="submit" class="btn btn-outline-primary mt-1"><i class="bi bi-send-fill"></i></button>
                             </div>
+
                         </nav>
                         <div class="collapse" id="navbarToggleExternalContent">
                             <div class=" p-3">
-                                <i class="fa fa-bold me-3" aria-hidden="true"></i>
-                                <i class="fa fa-italic me-3" aria-hidden="true"></i>
-                                <i class="fa fa-underline me-3" aria-hidden="true"></i>
-                                <i class="fa fa-align-justify me-3" aria-hidden="true"></i>
+                                <i class="fa fa-bold me-3" aria-hidden="true" onclick="toggleBold()"></i>
+                                <i class="fa fa-italic me-3" aria-hidden="true" onclick="toggleItalic()"></i>
+                                <i class="fa fa-underline me-3" aria-hidden="true" onclick="toggleUnderline()"></i>
+                                <i class="fa fa-align-justify me-3" aria-hidden="true" onclick="toggleBulleted()"></i>
                                 <i class="fa fa-text-width me-3" aria-hidden="true"></i>
                             </div>
                         </div>
+
+                        <script>
+                            function toggleBold() {
+                                var input = document.getElementById('classname');
+                                input.style.fontWeight = input.style.fontWeight === 'bold' ? 'normal' : 'bold';
+                            }
+
+                            function toggleItalic() {
+                                var input = document.getElementById('classname');
+                                input.style.fontStyle = input.style.fontStyle === 'italic' ? 'normal' : 'italic';
+                            }
+
+                            function toggleUnderline() {
+                                var input = document.getElementById('classname');
+                                input.style.textDecoration = input.style.textDecoration === 'underline' ? 'none' : 'underline';
+                            }
+
+                            function toggleBulleted() {
+                                var input = document.getElementById('classname');
+                                if (input.value.startsWith('• ')) {
+                                    input.value = input.value.substring(2); // Remove bullet point if already present
+                                } else {
+                                    input.value = '• ' + input.value; // Add bullet point
+                                }
+                            }
+                        </script>
                     </div>
                 </div>
             </div>

@@ -497,7 +497,7 @@ if($_SESSION['user']['role']== "student"){
 														<!-- Card footer -->
 														<div class="card-footer pt-3 pb-3">
 															<div class="d-flex">
-																<a href="../../controllers/enrolled/enrolll.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to Leave this class?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-ban text-danegr "></i></a>
+																<a href="../../controllers/enrolled/enrolll.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to Leave this class?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger" class="btn btn-success-soft btn-round me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Unenrolled"><i class="fas fa-ban text-danegr "></i></a>
 															</div>
 														</div>
 													</div>
