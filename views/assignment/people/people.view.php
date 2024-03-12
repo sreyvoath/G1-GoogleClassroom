@@ -3,12 +3,16 @@
 require "database/database.php";
 require "models/user_join_class/class.model.php";
 require "models/user_join_class/student.model.php";
+require "models/user_join_class/teacher.model.php";
 
 //Call function here 
 $userCreated = getUserCreateClass($_SESSION['class_id']);
 $studentJoined = studentJoinedClass($_SESSION['class_id']);
-if (isset($_SESSION['teach_class_id'])) {
-    $teacherJoined = teacherJoinedClass($_SESSION['teach_class_id']);
+
+if (isset($_GET['id'])) {
+    // $teacherJoined = teacherJoinedClass($_SESSION['teach_class_id']);
+    $teachersJoin = getTeachersJoin($_GET['id']);
+    
 }
 
 $_SESSION['user_created'] = $userCreated;
@@ -31,21 +35,27 @@ unset($_SESSION['err_not_found']);
             <!------------------- Category --------------------->
 
             <script src="../../js/main.js"></script>
-            <ul class="nav nav-pills nav-pills-bg-soft justify-content-sm-center mb-4 px-3" id="course-pills-tab" role="tablist">
-                <div class="btn-toolbar align-items-center justify-content-evenly" role="toolbar" aria-label="Toolbar with button groups">
+            <ul class="nav nav-pills nav-pills-bg-soft justify-content-sm-center mb-4 px-3" id="course-pills-tab"
+                role="tablist">
+                <div class="btn-toolbar align-items-center justify-content-evenly" role="toolbar"
+                    aria-label="Toolbar with button groups">
                     <div class="btn-group me-4" role="group" aria-label="First group">
-                        <a href="/stream?id=<?= $_SESSION['class_id'] ?>"><button type="button" class="btn btn-outline-primary <?= urlIs("/stream") ? "active" : "" ?> ">Stream</button></a>
+                        <a href="/stream?id=<?= $_SESSION['class_id'] ?>"><button type="button"
+                                class="btn btn-outline-primary <?= urlIs("/stream") ? "active" : "" ?> ">Stream</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
-                        <a href="/classwork"><button type="button" class="btn btn-outline-info <?= urlIs("/classwork") ? "active" : "" ?> ">Classwork</button></a>
+                        <a href="/classwork"><button type="button"
+                                class="btn btn-outline-info <?= urlIs("/classwork") ? "active" : "" ?> ">Classwork</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
-                        <a href="/people"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "active" ?> ">Poeple</button></a>
+                        <a href="/people"><button type="button"
+                                class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "active" ?> ">Poeple</button></a>
                     </div>
                     <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
-                        <div class="btn-group me-4" role="group" aria-label="Third group">
-                            <a href="/grade"><button type="button" class="btn btn-outline-success <?= urlIs("/point") ? "active" : "" ?> ">Grades</button></a>
-                        </div>
+                    <div class="btn-group me-4" role="group" aria-label="Third group">
+                        <a href="/grade"><button type="button"
+                                class="btn btn-outline-success <?= urlIs("/point") ? "active" : "" ?> ">Grades</button></a>
+                    </div>
                     <?php endif; ?>
                 </div>
             </ul>
@@ -64,12 +74,13 @@ unset($_SESSION['err_not_found']);
                     <!-- Card START -->
                     <div class="card border rounded-3">
                         <!-- Card header START -->
-                        <div class="card-header border-bottom bg-purple text-white  d-flex text-align-center justify-content-between">
+                        <div
+                            class="card-header border-bottom bg-purple text-white  d-flex text-align-center justify-content-between">
                             <h3 class="mb-0 text-white">Teachers</h3>
                             <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
-                                <div class="invite" data-bs-toggle="modal" data-bs-target="#inputTag">
-                                    <span class="material-symbols-outlined" style="font-size: 30px;">group_add</span>
-                                </div>
+                            <div class="invite" data-bs-toggle="modal" data-bs-target="#inputTag">
+                                <span class="material-symbols-outlined" style="font-size: 30px;">group_add</span>
+                            </div>
                             <?php endif; ?>
                         </div>
                         <!-- Table body START -->
@@ -86,52 +97,70 @@ unset($_SESSION['err_not_found']);
                                                 <div class="d-flex align-items-center">
                                                     <!-- Image -->
                                                     <div class="avatar avatar-lg mt-n3">
-                                                        <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $userCreated['image'] ?>" alt="">
+                                                        <img class="avatar-img rounded-circle border border-white border-5 shadow"
+                                                            src="../../assets/images/profiles/<?= $userCreated['image'] ?>"
+                                                            alt="">
                                                     </div>
 
                                                     <div class="mb-0 ms-2">
                                                         <!-- Title -->
                                                         <h6><a href="#"><?= strtoupper($userCreated['name']) ?></a></h6>
                                                     </div>
+
                                                 </div>
                                                 <!-- Buttons -->
+                                                <div class="owner">
+                                                    <a href="">Owner</a>
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>
-                                    <?php if (isset($teacherJoined)) {
-                                        foreach ($teacherJoined as $teacher) { ?>
+                                    <?php if (isset($teachersJoin)) {
+                                        
+                                        foreach ($teachersJoin as $teacher) { ?>
 
-                                            <tr>
-                                                <!-- Course item -->
-                                                <td>
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <!-- Content -->
-                                                        <div class="d-flex align-items-center">
-                                                            <!-- Image -->
-                                                            <div class="avatar avatar-lg mt-n3">
-                                                                <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $teacher['image'] ?>" alt="">
-                                                            </div>
-
-                                                            <div class="mb-0 ms-2">
-                                                                <!-- Title -->
-                                                                <h6><a href="#"><?= strtoupper($teacher['name']) ?></a></h6>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Buttons -->
-                                                        <?php if ($_SESSION['user']['role'] == 'teacher') {  ?>
-                                                            <div class="dropdown">
-
-                                                                <a href="#" class="btn btn-success-soft btn-round me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="<?= $teacher['email'] ?>"><i class="far fa-envelope"></i></a>
-                                                                <a href="controllers/students/delete_student.controller.php?id=<?= $student['id'] ?>" class="btn btn-danger-soft btn-round mb-0" onclick="if (!confirm('Are you sure to Delete it?')) { return false; }" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fas fa-trash"></i></a>
-
-
-                                                            </div>
-                                                        <?php } else { ?>
-                                                            <a href="#" class="btn btn-success-soft btn-round me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="<?= $teacher['email'] ?>"><i class="far fa-envelope"></i></a>
-                                                        <?php } ?>
+                                    <tr>
+                                        <!-- Course item -->
+                                        <td>
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <!-- Content -->
+                                                <div class="d-flex align-items-center">
+                                                    <!-- Image -->
+                                                    <div class="avatar avatar-lg mt-n3">
+                                                        <img class="avatar-img rounded-circle border border-white border-5 shadow"
+                                                            src="../../assets/images/profiles/<?= $teacher['image'] ?>"
+                                                            alt="">
                                                     </div>
-                                                </td>
-                                            </tr>
+
+                                                    <div class="mb-0 ms-2">
+                                                        <!-- Title -->
+                                                        <h6><a href="#"><?= strtoupper($teacher['name']) ?></a></h6>
+                                                    </div>
+                                                </div>
+                                                <!-- Buttons -->
+                                                <?php if ($_SESSION['user']['role'] == 'teacher') {  ?>
+                                                <div class="dropdown">
+
+                                                    <a href="#" class="btn btn-success-soft btn-round me-1 mb-0"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="<?= $teacher['email'] ?>"><i
+                                                            class="far fa-envelope"></i></a>
+                                                    <a href="controllers/students/delete_student.controller.php?id=<?= $teacher['user_id'] ?>"
+                                                        class="btn btn-danger-soft btn-round mb-0"
+                                                        onclick="if (!confirm('Are you sure to Delete it?')) { return false; }"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="Remove"><i class="fas fa-trash"></i></a>
+
+
+                                                </div>
+                                                <?php } else { ?>
+                                                <a href="#" class="btn btn-success-soft btn-round me-1 mb-0"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="<?= $teacher['email'] ?>"><i class="far fa-envelope"></i></a>
+                                                <?php } ?>
+                                            </div>
+                                        </td>
+                                    </tr>
                                     <?php }
                                     } ?>
                                 </tbody>
@@ -144,12 +173,13 @@ unset($_SESSION['err_not_found']);
 
                     <div class="card border rounded-3 mt-5">
                         <!-- Card header START -->
-                        <div class="card-header border-bottom bg-purple text-white  d-flex text-align-center justify-content-between">
+                        <div
+                            class="card-header border-bottom bg-purple text-white  d-flex text-align-center justify-content-between">
                             <h3 class="mb-0 text-white">Students</h3>
                             <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
-                                <div class="invite" data-bs-toggle="modal" data-bs-target="#inputtageStudent">
-                                    <span class="material-symbols-outlined" style="font-size: 30px;">group_add</span>
-                                </div>
+                            <div class="invite" data-bs-toggle="modal" data-bs-target="#inputtageStudent">
+                                <span class="material-symbols-outlined" style="font-size: 30px;">group_add</span>
+                            </div>
                             <?php endif; ?>
                         </div>
                         <!-- Table body START -->
@@ -158,50 +188,62 @@ unset($_SESSION['err_not_found']);
                                 <!-- PHP loop for classes START -->
                                 <tbody class="tbodySearch" id="tbodySearch">
                                     <?php if (count($studentJoined) == 0) : ?>
-                                        <div class="img d-flex justify-content-center">
-                                            <img src="assets/images/avatar/17.png" alt="">
-                                        </div>
-                                        <p class="d-flex justify-content-center fs-5">Add student to this class</p>
+                                    <div class="img d-flex justify-content-center">
+                                        <img src="assets/images/avatar/17.png" alt="">
+                                    </div>
+                                    <p class="d-flex justify-content-center fs-5">Add student to this class</p>
 
                                     <?php endif; ?>
                                     <?php foreach ($studentJoined as $student) : ?>
-                                        <tr>
-                                            <!-- Course item -->
-                                            <td>
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <!-- Content -->
+                                    <tr>
+                                        <!-- Course item -->
+                                        <td>
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <!-- Content -->
 
-                                                    <div class="d-flex align-items-center">
-                                                        <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                            </div>
-                                                        <?php endif; ?>
-                                                        <div class="avatar avatar-lg mt-n3 ms-3">
-                                                            <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $student['image'] ?>" alt="">
-                                                        </div>
-
-                                                        <div class="mb-0 ms-2">
-                                                            <!-- Title -->
-                                                            <h6><a href="#"><?= strtoupper($student['name']) ?></a></h6>
-                                                            <!-- Info -->
-                                                        </div>
+                                                <div class="d-flex align-items-center">
+                                                    <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="flexCheckDefault">
                                                     </div>
-                                                    <!-- Buttons -->
-                                                    <?php if ($_SESSION['user']['role'] == 'teacher') {  ?>
-                                                        <div class="dropdown">
+                                                    <?php endif; ?>
+                                                    <div class="avatar avatar-lg mt-n3 ms-3">
+                                                        <img class="avatar-img rounded-circle border border-white border-5 shadow"
+                                                            src="../../assets/images/profiles/<?= $student['image'] ?>"
+                                                            alt="">
+                                                    </div>
 
-                                                            <a href="#" class="btn btn-success-soft btn-round me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="<?= $student['email'] ?>"><i class="far fa-envelope"></i></a>
-                                                            <a href="controllers/students/delete_student.controller.php?id=<?= $student['id'] ?>" class="btn btn-danger-soft btn-round mb-0" onclick="if (!confirm('Are you sure to Delete it?')) { return false; }" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fas fa-trash"></i></a>
-
-
-                                                        </div>
-                                                    <?php } else { ?>
-                                                        <a href="#" class="btn btn-success-soft btn-round me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="<?= $student['email'] ?>"><i class="far fa-envelope"></i></a>
-                                                    <?php } ?>
+                                                    <div class="mb-0 ms-2">
+                                                        <!-- Title -->
+                                                        <h6><a href="#"><?= strtoupper($student['name']) ?></a></h6>
+                                                        <!-- Info -->
+                                                    </div>
                                                 </div>
-                                            </td>
-                                        </tr>
+                                                <!-- Buttons -->
+                                                <?php if ($_SESSION['user']['role'] == 'teacher') {  ?>
+                                                <div class="dropdown">
+
+                                                    <a href="#" class="btn btn-success-soft btn-round me-1 mb-0"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="<?= $student['email'] ?>"><i
+                                                            class="far fa-envelope"></i></a>
+                                                    <a href="controllers/students/delete_student.controller.php?id=<?= $student['id'] ?>"
+                                                        class="btn btn-danger-soft btn-round mb-0"
+                                                        onclick="if (!confirm('Are you sure to Delete it?')) { return false; }"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="Remove"><i class="fas fa-trash"></i></a>
+
+
+                                                </div>
+                                                <?php } else { ?>
+                                                <a href="#" class="btn btn-success-soft btn-round me-1 mb-0"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="<?= $student['email'] ?>"><i class="far fa-envelope"></i></a>
+                                                <?php } ?>
+                                            </div>
+                                        </td>
+                                    </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
@@ -223,9 +265,11 @@ unset($_SESSION['err_not_found']);
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="myForm1" action="/./controllers/invite/teacher_invite.controller.php" method="post" enctype="multipart/form-data g-3">
+                <form id="myForm1" action="/./controllers/invite/teacher_invite.controller.php" method="post"
+                    enctype="multipart/form-data g-3">
                     <div class="mb-3">
-                        <input type="email" class="form-control" id="email" placeholder="Type a name or email" name="email">
+                        <input type="email" class="form-control" id="email" placeholder="Type a name or email"
+                            name="email">
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label"></label>
@@ -253,7 +297,8 @@ unset($_SESSION['err_not_found']);
             <div class="modal-body">
                 <form id="myForm2" action="/./controllers/invite/student_invite.controller.php" method="post">
                     <div class="mb-3">
-                        <input type="email" class="form-control" id="email" placeholder="Type a name or email" name="email">
+                        <input type="email" class="form-control" id="email" placeholder="Type a name or email"
+                            name="email">
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label"></label>

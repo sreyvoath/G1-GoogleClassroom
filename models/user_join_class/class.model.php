@@ -9,7 +9,6 @@ function getUserCreateClass(int $id)
     return $statement->fetch();
 }
 
-
 //<================check id user were id user in join class==============>
 
 function checkId(string $id): array
@@ -38,6 +37,7 @@ function createUserJoinClass(string $student_id, $class_id): bool
 
     
 }
+
 
 //<======== delete class joined=======>
 function deleteClassJoin(int $id) : bool
