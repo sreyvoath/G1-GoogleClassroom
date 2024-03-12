@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <?php
-session_start() ;
-if(isset($_SESSION['err-code'])){
+session_start();
+if (isset($_SESSION['err-code'])) {
     echo "<script>alert('Code not found!');</script>";
 }
 unset($_SESSION['err-code']);
@@ -25,9 +25,6 @@ unset($_SESSION['err-code']);
                     <div class="title d-flex gap-1">
                         <p class="fs-4 mb-1" style="margin-top: -7px;">Join class</p>
                     </div>
-                </div>
-                <div class="nav-right">
-                    <button type="submit" disabled class="btn btn-primary px-4" id="btn-join">Join</button>
                 </div>
             </div>
             <div class="d-flex flex-column" style="width:50%;margin:auto; margin-top:-25px;">
@@ -49,6 +46,10 @@ unset($_SESSION['err-code']);
                         <h5 class="card-title">Class</h5>
                         <p class="card-text">Ask your teacher for the class code,then enter it here</p>
                         <input type="text" name="code" class="form-control w-50 p-3" id="class-code" placeholder="Class code" aria-label="Username" aria-describedby="basic-addon2">
+
+                        <div class="nav-right mt-3">
+                            <button type="submit" disabled class="btn btn-primary px-4" id="btn-join">Join</button>
+                        </div>
                     </div>
                 </div>
                 <div class="bottom mt-3" style="margin-left: 30px;">

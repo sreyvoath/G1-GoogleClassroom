@@ -12,10 +12,29 @@
         <form action="" class="bg-body shadow " style="height: 100%; padding-bottom:5%;">
             <div class="row ">
                 <div class="nav-todo d-flex mt-2 p-2" style="width:97%; margin:auto;">
-                    <a href="/todo" class="mx-3" style="width: 100px; height:30px;">Assigned</a>
-                    <a href="/missing" class="mx-3" style="width: 100px; height:30px;">Missing</a>
-                    <a href="/done" class="mx-3" style="width: 100px; height:30px;">Done</a>
+                    <a href="/todo" class="nav-link mx-3" style="width: 100px; height:30px;">Assigned</a>
+                    <a href="/missing" class="nav-link mx-3" style="width: 100px; height:30px;">Missing</a>
+                    <a href="/done" class="nav-link mx-3" style="width: 100px; height:30px;">Done</a>
                 </div>
+
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+                    $(document).ready(function() {
+                        $('.nav-link').each(function() {
+                            if ($(this).attr('href') == window.location.pathname) {
+                                $(this).addClass('active');
+                            }
+                        });
+                    });
+                </script>
+
+                <style>
+                    .active {
+                        text-decoration: underline;
+                        color: red;
+                    }
+                </style>
+
                 <hr style="width: 97%;margin:auto;">
                 <div class="class">
                     <button class="d-flex justify-content-between align-items-center bg-purple text-white btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width:150px; height:40px;border:none;margin:40px 0 30px 60px ;">
