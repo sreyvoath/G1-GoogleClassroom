@@ -51,6 +51,24 @@ function getStudent(int $id)
     ]);
     return $statement->fetchAll();
 }
+// ========Get all students============
+function getTeacher(int $id)
+{
+
+    global $connection;
+    $statement = $connection->prepare("select u.id, u.name, u.email, u.image, c.id as class_id, c.image, c.section, c.code, c.archive , c.title, uj.join_date from users u 
+    inner join users_join_class uj on uj.user_id= u.id
+    inner join classes c on uj.class_id = c.id
+    where u.role = :role and u.id = :id
+    order by uj.id desc
+    ");
+
+    $statement->execute([
+        ":role" => "teacher",
+        ":id" => $id
+    ]);
+    return $statement->fetchAll();
+}
 
 function studentJoinedClass(int $class_id)
 {
@@ -64,6 +82,22 @@ function studentJoinedClass(int $class_id)
 
     $statement->execute([
         ":role" => "student",
+        ":id" => $class_id
+    ]);
+    return $statement->fetchAll();
+}
+function teacherJoinedClass(int $class_id)
+{
+
+    global $connection;
+    $statement = $connection->prepare("select u.id, u.name, u.email, u.image, c.id as class_id , c.title, uj.join_date from users u 
+    inner join users_join_class uj on uj.user_id= u.id
+    inner join classes c on uj.class_id = c.id
+    where u.role = :role and c.id =  :id
+    ");
+
+    $statement->execute([
+        ":role" => "teacher",
         ":id" => $class_id
     ]);
     return $statement->fetchAll();

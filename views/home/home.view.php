@@ -35,17 +35,25 @@ $student_number = count($students);
 $idUser = checkId($_SESSION['user']['id']);
 
 $_SESSION['idUser'] = $idUser;
+
 // get user is staying website
 if ($_SESSION['user']['role'] == "student" and count($idUser) > 0) {
 	$studentsJoin = getStudent($_SESSION['user']['id']);
+
 	$_SESSION['student_join'] = $studentsJoin;
 }
+// get user is staying website
+if ($_SESSION['user']['role'] == "teacher" and count($idUser) > 0) {
+	$teachersJoin = getTeacher($_SESSION['user']['id']);
+	$_SESSION['teacher_join'] = $teachersJoin;
+	
+	
+}
 
-if($_SESSION['user']['role']== "student"){
+
+if ($_SESSION['user']['role'] == "student") {
 
 ?>
-
-
 
 <?php } ?>
 
@@ -430,6 +438,32 @@ if($_SESSION['user']['role']== "student"){
 										</div>
 									<?php endif ?>
 								<?php endforeach ?>
+								<?php if (count($idUser) > 0) {
+									foreach ($teachersJoin as $class) {
+										if ($class['archive'] == 0) { ?>
+											<div class="col-sm-6 col-lg-4 col-xl-3" id="card" draggable="true" ondragstart="drag(event)">
+												<div class=" card_class card shadow h-100">
+													<!-- Image -->
+													<img src="../../assets/images/classes/<?= $class['image'] ?>" class="card-img-top" alt="course image" style="width:350px; height:200px; object-fit: cover;">
+													<div class="card-body pb-0">
+														<!-- Title -->
+														<h5 class="card-title fw-normal"><a class="text-decoration-none" href="/stream?id=<?= $class['class_id'] ?>"><?= $class['title']; ?></a></h5>
+														<p class="mb-2 text-truncate-2"><?= $class['section']; ?></p>
+													</div>
+													<!-- Card footer -->
+													<div class="card-footer pt-3 pb-3">
+														<div class="d-flex">
+															<a href="../../controllers/classes/class.edit.controller.php?id=<?= $class['class_id'] ?>" class="btn mx-1 h6 fw-light mb-0 btn-outline-info text-white"><i class="bi bi-pen text-dark "></i></a>
+															<a href="../../controllers/enrolled/enrolll.controller.php?id=<?= $class['class_id'] ?>" onclick="if (!confirm('Are you sure to Leave this class?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-ban text-danegr "></i></a>
+															<a href="../../controllers/classes/class.archive.controller.php?id=<?= $class['class_id'] ?>" onclick="if (!confirm('Are you sure to archive it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-secondary"><i class="bi bi-archive-fill"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+
+								<?php  };
+									};
+								}; ?>
 							<?php } ?>
 							<?php } else {
 							//get class buy class_id

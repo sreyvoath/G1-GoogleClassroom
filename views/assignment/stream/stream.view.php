@@ -16,6 +16,15 @@ if (isset($_GET['id'])) {
             $classCode = $class['code'];
         }
     }
+    if (isset($_SESSION['teacher_join'])) {
+        $teacherJoin = $_SESSION['teacher_join'];
+        foreach ($teacherJoin as $class) {
+            if (strval($class['class_id']) == $_GET['id']) {
+                $classCode = $class['code'];
+                $_SESSION['teach_class_id'] = $class['class_id'];
+            }
+        }
+    }
     $userCreated = getUserCreateClass($_SESSION['class_id']);
     $_SESSION['user_created'] = $userCreated;
 }

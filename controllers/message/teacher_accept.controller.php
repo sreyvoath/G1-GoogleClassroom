@@ -9,9 +9,10 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
     $messge = getMessage($id);
-    $studentId = $messge['user_id'];
+    
+    $teacherId = $messge['user_id'];
     $classId = $messge['class_id'];
-    createUserJoinClass($studentId, $classId);
+    createUserJoinClass($teacherId, $classId);
     deleteMessage($id);
     header("location:/home");
 } else {
