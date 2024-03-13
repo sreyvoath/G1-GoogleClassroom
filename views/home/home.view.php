@@ -22,6 +22,7 @@ foreach ($classes as $class) {
 	}
 }
 
+
 //count assignment 
 $assignments = getAssignments();
 $assign_number = count($assignments);
@@ -44,10 +45,14 @@ if ($_SESSION['user']['role'] == "student" and count($idUser) > 0) {
 }
 // get user is staying website
 if ($_SESSION['user']['role'] == "teacher" and count($idUser) > 0) {
-	$teachersJoin = getTeacher($_SESSION['user']['id']);
+	$teachersJoin = !empty(getTeacher($_SESSION['user']['id']))? getTeacher($_SESSION['user']['id']): [] ;
 	$_SESSION['teacher_join'] = $teachersJoin;
-	
-	
+	$sum =0;
+	foreach ($teachersJoin as $class) {
+		if ($class['archive'] == 1) {
+			$sum += 1;
+		}
+	}
 }
 
 
@@ -392,7 +397,7 @@ if ($_SESSION['user']['role'] == "student") {
 						<?php
 
 						if ($role == "teacher") {
-							if (count($classes) == $result) {
+							if (count($classes) == $result and (count($idUser) == 0 || count($teachersJoin)==$sum)) {
 						?>
 								<img src="../../assets/images/about/25.png" alt="" style="width: 400px; height: 300px; display:flex; margin:auto; padding-top:100px">
 								<?php

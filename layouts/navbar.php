@@ -111,6 +111,16 @@ foreach ($studentJoin as $student) {
 												<?php
 											endif;
 										endforeach;
+										if (isset($_SESSION['teacher_join'])) {
+											$teachersJoin = $_SESSION['teacher_join'];
+											foreach ($teachersJoin as $class) :
+												if ($class['archive'] == 0) :
+												?>
+													<li> <a class="dropdown-item" href="/stream?id=<?= $class['class_id'] ?>"><i class="bi bi-book fa-fw me-1"></i><?= $class['title'] ?></a> </li>
+												<?php
+												endif;
+											endforeach;
+										}
 									} else
 									if (isset($_SESSION['idUser'])) {
 										if (count($_SESSION['idUser']) > 0) {
@@ -159,16 +169,16 @@ foreach ($studentJoin as $student) {
 										<i class="bi bi-plus-circle-fill me-2"></i>Class
 									</button>
 								</form>
-							
-							<div class="message">
-								<a href="/teacher_message" class="btn btn-success-soft btn-round me-1 mb-0 fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="Message"><i class="far fa-envelope"></i></a>
-								<span class="icon-button__badge" style="font-size: 12px; display: <?php echo ($numberAlert == 0) ? 'none' : 'inline'; ?>" id="badgeCount"><?php echo $numberAlert; ?></span>
-							</div>
+
+								<div class="message">
+									<a href="/teacher_message" class="btn btn-success-soft btn-round me-1 mb-0 fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="Message"><i class="far fa-envelope"></i></a>
+									<span class="icon-button__badge" style="font-size: 12px; display: <?php echo ($numberAlert == 0) ? 'none' : 'inline'; ?>" id="badgeCount"><?php echo $numberAlert; ?></span>
+								</div>
 							<?php } else { ?>
 								<div class="teacher_message">
-								<a href="/student_message" class="btn btn-success-soft btn-round me-1 mb-0 fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="Message"><i class="far fa-envelope"></i></a>
-								<span class="icon-button__badge" style="font-size: 12px; display: <?php echo ($numberAlert == 0) ? 'none' : 'inline'; ?>" id="badgeCount"><?php echo $numberAlert; ?></span>
-							</div>
+									<a href="/student_message" class="btn btn-success-soft btn-round me-1 mb-0 fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="Message"><i class="far fa-envelope"></i></a>
+									<span class="icon-button__badge" style="font-size: 12px; display: <?php echo ($numberAlert == 0) ? 'none' : 'inline'; ?>" id="badgeCount"><?php echo $numberAlert; ?></span>
+								</div>
 							<?php } ?>
 						</div>
 						<style>

@@ -25,5 +25,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['err_not_found']= "User not found";
         }
     }
-    header("location:/people");
+    header("Location: /people?id=$classId");
 }

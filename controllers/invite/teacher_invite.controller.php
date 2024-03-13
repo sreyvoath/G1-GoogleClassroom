@@ -11,28 +11,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $checkEmail = checkEmailUser($email);
         if (count($checkEmail) > 0) {
             if ($checkEmail['role'] == 'teacher') {
-                
+
                 $checkEmailExits = checkEmailUserExits($checkEmail['id'], $classId);
-                
+
                 if (count($checkEmailExits) > 0) {
                     $_SESSION['err_exist_join'] = "This user already joined!";
                     header("location:/people");
-                    
                 }
-                if (count($checkEmail) > 0 and count($checkEmailExits)==0){
+                if($email != $_SESSION['user_created']['email']){
+                    createMessage("Invited you", $checkEmail['id'], $classId, $_SESSION['user']['id']);
+                    header("Location: /people?id=$classId");
+                    exit;
+                }
+                else{
+                    $_SESSION['err_owner'] = "You cannot invite owner";
+                    header("Location: /people?id=$classId");
+                    exit;
+                }
+                if (count($checkEmail) > 0 and count($checkEmailExits) == 0 ) {
                     createMessage("Invited you", $checkEmail['id'], $classId, $_SESSION['user']['id']);
                 }
+            } else {
+                $_SESSION['err-not_here'] = "You cannot invite student here";
+                
             }
-            else {
-                $_SESSION['err-not_here']= "You cannot invite student here";
-            }
+        } else {
+            $_SESSION['err_notfound'] = "User not found";
         }
-        else {
-            $_SESSION['err_notfound']= "User not found";
-        }
-    }
-    else{
+    } else {
         $_SESSION['err-fill'] = "You must complete all feild";
     }
-    header("location:/people");
+    header("Location: /people?id=$classId");
 }

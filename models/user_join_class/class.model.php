@@ -4,7 +4,7 @@
 function getUserCreateClass(int $id)
 {
     global $connection;
-    $statement = $connection->prepare("select u.name, u.image from users u inner join classes c on u.id = c.user_id where c.id = :id");
+    $statement = $connection->prepare("select u.name, u.image, u.email from users u inner join classes c on u.id = c.user_id where c.id = :id");
     $statement->execute([':id' => $id]);
     return $statement->fetch();
 }
