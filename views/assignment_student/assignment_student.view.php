@@ -5,6 +5,8 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $_SESSION['assign_id'] = $id;
     $assignment = getAssign($id);
+    $assignment = getAssign($id);
+    $assignments = getAssignmentsStudents($_GET['id']);
 }
 
 ?>
@@ -80,7 +82,7 @@ if (isset($_GET['id'])) {
                         <nav class="navbar">
                             <div class="container-fluid ">
                                 <dive class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <input type="text" style="width: 300%;" class="form-control bg-white col-6" name="classname" id="classname" >
+                                    <input type="text" style="width: 300%;" class="form-control bg-white col-6" name="classname" id="classname">
                                     <!-- <textarea style="width: 300%;" class="form-control bg-white col-6" name="classcomment" id="classcomment" placeholder="Add class comment"></textarea> -->
                                 </dive>
                                 <button type="submit" class="btn btn-outline-primary mt-1"><i class="bi bi-send-fill"></i></button>
@@ -132,17 +134,17 @@ if (isset($_GET['id'])) {
         <div class="p-3 mb-2 rounded shadow-sm p-3 mb-5 bg-body rounded" style="border: 1px solid gainsboro;">
             <div class="card-body d-flex justify-content-between text-center align-items-center ">
                 <p class="card-title fs-4">Your work</p>
-                <p class="card-text"">Turned in</p>
+                <p class="card-text">Turned in</p>
             </div>
             <div class=" card-body rounded " style=" margin-top: -70px;">
                 <div class="p-5">
                     <span class="d-inline-block" style="height: auto; width: 120%;">
-                        <a class="d-flex border align_items-center" style="border-radius: 10px; margin-left: -50px;" href="assets/images/upload/<?= $assignment['document'] ?>">
+                        <a class="d-flex border align_items-center" style="border-radius: 10px; margin-left: -50px;" href="assets/images/upload/<?= $assignments['document'] ?>">
                             <div class="bg p-2 border text-center" style="border-radius: 10px 0 0 10px;">
                                 <img src="/assets/images/bg/06.png" alt="" width="50px" height="40px">
                             </div>
                             <div class="d-flex flex-column title mx-3 mt-2 align-items-start justify-content-center">
-                                <p><?= $assignment['document'] ?></p>
+                                <p><?= $assignments['document'] ?></p>
                                 <span style="margin-top: -10px;">PDF</span>
                             </div>
 
@@ -151,14 +153,16 @@ if (isset($_GET['id'])) {
 
                 </div>
                 <div class="nav-item dropdown" style="margin-top: -20px;">
-                    <label for="file-upload" class="btn border-primary" style="width: 100%; cursor: pointer;">
-                        <i class="fa fa-plus me-3" aria-hidden="true"></i>
-                        <span>Add or create</span>
-                        <input id="file-upload" type="file" style="display: none;">
-                    </label>
-                    <a class="nav-link mt-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <button type="button" class="btn btn-primary" style="width: 100%;">Submit</button>
-                    </a>
+                    <form action="controllers/assignment/assignment_students.controller.php" method="post" id="upload-form" enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
+                        <label for="file-upload" class="btn border-primary" style="width: 100%; cursor: pointer;">
+                            <i class="fa fa-plus me-3" aria-hidden="true"></i>
+                            <span>Add or Create</span>
+                        </label>
+                        <input id="file-upload" type="file" name="upload" style="display: none;">
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
+
+                    </form>
                 </div>
             </div>
 
