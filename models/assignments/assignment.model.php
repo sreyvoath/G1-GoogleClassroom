@@ -77,3 +77,28 @@ function deleteAssign(int $id): bool
     $statement->execute([':id' => $id]);
     return $statement->rowCount() > 0;
 }
+
+
+function getAssignmentsStudents($id)
+{
+
+    global $connection;
+    $statement = $connection->prepare("select * from assignment_students where assignment_id =:id");
+    $statement->execute([":id" => $id]);
+    return $statement->fetch();
+}
+
+
+//======students assignment======>
+function studentUpload(string $document, string $filepath,int $assignment_id): bool
+{
+
+    global $connection;
+    $statement = $connection->prepare("insert into assignment_students (document,filepath,assignment_id) values (:document, :filepath,:assignment_id)");
+    $statement->execute([
+        ':document' => $document,
+        ':filepath' => $filepath,
+        ':assignment_id' =>$assignment_id
+    ]);
+    return $statement->rowCount() > 0;
+}
