@@ -93,9 +93,21 @@
                                 </div>
                                 <h5>Phal</h5>
                             </th>
-                            <th scope="col">
-                                <span>88</span>
-                                <p>Draft</p>
+
+                            <style>
+                                .custom-input {
+                                    border: none;
+                                    width: 30px;
+                                    height: 50px;
+                                    font-size: 16px;
+                                    outline: none;
+                                    font-weight:bold;
+                                    color:green;
+                                }
+                            </style>
+                            <th>
+                                <span><input type="text" class="custom-input" maxlength="3" placeholder="......">/100</span>
+                                
                             </th>
                         </tr>
                         <tr>
@@ -111,8 +123,8 @@
                                 <h5>Phal</h5>
                             </th>
                             <th scope="col">
-                                <span>88</span>
-                                <p>Draft</p>
+                                <span><input type="text" class="custom-input" maxlength="3" placeholder="......">/100</span>
+        
                             </th>
                         </tr>
                         <tr>
@@ -128,8 +140,7 @@
                                 <h5>Phal</h5>
                             </th>
                             <th scope="col">
-                                <span>88</span>
-                                <p>Draft</p>
+                                <span><input type="text" class="custom-input" maxlength="3" placeholder="......">/100</span>
                             </th>
                         </tr>
                     </table>
@@ -152,8 +163,8 @@
                                 </div>
                                 <h5>Phal</h5>
                             </th>
-                            <th >
-                                <span>88</span>
+                            <th>
+                                <span>.../100</span>
                                 <p>Draft</p>
                             </th>
                         </tr>
@@ -171,7 +182,7 @@
                                 <h5>Phal</h5>
                             </th>
                             <th scope="col">
-                                <span>88</span>
+                                <span>../100</span>
                                 <p>Draft</p>
                             </th>
                         </tr>
