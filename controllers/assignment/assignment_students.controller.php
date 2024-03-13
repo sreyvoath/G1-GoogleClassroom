@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $filepath = $targetFile;
 
                 // Insert assignment details into the database
-                if (studentUpload($filename, $filepath, $_POST['id'])) {
+                if (studentUpload($filename, $filepath, $_POST['id'], $_SESSION['user']['id'])) {
                     // Handle successful upload
                     $id = $_POST['id'];
                     header("Location: /assignment_student?id=$id");

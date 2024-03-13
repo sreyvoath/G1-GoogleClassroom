@@ -78,27 +78,38 @@ function deleteAssign(int $id): bool
     return $statement->rowCount() > 0;
 }
 
-
-function getAssignmentsStudents($id)
+//======get assignment when students uploaded======>
+function getAssignmentsStudents($id, $user_id):array
 {
 
     global $connection;
-    $statement = $connection->prepare("select * from assignment_students where assignment_id =:id");
-    $statement->execute([":id" => $id]);
-    return $statement->fetch();
+    $statement = $connection->prepare("select * from assignment_student where assignment_id =:id and user_id = :user_id");
+    $statement->execute([":id" => $id, ":user_id"=> $user_id]);
+    return $statement->fetchAll();
 }
 
 
-//======students assignment======>
-function studentUpload(string $document, string $filepath,int $assignment_id): bool
+//====== when students upload assignment======>
+function studentUpload(string $document, string $filepath,int $assignment_id, int $user_id): bool
 {
 
     global $connection;
-    $statement = $connection->prepare("insert into assignment_students (document,filepath,assignment_id) values (:document, :filepath,:assignment_id)");
+    $statement = $connection->prepare("insert into assignment_student (document,filepath,assignment_id, user_id) values (:document, :filepath,:assignment_id, :user_id)");
     $statement->execute([
         ':document' => $document,
         ':filepath' => $filepath,
-        ':assignment_id' =>$assignment_id
+        ':assignment_id' =>$assignment_id,
+        ':user_id' =>$user_id
     ]);
     return $statement->rowCount() > 0;
 }
+
+// ========Delete assignment============
+function deleteAssignUplaod(int $id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("delete from assignment_student where id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->rowCount() > 0;
+}
+
