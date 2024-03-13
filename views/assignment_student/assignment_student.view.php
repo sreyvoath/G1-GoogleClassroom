@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
     $_SESSION['assign_id'] = $id;
     $assignment = getAssign($id);
     $assignment = getAssign($id);
-    $assignments = getAssignmentsStudents($_GET['id']);
+    $assignments = getAssignmentsStudents($_GET['id'], $_SESSION['user']['id']);
 }
 
 ?>
@@ -47,7 +47,6 @@ if (isset($_GET['id'])) {
                             </div>
                         </td>
                     </tr>
-
                 </tbody>
 
                 <!-- PHP loop for classes END -->
@@ -138,30 +137,34 @@ if (isset($_GET['id'])) {
             </div>
             <div class=" card-body rounded " style=" margin-top: -70px;">
                 <div class="p-5">
-                    <span class="d-inline-block" style="height: auto; width: 120%;">
-                        <a class="d-flex border align_items-center" style="border-radius: 10px; margin-left: -50px;" href="assets/images/upload/<?= $assignments['document'] ?>">
-                            <div class="bg p-2 border text-center" style="border-radius: 10px 0 0 10px;">
-                                <img src="/assets/images/bg/06.png" alt="" width="50px" height="40px">
-                            </div>
-                            <div class="d-flex flex-column title mx-3 mt-2 align-items-start justify-content-center">
-                                <p><?= $assignments['document'] ?></p>
-                                <span style="margin-top: -10px;">PDF</span>
-                            </div>
-
-                        </a>
-                    </span>
+                    <?php if (isset($assignments)) {
+                        foreach ($assignments as $assignment) {
+                    ?>
+                            <span class="d-inline-block" style="height: auto; width: 120%;">
+                                <a class="d-flex border align_items-center mb-0" style="border-radius: 10px; margin-left: -50px;" href="assets/images/upload/<?= $assignment['document'] ?>">
+                                    <div class="bg p-2 border text-center" style="border-radius: 10px 0 0 10px;">
+                                        <img src="/assets/images/bg/06.png" alt="" width="50px" height="40px">
+                                    </div>
+                                    <div class="d-flex flex-column title mx-3 mt-2 align-items-start justify-content-center">
+                                        <p><?= $assignment['document'] ?></p>
+                                        <span style="margin-top: -10px;">PDF</span>
+                                    </div>
+                                </a>
+                                <a href="controllers/assignment/assignment_student/unsend_assignment.controller.php?id=<?=$assignment['id']?>" class="btn btn-sm btn-danger-soft btn-round mb-0" style="margin-left: 200px; margin-top: -95px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Unsend"><i class="bi bi-x fs-4"></i></a>
+                            </span>
+                    <?php }
+                    } ?>
 
                 </div>
-                <div class="nav-item dropdown" style="margin-top: -20px;">
+                <div class="nav-item dropdown" style="margin-top: -40px;">
                     <form action="controllers/assignment/assignment_students.controller.php" method="post" id="upload-form" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
-                        <label for="file-upload" class="btn border-primary" style="width: 100%; cursor: pointer;">
+                        <label for="file-upload" class="btn border-primary mb-3" style="width: 100%; cursor: pointer;">
                             <i class="fa fa-plus me-3" aria-hidden="true"></i>
                             <span>Add or Create</span>
                         </label>
                         <input id="file-upload" type="file" name="upload" style="display: none;">
                         <button type="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
-
                     </form>
                 </div>
             </div>
