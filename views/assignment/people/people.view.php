@@ -12,7 +12,6 @@ $studentJoined = studentJoinedClass($_SESSION['class_id']);
 if (isset($_GET['id'])) {
     // $teacherJoined = teacherJoinedClass($_SESSION['teach_class_id']);
     $teachersJoin = getTeachersJoin($_GET['id']);
-    
 }
 
 $_SESSION['user_created'] = $userCreated;
@@ -26,6 +25,16 @@ if (isset($_SESSION['err_not_found'])) {
     echo "<script>alert('User not found');</script>";
 }
 unset($_SESSION['err_not_found']);
+
+if (isset($_SESSION['err-not_here'])) {
+    echo "<script>alert('You cannot invite student here');</script>";
+}
+unset($_SESSION['err-not_here']);
+
+if (isset($_SESSION['err_owner'])) {
+    echo "<script>alert('You cannot invite owner');</script>";
+}
+unset($_SESSION['err_owner']);
 ?>
 
 <main>
