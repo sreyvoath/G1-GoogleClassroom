@@ -104,7 +104,7 @@ if (isset($_GET['id'])) {
         <div class="p-3 mb-2 rounded shadow-sm p-3 mb-5 bg-body rounded" style="border: 1px solid gainsboro;">
             <div class="card-body d-flex justify-content-between text-center align-items-center ">
                 <p class="card-title fs-4">Your work</p>
-                <p class="card-text"">Turned in</p>
+                <p class="card-text">Turned in</p>
             </div>
             <div class=" card-body rounded " style=" margin-top: -70px;">
                 <div class="p-5">
