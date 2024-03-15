@@ -1,4 +1,13 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<?php
+require "database/database.php";
+require "models/assignments/assignment.model.php";
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $_SESSION['assign_id'] = $id;
+    $assignment = getAssign($id);
+}
+
+?>
 
 <main>
     <div class="container">
@@ -28,7 +37,7 @@
                     <a href="/student_work"><button type="button" class="btn btn-primary ">Return</button></a>
                 </div>
                 <div class="btn-group me-4" role="group" aria-label="First group">
-                    <a href="/student_work"><button type="button" class="btn"><i class="fa fa-envelope-open" aria-hidden="true"></i></button></a>
+                    <a href="#"><button type="button" class="btn"><i class="bi bi-envelope fs-3"></i></button></a>
                 </div>
                 <div class="btn-group me-4" role="group" aria-label="Second group">
                     <div class="nav-item dropdown">
@@ -74,7 +83,7 @@
                             <li><a class="dropdown-item" href="#">Sort by status</a></li>
                         </ul>
                     </div>
-                    <table class="table table-bordered border-primary">
+                    <table class="table table-bordered border-secondary">
                         <div class="ms-2  mb-4">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
@@ -106,45 +115,12 @@
                                 }
                             </style>
                             <th>
-                                <span><input type="text" class="custom-input" maxlength="3" placeholder="......">/100</span>
+                                <span><input type="text" class="custom-input" maxlength="3" placeholder="_____">/100</span>
                                 
                             </th>
                         </tr>
-                        <tr>
-                            <th scope="col" class="d-flex">
-                                <div class="ms-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                    </label>
-                                </div>
-                                <div class="avatar ">
-                                    <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
-                                </div>
-                                <h5>Phal</h5>
-                            </th>
-                            <th scope="col">
-                                <span><input type="text" class="custom-input" maxlength="3" placeholder="......">/100</span>
-        
-                            </th>
-                        </tr>
-                        <tr>
-                            <th scope="col" class="d-flex">
-                                <div class="ms-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                    </label>
-                                </div>
-                                <div class="avatar ">
-                                    <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
-                                </div>
-                                <h5>Phal</h5>
-                            </th>
-                            <th scope="col">
-                                <span><input type="text" class="custom-input" maxlength="3" placeholder="......">/100</span>
-                            </th>
-                        </tr>
                     </table>
-                    <table class="table table-bordered border-primary">
+                    <table class="table table-bordered border-secondary">
                         <div class="ms-2 mb-4">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
@@ -165,24 +141,6 @@
                             </th>
                             <th>
                                 <span>.../100</span>
-                                <p>Draft</p>
-                            </th>
-                        </tr>
-
-                        <tr>
-                            <th scope="col" class="d-flex">
-                                <div class="ms-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                    </label>
-                                </div>
-                                <div class="avatar ">
-                                    <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
-                                </div>
-                                <h5>Phal</h5>
-                            </th>
-                            <th scope="col">
-                                <span>../100</span>
                                 <p>Draft</p>
                             </th>
                         </tr>
