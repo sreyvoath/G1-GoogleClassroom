@@ -1,14 +1,16 @@
 <?php
 require "database/database.php";
 require "models/assignments/assignment.model.php";
+require "models/user_join_class/student.model.php";
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $_SESSION['assign_id'] = $id;
-    $assignment = getAssign($id);
+    $assignments = getStudentsSubmitted($_SESSION['assign_id']);
+}
+if (isset($_SESSION['class_id'])){
+    $studentJoined = studentJoinedClass($_SESSION['class_id']);
+   
 }
 
 ?>
-
 <main>
     <div class="container">
         <div class="row mb-5 align-items-center ">
@@ -20,7 +22,7 @@ if (isset($_GET['id'])) {
                         <a href="/instruction?id=<?= $_SESSION['assign_id'] ?>"><button type="button" class="btn btn-outline-primary<?= urlIs("/instruction") ? "active" : "" ?> ">Instruction</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
-                        <a href="/student_work"><button type="button" class="btn btn-outline-info <?= urlIs("/student_work") ? "active" : "" ?> ">Student work</button></a>
+                        <a href="/student_work?id=<?= $_SESSION['assign_id'] ?>"><button type="button" class="btn btn-outline-info <?= urlIs("/student_work") ? "active" : "active" ?> ">Student work</button></a>
                     </div>
                 </div>
             </ul>
@@ -84,23 +86,24 @@ if (isset($_GET['id'])) {
                         </ul>
                     </div>
                     <table class="table table-bordered border-secondary">
-                        <div class="ms-2  mb-4">
+                        <div class="ms-2 fs-5 mb-4 ">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <label class="form-check-label mx-2" for="flexCheckDefault">
                                 Turned in
                             </label>
                         </div>
+                        <?php foreach($studentJoined as $student):?>
                         <tr>
                             <th scope="col " class="d-flex">
-                                <div class="ms-2">
+                                <div class="ms-2 mx-2 mt-1 fs-5">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">
                                     </label>
                                 </div>
                                 <div class="avatar ">
-                                    <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
+                                    <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 40px; height:40px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="/assets/images/profiles/<?= $student['image']?>" alt="avatar">
                                 </div>
-                                <h5>Phal</h5>
+                                <h6 style="margin-top: 10px;"><?= strtoupper($student['name'])?></h6>
                             </th>
 
                             <style>
@@ -110,15 +113,16 @@ if (isset($_GET['id'])) {
                                     height: 50px;
                                     font-size: 16px;
                                     outline: none;
-                                    font-weight:bold;
-                                    color:green;
+                                    font-weight: bold;
+                                    color: green;
                                 }
                             </style>
                             <th>
                                 <span><input type="text" class="custom-input" maxlength="3" placeholder="_____">/100</span>
-                                
+
                             </th>
                         </tr>
+                        <?php endforeach; ?>
                     </table>
                     <table class="table table-bordered border-secondary">
                         <div class="ms-2 mb-4">
@@ -206,60 +210,8 @@ if (isset($_GET['id'])) {
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="card">
-                                <div scope="col" class="d-flex p-2">
-                                    <div class="avatar ">
-                                        <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
-                                    </div>
-                                    <h5>Phal</h5>
-                                </div>
-                                <div>
-                                    <img src="assets/images/about/photo_2024-03-01_18-54-12.jpg" class="card-img-top ms-5" alt="..." style="width: 100px;">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title fs-6 ">No attachments</h5>
-                                    <span style="color:blue">Assigned</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div scope="col" class="d-flex p-2">
-                                    <div class="avatar ">
-                                        <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
-                                    </div>
-                                    <h5>Phal</h5>
-                                </div>
-                                <div>
-                                    <img src="assets/images/about/photo_2024-03-01_18-54-12.jpg" class="card-img-top ms-5" alt="..." style="width: 100px;">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title fs-6 ">Special title treatment</h5>
-                                    <span style="color:blue">Turned in</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div scope="col" class="d-flex p-2">
-                                    <div class="avatar ">
-                                        <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
-                                    </div>
-                                    <h5>Phal</h5>
-                                </div>
-                                <div>
-                                    <img src="assets/images/about/photo_2024-03-01_18-54-12.jpg" class="card-img-top ms-5" alt="..." style="width: 100px;">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title fs-6 ">No attachments</h5>
 
-                                    <span style="color:blue">Assigned</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  end card student work -->
+
                 </div>
             </div>
         </div>

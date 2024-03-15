@@ -138,7 +138,7 @@ if (isset($_GET['id'])) {
                     <?php if ($assignments[0]['status'] == true) { ?>
                         <p class="card-text">Turned in</p>
                     <?php } else { ?>
-                        <a href="controllers/assignment/assignment_student/send_assignment.controller.php?id=<?= $assignment['id'] ?>" class="btn btn-sm btn-success-soft btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Submit"><i class="bi bi-check2-circle fs-3"></i></a>
+                        <a href="controllers/assignment/assignment_student/send_assignment.controller.php?id=<?= $assignment['id'] ?>" class="btn btn-sm btn-success-soft btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Turn In"><i class="bi bi-check2-circle fs-3"></i></a>
                     <?php }; ?>
                 </div>
                 <div class=" card-body rounded " style=" margin-top: -70px;">
@@ -174,7 +174,7 @@ if (isset($_GET['id'])) {
                                         <span>Add or Create</span>
                                     </label>
                                     <input id="file-upload" type="file" name="upload" style="display: none;">
-                                    <button type="submit" class="btn btn-primary" style="width: 100%;">Turn in</button>
+                                    <button type="submit" class="btn btn-primary" style="width: 100%;">Assign</button>
                                 </form>
                             <?php } else { ?>
                                 <a href="controllers/assignment/assignment_student/unsubmit_assignment.controller.php?id=<?= $assignment['id'] ?>" type="submit" class="btn btn-outline-light mt-2" style="width: 100%;">Unsubmit</a>
