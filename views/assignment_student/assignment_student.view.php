@@ -71,22 +71,47 @@ if (isset($_GET['id'])) {
             </div>
 
             <div class="ms-7 d-flex flex-row">
-                <div class="avatar avatar-xl mt-3 d-flex justify-content-center align-items-center">
+                <div class="avatar avatar-xl mt-3 d-flex justify-content-center ">
                     <img class="avatar-lg rounded-circle border border-white border-1 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="avatar">
                 </div>
 
-                <div class="border ms-4 rounded" style="width: 1000px; height:120px;">
+                <div class="border ms-4 rounded" style="width: 1000px;">
+
                     <div class="">
                         <nav class="navbar">
-                            <div class="container-fluid ">
-                                <dive class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <input type="text" style="width: 300%;" class="form-control bg-white col-6" name="classname" id="classname" >
-                                    <!-- <textarea style="width: 300%;" class="form-control bg-white col-6" name="classcomment" id="classcomment" placeholder="Add class comment"></textarea> -->
-                                </dive>
-                                <button type="submit" class="btn btn-outline-primary mt-1"><i class="bi bi-send-fill"></i></button>
+                            <div class="d-flex mt-5 ml-3">
+                                <div class="avatar avatar-md mt-n1 ms-3 ">
+                                    <img class="avatar-md rounded-circle border border-white border-1 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="avatar">
+                                </div>
+                                <div class="ms">
+                                    <h6><?= strtoupper($student['name']) ?></h6>
+                                    <p class="" style="margin-top: -20;">hello</p>
+                                    <!-- Info -->
+                                </div>
                             </div>
-
+                            <div class="container-fluid ">
+                                <div class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <input type="text" style="width: 300%;" class="form-control bg-white col-6" name="classname" id="classname">
+                                </div>
+                                <button type="submit" class="btn btn-outline-primary mt-1" onclick="displayInput()"><span class="material-symbols-outlined">send</span></button>
+                            </div>
+                            <div id="display"></div>
                         </nav>
+                        <script>
+                            function displayInput() {
+                                // Get the value of the input field
+                                var inputText = document.getElementById("classname").value;
+
+                                // Create a new div element to display the input text
+                                var displayDiv = document.createElement("div");
+                                displayDiv.textContent = inputText;
+
+                                // Append the new div element to the display area
+                                document.getElementById("display").appendChild(displayDiv);
+                            }
+                        </script>
+
+
                         <div class="collapse" id="navbarToggleExternalContent">
                             <div class=" p-3">
                                 <i class="fa fa-bold me-3" aria-hidden="true" onclick="toggleBold()"></i>
@@ -96,7 +121,6 @@ if (isset($_GET['id'])) {
                                 <i class="fa fa-text-width me-3" aria-hidden="true"></i>
                             </div>
                         </div>
-
                         <script>
                             function toggleBold() {
                                 var input = document.getElementById('classname');
@@ -120,7 +144,7 @@ if (isset($_GET['id'])) {
                                 } else {
                                     input.value = '• ' + input.value; // Add bullet point
                                 }
-                            }
+                            };
                         </script>
                     </div>
                 </div>
@@ -145,10 +169,8 @@ if (isset($_GET['id'])) {
                                 <p><?= $assignment['document'] ?></p>
                                 <span style="margin-top: -10px;">PDF</span>
                             </div>
-
                         </a>
                     </span>
-
                 </div>
                 <div class="nav-item dropdown" style="margin-top: -20px;">
                     <label for="file-upload" class="btn border-primary" style="width: 100%; cursor: pointer;">
@@ -173,7 +195,8 @@ if (isset($_GET['id'])) {
                             <dive class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <input type="text" style="width: 100%;" class="form-control bg-white col-6" name="classname" id="classname" required placeholder="Add class comment">
                             </dive>
-                            <button type="submit" class=" small btn btn-outline-primary"><i class="bi bi-send-fill small"></i></button>
+                            <button type="submit" class=" small btn btn-outline-primary"><span class="material-symbols-outlined small ">send</span></button>
+
                         </div>
                     </nav>
                     <div class="collapse" id="private">
