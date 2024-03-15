@@ -71,32 +71,67 @@ if (isset($_GET['id'])) {
             </div>
 
             <div class="ms-7 d-flex flex-row">
-                <div class="avatar avatar-xl mt-3 d-flex justify-content-center ">
-                    <img class="avatar-lg rounded-circle border border-white border-1 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="avatar">
+                <div class="avatar avatar-lg ">
+                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
                 </div>
-
                 <div class="border ms-4 rounded" style="width: 1000px;">
+                    <div class="class-comment">
 
-                    <div class="">
-                        <nav class="navbar">
+                        <div class="comment ms-3 mt-3">
+                            <button type="button" class="btn btn-light btn-sm d-flex justify-content-center align-items-center" onclick="toggleComments()">
+                                <span class="material-symbols-outlined" style="font-size: 20px;">group</span>
+                                <p class="m-0">3 classcomment</p>
+                            </button>
+                        </div>
+
+                        <div id="comments" style="display: none;">
                             <div class="d-flex mt-5 ml-3">
-                                <div class="avatar avatar-md mt-n1 ms-3 ">
-                                    <img class="avatar-md rounded-circle border border-white border-1 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="avatar">
+                                <div class="avatar avatar-md mt-n1 ms-4">
+                                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
                                 </div>
-                                <div class="ms">
+                                <div class="ms-2">
+                                    <h6><?= $_SESSION['user']['name'] ?></h6>
+                                    <p>hello</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mt-1 ml-3">
+                                <div class="avatar avatar-md mt-n1 ms-4">
+                                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/65d7ffbd21db2.jpg" alt="">
+                                </div>
+                                <div class="ms-2">
+                                    <h6>pichsana vong</h6>
+                                    <p>yes hello mean ka ey men bong</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mt-1 ml-3">
+                                <div class="avatar avatar-md mt-n1 ms-4">
+                                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
+                                </div>
+                                <div class="ms-2">
                                     <h6><?= strtoupper($student['name']) ?></h6>
-                                    <p class="" style="margin-top: -20;">hello</p>
-                                    <!-- Info -->
+                                    <p>are you free?</p>
                                 </div>
                             </div>
-                            <div class="container-fluid ">
-                                <div class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <input type="text" style="width: 300%;" class="form-control bg-white col-6" name="classname" id="classname">
-                                </div>
-                                <button type="submit" class="btn btn-outline-primary mt-1" onclick="displayInput()"><span class="material-symbols-outlined">send</span></button>
+                        </div>
+
+                        <script>
+                            function toggleComments() {
+                                var commentsDiv = document.getElementById("comments");
+                                if (commentsDiv.style.display === "none") {
+                                    commentsDiv.style.display = "block";
+                                } else {
+                                    commentsDiv.style.display = "none";
+                                }
+                            }
+                        </script>
+
+                        <div class="container-fluid ">
+                            <div class="navbar-toggler d-flex" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <input type="text" style="width: 80%; height:50px;" class="form-control bg-white col-6" name="classname" id="classname">
+                                <button type="submit" class="btn btn-outline-primary ms-2" onclick="displayInput()"><span class="material-symbols-outlined">send</span></button>
                             </div>
-                            <div id="display"></div>
-                        </nav>
+                        </div>
+                        <div id="display"></div>
                         <script>
                             function displayInput() {
                                 // Get the value of the input field
