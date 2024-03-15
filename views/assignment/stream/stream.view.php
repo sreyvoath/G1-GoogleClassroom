@@ -190,6 +190,7 @@ if (isset($_GET['id'])) {
                                             $date = date('F j, Y', strtotime($assignment['end_date']));
                                             $time = date('g:i A', strtotime($assignment['end_time']));
                                         ?>
+
                                             <td class="d-flex flex-column ">
                                                 <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 rounded px-4 py-2 border-start border-primary">
                                                     <!-- Content -->
@@ -218,38 +219,34 @@ if (isset($_GET['id'])) {
                                                     <div class="dropdown mt-2 d-flex">
                                                         <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
                                                         <ul class="dropdown-menu" aria-labelledby="accounntMenu">
-                                                            <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
-
-                                                                <li class="dropdown-submenu dropend">
-                                                                    <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $assignment['id'] ?>">Edit</a>
-                                                                </li>
-                                                                <li class="dropdown-submenu dropend">
-                                                                    <a class="dropdown-item " href="controllers/assignment/delete_assignment.controller.php?id=<?= $assignment['id'] ?> " onclick="if (!confirm('Are you sure to Delete it?')) { return false; }">Delete</a>
-                                                                </li>
-
-                                                            <?php endif; ?>
+                                                            <?php if ($_SESSION['user']['role'] == 'teacher') : ?>]
                                                             <li class="dropdown-submenu dropend">
-                                                                <a class="dropdown-item " href="# ">Copy Link</a>
+                                                                <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $assignment['id'] ?>">Edit</a>
                                                             </li>
+                                                            <li class="dropdown-submenu dropend">
+                                                                <a class="dropdown-item " href="controllers/assignment/delete_assignment.controller.php?id=<?= $assignment['id'] ?> " onclick="if (!confirm('Are you sure to Delete it?')) { return false; }">Delete</a>
+                                                            </li>
+
+                                                        <?php endif; ?>
+                                                        <li class="dropdown-submenu dropend">
+                                                            <a class="dropdown-item " href="# ">Copy Link</a>
+                                                        </li>
                                                         </ul>
                                                     </div>
-
                                                 </div>
-
                                             </td>
-                                            <!-- </a> -->
-                                            <!-- </tr> -->
+
                                         <?php endforeach; ?>
                                     <?php }; ?>
                                 </tbody>
-
                             </table>
                         </div>
-                        <!-- PHP loop for classes END -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <!-- Button trigger modal -->
 
+    <!-- Modal -->
 </main>
