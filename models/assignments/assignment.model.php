@@ -124,3 +124,13 @@ function updateAssignStatus(int $id, bool $status,): bool
     ]);
     return $statement->rowCount() > 0;
 }
+
+//======get assignment when students uploaded======>
+function getStudentsSubmitted(int $assignment_id):array
+{
+
+    global $connection;
+    $statement = $connection->prepare("select * from student_submit where assignment_id =:id and status = 1");
+    $statement->execute([":id" => $assignment_id]);
+    return $statement->fetchAll();
+}
