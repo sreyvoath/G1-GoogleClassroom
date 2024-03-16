@@ -7,6 +7,7 @@ if (isset($_GET['id'])) {
     $assignment = getAssign($id);
     $assignment = getAssign($id);
     $assignments = getAssignmentsStudents($_GET['id'], $_SESSION['user']['id']);
+    $_SESSION['assignment_submitted'] = $assignments;
 }
 
 ?>
@@ -53,8 +54,8 @@ if (isset($_GET['id'])) {
             </table>
             <div class="mb-0 ms-8" style="margin-left: -20px;">
                 <div class="p-5">
-                    <span class="d-inline-block" style="height: auto; width: 400px;">
-                        <a class="d-flex border" style="border-radius: 10px; margin-left: -40px; margin-top: -30px;" href="assets/images/upload/<?= $assignment['document'] ?>">
+                    <span class="d-inline-block " style="height: auto; width: 400px;">
+                        <a class="d-flex border shadow-sm" style="border-radius: 10px; margin-left: -40px; margin-top: -30px;" href="assets/images/upload/<?= $assignment['document'] ?>">
                             <div class="bg p-2 border" style="border-radius: 10px 0 0 10px;">
                                 <img src="/assets/images/bg/06.png" alt="">
                             </div>
@@ -72,22 +73,82 @@ if (isset($_GET['id'])) {
             </div>
 
             <div class="ms-7 d-flex flex-row">
-                <div class="avatar avatar-xl mt-3 d-flex justify-content-center align-items-center">
-                    <img class="avatar-lg rounded-circle border border-white border-1 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="avatar">
+                <div class="avatar avatar-lg ">
+                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
                 </div>
+                <div class="border ms-4 rounded" style="width: 1000px;">
+                    <div class="class-comment">
 
-                <div class="border ms-4 rounded" style="width: 1000px; height:120px;">
-                    <div class="">
-                        <nav class="navbar">
-                            <div class="container-fluid ">
-                                <dive class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <input type="text" style="width: 300%;" class="form-control bg-white col-6" name="classname" id="classname">
-                                    <!-- <textarea style="width: 300%;" class="form-control bg-white col-6" name="classcomment" id="classcomment" placeholder="Add class comment"></textarea> -->
-                                </dive>
-                                <button type="submit" class="btn btn-outline-primary mt-1"><i class="bi bi-send-fill"></i></button>
+                        <div class="comment ms-3 mt-3">
+                            <button type="button" class="btn btn-light btn-sm d-flex justify-content-center align-items-center" onclick="toggleComments()">
+                                <span class="material-symbols-outlined" style="font-size: 20px;">group</span>
+                                <p class="m-0">3 classcomment</p>
+                            </button>
+                        </div>
+
+                        <div id="comments" style="display: none;">
+                            <div class="d-flex mt-5 ml-3">
+                                <div class="avatar avatar-md mt-n1 ms-4">
+                                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
+                                </div>
+                                <div class="ms-2">
+                                    <h6><?= $_SESSION['user']['name'] ?></h6>
+                                    <p>hello</p>
+                                </div>
                             </div>
+                            <div class="d-flex mt-1 ml-3">
+                                <div class="avatar avatar-md mt-n1 ms-4">
+                                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/65d7ffbd21db2.jpg" alt="">
+                                </div>
+                                <div class="ms-2">
+                                    <h6>pichsana vong</h6>
+                                    <p>yes hello mean ka ey men bong</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mt-1 ml-3">
+                                <div class="avatar avatar-md mt-n1 ms-4">
+                                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
+                                </div>
+                                <div class="ms-2">
+                                    <h6><?= strtoupper($student['name']) ?></h6>
+                                    <p>are you free?</p>
+                                </div>
+                            </div>
+                        </div>
 
-                        </nav>
+                        <script>
+                            function toggleComments() {
+                                var commentsDiv = document.getElementById("comments");
+                                if (commentsDiv.style.display === "none") {
+                                    commentsDiv.style.display = "block";
+                                } else {
+                                    commentsDiv.style.display = "none";
+                                }
+                            }
+                        </script>
+
+                        <div class="container-fluid ">
+                            <div class="navbar-toggler d-flex" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <input type="text" style="width: 80%; height:50px;" class="form-control bg-white col-6" name="classname" id="classname">
+                                <button type="submit" class="btn btn-outline-primary ms-2" onclick="displayInput()"><span class="material-symbols-outlined">send</span></button>
+                            </div>
+                        </div>
+                        <div id="display"></div>
+                        <script>
+                            function displayInput() {
+                                // Get the value of the input field
+                                var inputText = document.getElementById("classname").value;
+
+                                // Create a new div element to display the input text
+                                var displayDiv = document.createElement("div");
+                                displayDiv.textContent = inputText;
+
+                                // Append the new div element to the display area
+                                document.getElementById("display").appendChild(displayDiv);
+                            }
+                        </script>
+
+
                         <div class="collapse" id="navbarToggleExternalContent">
                             <div class=" p-3">
                                 <i class="fa fa-bold me-3" aria-hidden="true" onclick="toggleBold()"></i>
@@ -97,7 +158,6 @@ if (isset($_GET['id'])) {
                                 <i class="fa fa-text-width me-3" aria-hidden="true"></i>
                             </div>
                         </div>
-
                         <script>
                             function toggleBold() {
                                 var input = document.getElementById('classname');
@@ -121,79 +181,114 @@ if (isset($_GET['id'])) {
                                 } else {
                                     input.value = '• ' + input.value; // Add bullet point
                                 }
-                            }
+                            };
                         </script>
                     </div>
                 </div>
             </div>
     </section>
 
-    <!-- =============================================================================================== -->
-    <div class="container mt-5" style="width: 30%; ">
-        <div class="p-3 mb-2 rounded shadow-sm p-3 mb-5 bg-body rounded" style="border: 1px solid gainsboro;">
-            <div class="card-body d-flex justify-content-between text-center align-items-center ">
-                <p class="card-title fs-4">Your work</p>
-                <p class="card-text">Turned in</p>
-            </div>
-            <div class=" card-body rounded " style=" margin-top: -70px;">
-                <div class="p-5">
-                    <?php if (isset($assignments)) {
-                        foreach ($assignments as $assignment) {
-                    ?>
-                            <span class="d-inline-block" style="height: auto; width: 120%;">
-                                <a class="d-flex border align_items-center mb-0" style="border-radius: 10px; margin-left: -50px;" href="assets/images/upload/<?= $assignment['document'] ?>">
-                                    <div class="bg p-2 border text-center" style="border-radius: 10px 0 0 10px;">
-                                        <img src="/assets/images/bg/06.png" alt="" width="50px" height="40px">
-                                    </div>
-                                    <div class="d-flex flex-column title mx-3 mt-2 align-items-start justify-content-center">
-                                        <p><?= $assignment['document'] ?></p>
-                                        <span style="margin-top: -10px;">PDF</span>
-                                    </div>
-                                </a>
-                                <a href="controllers/assignment/assignment_student/unsend_assignment.controller.php?id=<?=$assignment['id']?>" class="btn btn-sm btn-danger-soft btn-round mb-0" style="margin-left: 200px; margin-top: -95px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Unsend"><i class="bi bi-x fs-4"></i></a>
-                            </span>
-                    <?php }
-                    } ?>
-
+    <!-- ========================================= Submittion ====================================================== -->
+    <?php if (!empty($assignments)) { ?>
+        <div class="container mt-5" style="width: 30%; ">
+            <div class="p-3 mb-2 rounded shadow-sm p-3 mb-5 bg-body rounded" style="border: 1px solid gainsboro;">
+                <div class="card-body d-flex justify-content-between text-center align-items-center ">
+                    <p class="card-title fs-4">Your work</p>
+                    <?php if ($assignments[0]['status'] == true) { ?>
+                        <p class="card-text">Turned in</p>
+                    <?php } else { ?>
+                        <a href="controllers/assignment/assignment_student/send_assignment.controller.php?id=<?= $assignment['id'] ?>" class="btn btn-sm btn-success-soft btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Turn In"><i class="bi bi-check2-circle fs-3"></i></a>
+                    <?php }; ?>
                 </div>
-                <div class="nav-item dropdown" style="margin-top: -40px;">
-                    <form action="controllers/assignment/assignment_students.controller.php" method="post" id="upload-form" enctype="multipart/form-data">
-                        <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
-                        <label for="file-upload" class="btn border-primary mb-3" style="width: 100%; cursor: pointer;">
-                            <i class="fa fa-plus me-3" aria-hidden="true"></i>
-                            <span>Add or Create</span>
-                        </label>
-                        <input id="file-upload" type="file" name="upload" style="display: none;">
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
-                    </form>
+                <div class=" card-body rounded " style=" margin-top: -70px;">
+                    <div class="p-5">
+                        <?php if (isset($assignments)) {
+                            foreach ($assignments as $assignment) {
+                        ?>
+                                <span class="d-inline-block <?= ($assignments[0]['status']== true? "mt-3":"") ?>" style="height: auto; width: 120%;">
+                                    <a class="d-flex border shadow-sm align_items-center mb-0" style="border-radius: 10px; margin-left: -50px;" href="assets/images/upload/<?= $assignment['document'] ?>">
+                                        <div class="bg p-2 border text-center" style="border-radius: 10px 0 0 10px;">
+                                            <img src="/assets/images/bg/06.png" alt="" width="50px" height="40px">
+                                        </div>
+                                        <div class="d-flex flex-column title mx-3 mt-2 align-items-start justify-content-center">
+                                            <p><?= $assignment['document'] ?></p>
+                                            <span style="margin-top: -10px;">PDF</span>
+                                        </div>
+                                    </a>
+                                    <?php if ($assignments[0]['status'] == false) { ?>
+                                        <a href="controllers/assignment/assignment_student/unsend_assignment.controller.php?id=<?= $assignment['id'] ?>" class="btn btn-sm btn-danger-soft btn-round mb-0" style="margin-left: 200px; margin-top: -95px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Unsend"><i class="bi bi-x fs-4"></i></a>
+                                    <?php } ?>
+                                </span>
+                        <?php }
+                        } ?>
+
+                    </div>
+                    <div class="nav-item dropdown" style="margin-top: -40px;">
+                        <?php if (isset($assignments)) : ?>
+                            <?php if ($assignments[0]['status'] == false) { ?>
+                                <form action="controllers/assignment/assignment_students.controller.php" method="post" id="upload-form" enctype="multipart/form-data">
+                                    <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
+                                    <label for="file-upload" class="btn border-primary mb-3" style="width: 100%; cursor: pointer;">
+                                        <i class="fa fa-plus me-3" aria-hidden="true"></i>
+                                        <span>Add or Create</span>
+                                    </label>
+                                    <input id="file-upload" type="file" name="upload" style="display: none;">
+                                    <button type="submit" class="btn btn-primary" style="width: 100%;">Assign</button>
+                                </form>
+                            <?php } else { ?>
+                                <a href="controllers/assignment/assignment_student/unsubmit_assignment.controller.php?id=<?= $assignment['id'] ?>" type="submit" class="btn btn-outline-light mt-2" style="width: 100%;">Unsubmit</a>
+                            <?php } ?>
+                        <?php endif; ?>
+                    </div>
                 </div>
+
             </div>
-
-        </div>
-
-        <div class="p-3 mb-2 rounded shadow-sm p-3 mb-5 bg-body rounded" style="border: 1px solid gainsboro; margin-top: -20px;">
-            <div class="mb-0 ms-3 ">
-                <p><i class="fas fa-user-graduate me-3"></i>Private comments</p>
-                <div class="me-3 ">
-                    <nav class="navbar">
-                        <div class="container-fluid ">
-                            <dive class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <input type="text" style="width: 100%;" class="form-control bg-white col-6" name="classname" id="classname" required placeholder="Add class comment">
-                            </dive>
-                            <button type="submit" class=" small btn btn-outline-primary"><i class="bi bi-send-fill small"></i></button>
+        <?php } else { ?>
+            <div class="container mt-5" style="width: 30%; ">
+                <div class="p-3 mb-2 rounded shadow-sm p-3 mb-5 bg-body rounded" style="border: 1px solid gainsboro;">
+                    <div class="card-body d-flex justify-content-between text-center align-items-center ">
+                        <p class="card-title fs-4">Your work</p>
+                    </div>
+                    <div class=" card-body rounded " style=" margin-top: -30px;">
+                        <img style="margin-top: -20px;" src="../../assets/images/bg/07.png" alt="bg">
+                        <div class="nav-item dropdown">
+                            <form action="controllers/assignment/assignment_students.controller.php" method="post" id="upload-form" enctype="multipart/form-data">
+                                <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
+                                <label for="file-upload" class="btn border-primary mb-3" style="width: 100%; cursor: pointer;">
+                                    <i class="fa fa-plus me-3" aria-hidden="true"></i>
+                                    <span>Add or Create</span>
+                                </label>
+                                <input id="file-upload" type="file" name="upload" style="display: none;">
+                                <button type="submit" class="btn btn-primary" style="width: 100%;">Turn in</button>
+                            </form>
                         </div>
-                    </nav>
-                    <div class="collapse" id="private">
-                        <div class=" p-3">
-                            <i class="fa fa-bold me-3" aria-hidden="true"></i>
-                            <i class="fa fa-italic me-3" aria-hidden="true"></i>
-                            <i class="fa fa-underline me-3" aria-hidden="true"></i>
-                            <i class="fa fa-align-justify me-3" aria-hidden="true"></i>
-                            <i class="fa fa-text-width me-3" aria-hidden="true"></i>
+                    </div>
+
+                </div>
+            <?php } ?>
+            <div class="p-3 mb-2 rounded shadow-sm p-3 mb-5 bg-body rounded" style="border: 1px solid gainsboro; margin-top: -20px;">
+                <div class="mb-0 ms-3 ">
+                    <p><i class="fas fa-user-graduate me-3"></i>Private comments</p>
+                    <div class="me-3 ">
+                        <nav class="navbar">
+                            <div class="container-fluid ">
+                                <dive class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <input type="text" style="width: 100%;" class="form-control bg-white col-6" name="classname" id="classname" required placeholder="Add class comment">
+                                </dive>
+                                <button type="submit" class=" small btn btn-outline-primary"><i class="bi bi-send-fill small"></i></button>
+                            </div>
+                        </nav>
+                        <div class="collapse" id="private">
+                            <div class=" p-3">
+                                <i class="fa fa-bold me-3" aria-hidden="true"></i>
+                                <i class="fa fa-italic me-3" aria-hidden="true"></i>
+                                <i class="fa fa-underline me-3" aria-hidden="true"></i>
+                                <i class="fa fa-align-justify me-3" aria-hidden="true"></i>
+                                <i class="fa fa-text-width me-3" aria-hidden="true"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+            </div>
 </main>

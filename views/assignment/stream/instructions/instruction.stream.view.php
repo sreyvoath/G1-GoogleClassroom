@@ -19,7 +19,7 @@ if (isset($_GET['id'])) {
                         <a href="/instruction?id=<?= $_SESSION['assign_id'] ?>"><button type="button" class="btn btn-outline-primary <?= urlIs("/instruction") ? "active" : "active" ?> ">Instructions</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
-                        <a href="/student_work"><button type="button" class="btn btn-outline-info <?= urlIs("/student_work") ? "active" : "" ?>  ">Student work</button></a>
+                        <a href="/student_work?id=<?= $_SESSION['assign_id'] ?>"><button type="button" class="btn btn-outline-info <?= urlIs("/student_work") ? "active" : "" ?>  ">Student work</button></a>
                     </div>
                 </div>
             </ul>
@@ -101,35 +101,120 @@ if (isset($_GET['id'])) {
 
             <div class="ms-7 d-flex flex-row">
                 <!-- Image -->
-                <div class="avatar avatar-lg ">
+                <div class="avatar avatar-lg">
                     <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
                 </div>
 
-                <div class="border ms-4 " style="width: 1000px; height:120px;">
-                    <div class="">
-                        <nav class="navbar">
-                            <div class="container-fluid ">
-                                <dive class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <input type="text" style="width: 400%;" class="form-control bg-white col-6" name="classname" id="classname" required placeholder="Add class comment">
-                                </dive>
-                                <button type="submit" class="btn btn-outline-primary"><i class="bi bi-send-fill"></i></button>
+                <div class="border ms-4 rounded" style="width: 1000px;">
+                    <div class="class-comment">
+
+                        <div class="comment ms-3 mt-3">
+                            <button type="button" class="btn btn-light btn-sm d-flex justify-content-center align-items-center" onclick="toggleComments()">
+                                <span class="material-symbols-outlined" style="font-size: 20px;">group</span>
+                                <p class="m-0">3 classcomment</p>
+                            </button>
+                        </div>
+
+                        <div id="comments" style="display: none;">
+                            <div class="d-flex mt-5 ml-3">
+                                <div class="avatar avatar-md mt-n1 ms-4">
+                                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
+                                </div>
+                                <div class="ms-2">
+                                    <h6><?= $_SESSION['user']['name'] ?></h6>
+                                    <p>hello heng free</p>
+                                </div>
                             </div>
-                        </nav>
+                            <div class="d-flex mt-1 ml-3">
+                                <div class="avatar avatar-md mt-n1 ms-4">
+                                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/65daa6edcdb5b.jpg" alt="">
+                                </div>
+                                <div class="ms-2">
+                                    <h6>sovanmony vong</h6>
+                                    <p>yes hello bong mean ey ouy nhom men</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mt-1 ml-3">
+                                <div class="avatar avatar-md mt-n1 ms-4">
+                                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
+                                </div>
+                                <div class="ms-2">
+                                    <h6><?= $_SESSION['user']['name'] ?></h6>
+                                    <p>jol club ot ha yob nis</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            function toggleComments() {
+                                var commentsDiv = document.getElementById("comments");
+                                if (commentsDiv.style.display === "none") {
+                                    commentsDiv.style.display = "block";
+                                } else {
+                                    commentsDiv.style.display = "none";
+                                }
+                            }
+                        </script>
+
+                        <div class="container-fluid ">
+                            <div class="navbar-toggler d-flex" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <input type="text" style="width: 80%; height:50px;" class="form-control bg-white col-6" name="classname" id="classname">
+                                <button type="submit" class="btn btn-outline-primary ms-2" onclick="displayInput()"><span class="material-symbols-outlined">send</span></button>
+                            </div>
+                        </div>
+                        <div id="display"></div>
+                        <script>
+                            function displayInput() {
+                                // Get the value of the input field
+                                var inputText = document.getElementById("classname").value;
+
+                                // Create a new div element to display the input text
+                                var displayDiv = document.createElement("div");
+                                displayDiv.textContent = inputText;
+
+                                // Append the new div element to the display area
+                                document.getElementById("display").appendChild(displayDiv);
+                            }
+                        </script>
+
+
                         <div class="collapse" id="navbarToggleExternalContent">
                             <div class=" p-3">
-                                <i class="fa fa-bold me-3" aria-hidden="true"></i>
-                                <i class="fa fa-italic me-3" aria-hidden="true"></i>
-                                <i class="fa fa-underline me-3" aria-hidden="true"></i>
-                                <i class="fa fa-align-justify me-3" aria-hidden="true"></i>
+                                <i class="fa fa-bold me-3" aria-hidden="true" onclick="toggleBold()"></i>
+                                <i class="fa fa-italic me-3" aria-hidden="true" onclick="toggleItalic()"></i>
+                                <i class="fa fa-underline me-3" aria-hidden="true" onclick="toggleUnderline()"></i>
+                                <i class="fa fa-align-justify me-3" aria-hidden="true" onclick="toggleBulleted()"></i>
                                 <i class="fa fa-text-width me-3" aria-hidden="true"></i>
                             </div>
                         </div>
+                        <script>
+                            function toggleBold() {
+                                var input = document.getElementById('classname');
+                                input.style.fontWeight = input.style.fontWeight === 'bold' ? 'normal' : 'bold';
+                            }
+
+                            function toggleItalic() {
+                                var input = document.getElementById('classname');
+                                input.style.fontStyle = input.style.fontStyle === 'italic' ? 'normal' : 'italic';
+                            }
+
+                            function toggleUnderline() {
+                                var input = document.getElementById('classname');
+                                input.style.textDecoration = input.style.textDecoration === 'underline' ? 'none' : 'underline';
+                            }
+
+                            function toggleBulleted() {
+                                var input = document.getElementById('classname');
+                                if (input.value.startsWith('• ')) {
+                                    input.value = input.value.substring(2); // Remove bullet point if already present
+                                } else {
+                                    input.value = '• ' + input.value; // Add bullet point
+                                }
+                            };
+                        </script>
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
-        </div>
         </div>
     </section>
 </main>

@@ -6,7 +6,7 @@ require_once '../../models/assignments/assignment.model.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_FILES['upload'])){
         // $title = "Uploaded File"; // You can change this as per your requirement
-       
+        $id = $_POST['id'];
         // File upload handling
         $targetDir = "../../assets/images/upload/";
         $targetFile = $targetDir . basename($_FILES["upload"]["name"]);
@@ -21,13 +21,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Allow certain file formats
         if (!in_array($fileType, array("pdf", "docx", "xlsx"))) {
-            echo "Sorry, only PDF, DOCX, and XLSX files are allowed.";
             $uploadOk = 0;
+            $_SESSION['err-uplaod'] = "Sorry, only PDF, DOCX, and XLSX files are allowed.";
         }
 
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
+            // $_SESSION['err-uplaod'] = "Sorry, your file was not uploaded.";
+            header("Location: /assignment_student?id=$id");
         } else {
             if (move_uploaded_file($_FILES["upload"]["tmp_name"], $targetFile)) {
                 // File uploaded successfully, now store file information in the database
@@ -37,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Insert assignment details into the database
                 if (studentUpload($filename, $filepath, $_POST['id'], $_SESSION['user']['id'])) {
                     // Handle successful upload
-                    $id = $_POST['id'];
+                   
                     header("Location: /assignment_student?id=$id");
                     exit(); // Terminate the script after successful upload
                 } else {

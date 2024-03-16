@@ -1,5 +1,19 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<?php
+require "database/database.php";
+require "models/assignments/assignment.model.php";
+require "models/user_join_class/student.model.php";
+if (isset($_GET['id'])) {
+    $assignments = getStudentsSubmitted($_SESSION['assign_id']);
+}
+if (isset($_SESSION['class_id'])){
+    $studentJoined = studentJoinedClass($_SESSION['class_id']);
+   
+}
 
+?>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="vendor/css/css/animate.css">
+<link rel="stylesheet" href="vendor/css/css/style.css">
 <main>
     <div class="container">
         <div class="row mb-5 align-items-center ">
@@ -11,7 +25,7 @@
                         <a href="/instruction?id=<?= $_SESSION['assign_id'] ?>"><button type="button" class="btn btn-outline-primary<?= urlIs("/instruction") ? "active" : "" ?> ">Instruction</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
-                        <a href="/student_work"><button type="button" class="btn btn-outline-info <?= urlIs("/student_work") ? "active" : "" ?> ">Student work</button></a>
+                        <a href="/student_work?id=<?= $_SESSION['assign_id'] ?>"><button type="button" class="btn btn-outline-info <?= urlIs("/student_work") ? "active" : "active" ?> ">Student work</button></a>
                     </div>
                 </div>
             </ul>
@@ -22,13 +36,12 @@
         <div class="row mb-5 align-items-center">
             <!-- Search bar -->
             <script src="../../js/main.js"></script>
-            <!-- <ul class="nav nav-pills nav-pills-bg-soft justify-content-sm-center mb-4 px-3" id="course-pills-tab" role="tablist"> -->
             <div class="btn-toolbar align-items-center" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group me-4" role="group" aria-label="First group">
                     <a href="/student_work"><button type="button" class="btn btn-primary ">Return</button></a>
                 </div>
                 <div class="btn-group me-4" role="group" aria-label="First group">
-                    <a href="/student_work"><button type="button" class="btn"><i class="fa fa-envelope-open" aria-hidden="true"></i></button></a>
+                    <a href="#"><button type="button" class="btn"><i class="bi bi-envelope fs-3"></i></button></a>
                 </div>
                 <div class="btn-group me-4" role="group" aria-label="Second group">
                     <div class="nav-item dropdown">
@@ -46,23 +59,29 @@
             <!-- </ul> -->
         </div>
     </div>
+    <hr>
     <section class="pt-0 d-flex ">
-        <div class="card" style="width: 100%;">
-            <div class="card-body">
-                <div id="content">
-                    <div class="col-xl-9 ms-4 " style="width: 50%;">
-                        <div class="form-check d-flex justify-content-start">
-                            <div class="ms-2">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                </label>
+        <div class="tag"></div>
+        <div class="container mycontainer mt-5" style="width: 65%;">
+            <div class="row p-3 mt-5 myrow  custom-row" id="containers">
+                <div class="col-md-9 pe-0">
+                    <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" class="scrollspy-example" tabindex="0" id="containerse">
+                        <p class="animate__animated animate__fadeIn animate__delay-2s">
+                        <div class="item">
+                            <div scope="col" class="d-flexs" id="items">
+                                <div class="ms-2">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                                <div class="avatar ">
+                                    <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
+                                </div>
+                                <h5>Phal</h5>
                             </div>
-                            <div class="ms-2">
-                                <i class="fas fa-user-friends"></i>
-                            </div>
+                            <div scope="col" class="d-flexse">
+                                <span>88</span>
 
-                            <div class="ms-2">
-                                <p><span><u>All student</u></span></p>
                             </div>
                         </div>
                     </div>
@@ -74,24 +93,30 @@
                             <li><a class="dropdown-item" href="#">Sort by status</a></li>
                         </ul>
                     </div>
-                    <table class="table table-bordered border-primary">
-                        <div class="ms-2  mb-4">
+                    <table class="table table-bordered border-secondary">
+                        <div class="ms-2 fs-5 mb-4 ">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <label class="form-check-label mx-2" for="flexCheckDefault">
                                 Turned in
                             </label>
                         </div>
+                        <?php foreach($studentJoined as $student):?>
                         <tr>
                             <th scope="col " class="d-flex">
+                                <div class="ms-2 mx-2 mt-1 fs-5">
+                        </p>
+                        <p class="animate__animated animate__fadeIn animate__delay-3s">
+                        <div class="item">
+                            <div scope="col" class="d-flexs" id="items">
                                 <div class="ms-2">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">
                                     </label>
                                 </div>
                                 <div class="avatar ">
-                                    <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
+                                    <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 40px; height:40px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="/assets/images/profiles/<?= $student['image']?>" alt="avatar">
                                 </div>
-                                <h5>Phal</h5>
+                                <h6 style="margin-top: 10px;"><?= strtoupper($student['name'])?></h6>
                             </th>
 
                             <style>
@@ -101,50 +126,18 @@
                                     height: 50px;
                                     font-size: 16px;
                                     outline: none;
-                                    font-weight:bold;
-                                    color:green;
+                                    font-weight: bold;
+                                    color: green;
                                 }
                             </style>
                             <th>
-                                <span><input type="text" class="custom-input" maxlength="3" placeholder="......">/100</span>
-                                
+                                <span><input type="text" class="custom-input" maxlength="3" placeholder="_____">/100</span>
+
                             </th>
                         </tr>
-                        <tr>
-                            <th scope="col" class="d-flex">
-                                <div class="ms-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                    </label>
-                                </div>
-                                <div class="avatar ">
-                                    <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
-                                </div>
-                                <h5>Phal</h5>
-                            </th>
-                            <th scope="col">
-                                <span><input type="text" class="custom-input" maxlength="3" placeholder="......">/100</span>
-        
-                            </th>
-                        </tr>
-                        <tr>
-                            <th scope="col" class="d-flex">
-                                <div class="ms-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                    </label>
-                                </div>
-                                <div class="avatar ">
-                                    <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
-                                </div>
-                                <h5>Phal</h5>
-                            </th>
-                            <th scope="col">
-                                <span><input type="text" class="custom-input" maxlength="3" placeholder="......">/100</span>
-                            </th>
-                        </tr>
+                        <?php endforeach; ?>
                     </table>
-                    <table class="table table-bordered border-primary">
+                    <table class="table table-bordered border-secondary">
                         <div class="ms-2 mb-4">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
@@ -153,6 +146,17 @@
                         </div>
                         <tr>
                             <th scope="col" class="d-flex">
+                                <h5>Phal</h5>
+                            </div>
+                            <div scope="col" class="d-flexse">
+                                <span>88</span>
+
+                            </div>
+                        </div>
+                        </p>
+                        <p class="animate__animated animate__fadeIn animate__delay-1s">
+                        <div class="item">
+                            <div scope="col" class="d-flexs" id="items">
                                 <div class="ms-2">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">
@@ -168,9 +172,17 @@
                                 <p>Draft</p>
                             </th>
                         </tr>
+                    </table>
+                            </div>
+                            <div scope="col" class="d-flexse">
+                                <span>88</span>
 
-                        <tr>
-                            <th scope="col" class="d-flex">
+                            </div>
+                        </div>
+                        </p>
+                        <p class="animate__animated animate__fadeIn animate__delay-1s">
+                        <div class="item">
+                            <div scope="col" class="d-flexs" id="items">
                                 <div class="ms-2">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">
@@ -180,23 +192,158 @@
                                     <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
                                 </div>
                                 <h5>Phal</h5>
-                            </th>
-                            <th scope="col">
-                                <span>../100</span>
-                                <p>Draft</p>
-                            </th>
-                        </tr>
-                    </table>
+                            </div>
+                            <div scope="col" class="d-flexse">
+                                <span>88</span>
+
+                            </div>
+                        </div>
+                        </p>
+                        <p class="animate__animated animate__fadeIn animate__delay-1s">
+                        <div class="item">
+                            <div scope="col" class="d-flexs" id="items">
+                                <div class="ms-2">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                                <div class="avatar ">
+                                    <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
+                                </div>
+                                <h5>Phal</h5>
+                            </div>
+                            <div scope="col" class="d-flexse">
+                                <span>88</span>
+
+                            </div>
+                        </div>
+                        </p>
+                        <p class="animate__animated animate__fadeIn animate__delay-1s">
+                        <div class="item">
+                            <div scope="col" class="d-flexs" id="items">
+                                <div class="ms-2">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                                <div class="avatar ">
+                                    <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
+                                </div>
+                                <h5>Phal</h5>
+                            </div>
+                            <div scope="col" class="d-flexse">
+                                <span>88</span>
+
+                            </div>
+                        </div>
+                        </p>
+                        <p class="animate__animated animate__fadeIn animate__delay-1s">
+                        <div class="item">
+                            <div scope="col" class="d-flexs" id="items">
+                                <div class="ms-2">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                                <div class="avatar ">
+                                    <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
+                                </div>
+                                <h5>Phal</h5>
+                            </div>
+                            <div scope="col" class="d-flexse">
+                                <span>88</span>
+
+                            </div>
+                        </div>
+                        </p>
+                        <p class="animate__animated animate__fadeIn animate__delay-1s">
+                        <div class="item">
+                            <div scope="col" class="d-flexs" id="items">
+                                <div class="ms-2">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                                <div class="avatar ">
+                                    <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
+                                </div>
+                                <h5>Phal</h5>
+                            </div>
+                            <div scope="col" class="d-flexse">
+                                <span>88</span>
+
+                            </div>
+                        </div>
+                        </p>
+                        <p class="animate__animated animate__fadeIn animate__delay-1s">
+                        <div class="item">
+                            <div scope="col" class="d-flexs" id="items">
+                                <div class="ms-2">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                                <div class="avatar ">
+                                    <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
+                                </div>
+                                <h5>Phal</h5>
+                            </div>
+                            <div scope="col" class="d-flexse">
+                                <span>88</span>
+
+                            </div>
+                        </div>
+                        </p>
+                        <p class="animate__animated animate__fadeIn animate__delay-1s">
+                        <div class="item">
+                            <div scope="col" class="d-flexs" id="items">
+                                <div class="ms-2">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                                <div class="avatar ">
+                                    <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
+                                </div>
+                                <h5>Phal</h5>
+                            </div>
+                            <div scope="col" class="d-flexse">
+                                <span>88</span>
+
+                            </div>
+                        </div>
+                        </p>
+                        <p class="animate__animated animate__fadeIn animate__delay-1s">
+                        <div class="item">
+                            <div scope="col" class="d-flexs" id="items">
+                                <div class="ms-2">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                                <div class="avatar ">
+                                    <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
+                                </div>
+                                <h5>Phal</h5>
+                            </div>
+                            <div scope="col" class="d-flexse">
+                                <span>88</span>
+                            </div>
+                        </div>
+                        </p>
+                    </div>
                 </div>
             </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
         </div>
 
         <div class="card" style="width: 100%;">
             <!-- table student work -->
-            <div class="card-body" style="width: 100%;">
+            <div class="card-body">
                 <div class="col-sm-6 " style="width: 100%;">
-                    <div id="content" style="width: 100%;">
-
+                    <div id="content">
                         <p>Homework</p>
                         <p>
                         <div class="card-body d-flex">
@@ -230,14 +377,28 @@
                     <!-- end table student work -->
 
                     <!-- card student work -->
-                    <div class="row row-cols-1 row-cols-md-3 g-1">
-                        <div class="col">
-                            <div class="card">
-                                <div scope="col" class="d-flex p-2">
-                                    <div class="avatar ">
-                                        <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
+                    <div class="tag"></div>
+                    <div class="container mycontainer " id="containers_two">
+                        <div class="row p-3 mt-5 myrow custom-row " id="container_two">
+                            <!-- <div class="col-md-9 pe-0"> -->
+                            <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" class="scrollspy-example" tabindex="0" id="containerse_two">
+                                <p class="animate__animated animate__fadeIn animate__delay-2s">
+                                <div class="col" id="item_tow">
+                                    <div class="card">
+                                        <div scope="col" class="d-flex p-2">
+                                            <div class="avatar ">
+                                                <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
+                                            </div>
+                                            <h5>Phal</h5>
+                                        </div>
+                                        <div>
+                                            <img src="assets/images/about/photo_2024-03-01_18-54-12.jpg" class="card-img-top ms-5" alt="..." style="width: 100px;">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title fs-6 ">Special title treatment</h5>
+                                            <span style="color:blue">Turned in</span>
+                                        </div>
                                     </div>
-                                    <h5>Phal</h5>
                                 </div>
                                 <div>
                                     <img src="assets/images/about/photo_2024-03-01_18-54-12.jpg" class="card-img-top ms-5" alt="..." style="width: 100px;">
@@ -248,62 +409,133 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="card">
-                                <div scope="col" class="d-flex p-2">
-                                    <div class="avatar ">
-                                        <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
-                                    </div>
-                                    <h5>Phal</h5>
-                                </div>
-                                <div>
-                                    <img src="assets/images/about/photo_2024-03-01_18-54-12.jpg" class="card-img-top ms-5" alt="..." style="width: 100px;">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title fs-6 ">No attachments</h5>
-                                    <span style="color:blue">Assigned</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div scope="col" class="d-flex p-2">
-                                    <div class="avatar ">
-                                        <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
-                                    </div>
-                                    <h5>Phal</h5>
-                                </div>
-                                <div>
-                                    <img src="assets/images/about/photo_2024-03-01_18-54-12.jpg" class="card-img-top ms-5" alt="..." style="width: 100px;">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title fs-6 ">Special title treatment</h5>
-                                    <span style="color:blue">Turned in</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div scope="col" class="d-flex p-2">
-                                    <div class="avatar ">
-                                        <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
-                                    </div>
-                                    <h5>Phal</h5>
-                                </div>
-                                <div>
-                                    <img src="assets/images/about/photo_2024-03-01_18-54-12.jpg" class="card-img-top ms-5" alt="..." style="width: 100px;">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title fs-6 ">No attachments</h5>
 
-                                    <span style="color:blue">Assigned</span>
+
+                                </p>
+                                <p class="animate__animated animate__fadeIn animate__delay-2s">
+                                <div class="col" id="item_tow">
+                                    <div class="card">
+                                        <div scope="col" class="d-flex p-2">
+                                            <div class="avatar ">
+                                                <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
+                                            </div>
+                                            <h5>Phal</h5>
+                                        </div>
+                                        <div>
+                                            <img src="assets/images/about/photo_2024-03-01_18-54-12.jpg" class="card-img-top ms-5" alt="..." style="width: 100px;">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title fs-6 ">Special title treatment</h5>
+                                            <span style="color:blue">Turned in</span>
+                                        </div>
+                                    </div>
                                 </div>
+                                </p>
+                                <p class="animate__animated animate__fadeIn animate__delay-2s">
+                                <div class="col" id="item_tow">
+                                    <div class="card">
+                                        <div scope="col" class="d-flex p-2">
+                                            <div class="avatar ">
+                                                <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
+                                            </div>
+                                            <h5>Phal</h5>
+                                        </div>
+                                        <div>
+                                            <img src="assets/images/about/photo_2024-03-01_18-54-12.jpg" class="card-img-top ms-5" alt="..." style="width: 100px;">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title fs-6 ">Special title treatment</h5>
+                                            <span style="color:blue">Turned in</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                </p>
+                                <p class="animate__animated animate__fadeIn animate__delay-2s">
+                                <div class="col" id="item_tow">
+                                    <div class="card">
+                                        <div scope="col" class="d-flex p-2">
+                                            <div class="avatar ">
+                                                <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
+                                            </div>
+                                            <h5>Phal</h5>
+                                        </div>
+                                        <div>
+                                            <img src="assets/images/about/photo_2024-03-01_18-54-12.jpg" class="card-img-top ms-5" alt="..." style="width: 100px;">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title fs-6 ">Special title treatment</h5>
+                                            <span style="color:blue">Turned in</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                </p>
+                                <p class="animate__animated animate__fadeIn animate__delay-2s">
+                                <div class="col" id="item_tow">
+                                    <div class="card">
+                                        <div scope="col" class="d-flex p-2">
+                                            <div class="avatar ">
+                                                <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
+                                            </div>
+                                            <h5>Phal</h5>
+                                        </div>
+                                        <div>
+                                            <img src="assets/images/about/photo_2024-03-01_18-54-12.jpg" class="card-img-top ms-5" alt="..." style="width: 100px;">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title fs-6 ">Special title treatment</h5>
+                                            <span style="color:blue">Turned in</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                </p>
+                                <p class="animate__animated animate__fadeIn animate__delay-2s">
+                                <div class="col" id="item_tow">
+                                    <div class="card">
+                                        <div scope="col" class="d-flex p-2">
+                                            <div class="avatar ">
+                                                <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
+                                            </div>
+                                            <h5>Phal</h5>
+                                        </div>
+                                        <div>
+                                            <img src="assets/images/about/photo_2024-03-01_18-54-12.jpg" class="card-img-top ms-5" alt="..." style="width: 100px;">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title fs-6 ">Special title treatment</h5>
+                                            <span style="color:blue">Turned in</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                </p>
+                                <p class="animate__animated animate__fadeIn animate__delay-2s">
+                                <div class="col" id="item_tow">
+                                    <div class="card">
+                                        <div scope="col" class="d-flex ">
+                                            <div class="avatar ">
+                                                <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/avatar/02.jpg" alt="avatar">
+                                            </div>
+                                            <h5>Phal</h5>
+                                        </div>
+                                        <div>
+                                            <img src="assets/images/about/photo_2024-03-01_18-54-12.jpg" class="card-img-top ms-5" alt="..." style="width: 100px;">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title fs-6 ">Special title treatment</h5>
+                                            <span style="color:blue">Turned in</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                </p>
                             </div>
+                            <!-- </div> -->
                         </div>
                     </div>
-                    <!--  end card student work -->
+                    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
                 </div>
+                <!--  end card student work -->
             </div>
+
         </div>
     </section>
 </main>

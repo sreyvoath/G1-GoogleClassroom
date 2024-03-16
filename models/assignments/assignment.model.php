@@ -68,7 +68,6 @@ function updateAssign(string $title, string $content, string $document, string $
     return $statement->rowCount() > 0;
 }
 
-
 // ========Delete assignment============
 function deleteAssign(int $id): bool
 {
@@ -94,12 +93,17 @@ function studentUpload(string $document, string $filepath,int $assignment_id, in
 {
 
     global $connection;
+<<<<<<< HEAD
     $statement = $connection->prepare("insert into student_submit (document,filepath,assignment_id, user_id) values (:document, :filepath,:assignment_id, :user_id)");
+=======
+    $statement = $connection->prepare("insert into student_submit (document,filepath,assignment_id, user_id, status) values (:document, :filepath,:assignment_id, :user_id, :status)");
+>>>>>>> 7a87f84b88236fe243796080c219ec337285f8d1
     $statement->execute([
         ':document' => $document,
         ':filepath' => $filepath,
         ':assignment_id' =>$assignment_id,
-        ':user_id' =>$user_id
+        ':user_id' =>$user_id,
+        ':status' =>false
     ]);
     return $statement->rowCount() > 0;
 }
@@ -113,3 +117,24 @@ function deleteAssignUplaod(int $id): bool
     return $statement->rowCount() > 0;
 }
 
+// ========Update  status uplaod ============
+function updateAssignStatus(int $id, bool $status,): bool
+{
+    global $connection;
+    $statement = $connection->prepare("update student_submit set status = :status where id = :id");
+    $statement->execute([
+        ':status' => $status,
+        ':id' => $id,
+    ]);
+    return $statement->rowCount() > 0;
+}
+
+//======get assignment when students uploaded======>
+function getStudentsSubmitted(int $assignment_id):array
+{
+
+    global $connection;
+    $statement = $connection->prepare("select * from student_submit where assignment_id =:id and status = 1");
+    $statement->execute([":id" => $assignment_id]);
+    return $statement->fetchAll();
+}
