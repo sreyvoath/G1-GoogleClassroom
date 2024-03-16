@@ -52,3 +52,12 @@ function deleteMessage(int $id) : bool
     $statement->execute([':id' => $id]);
     return $statement->rowCount() > 0;
 }
+
+//<======== delete message=======>
+function deleteUserInvited(int $id) : bool
+{
+    global $connection;
+    $statement = $connection->prepare("delete from invited where class_id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->rowCount() > 0;
+}

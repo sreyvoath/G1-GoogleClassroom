@@ -77,6 +77,15 @@ function deleteAssign(int $id): bool
     return $statement->rowCount() > 0;
 }
 
+// ========Delete assignment============
+function deleteAssignJoin(int $id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("delete from assignments where class_id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->rowCount() > 0;
+}
+
 //======get assignment when students uploaded======>
 function getAssignmentsStudents($id, $user_id):array
 {

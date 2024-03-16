@@ -23,7 +23,7 @@ function clearFilter() {
 
 // Define the searchBar function
 function searchTeacher() {
-    
+
     let classTitles = document.querySelectorAll('#tbodySearch');
     let input = search.value.trim().toUpperCase();
 
@@ -31,7 +31,7 @@ function searchTeacher() {
     classTitles.forEach(title => {
         let titleText = title.querySelector('h6 a').textContent.toUpperCase();
         if (titleText.includes(input)) {
-            show(title); 
+            show(title);
         } else {
             hide(title);
         }
@@ -53,7 +53,7 @@ function filterData() {
             hide(tr);
         }
     }
-    
+
 }
 
 
@@ -61,7 +61,7 @@ function filterData() {
 
 // Define the searchBar function
 function searchStudent() {
-    
+
     // let classTitles = document.querySelectorAll('#tbodySearch');
     // let input = search.value.trim().toUpperCase();
 
@@ -79,3 +79,8 @@ function searchStudent() {
 
 let student = document.querySelector('#search_student');
 student.addEventListener('keyup', searchStudent);
+
+
+// password hide and show 
+
+let Hide = document.querySelector(".password");
