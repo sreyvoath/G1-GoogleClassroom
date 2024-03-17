@@ -102,11 +102,7 @@ function studentUpload(string $document, string $filepath,int $assignment_id, in
 {
 
     global $connection;
-<<<<<<< HEAD
-    $statement = $connection->prepare("insert into student_submit (document,filepath,assignment_id, user_id) values (:document, :filepath,:assignment_id, :user_id)");
-=======
     $statement = $connection->prepare("insert into student_submit (document,filepath,assignment_id, user_id, status) values (:document, :filepath,:assignment_id, :user_id, :status)");
->>>>>>> 7a87f84b88236fe243796080c219ec337285f8d1
     $statement->execute([
         ':document' => $document,
         ':filepath' => $filepath,
