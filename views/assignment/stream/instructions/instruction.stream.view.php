@@ -1,6 +1,7 @@
 <?php
 require "database/database.php";
 require "models/assignments/assignment.model.php";
+require "models/comments/comment.model.php";
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $_SESSION['assign_id'] = $id;
@@ -19,7 +20,7 @@ if (isset($_GET['id'])) {
                         <a href="/instruction?id=<?= $_SESSION['assign_id'] ?>"><button type="button" class="btn btn-outline-primary <?= urlIs("/instruction") ? "active" : "active" ?> ">Instructions</button></a>
                     </div>
                     <div class="btn-group me-4" role="group" aria-label="Second group">
-                        <a href="/student_work?id=<?= $_SESSION['assign_id'] ?>"><button type="button" class="btn btn-outline-info <?= urlIs("/student_work") ? "active" : "" ?>  ">Student work</button></a>
+                        <a href="/student_work?id=<?= $_SESSION['assign_id'] ?>"><button type="button" class="btn btn-outline-dark <?= urlIs("/student_work") ? "active" : "" ?>  ">Student work</button></a>
                     </div>
                 </div>
             </ul>
@@ -116,33 +117,29 @@ if (isset($_GET['id'])) {
                         </div>
 
                         <div id="comments" style="display: none;">
-                            <div class="d-flex mt-5 ml-3">
-                                <div class="avatar avatar-md mt-n1 ms-4">
-                                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
+                            <?php
+                            $allCtms = showCmts($_GET['id']);
+                            foreach ($allCtms as $key => $value) :
+                            ?>
+                                <div class="d-flex mt-5 ml-3">
+                                    <div class="avatar avatar-md mt-n1 ms-4">
+                                        <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $value['image'] ?>" alt="">
+                                    </div>
+                                    <div class="ms-2">
+                                        <h6><?= $value['name'] ?></h6>
+                                        <p><?= $value['comment'] ?></p>
+                                    </div>
+                                    <div class="dropdown mt-2 d-flex " style=" margin-left:65%" ;>
+                                        <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
+                                        <ul class="dropdown-menu" aria-labelledby="accounntMenu">
+                                            <li class="dropdown-submenu dropend">
+                                                <a class="dropdown-item " href="controllers/comment/delete_comment.controller.php?id=<?= $value['comment_id'] ?> " onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
+                                                <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $value['id'] ?>">Edit</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="ms-2">
-                                    <h6><?= $_SESSION['user']['name'] ?></h6>
-                                    <p>hello heng free</p>
-                                </div>
-                            </div>
-                            <div class="d-flex mt-1 ml-3">
-                                <div class="avatar avatar-md mt-n1 ms-4">
-                                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/65daa6edcdb5b.jpg" alt="">
-                                </div>
-                                <div class="ms-2">
-                                    <h6>sovanmony vong</h6>
-                                    <p>yes hello bong mean ey ouy nhom men</p>
-                                </div>
-                            </div>
-                            <div class="d-flex mt-1 ml-3">
-                                <div class="avatar avatar-md mt-n1 ms-4">
-                                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
-                                </div>
-                                <div class="ms-2">
-                                    <h6><?= $_SESSION['user']['name'] ?></h6>
-                                    <p>jol club ot ha yob nis</p>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
 
                         <script>
@@ -157,10 +154,13 @@ if (isset($_GET['id'])) {
                         </script>
 
                         <div class="container-fluid ">
-                            <div class="navbar-toggler d-flex" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <input type="text" style="width: 80%; height:50px;" class="form-control bg-white col-6" name="classname" id="classname">
-                                <button type="submit" class="btn btn-outline-primary ms-2" onclick="displayInput()"><span class="material-symbols-outlined">send</span></button>
-                            </div>
+                            <form action="controllers/comment/teacher_comment.controller.php" method="post">
+                                <div class="navbar-toggler d-flex" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <input type="hidden" name="classid" value="<?= $_GET['id'] ?>">
+                                    <input type="text" style="width: 80%; height:50px;" class="form-control bg-white col-6" name="classname" id="classname">
+                                    <button type="submit" class="btn btn-outline-primary ms-2" onclick="displayInput()"><span class="material-symbols-outlined">send</span></button>
+                                </div>
+                            </form>
                         </div>
                         <div id="display"></div>
                         <script>
