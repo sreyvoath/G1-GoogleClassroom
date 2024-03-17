@@ -202,7 +202,7 @@ if (isset($_GET['id'])) {
                                                         <div class="mb-0 ms-2">
                                                             <!-- Title -->
                                                             <?php if ($_SESSION['user']['role'] == "teacher") { ?>
-                                                                <p><a class="text-dark" href="/instruction?id=<?= $assignment['id'] ?>"> <?= $_SESSION['user_created']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
+                                                                <p><a class="text-dark" href="/student_work?id=<?= $assignment['id'] ?>"> <?= $_SESSION['user_created']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
                                                             <?php } else { ?>
                                                                 <p><a class="text-dark" href="/assignment_student?id=<?= $assignment['id'] ?>"> <?= $_SESSION['user_created']['name'] ?> posted a new assignment: <?= $assignment['title'] ?></a></p>
                                                             <?php } ?>
