@@ -1,6 +1,7 @@
 <?php
 require "database/database.php";
 require "models/assignments/assignment.model.php";
+require "models/comments/comment.model.php";
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $_SESSION['assign_id'] = $id;
@@ -77,6 +78,7 @@ if (isset($_GET['id'])) {
                     <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
                 </div>
                 <div class="border ms-4 rounded" style="width: 1000px;">
+
                     <div class="class-comment">
 
                         <div class="comment ms-3 mt-3">
@@ -87,126 +89,105 @@ if (isset($_GET['id'])) {
                         </div>
 
                         <div id="comments" style="display: none;">
-                            <div class="d-flex mt-5 ml-3">
-                                <div class="avatar avatar-md mt-n1 ms-4">
-                                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
+                            <?php
+                            $allCtms = showCmts($_GET['id']);
+                            foreach ($allCtms as $key => $value) :
+                            ?>
+                                <div class="d-flex mt-5 ml-3">
+                                    <div class="avatar avatar-md mt-n1 ms-4">
+                                        <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $value['image'] ?>" alt="">
+                                    </div>
+                                    <div class="ms-2">
+                                        <h6><?= $value['name'] ?></h6>
+                                        <p><?= $value['comment'] ?></p>
+                                    </div>
+                                    <div class="dropdown mt-2 d-flex " style=" margin-left:65%" ;>
+                                        <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
+                                        <ul class="dropdown-menu" aria-labelledby="accounntMenu">
+                                            <li class="dropdown-submenu dropend">
+                                                <a class="dropdown-item " href="controllers/comment/delete_comment.controller.php?id=<?= $value['comment_id'] ?> " onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
+                                                <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $value['id'] ?>">Edit</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="ms-2">
-                                    <h6><?= $_SESSION['user']['name'] ?></h6>
-                                    <p>hello</p>
-                                </div>
-                                <div class="dropdown mt-2 d-flex " style=" margin-left:65%";>
-                                    <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
-                                    <ul class="dropdown-menu" aria-labelledby="accounntMenu">
-                                        <li class="dropdown-submenu dropend">
-                                            <a class="dropdown-item " href="# " onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
-                                            <a class="dropdown-item " href="# ">Edit</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="d-flex mt-1 ml-3">
-                                <div class="avatar avatar-md mt-n1 ms-4">
-                                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/65d7ffbd21db2.jpg" alt="">
-                                </div>
-                                <div class="ms-2">
-                                    <h6>pichsana vong</h6>
-                                    <p>yes hello mean ka ey men bong</p>
-                                </div>
-                                <div class="reply"style=" margin-left:43%";>
-                                    <span class="material-symbols-outlined">reply </span>
-                                </div>
-                            </div>
-                            <div class="d-flex mt-2 ml-3">
-                                <div class="avatar avatar-md mt-n1 ms-4">
-                                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
-                                </div>
-                                <div class="ms-2">
-                                    <h6><?= $_SESSION['user']['name'] ?></h6>
-                                    <p>hg free ot</p>
-                                </div>
-                                <div class="dropdown mt-2 d-flex " style=" margin-left:60%";>
-                                    <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
-                                    <ul class="dropdown-menu" aria-labelledby="accounntMenu">
-                                        <li class="dropdown-submenu dropend">
-                                            <a class="dropdown-item " href="# " onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
-                                            <a class="dropdown-item " href="#">Edit</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
+                    </div>
 
-                        <script>
-                            function toggleComments() {
-                                var commentsDiv = document.getElementById("comments");
-                                if (commentsDiv.style.display === "none") {
-                                    commentsDiv.style.display = "block";
-                                } else {
-                                    commentsDiv.style.display = "none";
-                                }
+                    <script>
+                        function toggleComments() {
+                            var commentsDiv = document.getElementById("comments");
+                            if (commentsDiv.style.display === "none") {
+                                commentsDiv.style.display = "block";
+                            } else {
+                                commentsDiv.style.display = "none";
                             }
-                        </script>
-
-                        <div class="container-fluid ">
+                        }
+                    </script>
+                    <div class="container-fluid ">
+                        <form action="controllers/comment/comment_public.controller.php" method="post">
                             <div class="navbar-toggler d-flex" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <input type="hidden" name="classid" value="<?= $_GET['id'] ?>">
                                 <input type="text" style="width: 80%; height:50px;" class="form-control bg-white col-6" name="classname" id="classname">
                                 <button type="submit" class="btn btn-outline-primary ms-2" onclick="displayInput()"><span class="material-symbols-outlined">send</span></button>
                             </div>
-                        </div>
-                        <div id="display"></div>
-                        <script>
-                            function displayInput() {
-                                // Get the value of the input field
-                                var inputText = document.getElementById("classname").value;
-
-                                // Create a new div element to display the input text
-                                var displayDiv = document.createElement("div");
-                                displayDiv.textContent = inputText;
-
-                                // Append the new div element to the display area
-                                document.getElementById("display").appendChild(displayDiv);
-                            }
-                        </script>
-
-
-                        <div class="collapse" id="navbarToggleExternalContent">
-                            <div class=" p-3">
-                                <i class="fa fa-bold me-3" aria-hidden="true" onclick="toggleBold()"></i>
-                                <i class="fa fa-italic me-3" aria-hidden="true" onclick="toggleItalic()"></i>
-                                <i class="fa fa-underline me-3" aria-hidden="true" onclick="toggleUnderline()"></i>
-                                <i class="fa fa-align-justify me-3" aria-hidden="true" onclick="toggleBulleted()"></i>
-                                <i class="fa fa-text-width me-3" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                        <script>
-                            function toggleBold() {
-                                var input = document.getElementById('classname');
-                                input.style.fontWeight = input.style.fontWeight === 'bold' ? 'normal' : 'bold';
-                            }
-
-                            function toggleItalic() {
-                                var input = document.getElementById('classname');
-                                input.style.fontStyle = input.style.fontStyle === 'italic' ? 'normal' : 'italic';
-                            }
-
-                            function toggleUnderline() {
-                                var input = document.getElementById('classname');
-                                input.style.textDecoration = input.style.textDecoration === 'underline' ? 'none' : 'underline';
-                            }
-
-                            function toggleBulleted() {
-                                var input = document.getElementById('classname');
-                                if (input.value.startsWith('• ')) {
-                                    input.value = input.value.substring(2); // Remove bullet point if already present
-                                } else {
-                                    input.value = '• ' + input.value; // Add bullet point
-                                }
-                            };
-                        </script>
+                        </form>
                     </div>
+                    <div id="display"></div>
+                    <script>
+                        function displayInput() {
+                            // Get the value of the input field
+                            var inputText = document.getElementById("classname").value;
+
+                            // Create a new div element to display the input text
+                            var displayDiv = document.createElement("div");
+                            displayDiv.textContent = inputText;
+
+                            // Append the new div element to the display area
+                            document.getElementById("display").appendChild(displayDiv);
+                        }
+                    </script>
+
+
+                    <div class="collapse" id="navbarToggleExternalContent">
+                        <div class=" p-3">
+                            <i class="fa fa-bold me-3" aria-hidden="true" onclick="toggleBold()"></i>
+                            <i class="fa fa-italic me-3" aria-hidden="true" onclick="toggleItalic()"></i>
+                            <i class="fa fa-underline me-3" aria-hidden="true" onclick="toggleUnderline()"></i>
+                            <i class="fa fa-align-justify me-3" aria-hidden="true" onclick="toggleBulleted()"></i>
+                            <i class="fa fa-text-width me-3" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <script>
+                        function toggleBold() {
+                            var input = document.getElementById('classname');
+                            input.style.fontWeight = input.style.fontWeight === 'bold' ? 'normal' : 'bold';
+                        }
+
+                        function toggleItalic() {
+                            var input = document.getElementById('classname');
+                            input.style.fontStyle = input.style.fontStyle === 'italic' ? 'normal' : 'italic';
+                        }
+
+                        function toggleUnderline() {
+                            var input = document.getElementById('classname');
+                            input.style.textDecoration = input.style.textDecoration === 'underline' ? 'none' : 'underline';
+                        }
+
+                        function toggleBulleted() {
+                            var input = document.getElementById('classname');
+                            if (input.value.startsWith('• ')) {
+                                input.value = input.value.substring(2); // Remove bullet point if already present
+                            } else {
+                                input.value = '• ' + input.value; // Add bullet point
+                            }
+                        };
+                    </script>
                 </div>
+
             </div>
+        </div>
     </section>
 
     <!-- ========================================= Submittion ====================================================== -->
@@ -226,7 +207,7 @@ if (isset($_GET['id'])) {
                         <?php if (isset($assignments)) {
                             foreach ($assignments as $assignment) {
                         ?>
-                                <span class="d-inline-block <?= ($assignments[0]['status']== true? "mt-3":"") ?>" style="height: auto; width: 120%;">
+                                <span class="d-inline-block <?= ($assignments[0]['status'] == true ? "mt-3" : "") ?>" style="height: auto; width: 120%;">
                                     <a class="d-flex border shadow-sm align_items-center mb-0" style="border-radius: 10px; margin-left: -50px;" href="assets/images/upload/<?= $assignment['document'] ?>">
                                         <div class="bg p-2 border text-center" style="border-radius: 10px 0 0 10px;">
                                             <img src="/assets/images/bg/06.png" alt="" width="50px" height="40px">
