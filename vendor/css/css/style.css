@@ -1,8 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo:wght@300;400;600;700&display=swap');
 
-body {
-    font-family: "Exo", sans-serif;
-}
 
 .list-group-item {
     background-color: rgb(0, 90, 255);
