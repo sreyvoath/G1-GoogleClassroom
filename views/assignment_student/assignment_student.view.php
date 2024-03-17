@@ -93,6 +93,15 @@ if (isset($_GET['id'])) {
                                     <h6><?= $_SESSION['user']['name'] ?></h6>
                                     <p>hello</p>
                                 </div>
+                                <div class="dropdown mt-2 d-flex " style=" margin-left:65%";>
+                                    <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
+                                    <ul class="dropdown-menu" aria-labelledby="accounntMenu">
+                                        <li class="dropdown-submenu dropend">
+                                            <a class="dropdown-item " href="# " onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
+                                            <a class="dropdown-item " href="# ">Edit</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="d-flex mt-1 ml-3">
                                 <div class="avatar avatar-md mt-n1 ms-4">
@@ -102,14 +111,26 @@ if (isset($_GET['id'])) {
                                     <h6>pichsana vong</h6>
                                     <p>yes hello mean ka ey men bong</p>
                                 </div>
+                                <div class="reply"style=" margin-left:43%";>
+                                    <span class="material-symbols-outlined">reply </span>
+                                </div>
                             </div>
-                            <div class="d-flex mt-1 ml-3">
+                            <div class="d-flex mt-2 ml-3">
                                 <div class="avatar avatar-md mt-n1 ms-4">
                                     <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
                                 </div>
                                 <div class="ms-2">
-                                    <h6><?= strtoupper($student['name']) ?></h6>
-                                    <p>are you free?</p>
+                                    <h6><?= $_SESSION['user']['name'] ?></h6>
+                                    <p>hg free ot</p>
+                                </div>
+                                <div class="dropdown mt-2 d-flex " style=" margin-left:60%";>
+                                    <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
+                                    <ul class="dropdown-menu" aria-labelledby="accounntMenu">
+                                        <li class="dropdown-submenu dropend">
+                                            <a class="dropdown-item " href="# " onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
+                                            <a class="dropdown-item " href="#">Edit</a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
