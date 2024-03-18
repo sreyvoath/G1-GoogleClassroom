@@ -14,6 +14,8 @@ if (isset($_SESSION['assignment_submitted'])) {
         
         updateAssignStatus($id, $status);
     }
+    updateStudentStatus($_SESSION['user']['id'], true);
+
     header("Location: /assignment_student?id=$ass_id");
     exit();
 }

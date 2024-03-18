@@ -134,6 +134,7 @@ function updateAssignStatus(int $id, bool $status,): bool
     return $statement->rowCount() > 0;
 }
 
+
 //======get assignment when students uploaded======>
 function getStudentsSubmitted(int $assignment_id):array
 {
@@ -144,4 +145,16 @@ function getStudentsSubmitted(int $assignment_id):array
     where s.assignment_id =:id");
     $statement->execute([":id" => $assignment_id]);
     return $statement->fetchAll();
+}
+
+// ========Update  status uplaod ============
+function updateStudentStatus(int $user_id, bool $status,): bool
+{
+    global $connection;
+    $statement = $connection->prepare("update users_join_class set turned_in = :status where id = :id");
+    $statement->execute([
+        ':status' => $status,
+        ':id' => $user_id,
+    ]);
+    return $statement->rowCount() > 0;
 }
