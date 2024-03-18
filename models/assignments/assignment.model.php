@@ -139,7 +139,9 @@ function getStudentsSubmitted(int $assignment_id):array
 {
 
     global $connection;
-    $statement = $connection->prepare("select * from student_submit where assignment_id =:id and status = 1");
+    $statement = $connection->prepare("select s.*, u.name, u.image from student_submit s
+    inner join users u on u.id = s.user_id
+    where s.assignment_id =:id");
     $statement->execute([":id" => $assignment_id]);
     return $statement->fetchAll();
 }
