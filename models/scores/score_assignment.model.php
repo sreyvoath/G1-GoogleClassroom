@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // ========Get score assignment============
 function getScoreAssign(int $id)
@@ -7,7 +7,7 @@ function getScoreAssign(int $id)
     global $connection;
     $statement = $connection->prepare("select * from assignments where id = :id");
     $statement->execute([
-        ":id"=> $id
+        ":id" => $id
     ]);
     return $statement->fetch();
 }
@@ -21,7 +21,7 @@ function getUserSubmitted(int $id)
     inner join users u on u.id = s.user_id
     ");
     $statement->execute([
-        ":id"=> $id
+        ":id" => $id
     ]);
     return $statement->fetch();
 }
@@ -42,7 +42,7 @@ function getStudentAssigned(int $class_id)
     $statement->execute([
         ":role" => "student",
         ":id" => $class_id,
-        
+
     ]);
     return $statement->fetchAll();
 }
@@ -61,23 +61,23 @@ function getStudentTurned(int $assignment_id)
         ":role" => "student",
         ":status" => true,
         ":assign_id" => $assignment_id,
-        
+
     ]);
     return $statement->fetchAll();
 }
+
 function getStudentTurnedIn()
 {
     global $connection;
-    $statement = $connection->prepare("select u.* from users u 
-    inner join turned_in t on t.student_id = u.id
-    where u.role = :role 
-    
-    ");
+    $statement = $connection->prepare("select u.* from users_join_class uj
+    inner join classes c on c.id = uj.class_id
+    inner join users u on u.id = uj.user_id
+    where u.role = :role and turned_in = :status");
 
     $statement->execute([
         ":role" => "student",
-        
+        ":status" => true,
+
     ]);
     return $statement->fetchAll();
 }
-
