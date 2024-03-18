@@ -15,42 +15,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $end_date = htmlspecialchars($_POST['end_date']);
         $end_time = htmlspecialchars($_POST['end_time']);
 
-        // File upload handling
-        $targetDir = "../../assets/images/upload/"; // Corrected target directory
-        $targetFile = $targetDir . basename($_FILES["document"]["name"]);
-        $uploadOk = 1;
-        $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        $existingDocument = getAssign($id)['document'];
 
-        // Check file size
-        if ($_FILES["document"]["size"] > 5000000) { // Adjust the size limit as needed (5MB in this case)
-            echo "Sorry, your file is too large.";
-            $uploadOk = 0;
-        }
+        if (!empty($_FILES['document']['name'])) {
+            // New file is uploaded, handle file upload
+            $targetDir = "../../assets/images/upload/";
+            $targetFile = $targetDir . basename($_FILES["document"]["name"]);
+            $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+            $checkFileSize = $_FILES["document"]["size"];
 
-        // Allow certain file formats
-        if (!in_array($fileType, array("pdf", "docx", "xlsx"))) {
-            echo "Sorry, only PDF, DOCX, and XLSX files are allowed.";
-            $uploadOk = 0;
-        }
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
-        } else {
-            if (move_uploaded_file($_FILES["document"]["tmp_name"], $targetFile)) {
-                // File uploaded successfully, now store file information in the database
-                $filename = basename($_FILES["document"]["name"]);
-                $filepath = $targetFile;
-
-                // Insert assignment details into the database
-                if (updateAssign($title, $content, $filename, $filepath, $score, $end_date, $end_time, $class_id, $id)) {
-                    header("Location: /stream?id=$class_id");
-                    exit(); // Terminate the script after successful upload
-                } else {
-                    echo "Error creating assignment.";
-                }
+            if ($checkFileSize > 5000000) {
+                echo "Sorry, your file is too large.";
+            } elseif (!in_array($fileType, array("pdf", "docx", "xlsx"))) {
+                echo "Sorry, only PDF, DOCX, and XLSX files are allowed.";
             } else {
-                echo "Sorry, there was an error uploading your file.";
+                // File upload is valid, move the file and update the database
+                if (move_uploaded_file($_FILES["document"]["tmp_name"], $targetFile)) {
+                    $filename = basename($_FILES["document"]["name"]);
+                    $filepath = $targetFile;
+                    uploadNewFile($title, $content, $filename, $filepath, $score, $end_date, $end_time, $class_id, $id);
+                    header("Location: /stream?id=$class_id");
+                    exit();
+                } else {
+                    echo "Sorry, there was an error uploading your file.";
+                }
             }
+        } else {
+            // No new file uploaded, update other assignment details without changing the file
+            updateAssign($title, $content, $score, $end_date, $end_time, $class_id, $id);
+            header("Location: /stream?id=$class_id");
+            exit();
         }
     }
 }
+?>
+
+
