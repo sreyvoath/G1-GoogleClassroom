@@ -410,22 +410,6 @@ if ($_SESSION['user']['role'] == "student") {
 											<div class=" card_class card shadow h-100">
 												<!-- Image -->
 												<img src="../../assets/images/classes/<?= $class['image'] ?>" class="card-img-top" alt="course image" style="width:350px; height:200px; object-fit: cover;">
-												<!-- Card body -->
-												<div class="nav-item dropdown d-flex justify-content-end">
-													<a class="nav-link " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-													<ul class="dropdown-menu" aria-labelledby="accounntMenu">
-														<li class="dropdown-submenu dropend">
-															<a class="dropdown-item " href="">Create</a>
-														</li>
-														<li class="dropdown-submenu dropend">
-															<a class="dropdown-item " href="#">Delete</a>
-														</li>
-														<li class="dropdown-submenu dropend">
-															<a class="dropdown-item " href="#">Edit</a>
-														</li>
-													</ul>
-
-												</div>
 												<div class="card-body pb-0">
 													<!-- Title -->
 													<h5 class="card-title fw-normal"><a class="text-decoration-none" href="/stream?id=<?= $class['id'] ?>"><?= $class['title']; ?></a></h5>

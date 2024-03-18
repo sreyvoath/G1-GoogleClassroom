@@ -68,7 +68,6 @@ function updateAssign(string $title, string $content, string $document, string $
     return $statement->rowCount() > 0;
 }
 
-
 // ========Delete assignment============
 function deleteAssign(int $id): bool
 {
@@ -76,4 +75,71 @@ function deleteAssign(int $id): bool
     $statement = $connection->prepare("delete from assignments where id = :id");
     $statement->execute([':id' => $id]);
     return $statement->rowCount() > 0;
+}
+
+// ========Delete assignment============
+function deleteAssignJoin(int $id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("delete from assignments where class_id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->rowCount() > 0;
+}
+
+//======get assignment when students uploaded======>
+function getAssignmentsStudents($id, $user_id):array
+{
+
+    global $connection;
+    $statement = $connection->prepare("select * from student_submit where assignment_id =:id and user_id = :user_id");
+    $statement->execute([":id" => $id, ":user_id"=> $user_id]);
+    return $statement->fetchAll();
+}
+
+
+//====== when students upload assignment======>
+function studentUpload(string $document, string $filepath,int $assignment_id, int $user_id): bool
+{
+
+    global $connection;
+    $statement = $connection->prepare("insert into student_submit (document,filepath,assignment_id, user_id, status) values (:document, :filepath,:assignment_id, :user_id, :status)");
+    $statement->execute([
+        ':document' => $document,
+        ':filepath' => $filepath,
+        ':assignment_id' =>$assignment_id,
+        ':user_id' =>$user_id,
+        ':status' =>false
+    ]);
+    return $statement->rowCount() > 0;
+}
+
+// ========Delete assignment============
+function deleteAssignUplaod(int $id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("delete from student_submit where id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->rowCount() > 0;
+}
+
+// ========Update  status uplaod ============
+function updateAssignStatus(int $id, bool $status,): bool
+{
+    global $connection;
+    $statement = $connection->prepare("update student_submit set status = :status where id = :id");
+    $statement->execute([
+        ':status' => $status,
+        ':id' => $id,
+    ]);
+    return $statement->rowCount() > 0;
+}
+
+//======get assignment when students uploaded======>
+function getStudentsSubmitted(int $assignment_id):array
+{
+
+    global $connection;
+    $statement = $connection->prepare("select * from student_submit where assignment_id =:id and status = 1");
+    $statement->execute([":id" => $assignment_id]);
+    return $statement->fetchAll();
 }

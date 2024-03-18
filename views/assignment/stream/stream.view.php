@@ -219,7 +219,7 @@ if (isset($_GET['id'])) {
                                                     <div class="dropdown mt-2 d-flex">
                                                         <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
                                                         <ul class="dropdown-menu" aria-labelledby="accounntMenu">
-                                                            <?php if ($_SESSION['user']['role'] == 'teacher') : ?>]
+                                                            <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
                                                             <li class="dropdown-submenu dropend">
                                                                 <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $assignment['id'] ?>">Edit</a>
                                                             </li>

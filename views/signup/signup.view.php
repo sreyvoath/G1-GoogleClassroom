@@ -89,6 +89,8 @@ session_start();
 										<div class="input-group input-group-lg">
 											<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
 											<input type="password" class="form-control border-0 bg-light rounded-end ps-1" placeholder="password" id="inputPassword5" name="password">
+											<span class="input-group-text bg-light password border-0 text-secondary px-3"><i class="bi bi-eye-slash fs-5"></i></span>
+											<!-- <span class="input-group-text bg-light password border-0 text-secondary px-3""><i class="bi bi-eye fs-5"></i></span> -->
 										</div>
 										<span class="text-danger"><?= isset($_SESSION['name']) ? $_SESSION['name'] : "" ?></span>
 										<span class="text-danger"><?= isset($_SESSION['password']) ? $_SESSION['password'] : "" ?></span>
@@ -129,6 +131,7 @@ session_start();
 
 	<!-- Template Functions -->
 	<script src="vendor/js/functions.js"></script>
+	<script src="vendor/js/search.js"></script>
 
 </body>
 
