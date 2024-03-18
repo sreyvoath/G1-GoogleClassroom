@@ -50,7 +50,23 @@ function getAssignments()
 
 
 // ========Update  assignment============
-function updateAssign(string $title, string $content, string $document, string $filepath,int $score, string $end_date, string $end_time, int $class_id, int $id): bool
+function updateAssign(string $title, string $content,int $score, string $end_date, string $end_time, int $class_id, int $id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("update assignments set title = :title, content = :content,score=:score, end_date=:end_date, end_time=:end_time, class_id= :class_id where id = :id");
+    $statement->execute([
+        ':title' => $title,
+        ':content' => $content,
+        ':score' => $score,
+        ':end_date' => $end_date,
+        ':end_time' => $end_time,
+        ':class_id' => $class_id,
+        ':id' => $id,
+    ]);
+    return $statement->rowCount() > 0;
+}
+// ========Update new file assignment============
+function uploadNewFile(string $title, string $content, string $document, string $filepath,int $score, string $end_date, string $end_time, int $class_id, int $id): bool
 {
     global $connection;
     $statement = $connection->prepare("update assignments set title = :title, content = :content, document=:document ,filepath=:filepath, score=:score, end_date=:end_date, end_time=:end_time, class_id= :class_id where id = :id");
@@ -134,7 +150,6 @@ function updateAssignStatus(int $id, bool $status,): bool
     return $statement->rowCount() > 0;
 }
 
-
 //======get assignment when students uploaded======>
 function getStudentsSubmitted(int $assignment_id):array
 {
@@ -145,16 +160,4 @@ function getStudentsSubmitted(int $assignment_id):array
     where s.assignment_id =:id");
     $statement->execute([":id" => $assignment_id]);
     return $statement->fetchAll();
-}
-
-// ========Update  status uplaod ============
-function updateStudentStatus(int $user_id, bool $status,): bool
-{
-    global $connection;
-    $statement = $connection->prepare("update users_join_class set turned_in = :status where id = :id");
-    $statement->execute([
-        ':status' => $status,
-        ':id' => $user_id,
-    ]);
-    return $statement->rowCount() > 0;
 }
