@@ -7,8 +7,10 @@ if (isset($_GET['id'])) {
     $assignments = getStudentsSubmitted($_GET['id']);
 }
 if (isset($_SESSION['class_id'])) {
-    $studentJoined = studentJoinedClass($_SESSION['class_id']);
+    $studentAssigned = getStudentAssigned($_SESSION['class_id'], $_GET['id']);
+    $studentTurned = getStudentTurned($_GET['id']);
     $getScore = getScoreAssign($_GET['id']);
+    $studentTurnedIn = getStudentTurnedIn();
 }
 
 ?>
@@ -77,16 +79,42 @@ if (isset($_SESSION['class_id'])) {
                         <li><a class="dropdown-item mt-3" href="#">Sort by first name</a></li>
                     </ul>
                 </div>
-                <?php if (count($studentJoined) > 0) { ?>
+                <?php if (count($studentAssigned) > 0) { ?>
+                    <a href="#" class="form-check bg-light p-3 d-flex align-items-center text-center">
+                        <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 50px;">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            <span class="text-dark" style="font-size: 17px;">Turned in</span>
+                        </label>
+                    </a>
+                    <?php foreach ($studentTurned as $student) {
 
-
+                    ?>
+                        <div class="form-check border p-2 d-flex align-items-center text-center">
+                            <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 60px;">
+                            <label class="form-check-label d-flex" for="flexCheckDefault" style="width: 100%;">
+                                <div class="name text-dark" style="font-size: 17px; width: 75%; border-right: 1px solid lightgray;">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 40px; height:40px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/profiles/<?= $student['image'] ?>" alt="avatar">
+                                        <div class="content">
+                                            <p class="mt-3 text-dark"><?= strtoupper($student['name']) ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="score" style="width: 25%;">
+                                    <span><input type="text" class="custom-input" maxlength="3" placeholder="......">/<?= $getScore['score'] ?></span>
+                                </div>
+                            </label>
+                        </div>
+                    <?php
+                    } ?>
                     <a href="#" class="form-check bg-light p-3 d-flex align-items-center text-center">
                         <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 50px;">
                         <label class="form-check-label" for="flexCheckDefault">
                             <span class="text-dark" style="font-size: 17px;">Assigned</span>
                         </label>
                     </a>
-                    <?php foreach ($studentJoined as $student) : ?>
+                    <?php foreach ($studentAssigned as $student) :
+                    ?>
                         <div class="form-check border p-2 d-flex align-items-center text-center">
                             <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 60px;">
                             <label class="form-check-label d-flex" for="flexCheckDefault" style="width: 100%;">
@@ -104,31 +132,9 @@ if (isset($_SESSION['class_id'])) {
 
                             </label>
                         </div>
-                    <?php endforeach;  ?>
-                    <a href="#" class="form-check bg-light p-3 d-flex align-items-center text-center">
-                        <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 50px;">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            <span class="text-dark" style="font-size: 17px;">Turned in</span>
-                        </label>
-                    </a>
-                    <?php foreach ($assignments as $assignment) { ?>
-                        <div class="form-check border p-2 d-flex align-items-center text-center">
-                            <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 60px;">
-                            <label class="form-check-label d-flex" for="flexCheckDefault" style="width: 100%;">
-                                <div class="name text-dark" style="font-size: 17px; width: 75%; border-right: 1px solid lightgray;">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 40px; height:40px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/profiles/<?= $assignment['image'] ?>" alt="avatar">
-                                        <div class="content">
-                                            <p class="mt-3 text-dark"><?= strtoupper($assignment['name']) ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="score" style="width: 25%;">
-                                    <span><input type="text" class="custom-input" maxlength="3" placeholder="......">/<?= $getScore['score'] ?></span>
-                                </div>
-                            </label>
-                        </div>
-                    <?php } ?>
+                    <?php
+                    endforeach;  ?>
+
                 <?php }; ?>
 
 
@@ -145,11 +151,11 @@ if (isset($_SESSION['class_id'])) {
                         <p style="margin-top: -20px;">Graded</p>
                     </div>
                     <div class="right px-3" style="border-left: 1px solid gray; height: 70px;">
-                        <p class="fs-2"><?= count($assignments) ?></p>
+                        <p class="fs-2"><?= count($studentTurned) ?></p>
                         <p style="margin-top: -20px;">Turned in</p>
                     </div>
                     <div class="right px-3" style="border-left: 1px solid gray; height: 70px;">
-                        <p class="fs-2">0</p>
+                        <p class="fs-2"><?= count($studentAssigned) + count($studentTurned) ?></p>
                         <p style="margin-top: -20px;">Assigned</p>
                     </div>
                 </div>
@@ -168,10 +174,10 @@ if (isset($_SESSION['class_id'])) {
 
                     </ul>
                 </div>
-                <?php if (count($assignments) > 0) { ?>
-                    <div class="card gap-3 " style=" height: auto; width: 100%; display: flex; flex-wrap: wrap; flex-direction: row;">
-                        <?php foreach ($assignments as $assignment) {
+                <?php if (count($studentAssigned) > 0 || count($studentTurned) > 0) { ?>
 
+                    <div class="card gap-3 " style=" height: auto; width: 100%; display: flex; flex-wrap: wrap; flex-direction: row;">
+                        <?php foreach ($studentTurned as $assignment) {
                         ?>
                             <div class="item p-2 bg-light shadow-sm" style=" width: 23%; ">
                                 <div class="d-flex align-items-center gap-3">
@@ -190,7 +196,28 @@ if (isset($_SESSION['class_id'])) {
                                 <p class="text-success" style="margin-bottom: -8px; padding-bottom: 10px;">Turned in</p>
                             </div>
                         <?php } ?>
+
+                        <?php foreach ($studentAssigned as $assignment) {
+                        ?>
+                            <div class="item p-2 bg-light shadow-sm" style=" width: 23%; ">
+                                <div class="d-flex align-items-center gap-3">
+                                    <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/profiles/<?= $assignment['image'] ?>" alt="avatar">
+                                    <div class="content" style=" height: auto; width: 100%; display: flex; flex-wrap: wrap; flex-direction: row;">
+                                        <p class="mt-3 text-dark" style="width: 98%;"><?= strtoupper($assignment['name']) ?></p>
+                                    </div>
+                                </div>
+                                <span class="d-inline-block d-flex justify-content-center align-items-center">
+                                    <a class="d-flex shadow" style="margin-bottom: 20px;">
+                                        <div class="bg p-2 " style="border-radius: 10px 0 0 10px;">
+                                            <img src="/assets/images/bg/09.png" alt="">
+                                        </div>
+                                    </a>
+                                </span>
+                                <p class="text-danger" style="margin-bottom: -8px; padding-bottom: 10px;">Missing</p>
+                            </div>
+                        <?php } ?>
                     </div>
+
                 <?php } else { ?>
 
                     <div class="bg-image mt-4 d-flex flex-column gap-3 justify-content-center align-items-center ">
