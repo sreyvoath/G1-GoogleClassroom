@@ -11,6 +11,7 @@ if (isset($_SESSION['class_id'])) {
     $studentTurned = getStudentTurned($_GET['id']);
     $getScore = getScoreAssign($_GET['id']);
     $studentTurnedIn = getStudentTurnedIn();
+    // var_dump($studentTurnedIn);
 }
 
 ?>
@@ -87,7 +88,7 @@ if (isset($_SESSION['class_id'])) {
                         </label>
                     </a>
                     <?php foreach ($studentTurned as $student) {
-
+                        // if($student['turned_id'] == true):
                     ?>
                         <div class="form-check border p-2 d-flex align-items-center text-center">
                             <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 60px;">
@@ -105,7 +106,7 @@ if (isset($_SESSION['class_id'])) {
                                 </div>
                             </label>
                         </div>
-                    <?php
+                    <?php 
                     } ?>
                     <a href="#" class="form-check bg-light p-3 d-flex align-items-center text-center">
                         <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 50px;">
