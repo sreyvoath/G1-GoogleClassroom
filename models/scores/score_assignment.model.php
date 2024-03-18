@@ -26,7 +26,7 @@ function getUserSubmitted(int $id)
     return $statement->fetch();
 }
 
-function getStudentAssigned(int $class_id, int $assignment_id)
+function getStudentAssigned(int $class_id)
 {
 
     global $connection;
@@ -35,14 +35,14 @@ function getStudentAssigned(int $class_id, int $assignment_id)
     inner join classes c on uj.class_id = c.id
     inner join assignments a on c.id = a.class_id
     inner join student_submit s on a.id = s.assignment_id
-    where u.role = :role and c.id = :id and a.id = :assign_id 
+    where u.role = :role and c.id = :id 
     group by u.id 
     ");
 
     $statement->execute([
         ":role" => "student",
         ":id" => $class_id,
-        ":assign_id" => $assignment_id,
+        
     ]);
     return $statement->fetchAll();
 }

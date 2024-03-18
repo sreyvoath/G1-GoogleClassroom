@@ -7,7 +7,7 @@ if (isset($_GET['id'])) {
     $assignments = getStudentsSubmitted($_GET['id']);
 }
 if (isset($_SESSION['class_id'])) {
-    $studentAssigned = getStudentAssigned($_SESSION['class_id'], $_GET['id']);
+    $studentAssigned = getStudentAssigned($_SESSION['class_id']);
     $studentTurned = getStudentTurned($_GET['id']);
     $getScore = getScoreAssign($_GET['id']);
     $studentTurnedIn = getStudentTurnedIn();
@@ -79,7 +79,7 @@ if (isset($_SESSION['class_id'])) {
                         <li><a class="dropdown-item mt-3" href="#">Sort by first name</a></li>
                     </ul>
                 </div>
-                <?php if (count($studentAssigned) > 0) { ?>
+                <?php if (count($studentAssigned) > 0 || count($studentTurned)>0) { ?>
                     <a href="#" class="form-check bg-light p-3 d-flex align-items-center text-center">
                         <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 50px;">
                         <label class="form-check-label" for="flexCheckDefault">
@@ -155,7 +155,7 @@ if (isset($_SESSION['class_id'])) {
                         <p style="margin-top: -20px;">Turned in</p>
                     </div>
                     <div class="right px-3" style="border-left: 1px solid gray; height: 70px;">
-                        <p class="fs-2"><?= count($studentAssigned) + count($studentTurned) ?></p>
+                        <p class="fs-2"><?= count($studentAssigned)?></p>
                         <p style="margin-top: -20px;">Assigned</p>
                     </div>
                 </div>
