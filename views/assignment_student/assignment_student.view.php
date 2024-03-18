@@ -235,7 +235,7 @@ if (isset($_GET['id'])) {
                         <input id="file-upload" type="file" style="display: none;">
                     </label>
                     <a class="nav-link mt-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <button type="button" class="btn btn-primary" style="width: 100%;">Submit</button>
+                        <a href="/submit"><button type="button" class="btn btn-primary" style="width: 100%;">Submit</button></a>
                     </a>
                 </div>
             </div>

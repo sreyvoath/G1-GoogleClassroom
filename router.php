@@ -43,6 +43,7 @@ $routes = [
 
     //teacher 
     '/teacher_join' => 'controllers/teachers/teacher_join_class/teacher.controller.php',
+    '/submit' => "controllers/assignment/assignment_student/submit-controller.php",
 
 ];
 
