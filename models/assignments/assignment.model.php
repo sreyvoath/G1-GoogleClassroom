@@ -161,3 +161,15 @@ function getStudentsSubmitted(int $assignment_id):array
     $statement->execute([":id" => $assignment_id]);
     return $statement->fetchAll();
 }
+
+// ========Update  status uplaod ============
+function updateStudentStatus(int $id, bool $status,): bool
+{
+    global $connection;
+    $statement = $connection->prepare("update users_join_class set turned_in = :status where user_id = :id");
+    $statement->execute([
+        ':status' => $status,
+        ':id' => $id,
+    ]);
+    return $statement->rowCount() > 0;
+}
