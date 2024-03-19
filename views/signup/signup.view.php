@@ -1,7 +1,6 @@
-
 <?php
- session_start();
-if( isset($_SESSION['error'])){
+session_start();
+if (isset($_SESSION['error'])) {
 	$error = $_SESSION['error'];
 }
 
@@ -62,7 +61,7 @@ if( isset($_SESSION['error'])){
 											<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-envelope-fill"></i></span>
 											<input type="text" class="form-control border-0 bg-light rounded-end ps-1" placeholder="U-name" id="exampleInputEmail1" name="name">
 										</div>
-										<span class="text-danger"><?=isset($_SESSION['error'])? $error['name'] : ""?></span>
+										<span class="text-danger"><?= isset($_SESSION['error']) ? $error['name'] : "" ?></span>
 									</div>
 									<!-- Email -->
 									<div class="mb-4">
@@ -71,8 +70,8 @@ if( isset($_SESSION['error'])){
 											<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-envelope-fill"></i></span>
 											<input type="email" class="form-control border-0 bg-light rounded-end ps-1" placeholder="E-mail" id="exampleInputEmail1" name="email">
 										</div>
-										<span class="text-danger"><?=isset($_SESSION['error'])? $error['name'] : ""?></span>
-										<span class="text-danger"><?=isset($_SESSION['exist'])? $_SESSION['exist'] : ""?></span>
+										<span class="text-danger"><?= isset($_SESSION['error']) ? $error['name'] : "" ?></span>
+										<span class="text-danger"><?= isset($_SESSION['exist']) ? $_SESSION['exist'] : "" ?></span>
 									</div>
 									<!-- Password -->
 									<div class="mb-4">
@@ -80,9 +79,10 @@ if( isset($_SESSION['error'])){
 										<div class="input-group input-group-lg">
 											<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
 											<input type="password" class="form-control border-0 bg-light rounded-end ps-1" placeholder="password" id="inputPassword5" name="password">
+											<span class="input-group-text bg-light password border-0 text-secondary px-3"><i class="bi bi-eye-slash fs-5" id="eyeIcon"></i></span>
 										</div>
-										<span class="text-danger"><?=isset($_SESSION['error'])? $error['name'] : ""?></span>
-										<span class="text-danger"><?=isset($_SESSION['error'])? $error['password'] : ""?></span>
+										<span class="text-danger"><?= isset($_SESSION['error']) ? $error['name'] : "" ?></span>
+										<span class="text-danger"><?= isset($_SESSION['error']) ? $error['password'] : "" ?></span>
 										<div id="passwordHelpBlock" class="form-text">
 											Your password must be 8 characters at least
 										</div>
@@ -102,6 +102,19 @@ if( isset($_SESSION['error'])){
 				</div> <!-- Row END -->
 			</div>
 		</section>
+		<script>
+			const passwordInput = document.getElementById("inputPassword5");
+			const eyeIcon = document.getElementById("eyeIcon");
+			eyeIcon.onclick = function() {
+				if (passwordInput.type == "password") {
+					passwordInput.type = "text";
+					eyeIcon.className = "bi bi-eye fs-5";
+				} else {
+					passwordInput.type = "password";
+					eyeIcon.className = "bi bi-eye-slash fs-5";
+				}
+			};
+		</script>
 	</main>
 	<!-- **************** MAIN CONTENT END **************** -->
 
