@@ -8,7 +8,13 @@ if (isset($_GET['id'])) {
 }
 if (isset($_SESSION['class_id'])) {
     $getScore = getScoreAssign($_GET['id']);
-    $studentTurnedIn = getStudentTurnedIn($_GET['id']);
+    $studentTurnedIn = getStudentTurnedIn($_GET['id'], $_SESSION['class_id']);
+    $getstudentGraded = getStudentGraded($_GET['id']);
+    $getstudentTurnIn = getStudentTurnIn($_GET['id']);
+
+    $studentTurned = 0;
+    $studentAssigned = 0;
+    $studentGraded = 0;
 }
 
 ?>
@@ -36,7 +42,7 @@ if (isset($_SESSION['class_id'])) {
         <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
         <div class=" d-flex justify-content-startbtn-toolbar align-items-center" role="toolbar" aria-label="Toolbar with button groups" style="margin-left: 70px;">
             <div class="btn-group me-4" role="group" aria-label="First group">
-                <button disabled type="submit" class="btn btn-primary" id="return"> Return </button>
+                <button type="submit" class="btn btn-primary" id="return"> Return </button>
             </div>
             <div class="btn-group me-4" role="group" aria-label="First group">
                 <a href="#"><button type="button" class="btn"><i class="bi bi-envelope fs-5"></i></button></a>
@@ -82,17 +88,17 @@ if (isset($_SESSION['class_id'])) {
                     <a href="#" class="form-check bg-light p-3 d-flex align-items-center text-center">
                         <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 50px;">
                         <label class="form-check-label" for="flexCheckDefault">
-                            <span class="text-dark" style="font-size: 17px;">Turned in</span>
+                            <span class="text-dark" style="font-size: 17px;"> Turned in</span>
                         </label>
                     </a>
                     <?php
-                    $studentTurned = 0;
                     foreach ($studentTurnedIn as $student) {
 
-                        if ($student['turned_in'] == true) :
+                        if ($student['turned_in'] == true and $student['graded'] == false) :
                             $studentTurned += 1
                     ?>
                             <div class="form-check border p-2 d-flex align-items-center text-center">
+                                <input type="hidden" name="student_id[]" value="<?= $student['id'] ?>">
                                 <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 60px;">
                                 <label class="form-check-label d-flex" for="flexCheckDefault" style="width: 100%;">
                                     <div class="name text-dark" style="font-size: 17px; width: 75%; border-right: 1px solid lightgray;">
@@ -104,7 +110,8 @@ if (isset($_SESSION['class_id'])) {
                                         </div>
                                     </div>
                                     <div class="score" style="width: 25%;">
-                                        <span><input type="text" id="point" name="score" class="custom-input" maxlength="3" placeholder="......">/<?= $getScore['score'] ?></span>
+
+                                        <span><input type="text" id="point" name="score[]" class="custom-input" maxlength="3" placeholder="......">/<?= $getScore['score'] ?></span>
                                     </div>
                                 </label>
                             </div>
@@ -117,10 +124,9 @@ if (isset($_SESSION['class_id'])) {
                         </label>
                     </a>
                     <?php
-                    $studentAssigned = 0;
                     foreach ($studentTurnedIn as $student) :
 
-                        if ($student['turned_in'] == false) :
+                        if ($student['turned_in'] == false and $student['graded'] == false) :
                             $studentAssigned += 1
                     ?>
                             <div class="form-check border p-2 d-flex align-items-center text-center">
@@ -135,13 +141,43 @@ if (isset($_SESSION['class_id'])) {
                                         </div>
                                     </div>
                                     <div class="score" style="width: 25%;">
-                                        <span><input type="text" id="point" name="point" class="custom-input" maxlength="3" placeholder="......">/<?= $getScore['score'] ?></span>
+                                        <span><input type="text" id="point" name="score[]" class="custom-input" maxlength="3" placeholder="......">/<?= $getScore['score'] ?></span>
                                     </div>
 
                                 </label>
                             </div>
                     <?php endif;
                     endforeach;  ?>
+                    <a href="#" class="form-check bg-light p-3 d-flex align-items-center text-center">
+                        <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 50px;">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            <span class="text-dark" style="font-size: 17px;">Graded</span>
+                        </label>
+                    </a>
+                    <?php
+                    foreach ($getstudentGraded  as $student) :
+                        $studentGraded += 1
+                    ?>
+                        <div class="form-check border p-2 d-flex align-items-center text-center">
+                            <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 60px;">
+                            <label class="form-check-label d-flex" for="flexCheckDefault" style="width: 100%;">
+                                <div class="name text-dark" style="font-size: 17px; width: 75%; border-right: 1px solid lightgray;">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 40px; height:40px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/profiles/<?= $student['image'] ?>" alt="avatar">
+                                        <div class="content">
+                                            <p class="mt-3 text-dark"><?= strtoupper($student['name']) ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="score" style="width: 25%;">
+                                    <span><input type="text" id="point" name="point" class="custom-input" maxlength="3" value="<?= $student['score'] ?>" placeholder="......">/<?= $getScore['score'] ?></span>
+                                </div>
+
+                            </label>
+                        </div>
+                    <?php
+                    endforeach;  ?>
+
 
                 <?php }; ?>
 
@@ -155,7 +191,7 @@ if (isset($_SESSION['class_id'])) {
                 </div>
                 <div class="turn d-flex gap-3">
                     <div class="right px-3" style="height: 70px;">
-                        <p class="fs-2">0</p>
+                        <p class="fs-2"><?= $studentGraded ?></p>
                         <p style="margin-top: -20px;">Graded</p>
                     </div>
                     <div class="right px-3" style="border-left: 1px solid gray; height: 70px;">
@@ -185,8 +221,8 @@ if (isset($_SESSION['class_id'])) {
                 <?php if (count($studentTurnedIn) > 0) { ?>
 
                     <div class="card gap-3 " style=" height: auto; width: 100%; display: flex; flex-wrap: wrap; flex-direction: row;">
-                        <?php foreach ($studentTurnedIn as $student) {
-                            if ($student['turned_in'] == true) :
+                        <?php foreach ($getstudentTurnIn as $student) {
+                            if ($student['status'] == true and $student['graded'] == false) :
 
                         ?>
                                 <div class="item p-2 bg-light shadow-sm" style=" width: 23%; ">
@@ -209,7 +245,7 @@ if (isset($_SESSION['class_id'])) {
                         } ?>
 
                         <?php foreach ($studentTurnedIn as $student) {
-                            if ($student['turned_in'] == false) :
+                            if ($student['turned_in'] == false and $student['graded'] == false) :
                         ?>
                                 <div class="item p-2 bg-light shadow-sm" style=" width: 23%; ">
                                     <div class="d-flex align-items-center gap-3">
@@ -226,6 +262,28 @@ if (isset($_SESSION['class_id'])) {
                                         </a>
                                     </span>
                                     <p class="text-primary" style="margin-bottom: -8px; padding-bottom: 10px;">Assigned</p>
+                                </div>
+                        <?php endif;
+                        } ?>
+                        <?php foreach ($getstudentTurnIn as $student) {
+                            if ($student['graded'] == true) :
+
+                        ?>
+                                <div class="item p-2 bg-light shadow-sm" style=" width: 23%; ">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/profiles/<?= $student['image'] ?>" alt="avatar">
+                                        <div class="content" style=" height: auto; width: 100%; display: flex; flex-wrap: wrap; flex-direction: row;">
+                                            <p class="mt-3 text-dark" style="width: 98%;"><?= strtoupper($student['name']) ?></p>
+                                        </div>
+                                    </div>
+                                    <span class="d-inline-block d-flex justify-content-center align-items-center">
+                                        <a class="d-flex shadow" style="margin-bottom: 20px;" href="assets/images/upload/<?= $student['document'] ?>">
+                                            <div class="bg p-2 " style="border-radius: 10px 0 0 10px;">
+                                                <img src="/assets/images/bg/06.png" alt="">
+                                            </div>
+                                        </a>
+                                    </span>
+                                    <p class="text-dark" style="margin-bottom: -8px; padding-bottom: 10px;">Graded</p>
                                 </div>
                         <?php endif;
                         } ?>
@@ -267,6 +325,7 @@ if (isset($_SESSION['class_id'])) {
             });
         });
     </script>
+
 
     <style>
         .custom-input {

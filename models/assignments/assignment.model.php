@@ -173,3 +173,27 @@ function updateStudentStatus(int $id, bool $status,): bool
     ]);
     return $statement->rowCount() > 0;
 }
+
+// ========Update  status user join ============
+function updateGraded(int $id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("update users_join_class set graded = :status where user_id = :id");
+    $statement->execute([
+        ':status' => true,
+        ':id' => $id,
+    ]);
+    return $statement->rowCount() > 0;
+}
+// ========Update  status user join ============
+function updateSubmitGraded(int $id, int $assignment_id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("update student_submit set graded = :status where user_id = :id and assignment_id = :assign_id");
+    $statement->execute([
+        ':status' => true,
+        ':id' => $id,
+        ':assign_id' => $assignment_id,
+    ]);
+    return $statement->rowCount() > 0;
+}
