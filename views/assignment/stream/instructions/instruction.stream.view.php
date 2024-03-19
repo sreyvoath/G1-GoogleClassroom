@@ -109,27 +109,29 @@ if (isset($_GET['id'])) {
                 <div class="border ms-4 rounded" style="width: 1000px;">
                     <div class="class-comment">
 
-                        <div class="comment ms-3 mt-3">
-                            <button type="button" class="btn btn-light btn-sm d-flex justify-content-center align-items-center" onclick="toggleComments()">
+                        <div class="comment ms-3 mt-3 mb-3">
+                            <button type="button" class="btn btn-light btn-sm d-flex justify-content-center align-items-center">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">group</span>
                                 <p class="m-0">3 classcomment</p>
                             </button>
                         </div>
 
-                        <div id="comments" style="display: none;">
+                        <div id="comments" >
                             <?php
                             $allCtms = showCmts($_GET['id']);
                             foreach ($allCtms as $key => $value) :
                             ?>
-                                <div class="d-flex mt-5 ml-3">
-                                    <div class="avatar avatar-md mt-n1 ms-4">
+                                <div class="d-flex " style="justify-content: space-between;">
+                                    <div class="d-flex">
+                                     <div class="avatar avatar-md mt-n1 ms-4">
                                         <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $value['image'] ?>" alt="">
                                     </div>
                                     <div class="ms-2">
                                         <h6><?= $value['name'] ?></h6>
                                         <p><?= $value['comment'] ?></p>
                                     </div>
-                                    <div class="dropdown mt-2 d-flex " style=" margin-left:65%" ;>
+                                    </div>
+                                    <div class="dropdown mt-2 d-flex ">
                                         <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
                                         <ul class="dropdown-menu" aria-labelledby="accounntMenu">
                                             <li class="dropdown-submenu dropend">

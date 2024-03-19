@@ -34,7 +34,7 @@ if (isset($_GET['id'])) {
                                         <!-- Info -->
                                         <p class="h6 fw-light mb-0 small me-3"><?= $_SESSION['user_created']['name'] ?> | <?= $assignment['start_date'] ?></p>
                                         <br>
-                                        <div class="d-flex justify-content-between align-items-center " style="width: 320%;">
+                                        <div class="d-flex justify-content-between align-items-centerp-3 " style="width: 280%;">
                                             <div>
                                                 <p class="h6 fw-light mb-0 "><?= $assignment['score'] ?> Points</p>
                                             </div>
@@ -74,34 +74,36 @@ if (isset($_GET['id'])) {
             </div>
 
             <div class="ms-7 d-flex flex-row">
-                <div class="avatar avatar-lg ">
-                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
+                <div class="avatar  bg-primary rounded-circle  " style="width: 10%;" >
+                    <img class="avatar-img rounded-circle border border-white border-3 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
                 </div>
                 <div class="border ms-4 rounded" style="width: 1000px;">
 
                     <div class="class-comment">
 
-                        <div class="comment ms-3 mt-3">
-                            <button type="button" class="btn btn-light btn-sm d-flex justify-content-center align-items-center" onclick="toggleComments()">
+                        <div class="comment ms-3 mt-3 mb-3">
+                            <button type="button" class="btn btn-light btn-sm d-flex justify-content-center align-items-center">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">group</span>
                                 <p class="m-0">3 classcomment</p>
                             </button>
                         </div>
 
-                        <div id="comments" style="display: none;">
+                        <div id="comments">
                             <?php
                             $allCtms = showCmts($_GET['id']);
                             foreach ($allCtms as $key => $value) :
                             ?>
-                                <div class="d-flex mt-5 ml-3">
-                                    <div class="avatar avatar-md mt-n1 ms-4">
-                                        <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $value['image'] ?>" alt="">
+                                <div class="d-flex ms-2" style="justify-content: space-between;">
+                                    <div class="d-flex">
+                                        <div class="avatar avatar-md mt-n1 ">
+                                            <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $value['image'] ?>" alt="">
+                                        </div>
+                                        <div class="ms-2">
+                                            <h6><?= $value['name'] ?></h6>
+                                            <p><?= $value['comment'] ?></p>
+                                        </div>
                                     </div>
-                                    <div class="ms-2">
-                                        <h6><?= $value['name'] ?></h6>
-                                        <p><?= $value['comment'] ?></p>
-                                    </div>
-                                    <div class="dropdown mt-2 d-flex " style=" margin-left:65%" ;>
+                                    <div class="dropdown d-flex ">
                                         <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
                                         <ul class="dropdown-menu" aria-labelledby="accounntMenu">
                                             <li class="dropdown-submenu dropend">
@@ -273,15 +275,15 @@ if (isset($_GET['id'])) {
                     <p><i class="fas fa-user-graduate me-3"></i>Private comments</p>
                     <div class="me-3 ">
                         <nav class="navbar">
-                        <div class="container-fluid ">
-                        <form action="controllers/comment/private_comment.controller.php" method="post">
-                            <div class="navbar-toggler d-flex" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <input type="hidden" name="classid" value="<?= $_GET['id'] ?>">
-                                <input type="text" style="width: 80%; height:50px;" class="form-control bg-white col-6" name="classname" id="classname">
-                                <button type="submit" class="btn btn-outline-primary ms-2" onclick="displayInput()"><span class="material-symbols-outlined">send</span></button>
+                            <div class="container-fluid ">
+                                <form action="controllers/comment/private_comment.controller.php" method="post">
+                                    <div class="navbar-toggler d-flex" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                        <input type="hidden" name="classid" value="<?= $_GET['id'] ?>">
+                                        <input type="text" style="width: 80%; height:50px;" class="form-control bg-white col-6" name="classname" id="classname">
+                                        <button type="submit" class="btn btn-outline-primary ms-1" onclick="displayInput()"><span class="material-symbols-outlined">send</span></button>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
-                    </div>
                         </nav>
                         <div class="collapse" id="private">
                             <div class=" p-3">
