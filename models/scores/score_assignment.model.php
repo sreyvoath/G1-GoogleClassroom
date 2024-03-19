@@ -66,18 +66,21 @@ function getStudentTurned(int $assignment_id)
     return $statement->fetchAll();
 }
 
-function getStudentTurnedIn()
+function getStudentTurnedIn(int $assignment_id)
 {
     global $connection;
-    $statement = $connection->prepare("select u.* from users_join_class uj
+    $statement = $connection->prepare("select u.*, uj.turned_in, s.document from users_join_class uj
     inner join classes c on c.id = uj.class_id
     inner join users u on u.id = uj.user_id
-    where u.role = :role and turned_in = :status");
+    inner join assignments a on a.class_id = c.id
+    inner join student_submit s on s.assignment_id = a.id
+    where u.role = :role and a.id = :assign_id
+    group by u.id
+    ");
 
     $statement->execute([
         ":role" => "student",
-        ":status" => true,
-
+        ":assign_id" => $assignment_id,
     ]);
     return $statement->fetchAll();
 }
