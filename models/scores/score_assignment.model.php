@@ -66,21 +66,67 @@ function getStudentTurned(int $assignment_id)
     return $statement->fetchAll();
 }
 
-function getStudentTurnedIn(int $assignment_id)
+function getStudentTurnedIn(int $assignment_id, int $class_id)
 {
     global $connection;
-    $statement = $connection->prepare("select u.*, uj.turned_in, s.document from users_join_class uj
+    $statement = $connection->prepare("select u.*, uj.turned_in, uj.graded, s.document from users_join_class uj
     inner join classes c on c.id = uj.class_id
     inner join users u on u.id = uj.user_id
     inner join assignments a on a.class_id = c.id
     inner join student_submit s on s.assignment_id = a.id
-    where u.role = :role and a.id = :assign_id
+    where u.role = :role and a.id = :assign_id and uj.class_id = :class_id
     group by u.id
     ");
 
     $statement->execute([
         ":role" => "student",
         ":assign_id" => $assignment_id,
+        ":class_id" => $class_id,
+    ]);
+    return $statement->fetchAll();
+}
+
+function getUserById($id):array {
+    global $connection;
+
+    $statement =  $connection->prepare("select * from users where id=:id");
+    $statement->execute([
+        ":id" => $id,
+    ]);
+    return $statement->fetch();
+}
+
+// ==== Create assignment score to database ====
+function insertAssignScore(int $score, int $user_id, int $assignment_id): bool
+{
+
+    global $connection;
+    $statement = $connection->prepare("insert into assignment_score (score, user_id, assignment_id) values (:score, :user_id, :assign_id)");
+    $statement->execute([
+        ":score"=>$score,
+        ":user_id"=>$user_id,
+        ":assign_id"=>$assignment_id,
+        
+    ]);
+    return $statement->rowCount() > 0;
+}
+
+function getStudentGraded($id):array {
+    global $connection;
+
+    $statement =  $connection->prepare("select ss.*, u.name, u.image from assignment_score ss inner join users u on u.id = ss.user_id where assignment_id=:id");
+    $statement->execute([
+        ":id" => $id,
+    ]);
+    return $statement->fetchAll();
+}
+
+function getStudentTurnIn($id):array {
+    global $connection;
+
+    $statement =  $connection->prepare("select ss.*, u.name, u.image from student_submit ss inner join users u on u.id = ss.user_id where assignment_id=:id");
+    $statement->execute([
+        ":id" => $id,
     ]);
     return $statement->fetchAll();
 }
