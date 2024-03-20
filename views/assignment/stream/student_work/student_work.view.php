@@ -4,14 +4,19 @@ require "models/assignments/assignment.model.php";
 require "models/user_join_class/student.model.php";
 require "models/scores/score_assignment.model.php";
 if (isset($_GET['id'])) {
-    $assignments = getStudentsSubmitted($_GET['id']);
+    // $assignments = getStudentsSubmitted($_GET['id']);
+    $id = $_GET['id'];
+    $_SESSION['assign_id'] = $id;
+    $assignment = getAssign($id);
+    $assignment = getAssign($id);
+    $assignments = getAssignmentsStudents($_GET['id'], $_SESSION['user']['id']);
+    $_SESSION['assignment_submitted'] = $assignments;
 }
 if (isset($_SESSION['class_id'])) {
     $getScore = getScoreAssign($_GET['id']);
     $studentTurnedIn = getStudentTurnedIn($_GET['id'], $_SESSION['class_id']);
     $getstudentGraded = getStudentGraded($_GET['id']);
     $getstudentTurnIn = getStudentTurnIn($_GET['id']);
-
     $studentTurned = 0;
     $studentAssigned = 0;
     $studentGraded = 0;
@@ -41,9 +46,44 @@ if (isset($_SESSION['class_id'])) {
     <form action="controllers/score/return_score.controller.php" method="post">
         <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
         <div class=" d-flex justify-content-startbtn-toolbar align-items-center" role="toolbar" aria-label="Toolbar with button groups" style="margin-left: 70px;">
-            <div class="btn-group me-4" role="group" aria-label="First group">
-                <button type="submit" class="btn btn-primary" id="return"> Return </button>
+            <div class="btn-group me-4 " role="group" aria-label="First group">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#alertReturn">Return</button>
+                <!-- Modal -->
+                <div class="modal fade" id="alertReturn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="p-4">
+                                <p style="font-size: 20px;">Return work to 1 student?</p>
+                                <p style="font-size: 16px;">Student willbe notified and can check any grade you've left.</p>
+                            </div>
+                            <?php if (!empty($getstudentGraded)) :
+                                foreach ($getstudentGraded as $student) :
+                            ?>
+                                    <div class="d-flex mt-0 ml-3 mb-3">
+                                        <div class="avatar avatar-md mt-n1 ms-4">
+                                            <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $student['image'] ?>" alt="">
+                                        </div>
+                                        <div class=" mx-2" style="margin-top: 12px;">
+                                            <h6><?= strtoupper($student['name'] )?></h6>
+                                        </div>
+                                        <div class="dropdown mt-2 d-flex " style=" margin-left:60%" ;>
+                                            <p class="text-success"><?= $student['score'] ?> </p> /<?= $getScore['score'] ?>
+                                        </div>
+                                <?php endforeach;
+                            endif; ?>
+                                    </div>
+                                    <input type="text" style="width:auto; height:45px; border-radius: 20px;" class="form-control bg-white col-6 mx-3" name="pri_comment" id="classname" placeholder="Comment Class ">
+
+                                    <div class="modal-footer" style="border-top: none;">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-outline-info">Return</button>
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
             <div class="btn-group me-4" role="group" aria-label="First group">
                 <a href="#"><button type="button" class="btn"><i class="bi bi-envelope fs-5"></i></button></a>
             </div>
@@ -204,7 +244,7 @@ if (isset($_SESSION['class_id'])) {
                     </div>
                 </div>
                 <div class="form-check form-switch mt-4 m-3">
-                    <input class="form-check-input fs-5" type="checkbox" role="switch" id="flexSwitchCheckChecked">
+                    <input checked class="form-check-input fs-5" type="checkbox" role="switch" id="flexSwitchCheckChecked">
                     <label class="form-check-label mt-1" style="font-size: 17px;" for="flexSwitchCheckChecked">Not accepting submissions</label> <i class="bi bi-info-circle mx-2"></i>
                 </div>
                 <div class="dropdown mt-3">
@@ -309,6 +349,7 @@ if (isset($_SESSION['class_id'])) {
             </div>
         </div>
     </form>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const returnBtn = document.getElementById("return");
@@ -325,7 +366,6 @@ if (isset($_SESSION['class_id'])) {
             });
         });
     </script>
-
 
     <style>
         .custom-input {

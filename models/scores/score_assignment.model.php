@@ -11,8 +11,20 @@ function getScoreAssign(int $id)
     ]);
     return $statement->fetch();
 }
+// ========return score assignment============
+function returnScore(int $id, int $student_id)
+{
 
-// ========Get name student submitted assignment============
+    global $connection;
+    $statement = $connection->prepare("select * from assignment_score where assignment_id = :id and user_id = :user_id");
+    $statement->execute([
+        ":id" => $id,
+        ":user_id" => $student_id
+    ]);
+    return $statement->fetch();
+}
+
+// ===========Get name student submitted assignment============
 function getUserSubmitted(int $id)
 {
 

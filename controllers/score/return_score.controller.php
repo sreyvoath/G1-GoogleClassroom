@@ -14,8 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($scores[$i] !== "") {
                 $userGraded = getUserById($studentIds[$i]);
                 insertAssignScore($scores[$i], $userGraded['id'], $id);
-                updateGraded($userGraded['id']);
-                updateStudentStatus($_SESSION['user']['id'], false);
+                updateGraded($userGraded['id'], $_SESSION['class_id']);
+                updateStudentStatus($_SESSION['user']['id'], false, $_SESSION['class_id']);
                 updateSubmitGraded($userGraded['id'], $id);
             }
         }

@@ -2,6 +2,7 @@
 require "database/database.php";
 require "models/assignments/assignment.model.php";
 require "models/comments/comment.model.php";
+require "models/scores/score_assignment.model.php";
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $_SESSION['assign_id'] = $id;
@@ -9,6 +10,8 @@ if (isset($_GET['id'])) {
     $assignment = getAssign($id);
     $assignments = getAssignmentsStudents($_GET['id'], $_SESSION['user']['id']);
     $_SESSION['assignment_submitted'] = $assignments;
+    $allCtms = showCmts($_GET['id']);
+    $getScore = returnScore($_GET['id'], $_SESSION['user']['id']);
 }
 
 ?>
@@ -35,9 +38,15 @@ if (isset($_GET['id'])) {
                                         <p class="h6 fw-light mb-0 small me-3"><?= $_SESSION['user_created']['name'] ?> | <?= $assignment['start_date'] ?></p>
                                         <br>
                                         <div class="d-flex justify-content-between align-items-centerp-3 " style="width: 280%;">
-                                            <div>
-                                                <p class="h6 fw-light mb-0 "><?= $assignment['score'] ?> Points</p>
-                                            </div>
+                                            <?php if (!empty($getScore)) { ?>
+                                                <div>
+                                                    <p class="h6 fw-light mb-0 "><?= $getScore['score']?> /<?= $assignment['score'] ?> Points</p>
+                                                </div>
+                                            <?php } else { ?>
+                                                <div>
+                                                    <p class="h6 fw-light mb-0 "><?= $assignment['score'] ?> Points</p>
+                                                </div>
+                                            <?php } ?>
                                             <div>
                                                 <p style="margin-bottom: -15px;"><?= $assignment['end_date'] ?>, <?= $assignment['end_time'] ?> PM</p>
                                             </div>
@@ -74,7 +83,7 @@ if (isset($_GET['id'])) {
             </div>
 
             <div class="ms-7 d-flex flex-row">
-                <div class="avatar  bg-primary rounded-circle  " style="width: 10%;" >
+                <div class="avatar  bg-primary rounded-circle  " style="width: 10%;">
                     <img class="avatar-img rounded-circle border border-white border-3 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
                 </div>
                 <div class="border ms-4 rounded" style="width: 1000px;">
@@ -84,13 +93,13 @@ if (isset($_GET['id'])) {
                         <div class="comment ms-3 mt-3 mb-3">
                             <button type="button" class="btn btn-light btn-sm d-flex justify-content-center align-items-center">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">group</span>
-                                <p class="m-0">3 classcomment</p>
+                                <p class="m-0"><?= count($allCtms) ?> classcomment</p>
                             </button>
                         </div>
 
                         <div id="comments">
                             <?php
-                            $allCtms = showCmts($_GET['id']);
+
                             foreach ($allCtms as $key => $value) :
                             ?>
                                 <div class="d-flex ms-2" style="justify-content: space-between;">
@@ -107,7 +116,7 @@ if (isset($_GET['id'])) {
                                         <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
                                         <ul class="dropdown-menu" aria-labelledby="accounntMenu">
                                             <li class="dropdown-submenu dropend">
-                                                <a class="dropdown-item " href="controllers/comment/delete_comment.controller.php?id=<?= $value['comment_id'] ?> " onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
+                                                <a class="dropdown-item " href="controllers/comment/delete_comment_student.controller.php?id=<?= $value['comment_id'] ?> " onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
                                                 <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $value['id'] ?>">Edit</a>
                                             </li>
                                         </ul>

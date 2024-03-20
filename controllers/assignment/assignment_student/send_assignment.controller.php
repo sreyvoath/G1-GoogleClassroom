@@ -2,7 +2,6 @@
 session_start();
 require_once '../../../database/database.php';
 require_once('../../../models/assignments/assignment.model.php');
-
 if (isset($_SESSION['assignment_submitted'])) {
     $assignments = $_SESSION['assignment_submitted'];
     $ass_id = $_SESSION['assign_id'];
@@ -14,7 +13,7 @@ if (isset($_SESSION['assignment_submitted'])) {
         
         updateAssignStatus($id, $status);
     }
-    updateStudentStatus($_SESSION['user']['id'], true);
+    updateStudentStatus($_SESSION['user']['id'], true, $_SESSION['class_id']);
 
     header("Location: /assignment_student?id=$ass_id");
     exit();

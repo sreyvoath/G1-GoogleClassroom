@@ -163,28 +163,31 @@ function getStudentsSubmitted(int $assignment_id):array
 }
 
 // ========Update  status uplaod ============
-function updateStudentStatus(int $id, bool $status,): bool
+function updateStudentStatus(int $id, bool $status, int $class_id): bool
 {
     global $connection;
-    $statement = $connection->prepare("update users_join_class set turned_in = :status where user_id = :id");
+    $statement = $connection->prepare("update users_join_class set turned_in = :status where user_id = :id and class_id=:class_id");
     $statement->execute([
         ':status' => $status,
         ':id' => $id,
+        ':class_id' => $class_id,
     ]);
     return $statement->rowCount() > 0;
 }
 
 // ========Update  status user join ============
-function updateGraded(int $id): bool
+function updateGraded(int $id, int $class_id): bool
 {
     global $connection;
-    $statement = $connection->prepare("update users_join_class set graded = :status where user_id = :id");
+    $statement = $connection->prepare("update users_join_class set graded = :status where user_id = :id and class_id =:class_id");
     $statement->execute([
         ':status' => true,
         ':id' => $id,
+        ':class_id' => $class_id,
     ]);
     return $statement->rowCount() > 0;
 }
+
 // ========Update  status user join ============
 function updateSubmitGraded(int $id, int $assignment_id): bool
 {
