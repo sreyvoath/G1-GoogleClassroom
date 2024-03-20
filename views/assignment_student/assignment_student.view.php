@@ -107,8 +107,10 @@ if (isset($_GET['id'])) {
                                         <div class="avatar avatar-md mt-n1 ">
                                             <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $value['image'] ?>" alt="">
                                         </div>
-                                        <div class="ms-2">
-                                            <h6><?= $value['name'] ?></h6>
+                                        <div class="ms-2 ">
+                                            <div class="d-flex " style="justify-content: space-between;">
+                                                <h6><?= $value['name'] ?><small> 20:20 am</small></h6>
+                                            </div>
                                             <p><?= $value['comment'] ?></p>
                                         </div>
                                     </div>
@@ -141,7 +143,7 @@ if (isset($_GET['id'])) {
                             <div class="navbar-toggler d-flex" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <input type="hidden" name="classid" value="<?= $_GET['id'] ?>">
                                 <input type="text" style="width: 80%; height:50px;" class="form-control bg-white col-6" name="classname" id="classname">
-                                <button type="submit" class="btn btn-outline-primary ms-2" onclick="displayInput()"><span class="material-symbols-outlined">send</span></button>
+                                <button type="submit" class="btn btn-outline-primary btn-sm ms-2" onclick="displayInput()"><span class="material-symbols-outlined">send</span></button>
                             </div>
                         </form>
                     </div>
@@ -284,14 +286,32 @@ if (isset($_GET['id'])) {
                     <p><i class="fas fa-user-graduate me-3"></i>Private comments</p>
                     <div class="me-3 ">
                         <nav class="navbar">
-                            <div class="container-fluid ">
-                                <form action="controllers/comment/private_comment.controller.php" method="post">
-                                    <div class="navbar-toggler d-flex" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                                        <input type="hidden" name="classid" value="<?= $_GET['id'] ?>">
-                                        <input type="text" style="width: 80%; height:50px;" class="form-control bg-white col-6" name="classname" id="classname">
-                                        <button type="submit" class="btn btn-outline-primary ms-1" onclick="displayInput()"><span class="material-symbols-outlined">send</span></button>
+                            <div class="d-flex">
+                                <div class="d-flex" >
+                                    <div class="avatar avatar-md mt-n1 ">
+                                        <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/" alt="">
                                     </div>
-                                </form>
+                                    <div class="ms-2 ">
+                                        <div class="d-flex " style="justify-content: space-between;">
+                                            <h6>Kaka<small> 20:20 am</small></h6>
+                                        </div>
+                                        <p>comment</p>
+                                    </div>
+                                </div>
+                                <div class="dropdown d-flex ms-6">
+                                    <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
+                                    <ul class="dropdown-menu" aria-labelledby="accounntMenu">
+                                        <li class="dropdown-submenu dropend">
+                                            <a class="dropdown-item " href="controllers/comment/delete_comment.controller.php?id=<?= $value['comment_id'] ?> " onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
+                                            <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $value['id'] ?>">Edit</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="navbar-toggler d-flex" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <input type="hidden" name="classid" value="<?= $_GET['id'] ?>">
+                                <input type="text" style="width: 80%; height:50px;" class="form-control bg-white col-6" name="classname" id="classname">
+                                <button type="submit" class="btn btn-outline-primary btn-sm ms-1" onclick="displayInput()"><span class="material-symbols-outlined">send</span></button>
                             </div>
                         </nav>
                         <div class="collapse" id="private">

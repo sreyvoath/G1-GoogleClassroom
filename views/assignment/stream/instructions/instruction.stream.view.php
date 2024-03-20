@@ -60,10 +60,10 @@ if (isset($_GET['id'])) {
                                     <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
                                     <ul class="dropdown-menu" aria-labelledby="accounntMenu">
                                         <li class="dropdown-submenu dropend">
-                                            <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $assignment['id'] ?>">Edit</a>
+                                            <a class="dropdown-item " href="controllers/assignment/edit_assignmentwork.controller.php?id=<?= $assignment['id'] ?>">Edit</a>
                                         </li>
                                         <li class="dropdown-submenu dropend">
-                                            <a class="dropdown-item " href="controllers/assignment/delete_assignment.controller.php?id=<?= $assignment['id'] ?> " onclick="if (!confirm('Are you sure to Delete it?')) { return false; }">Delete</a>
+                                            <a class="dropdown-item " href="controllers/assignment/delete_assignment_work.controller.php?id=<?= $assignment['id'] ?> " onclick="if (!confirm('Are you sure to Delete it?')) { return false; }">Delete</a>
                                         </li>
                                         <li class="dropdown-submenu dropend">
                                             <a class="dropdown-item " href="# ">Copy Link</a>
@@ -128,7 +128,7 @@ if (isset($_GET['id'])) {
                                         <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $value['image'] ?>" alt="">
                                     </div>
                                     <div class="ms-2">
-                                        <h6><?= $value['name'] ?></h6>
+                                        <h6><?= $value['name'] ?><small> 20:20 am</small></h6>
                                         <p><?= $value['comment'] ?></p>
                                     </div>
                                     </div>
