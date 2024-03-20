@@ -105,6 +105,7 @@ if (isset($_GET['id'])) {
                 <div class="avatar avatar-lg">
                     <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
                 </div>
+ <!-- ============================Class comments============================ -->
 
                 <div class="border ms-4 rounded" style="width: 1000px;">
                     <div class="class-comment">
@@ -115,6 +116,8 @@ if (isset($_GET['id'])) {
                                 <p class="m-0">3 classcomment</p>
                             </button>
                         </div>
+
+                        <!-- ----------show all comments ----------- -->
 
                         <div id="comments" style="display: none;">
                             <?php
@@ -177,7 +180,7 @@ if (isset($_GET['id'])) {
                             }
                         </script>
 
-
+<!-- ============================Edit font text in comments============================ -->
                         <div class="collapse" id="navbarToggleExternalContent">
                             <div class=" p-3">
                                 <i class="fa fa-bold me-3" aria-hidden="true" onclick="toggleBold()"></i>
@@ -188,15 +191,18 @@ if (isset($_GET['id'])) {
                             </div>
                         </div>
                         <script>
+                            // bold
                             function toggleBold() {
                                 var input = document.getElementById('classname');
                                 input.style.fontWeight = input.style.fontWeight === 'bold' ? 'normal' : 'bold';
                             }
+                            // italic
 
                             function toggleItalic() {
                                 var input = document.getElementById('classname');
                                 input.style.fontStyle = input.style.fontStyle === 'italic' ? 'normal' : 'italic';
                             }
+                            // underline
 
                             function toggleUnderline() {
                                 var input = document.getElementById('classname');

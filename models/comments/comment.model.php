@@ -1,5 +1,5 @@
 <?php
-
+// ==============================CommentPublic==================================
 function commentPublic(int $assignment_id, int $user_id, string $comment): bool
 {
 
@@ -13,6 +13,7 @@ function commentPublic(int $assignment_id, int $user_id, string $comment): bool
     return $statement->rowCount() > 0;
 }
 
+// ============================Getcomment==============================
 function getComment($id): array
 {
 
@@ -22,7 +23,7 @@ function getComment($id): array
     return $statement->fetchAll();
 }
 
-
+// =========================Show comment ===============================
 function showCmts(int $id)
 {
     global $connection;

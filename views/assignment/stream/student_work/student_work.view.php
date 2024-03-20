@@ -1,3 +1,4 @@
+
 <?php
 require "database/database.php";
 require "models/assignments/assignment.model.php";

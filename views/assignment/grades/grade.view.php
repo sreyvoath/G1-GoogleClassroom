@@ -1,7 +1,7 @@
 <main>
     <div class="container">
         <div class="row mb-5 align-items-center ">
-            <!-- Search bar -->
+            <!-- create grad page to teacher know what student do assiignment -->
             <script src="../../js/main.js"></script>
             <ul class="nav nav-pills nav-pills-bg-soft justify-content-sm-center mb-4 px-3" id="course-pills-tab" role="tablist">
                 <div class="btn-toolbar align-items-center justify-content-evenly" role="toolbar" aria-label="Toolbar with button groups">
@@ -21,6 +21,7 @@
             </ul>
         </div>
         <table class="table table-bordered">
+            <!-- css -->
             <style>
                 .table td,
                 .table th {

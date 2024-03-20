@@ -1,7 +1,7 @@
 <main>
     <div class="container">
         <div class="row mb-5 align-items-center ">
-            <!-- Search bar -->
+            <!-- link Page -->
             <script src="../../js/main.js"></script>
             <ul class="nav nav-pills nav-pills-bg-soft justify-content-sm-center mb-4 px-3" id="course-pills-tab" role="tablist">
                 <div class="btn-toolbar align-items-center justify-content-evenly" role="toolbar" aria-label="Toolbar with button groups">
@@ -71,7 +71,8 @@
                             $currentDateTime = date('Y-m-d H:i:s');
                             $dateLineTime = ($endDateTime < $currentDateTime);
                         }
-                    ?><!-- -------------------------------------------------------------------------------- -->
+                    ?>
+                    <!-- -----------------Dropdown accordion-collapse--------------------------------------------------------------- -->
 
                         <div class="accordion-item">
                             <div data-bs-toggle="collapse" data-bs-target="#flush-collapse<?= $assigment['id'] ?>" aria-expanded="false" aria-controls="flush-collapseTwo">

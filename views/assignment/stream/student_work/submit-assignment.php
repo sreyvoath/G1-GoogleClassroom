@@ -51,9 +51,9 @@ if (isset($_GET['id'])) {
                     </div>
                 </span>
         </section>
-        <!-- =============================================================================================== -->
+        <!-- ============page when teacher click assignment student=============================================== -->
         <div class=" ms-1" style="width: 30%;">
-            <div class="border d-flex">
+            <div class="border d-flex"> 
                 <div class="left border p-2">
                     <div class="on mt-4" style="display: flex;flex-direction: column;">
                         <span class="material-symbols-outlined">grading</span>

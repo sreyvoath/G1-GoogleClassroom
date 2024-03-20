@@ -2,6 +2,8 @@
 require "database/database.php";
 require "models/class.model.php";
 require "models/user_join_class/class.model.php";
+
+// ==============IssetsecureDatabase============
 if (isset($_GET['id'])) {
     $_SESSION['class_id'] = $_GET['id'];
 

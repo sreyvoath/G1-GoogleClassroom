@@ -247,7 +247,55 @@ unset($_SESSION['err_owner']);
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label"></label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
+                        <div class="border  scrollspy-example" style="height: 150px; overflow-y: auto;" data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" tabindex="0">
+                            <ul>
+                                <div class="email d-flex">
+                                    <div class="avatar avatar-md  mt-2">
+                                        <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $user['image'] ?>" alt="">
+                                    </div>
+                                    <div class="nameEmail">
+                                        <h6 class="ms-2 mt-3"><?=($user['name']) ?></h6>
+                                        <p class="small ms-2"><?= $user['email'] ?></p>
+                                    </div>
+                                </div>
+                                <div class="email d-flex">
+                                    <div class="avatar avatar-md  mt-2">
+                                        <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
+                                    </div>
+                                    <div class="nameEmail">
+                                        <h6 class="ms-2 mt-3"><?=($user['name']) ?></h6>
+                                        <p class="small ms-2"><?= $user['email'] ?></p>
+                                    </div>
+                                </div>
+                                <div class="email d-flex">
+                                    <div class="avatar avatar-md  mt-2">
+                                        <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
+                                    </div>
+                                    <div class="nameEmail">
+                                        <h6 class="ms-2 mt-3"><?=($user['name']) ?></h6>
+                                        <p class="small ms-2"><?= $user['email'] ?></p>
+                                    </div>
+                                </div>
+                                <div class="email d-flex">
+                                    <div class="avatar avatar-md  mt-2">
+                                        <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
+                                    </div>
+                                    <div class="nameEmail">
+                                        <h6 class="ms-2 mt-3"><?=($user['name']) ?></h6>
+                                        <p class="small ms-2"><?= $user['email'] ?></p>
+                                    </div>
+                                </div>
+                                <div class="email d-flex">
+                                    <div class="avatar avatar-md  mt-2">
+                                        <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
+                                    </div>
+                                    <div class="nameEmail">
+                                        <h6 class="ms-2 mt-3"><?=($user['name']) ?></h6>
+                                        <p class="small ms-2"><?= $user['email'] ?></p>
+                                    </div>
+                                </div>
+
+                        </div>
                     </div>
                 </form>
             </div>
@@ -275,8 +323,45 @@ unset($_SESSION['err_owner']);
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label"></label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
+                        <div class="border  scrollspy-example" style="height: 150px; overflow-y: auto;" data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" tabindex="0">
+                            <ul>
+                                <div class="email d-flex">
+                                    <div class="avatar avatar-md  mt-2">
+                                        <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $student['image'] ?>" alt="">
+                                    </div>
+                                    <div class="nameEmail">
+                                        <h6 class="ms-2 mt-3"><?= strtoupper($student['name']) ?></h6>
+                                        <p class="small ms-2"><?= $student['email'] ?></p>
+                                    </div>
+                                </div>
+                                <div class="email d-flex">
+                                    <div class="avatar avatar-md  mt-2">
+                                        <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
+                                    </div>
+                                    <h6 class="ms-2 mt-3"><?= $_SESSION['user']['name'] ?></h6>
+                                </div>
+                                <div class="email d-flex">
+                                    <div class="avatar avatar-md  mt-2">
+                                        <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
+                                    </div>
+                                    <h6 class="ms-2 mt-3"><?= $_SESSION['user']['name'] ?></h6>
+                                </div>
+                                <div class="email d-flex">
+                                    <div class="avatar avatar-md  mt-2">
+                                        <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
+                                    </div>
+                                    <h6 class="ms-2 mt-3"><?= $_SESSION['user']['name'] ?></h6>
+                                </div>
+                                <div class="email d-flex">
+                                    <div class="avatar avatar-md  mt-2">
+                                        <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
+                                    </div>
+                                    <h6 class="ms-2 mt-3"><?= $_SESSION['user']['name'] ?></h6>
+                                </div>
+
+                        </div>
                     </div>
+
                 </form>
             </div>
             <div class="modal-footer">

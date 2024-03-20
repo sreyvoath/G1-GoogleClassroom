@@ -70,6 +70,9 @@ function getTeacher(int $id)
     return $statement->fetchAll();
 }
 
+
+
+// ==============teacher invite student join class================
 function studentJoinedClass(int $class_id)
 {
 
@@ -86,6 +89,7 @@ function studentJoinedClass(int $class_id)
     ]);
     return $statement->fetchAll();
 }
+// =========================teacher invite teacher to join class =========================
 function teacherJoinedClass(int $class_id)
 {
 
