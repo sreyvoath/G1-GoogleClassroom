@@ -88,7 +88,7 @@ if (isset($_GET['id'])) {
                             </div>
                             <div class="title mx-3" style="margin-top: 30px;">
                                 <h5><?= $assignment['title'] ?></h5>
-                                <p><?= $assignment['document'] ?></p>
+                                <p class="d-inline-block text-truncate" style="max-width: 150px;"><?= $assignment['document'] ?></p>
                             </div>
 
                         </a>

@@ -71,7 +71,7 @@ if (isset($_GET['id'])) {
                             </div>
                             <div class="title mx-3" style="margin-top: 30px;">
                                 <h5><?= $assignment['title'] ?></h5>
-                                <p><?= $assignment['document'] ?></p>
+                                <p class="d-inline-block text-truncate" style="max-width: 150px;"><?= $assignment['document'] ?></p>
                             </div>
                         </a>
                     </span>
@@ -215,7 +215,7 @@ if (isset($_GET['id'])) {
                         <a href="controllers/assignment/assignment_student/send_assignment.controller.php?id=<?= $assignment['id'] ?>" class="btn btn-sm btn-success-soft btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Turn In"><i class="bi bi-check2-circle fs-3"></i></a>
                     <?php }; ?>
                 </div>
-                <div class=" card-body rounded " style=" margin-top: -70px;">
+                <div class=" card-body rounded " style="width: 100%; margin-top: -70px;">
                     <div class="p-5">
                         <?php if (isset($assignments)) {
                             foreach ($assignments as $assignment) {
@@ -225,13 +225,14 @@ if (isset($_GET['id'])) {
                                         <div class="bg p-2 border text-center" style="border-radius: 10px 0 0 10px;">
                                             <img src="/assets/images/bg/06.png" alt="" width="50px" height="40px">
                                         </div>
-                                        <div class="d-flex flex-column title mx-3 mt-2 align-items-start justify-content-center">
-                                            <p><?= $assignment['document'] ?></p>
+                                        <div class="d-flex flex-column title mx-2 mt-2 align-items-start justify-content-center d-inline-block text-truncate" style="width: 50%;">
+                                            <p class="d-inline-block text-truncate" style="max-width: 150px;"><?= $assignment['document'] ?></p>
                                             <span style="margin-top: -10px;">PDF</span>
+                                            
                                         </div>
                                     </a>
                                     <?php if ($assignments[0]['status'] == false) { ?>
-                                        <a href="controllers/assignment/assignment_student/unsend_assignment.controller.php?id=<?= $assignment['id'] ?>" class="btn btn-sm btn-danger-soft btn-round mb-0" style="margin-left: 200px; margin-top: -95px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Unsend"><i class="bi bi-x fs-4"></i></a>
+                                        <a href="controllers/assignment/assignment_student/unsend_assignment.controller.php?id=<?= $assignment['id'] ?>" class="btn btn-sm btn-danger-soft btn-round mb-0 " style="  margin-left: 200px; margin-top: -95px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Unsend"><i class="bi bi-x fs-4"></i></a>
                                     <?php } ?>
                                 </span>
                         <?php }
