@@ -127,7 +127,7 @@ if (isset($_GET['id'])) {
                                         <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $value['image'] ?>" alt="">
                                     </div>
                                     <div class="ms-2">
-                                        <h6><?= $value['name'] ?></h6>
+                                        <h6><?= $value['name'] ?><small> 20:20 am</small></h6>
                                         <p><?= $value['comment'] ?></p>
                                     </div>
                                     </div>
