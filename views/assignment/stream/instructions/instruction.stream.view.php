@@ -6,6 +6,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $_SESSION['assign_id'] = $id;
     $assignment = getAssign($id);
+    $allCtms = showCmts($_GET['id']);
 }
 
 ?>
@@ -112,13 +113,13 @@ if (isset($_GET['id'])) {
                         <div class="comment ms-3 mt-3 mb-3">
                             <button type="button" class="btn btn-light btn-sm d-flex justify-content-center align-items-center">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">group</span>
-                                <p class="m-0">3 classcomment</p>
+                                <p class="m-0"><?= count($allCtms) ?> classcomment</p>
                             </button>
                         </div>
 
                         <div id="comments" >
                             <?php
-                            $allCtms = showCmts($_GET['id']);
+                           
                             foreach ($allCtms as $key => $value) :
                             ?>
                                 <div class="d-flex " style="justify-content: space-between;">
@@ -135,7 +136,7 @@ if (isset($_GET['id'])) {
                                         <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
                                         <ul class="dropdown-menu" aria-labelledby="accounntMenu">
                                             <li class="dropdown-submenu dropend">
-                                                <a class="dropdown-item " href="controllers/comment/delete_comment.controller.php?id=<?= $value['comment_id'] ?> " onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
+                                                <a class="dropdown-item " href="controllers/comment/delete_comment_teacher.controller.php?id=<?= $value['comment_id'] ?> " onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
                                                 <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $value['id'] ?>">Edit</a>
                                             </li>
                                         </ul>
