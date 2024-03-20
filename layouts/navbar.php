@@ -286,7 +286,7 @@ foreach ($studentJoin as $student) {
 					</div>
 					<div class="mb-4">
 						<label for="inputImage" class="form-label">Profile Image *</label>
-						<input type="file" name="image" id="inputImages" class="form-control">
+						<input type="file" name="image" id="inputImages" class="form-control" >
 					</div>
 				</form>
 			</div>
