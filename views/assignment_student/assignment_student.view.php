@@ -289,22 +289,20 @@ if (isset($_GET['id'])) {
                     <div class="me-3 ">
                         <nav class="navbar">
                             <?php foreach ($getPrivateComment as $comment) : ?>
-                                <div class="d-flex">
-
-                                    <div class="d-flex">
+                                <div class="d-flex  " style="justify-content: space-between; width: 100%;">
+                                    <div class="d-flex ">
                                         <div class="avatar avatar-md mt-n1 ">
                                             <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $comment['image'] ?>" alt="">
                                         </div>
                                         <div class="ms-2 ">
-                                            <div class="d-flex " style="justify-content: space-between;">
+                                            <div class="d-flex " >
                                                 <h6><?= $comment['name'] ?><small> 20:20 am</small></h6>
                                             </div>
                                             <p><?= $comment['comment'] ?></p>
                                         </div>
                                     </div>
-
-                                    <div class="dropdown d-flex ms-6">
-                                        <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
+                                    <div class="dropdown d-flex ">
+                                        <a class="nav-link " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
                                         <ul class="dropdown-menu" aria-labelledby="accounntMenu">
                                             <li class="dropdown-submenu dropend">
                                                 <a class="dropdown-item " href="controllers/comment/delete_comment.controller.php?id=<?= $value['comment_id'] ?> " onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
