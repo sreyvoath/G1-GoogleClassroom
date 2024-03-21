@@ -303,7 +303,7 @@ if (isset($_GET['id'])) {
                                     </div>
                                     <div class="dropdown d-flex ">
                                         <a class="nav-link " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
-                                        <ul class="dropdown-menu" aria-labelledby="accounntMenu">
+                                        <ul class="dropdown-menu" aria-labelledby="accounntMenu" style="margin-left: -200px;">
                                             <li class="dropdown-submenu dropend">
                                                 <a class="dropdown-item " href="controllers/comment/delete_comment.controller.php?id=<?= $value['comment_id'] ?> " onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
                                                 <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $value['id'] ?>">Edit</a>
