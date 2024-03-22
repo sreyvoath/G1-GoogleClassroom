@@ -2,6 +2,7 @@
 require "database/database.php";
 require "models/assignments/assignment.model.php";
 require "models/comments/comment.model.php";
+require "models/scores/score_assignment.model.php";
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $_SESSION['assign_id'] = $id;
@@ -9,6 +10,9 @@ if (isset($_GET['id'])) {
     $assignment = getAssign($id);
     $assignments = getAssignmentsStudents($_GET['id'], $_SESSION['user']['id']);
     $_SESSION['assignment_submitted'] = $assignments;
+    $allCtms = showCmts($_GET['id']);
+    $getScore = returnScore($_GET['id'], $_SESSION['user']['id']);
+    $getPrivateComment = getPrivate($_GET['id'], $_SESSION['user']['id'], $_SESSION['user_created']['id']);
 }
 
 ?>
@@ -34,10 +38,16 @@ if (isset($_GET['id'])) {
                                         <!-- Info -->
                                         <p class="h6 fw-light mb-0 small me-3"><?= $_SESSION['user_created']['name'] ?> | <?= $assignment['start_date'] ?></p>
                                         <br>
-                                        <div class="d-flex justify-content-between align-items-center " style="width: 320%;">
-                                            <div>
-                                                <p class="h6 fw-light mb-0 "><?= $assignment['score'] ?> Points</p>
-                                            </div>
+                                        <div class="d-flex justify-content-between align-items-centerp-3 " style="width: 280%;">
+                                            <?php if (!empty($getScore)) { ?>
+                                                <div>
+                                                    <p class="h6 fw-light mb-0 "><?= $getScore['score'] ?> /<?= $assignment['score'] ?> Points</p>
+                                                </div>
+                                            <?php } else { ?>
+                                                <div>
+                                                    <p class="h6 fw-light mb-0 "><?= $assignment['score'] ?> Points</p>
+                                                </div>
+                                            <?php } ?>
                                             <div>
                                                 <p style="margin-bottom: -15px;"><?= $assignment['end_date'] ?>, <?= $assignment['end_time'] ?> PM</p>
                                             </div>
@@ -62,7 +72,7 @@ if (isset($_GET['id'])) {
                             </div>
                             <div class="title mx-3" style="margin-top: 30px;">
                                 <h5><?= $assignment['title'] ?></h5>
-                                <p><?= $assignment['document'] ?></p>
+                                <p class="d-inline-block text-truncate" style="max-width: 150px;"><?= $assignment['document'] ?></p>
                             </div>
                         </a>
                     </span>
@@ -74,38 +84,42 @@ if (isset($_GET['id'])) {
             </div>
 
             <div class="ms-7 d-flex flex-row">
-                <div class="avatar avatar-lg ">
-                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
+                <div class="avatar  bg-primary rounded-circle  " style="width: 10%;">
+                    <img class="avatar-img rounded-circle border border-white border-3 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
                 </div>
                 <div class="border ms-4 rounded" style="width: 1000px;">
 
                     <div class="class-comment">
 
-                        <div class="comment ms-3 mt-3">
-                            <button type="button" class="btn btn-light btn-sm d-flex justify-content-center align-items-center" onclick="toggleComments()">
+                        <div class="comment ms-3 mt-3 mb-3">
+                            <button type="button" class="btn btn-light btn-sm d-flex justify-content-center align-items-center">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">group</span>
-                                <p class="m-0">3 classcomment</p>
+                                <p class="m-0"><?= count($allCtms) ?> classcomment</p>
                             </button>
                         </div>
 
-                        <div id="comments" style="display: none;">
+                        <div id="comments">
                             <?php
-                            $allCtms = showCmts($_GET['id']);
+
                             foreach ($allCtms as $key => $value) :
                             ?>
-                                <div class="d-flex mt-5 ml-3">
-                                    <div class="avatar avatar-md mt-n1 ms-4">
-                                        <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $value['image'] ?>" alt="">
+                                <div class="d-flex ms-2" style="justify-content: space-between;">
+                                    <div class="d-flex">
+                                        <div class="avatar avatar-md mt-n1 ">
+                                            <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $value['image'] ?>" alt="">
+                                        </div>
+                                        <div class="ms-2 ">
+                                            <div class="d-flex " style="justify-content: space-between;">
+                                                <h6><?= $value['name'] ?><small> 20:20 am</small></h6>
+                                            </div>
+                                            <p><?= $value['comment'] ?></p>
+                                        </div>
                                     </div>
-                                    <div class="ms-2">
-                                        <h6><?= $value['name'] ?></h6>
-                                        <p><?= $value['comment'] ?></p>
-                                    </div>
-                                    <div class="dropdown mt-2 d-flex " style=" margin-left:65%" ;>
+                                    <div class="dropdown d-flex ">
                                         <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
                                         <ul class="dropdown-menu" aria-labelledby="accounntMenu">
                                             <li class="dropdown-submenu dropend">
-                                                <a class="dropdown-item " href="controllers/comment/delete_comment.controller.php?id=<?= $value['comment_id'] ?> " onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
+                                                <a class="dropdown-item " href="controllers/comment/delete_comment_student.controller.php?id=<?= $value['comment_id'] ?> " onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
                                                 <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $value['id'] ?>">Edit</a>
                                             </li>
                                         </ul>
@@ -130,7 +144,7 @@ if (isset($_GET['id'])) {
                             <div class="navbar-toggler d-flex" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <input type="hidden" name="classid" value="<?= $_GET['id'] ?>">
                                 <input type="text" style="width: 80%; height:50px;" class="form-control bg-white col-6" name="classname" id="classname">
-                                <button type="submit" class="btn btn-outline-primary ms-2" onclick="displayInput()"><span class="material-symbols-outlined">send</span></button>
+                                <button type="submit" class="btn btn-outline-primary btn-sm ms-2" onclick="displayInput()"><span class="material-symbols-outlined">send</span></button>
                             </div>
                         </form>
                     </div>
@@ -202,7 +216,7 @@ if (isset($_GET['id'])) {
                         <a href="controllers/assignment/assignment_student/send_assignment.controller.php?id=<?= $assignment['id'] ?>" class="btn btn-sm btn-success-soft btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Turn In"><i class="bi bi-check2-circle fs-3"></i></a>
                     <?php }; ?>
                 </div>
-                <div class=" card-body rounded " style=" margin-top: -70px;">
+                <div class=" card-body rounded " style="width: 100%; margin-top: -70px;">
                     <div class="p-5">
                         <?php if (isset($assignments)) {
                             foreach ($assignments as $assignment) {
@@ -212,13 +226,14 @@ if (isset($_GET['id'])) {
                                         <div class="bg p-2 border text-center" style="border-radius: 10px 0 0 10px;">
                                             <img src="/assets/images/bg/06.png" alt="" width="50px" height="40px">
                                         </div>
-                                        <div class="d-flex flex-column title mx-3 mt-2 align-items-start justify-content-center">
-                                            <p><?= $assignment['document'] ?></p>
+                                        <div class="d-flex flex-column title mx-2 mt-2 align-items-start justify-content-center d-inline-block text-truncate" style="width: 50%;">
+                                            <p class="d-inline-block text-truncate" style="max-width: 150px;"><?= $assignment['document'] ?></p>
                                             <span style="margin-top: -10px;">PDF</span>
+
                                         </div>
                                     </a>
                                     <?php if ($assignments[0]['status'] == false) { ?>
-                                        <a href="controllers/assignment/assignment_student/unsend_assignment.controller.php?id=<?= $assignment['id'] ?>" class="btn btn-sm btn-danger-soft btn-round mb-0" style="margin-left: 200px; margin-top: -95px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Unsend"><i class="bi bi-x fs-4"></i></a>
+                                        <a href="controllers/assignment/assignment_student/unsend_assignment.controller.php?id=<?= $assignment['id'] ?>" class="btn btn-sm btn-danger-soft btn-round mb-0 " style="  margin-left: 200px; margin-top: -95px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Unsend"><i class="bi bi-x fs-4"></i></a>
                                     <?php } ?>
                                 </span>
                         <?php }
@@ -268,17 +283,42 @@ if (isset($_GET['id'])) {
 
                 </div>
             <?php } ?>
-            <div class="p-3 mb-2 rounded shadow-sm p-3 mb-5 bg-body rounded" style="border: 1px solid gainsboro; margin-top: -20px;">
+            <div class="p-1 mb-2 rounded shadow-sm mb-5 bg-body rounded" style="border: 1px solid gainsboro; margin-top: -20px;">
                 <div class="mb-0 ms-3 ">
-                    <p><i class="fas fa-user-graduate me-3"></i>Private comments</p>
+                    <p><i class="fas fa-user-graduate mt-2 me-3"></i>Private comments</p>
                     <div class="me-3 ">
                         <nav class="navbar">
-                            <div class="container-fluid ">
-                                <dive class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <input type="text" style="width: 100%;" class="form-control bg-white col-6" name="classname" id="classname" required placeholder="Add class comment">
-                                </dive>
-                                <button type="submit" class=" small btn btn-outline-primary"><i class="bi bi-send-fill small"></i></button>
-                            </div>
+                            <?php foreach ($getPrivateComment as $comment) : ?>
+                                <div class="d-flex  " style="justify-content: space-between; width: 100%;">
+                                    <div class="d-flex ">
+                                        <div class="avatar avatar-md mt-n1 ">
+                                            <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $comment['image'] ?>" alt="">
+                                        </div>
+                                        <div class="ms-2 ">
+                                            <div class="d-flex " >
+                                                <h6><?= $comment['name'] ?><small> 20:20 am</small></h6>
+                                            </div>
+                                            <p><?= $comment['comment'] ?></p>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown d-flex ">
+                                        <a class="nav-link " href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
+                                        <ul class="dropdown-menu" aria-labelledby="accounntMenu">
+                                            <li class="dropdown-submenu dropend">
+                                                <a class="dropdown-item " href="controllers/comment/delete_comment.controller.php?id=<?= $value['comment_id'] ?> " onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
+                                                <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $value['id'] ?>">Edit</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                            <form action="controllers/comment/comment_private.controller.php" method="post">
+                                <div class="navbar-toggler d-flex" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <input type="hidden" name="classid" value="<?= $_GET['id'] ?>">
+                                    <input type="text" style="width: 80%; height:50px;" class="form-control bg-white col-6" name="classname" id="classname">
+                                    <button type="submit" class="btn btn-outline-primary ms-1" onclick="displayInput()"><span class="material-symbols-outlined">send</span></button>
+                                </div>
+                            </form>
                         </nav>
                         <div class="collapse" id="private">
                             <div class=" p-3">

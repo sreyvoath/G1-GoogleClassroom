@@ -50,7 +50,23 @@ function getAssignments()
 
 
 // ========Update  assignment============
-function updateAssign(string $title, string $content, string $document, string $filepath,int $score, string $end_date, string $end_time, int $class_id, int $id): bool
+function updateAssign(string $title, string $content,int $score, string $end_date, string $end_time, int $class_id, int $id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("update assignments set title = :title, content = :content,score=:score, end_date=:end_date, end_time=:end_time, class_id= :class_id where id = :id");
+    $statement->execute([
+        ':title' => $title,
+        ':content' => $content,
+        ':score' => $score,
+        ':end_date' => $end_date,
+        ':end_time' => $end_time,
+        ':class_id' => $class_id,
+        ':id' => $id,
+    ]);
+    return $statement->rowCount() > 0;
+}
+// ========Update new file assignment============
+function uploadNewFile(string $title, string $content, string $document, string $filepath,int $score, string $end_date, string $end_time, int $class_id, int $id): bool
 {
     global $connection;
     $statement = $connection->prepare("update assignments set title = :title, content = :content, document=:document ,filepath=:filepath, score=:score, end_date=:end_date, end_time=:end_time, class_id= :class_id where id = :id");
@@ -144,4 +160,43 @@ function getStudentsSubmitted(int $assignment_id):array
     where s.assignment_id =:id");
     $statement->execute([":id" => $assignment_id]);
     return $statement->fetchAll();
+}
+
+// ========Update  status uplaod ============
+function updateStudentStatus(int $id, bool $status, int $class_id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("update users_join_class set turned_in = :status where user_id = :id and class_id=:class_id");
+    $statement->execute([
+        ':status' => $status,
+        ':id' => $id,
+        ':class_id' => $class_id,
+    ]);
+    return $statement->rowCount() > 0;
+}
+
+// ========Update  status user join ============
+function updateGraded(int $id, int $class_id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("update users_join_class set graded = :status where user_id = :id and class_id =:class_id");
+    $statement->execute([
+        ':status' => true,
+        ':id' => $id,
+        ':class_id' => $class_id,
+    ]);
+    return $statement->rowCount() > 0;
+}
+
+// ========Update  status user join ============
+function updateSubmitGraded(int $id, int $assignment_id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("update student_submit set graded = :status where user_id = :id and assignment_id = :assign_id");
+    $statement->execute([
+        ':status' => true,
+        ':id' => $id,
+        ':assign_id' => $assignment_id,
+    ]);
+    return $statement->rowCount() > 0;
 }

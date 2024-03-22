@@ -51,6 +51,7 @@ function getStudent(int $id)
     ]);
     return $statement->fetchAll();
 }
+
 // ========Get all students============
 function getTeacher(int $id)
 {
@@ -77,7 +78,7 @@ function studentJoinedClass(int $class_id)
     $statement = $connection->prepare("select u.id, u.name, u.email, u.image, c.id as class_id , c.title, uj.join_date from users u 
     inner join users_join_class uj on uj.user_id= u.id
     inner join classes c on uj.class_id = c.id
-    where u.role = :role and c.id =  :id
+    where u.role = :role and c.id = :id 
     ");
 
     $statement->execute([
@@ -157,4 +158,27 @@ function deleteStudent(int $user_id, int $class_id) : bool
         ':class_id' => $class_id
     ]);
     return $statement->rowCount() > 0;
+}
+
+// ========Get students information============
+function getStudentInfo(int $student_id, int $id):array
+{
+
+    global $connection;
+    $statement = $connection->prepare("select u.id, u.name, u.email, u.image, c.id as class_id , c.title, uj.join_date, ss.score, sts.document from users u 
+    inner join users_join_class uj on uj.user_id= u.id
+    inner join classes c on uj.class_id = c.id
+    inner join assignments a on a.class_id = c.id
+    inner join student_submit sts on sts.user_id = u.id
+    inner join assignment_score ss on u.id = ss.user_id
+    where u.role = :role and u.id =:student_id and a.id = :ass_id
+    order by uj.id desc
+    ");
+
+    $statement->execute([
+        ":role" => "student",
+        ":ass_id"=> $id,
+        ":student_id" => $student_id
+    ]);
+    return $statement->fetch();
 }

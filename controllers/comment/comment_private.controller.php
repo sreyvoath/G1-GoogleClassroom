@@ -8,7 +8,9 @@ if (isset($_POST['classname']) && isset($_POST['classid'])) {
     $userId = $_SESSION['user']['id'];
     $classComment = $_POST['classname'];
     $assigmentId = $_POST['classid'];
-    $currentDateTime = date('h:i A');
-    commentPublic($assigmentId, $userId, $classComment,$currentDateTime, $_SESSION['user_created']['id']);
+    $currentDateTime = date('Y-m-d h:i A');
+    $teacherId = $_SESSION['user_created']['id'];
+    commentPrivate( $assigmentId, $_SESSION['user']['id'], $classComment,$currentDateTime, $teacherId);
 }
+
 header('location: /assignment_student?id=' . $_POST['classid']);

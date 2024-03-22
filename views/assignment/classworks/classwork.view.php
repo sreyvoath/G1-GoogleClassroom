@@ -92,6 +92,7 @@
                                                 if ($_SESSION['user']['role'] == 'student') {
                                                     if ($dateLineTime) {
                                                         echo '<s>Due ' . $assigment['end_date'] . '</s>';
+                                                        $_SESSION['missing'] = "Missing";
                                                     } else {
                                                         echo 'Due ' . $assigment['end_date'];
                                                     }

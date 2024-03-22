@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $filename = basename($_FILES["document"]["name"]);
                     $filepath = $targetFile;
                     uploadNewFile($title, $content, $filename, $filepath, $score, $end_date, $end_time, $class_id, $id);
-                    header("Location: /stream?id=$class_id");
+                    header("Location: /instruction?id=$id");
                     exit();
                 } else {
                     echo "Sorry, there was an error uploading your file.";
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             // No new file uploaded, update other assignment details without changing the file
             updateAssign($title, $content, $score, $end_date, $end_time, $class_id, $id);
-            header("Location: /stream?id=$class_id");
+            header("Location: /instruction?id=$id");
             exit();
         }
     }
