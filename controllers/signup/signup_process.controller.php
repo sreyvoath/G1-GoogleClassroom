@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name = htmlspecialchars($_POST['name']);
     $email = htmlspecialchars($_POST['email']);
     $role = htmlspecialchars($_POST['role']);
+    $code = substr(str_shuffle(str_repeat("0123456789", 5)), 0, 6);
 
 // ========= Image upload ================
     if (!empty($name) && (!empty($email)) && (!empty($password)) && !empty($image)) {

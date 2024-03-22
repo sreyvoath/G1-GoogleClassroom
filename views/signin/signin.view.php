@@ -54,7 +54,7 @@ if (isset($_SESSION['user'])) {
 								<p class="lead mb-4">Nice to see you! Please log in with your account.</p>
 
 								<!-- Form START -->
-								<form action="../../controllers/signin/signin_process.controller.php" method="post">
+								<form action="controllers/signin/signin_process.controller.php" method="post">
 									<!-- Email -->
 									<div class="mb-4">
 										<label for="exampleInputEmail1" class="form-label">Email address *</label>
@@ -85,7 +85,7 @@ if (isset($_SESSION['user'])) {
 											<label class="form-check-label" for="exampleCheck1">Remember me</label>
 										</div>
 										<div class="text-primary-hover">
-											<a href="forgot-password.html" class="text-secondary">
+											<a href="views/signin/reset_password.view.php" class="text-secondary">
 												<u>Forgot password?</u>
 											</a>
 										</div>

@@ -17,7 +17,7 @@
         <div class="body">
             <div class="back d-flex justify-content-between align-items-center shadow-sm p-3 mb-5 bg-body rounded">
                 <div class="nav-left d-flex gap-3">
-                    <a class="text-dark" href="/stream?id=<?= $_SESSION['class_id']?>"><span class="material-symbols-outlined">close</span></a>
+                    <a class="text-dark" href="/instruction?id=<?= $assignment['id']?>"><span class="material-symbols-outlined">close</span></a>
                     <div class="title d-flex gap-1">
                         <div class="bg py-1 px-2 d-flex justify-content-enter align-items-center rounded-circle" style=" margin-top: -7px; background-color: purple;">
                             <span class="material-symbols-outlined text-white">description</span>

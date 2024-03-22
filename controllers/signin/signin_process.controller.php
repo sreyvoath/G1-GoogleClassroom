@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (count($user) > 0) {
 
 // =========== check password ==========
-        if (password_verify($password, $user[3])) {
+        if (password_verify($password, $user[4])) {
             $_SESSION['user'] = $user;
             header('Location:/home');
         } else {
