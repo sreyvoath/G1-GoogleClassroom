@@ -3,9 +3,8 @@ require "database/database.php";
 require "models/assignments/assignment.model.php";
 require "models/user_join_class/student.model.php";
 require "models/scores/score_assignment.model.php";
-if (isset($_GET['id'])) {
-    $assignments = getStudentsSubmitted($_GET['id']);
-}
+require "models/comments/comment.model.php";
+
 if (isset($_SESSION['class_id'])) {
     $getScore = getScoreAssign($_GET['id']);
     $studentTurnedIn = getStudentTurnedIn($_GET['id'], $_SESSION['class_id']);
@@ -15,22 +14,30 @@ if (isset($_SESSION['class_id'])) {
     $studentAssigned = 0;
     $studentGraded = 0;
 }
-$id = $_SESSION['ass_id'];
-date_default_timezone_set('Asia/Phnom_Penh');
-$assignments = getAssigns($id);
-foreach ($assignments as $assigment) {
-    if ($assigment['id']) {
-        $endDateTime = date($assigment['end_date'] . ' ' . $assigment['end_time']);
-        $currentDateTime = date('Y-m-d H:i:s');
-        $dateLineTime = ($endDateTime < $currentDateTime);
-    }
+if (isset($_GET['id'])) {
+    $id = $_SESSION['ass_id'];
+    date_default_timezone_set('Asia/Phnom_Penh');
+    $assignments = getAssigns($id);
+    foreach ($assignments as $assigment) {
+        if ($assigment['id']) {
+            $endDateTime = date($assigment['end_date'] . ' ' . $assigment['end_time']);
+            $currentDateTime = date('Y-m-d H:i:s');
+            $dateLineTime = ($endDateTime < $currentDateTime);
+        }
 
-    if ($_SESSION['user']['role'] == 'teacher') {
-        if ($dateLineTime) {
-            $missing = "Missing";
+        if ($_SESSION['user']['role'] == 'teacher') {
+            if ($dateLineTime) {
+                $missing = "Missing";
+            }
         }
     }
+    $student_id = $_GET['student_id'];
+    $assigment_id = $_GET['id'];
+    $teacher_id = $_SESSION['user_created']['id'];
+    $userInfo = getStudentInfo($student_id, $assigment_id);
+    $getCommentPrivate = getPrivate($assigment_id, $student_id, $teacher_id);
 }
+
 ?>
 <main>
     <div class="container">
@@ -112,8 +119,7 @@ foreach ($assignments as $assigment) {
                             $studentTurned += 1
                     ?>
 
-
-                            <a href="/comment_private?id=<?= $_GET['id'] ?>&student_id=<?= $student['id'] ?>" class="form-check border p-2 d-flex align-items-center text-center">
+                            <a  class="form-check-1 border p-2 d-flex align-items-center text-center">
                                 <input type="hidden" name="student_id[]" value="<?= $student['id'] ?>">
                                 <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 60px;">
                                 <label class="form-check-label d-flex" for="flexCheckDefault" style="width: 100%;">
@@ -141,15 +147,12 @@ foreach ($assignments as $assigment) {
                         </label>
                     </a>
                     <?php
-                    
                     foreach ($studentTurnedIn as $student) :
+
                         if ($student['turned_in'] == false and $student['graded'] == false) :
-                           
                             $studentAssigned += 1
                     ?>
-                            <a href="/comment_private?id=<?= $_GET['id'] ?>&student_id=<?= $student['id'] ?>" class="form-check border p-2 d-flex align-items-center text-center">
-                                <input type="hidden" name="student_id[]" value="<?= $student['id'] ?>">
-                                <input type="hidden" name="no_file" value="No attachment">
+                            <a class="form-check border p-2 d-flex align-items-center text-center">
                                 <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 60px;">
                                 <label class="form-check-label d-flex" for="flexCheckDefault" style="width: 100%;">
                                     <div class="name text-dark" style="font-size: 17px; width: 75%; border-right: 1px solid lightgray;">
@@ -160,7 +163,7 @@ foreach ($assignments as $assigment) {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="score text-dark" style="width: 25%;">
+                                    <div class="score" style="width: 25%;">
                                         <span><input type="text" id="point" name="score[]" class="custom-input" maxlength="3" placeholder="......">/<?= $getScore['score'] ?></span>
                                         <span class="text-danger"><?= isset($missing) ? $missing : "" ?></span>
                                     </div>
@@ -177,10 +180,9 @@ foreach ($assignments as $assigment) {
                     </a>
                     <?php
                     foreach ($getstudentGraded  as $student) :
-                        $studentGraded += 1;
-                        
+                        $studentGraded += 1
                     ?>
-                        <a href="/comment_private?id=<?= $_GET['id'] ?>&student_id=<?= $student['user_id'] ?>&grade=<?= $student['score'] ?>" class="form-check border p-2 d-flex align-items-center text-center">
+                        <a  class="form-check border p-2 d-flex align-items-center text-center">
                             <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 60px;">
                             <label class="form-check-label d-flex" for="flexCheckDefault" style="width: 100%;">
                                 <div class="name text-dark" style="font-size: 17px; width: 75%; border-right: 1px solid lightgray;">
@@ -191,7 +193,7 @@ foreach ($assignments as $assigment) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="score text-dark" style="width: 25%;">
+                                <div class="score" style="width: 25%;">
                                     <span><input type="text" id="point" name="point" class="custom-input" maxlength="3" value="<?= $student['score'] ?>" placeholder="......">/<?= $getScore['score'] ?></span>
                                 </div>
 
@@ -205,132 +207,103 @@ foreach ($assignments as $assigment) {
 
 
             </div>
-            <!-- =====================Right bar ======================== -->
+    </form>
+    <!-- =====================Right bar ======================== -->
 
-            <div class="right" style="width: 60%; margin-left: 20px;">
-                <div class="title">
-                    <h5><?= $getScore['title'] ?></h5>
+    <div class="right" style="width: 60%; margin: 20px;">
+        <div class="ass-top">
+            <a class="text-dark d-flex justify-content-end" href="/student_work?id=<?= $_GET['id'] ?>"><span class="material-symbols-outlined">close</span></a>
+            <div class=" d-flex justify-content-between mt-3">
+                <div class="name">
+                    <p class="fs-5 text-dark"><?= strtoupper($userInfo['name']) ?></p>
+                    <p class="small">Grade (see history)</p>
                 </div>
-                <div class="turn d-flex gap-3">
-                    <div class="right px-3" style="height: 70px;">
-                        <p class="fs-2"><?= $studentGraded ?></p>
-                        <p style="margin-top: -20px;">Graded</p>
+                <?php if (!empty($_GET['grade'])) { ?>
+                    <div class="grade fs-5 d-flex justify-content-center align-items-canter">
+                        <p class="text-info fw-bold"><?= $_GET['grade'] ?>/</p>
+                        <p><?= $getScore['score'] ?></p>
                     </div>
-                    <div class="right px-3" style="border-left: 1px solid gray; height: 70px;">
-                        <p class="fs-2"><?= $studentTurned ?></p>
-                        <p style="margin-top: -20px;" id="btn-turnIn">Turned in</p>
-                    </div>
-                    <div class="right px-3" style="border-left: 1px solid gray; height: 70px;">
-                        <p class="fs-2"><?= $studentAssigned ?></p>
-                        <p style="margin-top: -20px;">Assigned</p>
-                    </div>
-                </div>
-                <div class="form-check form-switch mt-4 m-3">
-                    <input checked class="form-check-input fs-5" type="checkbox" role="switch" id="flexSwitchCheckChecked">
-                    <label class="form-check-label mt-1" style="font-size: 17px;" for="flexSwitchCheckChecked">Not accepting submissions</label> <i class="bi bi-info-circle mx-2"></i>
-                </div>
-                <div class="dropdown mt-3">
-                    <button class="btn btn-white dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        All
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item mt-2" href="#">Turned in</a></li>
-                        <li><a class="dropdown-item mt-3" href="#">Assigned</a></li>
-                        <li><a class="dropdown-item mt-3" href="#">Graded</a></li>
-
-                    </ul>
-                </div>
-                <?php if (count($studentTurnedIn) > 0) { ?>
-
-                    <div class="card gap-3 " style=" height: auto; width: 100%; display: flex; flex-wrap: wrap; flex-direction: row;">
-                        <?php foreach ($getstudentTurnIn as $student) {
-                            if ($student['status'] == true and $student['graded'] == false) :
-
-                        ?>
-                                <div class="item p-2 bg-light shadow-sm" style=" width: 23%; ">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/profiles/<?= $student['image'] ?>" alt="avatar">
-                                        <div class="content" style=" height: auto; width: 100%; display: flex; flex-wrap: wrap; flex-direction: row;">
-                                            <p class="mt-3 text-dark" style="width: 98%;"><?= strtoupper($student['name']) ?></p>
-                                        </div>
-                                    </div>
-                                    <span class="d-inline-block d-flex justify-content-center align-items-center">
-                                        <a class="d-flex shadow" style="margin-bottom: 20px;" href="assets/images/upload/<?= $student['document'] ?>">
-                                            <div class="bg p-2 " style="border-radius: 10px 0 0 10px;">
-                                                <img src="/assets/images/bg/06.png" alt="">
-                                            </div>
-                                        </a>
-                                    </span>
-                                    <p class="text-success" style="margin-bottom: -8px; padding-bottom: 10px;">Turned in</p>
-                                </div>
-                        <?php endif;
-                        } ?>
-
-                        <?php foreach ($studentTurnedIn as $student) {
-                            if ($student['turned_in'] == false and $student['graded'] == false) :
-                        ?>
-                                <div class="item p-2 bg-light shadow-sm" style=" width: 23%; ">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/profiles/<?= $student['image'] ?>" alt="avatar">
-                                        <div class="content" style=" height: auto; width: 100%; display: flex; flex-wrap: wrap; flex-direction: row;">
-                                            <p class="mt-3 text-dark" style="width: 98%;"><?= strtoupper($student['name']) ?></p>
-                                        </div>
-                                    </div>
-                                    <span class="d-inline-block d-flex justify-content-center align-items-center">
-                                        <a class="d-flex shadow" style="margin-bottom: 20px;">
-                                            <div class="bg p-2 " style="border-radius: 10px 0 0 10px;">
-                                                <img src="/assets/images/bg/09.png" alt="">
-                                            </div>
-                                        </a>
-                                    </span>
-                                    <p class="text-primary" style="margin-bottom: -8px; padding-bottom: 10px;"><span class="text-danger"><?= isset($missing) ? $missing : "Assigned" ?></span></p>
-                                </div>
-                        <?php endif;
-                        } ?>
-                        <?php foreach ($getstudentTurnIn as $student) {
-                            if ($student['graded'] == true) :
-
-                        ?>
-                                <div class="item p-2 bg-light shadow-sm" style=" width: 23%; ">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <img class="avatar-xxl rounded-circle border border-white border-1 shadow" style="width: 30px; height:30px; object-fit:cover; border-radius: 1%; margin-top: -1px " src="assets/images/profiles/<?= $student['image'] ?>" alt="avatar">
-                                        <div class="content" style=" height: auto; width: 100%; display: flex; flex-wrap: wrap; flex-direction: row;">
-                                            <p class="mt-3 text-dark" style="width: 98%;"><?= strtoupper($student['name']) ?></p>
-                                        </div>
-                                    </div>
-                                    <span class="d-inline-block d-flex justify-content-center align-items-center">
-                                        <a class="d-flex shadow" style="margin-bottom: 20px;" href="assets/images/upload/<?= $student['document'] ?>">
-                                            <div class="bg p-2 " style="border-radius: 10px 0 0 10px;">
-                                                <img src="/assets/images/bg/06.png" alt="">
-                                            </div>
-                                        </a>
-                                    </span>
-                                    <p class="text-dark" style="margin-bottom: -8px; padding-bottom: 10px;">Graded</p>
-                                </div>
-                        <?php endif;
-                        } ?>
-                    </div>
-
                 <?php } else { ?>
+                    <div class="grade">
+                        <p class="fs-5">No grade</p>
+                        <p class="small">Previously:0/100 - Not returned</p>
 
-                    <div class="bg-image mt-4 d-flex flex-column gap-3 justify-content-center align-items-center ">
-                        <img src="assets/images/bg/08.png" alt="">
-                        <div class="para text-center">
-                            <h6>This hasn't been assigned to any </h6>
-                            <h6>students</h6>
-                            <div class="mt-3 text-center d-flex justify-content-center asign-items-center">
-                                <a href="#" class="d-flex">
-                                    <i class="bi bi-person-plus-fill mx-3 fs-5"></i>
-                                    <p class="mt-1">Invite student</p>
-                                </a>
-                            </div>
-
-                        </div>
                     </div>
                 <?php } ?>
+
+
+            </div>
+            <span class="d-inline-block shadow-sm" style="height: auto; width: 300px; margin-left: 30px;">
+                <a class="d-flex border" style="border-radius: 10px; margin-left: -10px;" href="assets/images/upload/<?= $userInfo['document'] ?>">
+                    <div class="bg p-2 border" style="border-radius: 10px 0 0 10px;">
+                        <img src="/assets/images/bg/06.png" alt="">
+                    </div>
+                    <div class="title mx-3" style="margin-top: 30px;">
+                        <h5 class="d-inline-block text-truncate" style="max-width: 150px;"><?= $userInfo['document'] ?></h5>
+                        <p>PDF</p>
+                    </div>
+
+                </a>
+            </span>
+
+        </div>
+        <hr>
+
+        <div class="mb-0  ">
+            <p><i class="fas fa-user-graduate mt-2 "></i>Private comments</p>
+            <div class="">
+                <nav class=" d-flex flex-column">
+                    <?php foreach ($getCommentPrivate as $comment) : ?>
+                        <div class="d-flex justify-content-between" style="margin-right: 70px;">
+
+                            <div class="d-flex">
+                                <div class="avatar avatar-md mt-n1 ">
+                                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $comment['image'] ?>" alt="">
+                                </div>
+
+                                <div class="ms-2 ">
+                                    <div class="d-flex gap-3">
+                                        <h6><?= strtoupper($comment['name']) ?></h6>
+                                        <small><?= $comment['time'] ?></small>
+                                    </div>
+                                    <p><?= $comment['comment'] ?></p>
+                                </div>
+
+                            </div>
+                            <div class="dropdown d-flex ms-6">
+                                <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
+                                <ul class="dropdown-menu" aria-labelledby="accounntMenu">
+                                    <li class="dropdown-submenu dropend">
+                                        <a class="dropdown-item " href="controllers/comment/delete_comment.controller.php" onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
+                                        <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php">Edit</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                    <form action="controllers/comment/comments_private.controller.php" method="post">
+                        <input type="hidden" name="student_id" value="<?= $userInfo['id'] ?>">
+                        <div class="navbar-toggler d-flex" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <input type="hidden" name="class_id" value="<?= $_GET['id'] ?>">
+                            <input type="text" style="width: 80%; height:50px; border-radius: 50px;" class="form-control bg-white col-6" name="class_name" id="classname" placeholder="Add private comment...">
+                            <button type="submit" class="btn text-primary"><span class="material-symbols-outlined fs-3">send</span></button>
+                        </div>
+                    </form>
+                </nav>
+                <div class="collapse" id="private">
+                    <div class=" p-3">
+                        <i class="fa fa-bold me-3" aria-hidden="true"></i>
+                        <i class="fa fa-italic me-3" aria-hidden="true"></i>
+                        <i class="fa fa-underline me-3" aria-hidden="true"></i>
+                        <i class="fa fa-align-justify me-3" aria-hidden="true"></i>
+                        <i class="fa fa-text-width me-3" aria-hidden="true"></i>
+                    </div>
+                </div>
             </div>
         </div>
-    </form>
+    </div>
+    </div>
+
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

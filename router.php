@@ -19,10 +19,7 @@ $routes = [
     '/missing' => 'controllers/todos/todo_missing.controller.php',
     '/done' => 'controllers/todos/todo_done.controller.php',
     
-    // join class
-    // '/join-class' => 'controllers/classes/join_class.controller.php',
-
-
+  
     // assignment
     '/stream' => 'controllers/assignment/stream/stream.contorller.php',
     '/instruction' => 'controllers/assignment/stream/instruction/instruction.controller.php',
@@ -44,6 +41,9 @@ $routes = [
     //teacher 
     '/teacher_join' => 'controllers/teachers/teacher_join_class/teacher.controller.php',
     '/submit' => "controllers/assignment/assignment_student/submit-controller.php",
+
+    // comment private
+    '/comment_private' => 'views/comments/teacher_comment_private.view.php',
 
 ];
 
