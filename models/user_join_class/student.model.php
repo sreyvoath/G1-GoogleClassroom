@@ -148,7 +148,7 @@ function checkEmailUserExits(int $user_id, int $class_id): array
     }
 }
 
-//<======== delete class=======>
+//<======== delete student=======>
 function deleteStudent(int $user_id, int $class_id) : bool
 {
     global $connection;
@@ -156,6 +156,26 @@ function deleteStudent(int $user_id, int $class_id) : bool
     $statement->execute([
         ':user_id' => $user_id,
         ':class_id' => $class_id
+    ]);
+    return $statement->rowCount() > 0;
+}
+//<======== delete student submit=======>
+function deleteStudentSubmit(int $user_id) : bool
+{
+    global $connection;
+    $statement = $connection->prepare("delete from student_submit where user_id = :user_id");
+    $statement->execute([
+        ':user_id' => $user_id,
+    ]);
+    return $statement->rowCount() > 0;
+}
+//<======== delete student submit=======>
+function deleteStudentScore(int $user_id) : bool
+{
+    global $connection;
+    $statement = $connection->prepare("delete from assignment_score where user_id = :user_id");
+    $statement->execute([
+        ':user_id' => $user_id,
     ]);
     return $statement->rowCount() > 0;
 }

@@ -1,3 +1,4 @@
+
 <main>
     <div class="container">
         <div class="row mb-5 align-items-center ">
@@ -46,6 +47,7 @@
                 <?php
                 require "database/database.php";
                 require "models/assignments/assignment.model.php";
+                require "models/scores/score_assignment.model.php";
                 $id = $_SESSION['ass_id'];
                 date_default_timezone_set('Asia/Phnom_Penh');
                 $assignments = getAssigns($id);
@@ -66,6 +68,7 @@
                     <?php
                 } else {
                     foreach ($assignments as $assigment) :
+                        
                         if ($assigment['id']) {
                             $endDateTime = date($assigment['end_date'] . ' ' . $assigment['end_time']);
                             $currentDateTime = date('Y-m-d H:i:s');
@@ -125,18 +128,7 @@
                                             </a>
                                         </span>
                                     </div>
-                                    <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
-                                        <div class="turn d-flex gap-3">
-                                            <div class="right px-3" style="border-left: 1px solid gray; height: 70px;">
-                                                <p class="fs-2">0</p>
-                                                <p style="margin-top: -20px;">Turned in</p>
-                                            </div>
-                                            <div class="right px-3" style="border-left: 1px solid gray; height: 70px;">
-                                                <p class="fs-2">0</p>
-                                                <p style="margin-top: -20px;">Assigned</p>
-                                            </div>
-                                        </div>
-                                    <?php endif; ?>
+                                   
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between shadow-sm mb-3 bg-body rounded px-4 py-4  border-primary">
                                     <div class="align-items-center">

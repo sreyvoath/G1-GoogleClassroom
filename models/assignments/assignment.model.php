@@ -92,6 +92,30 @@ function deleteAssign(int $id): bool
     $statement->execute([':id' => $id]);
     return $statement->rowCount() > 0;
 }
+// ========Delete assignment============
+function deleteAssignSubmit(int $id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("delete from student_submit where assignment_id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->rowCount() > 0;
+}
+// ========Delete assignment============
+function deleteAssignScore(int $id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("delete from assignment_score where assignment_id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->rowCount() > 0;
+}
+// ========Delete assignment============
+function deleteAssignComment(int $id): bool
+{
+    global $connection;
+    $statement = $connection->prepare("delete from comments where assignment_id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->rowCount() > 0;
+}
 
 // ========Delete assignment============
 function deleteAssignJoin(int $id): bool

@@ -18,7 +18,7 @@ function getTeachersJoin(int $class_id )
 {
 
     global $connection;
-    $statement = $connection->prepare("select u.id, u.name, u.email, u.image, c.id, uj.user_id from users u 
+    $statement = $connection->prepare("select u.id as user_id, u.name, u.email, u.image, c.id, uj.user_id from users u 
     inner join users_join_class uj on uj.user_id= u.id
     inner join classes c on uj.class_id = c.id
     where u.role = :role and uj.class_id = :class_id

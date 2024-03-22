@@ -1,17 +1,16 @@
-
-
 .list-group-item {
     background-color: rgb(0, 90, 255);
     color: #fff;
-    border: none;
+    /* border: none; */
     margin: 3px 0px;
     text-align: center;
-    box-shadow: 0 4px 4px rgb(0 0 0/25%);
+    box-shadow: 0 4px 4px rgba(208, 88, 88, 0.25);
 }
 
 .list-group-item.active {
     background-color: #fff !important;
     color: rgb(0, 90, 255) !important;
+    
 }
 
 .scrollspy-example {
@@ -19,68 +18,18 @@
     width: 500px;
     height: 500px;
     overflow-y: scroll;
+   
 
 }
 
 .scrollspy-example::-webkit-scrollbar {
     width: 10px;
+    
 }
 
 .mycontainer {
-    height: 70vh;
+    /* height: 70vh; */
     display: flex;
     justify-items: center;
     align-items: center;
-    /* background: teal; */
 }
-
-.myrow {
-    width: 100%;
-    height: 90vh;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    justify-items: center;
-    align-items: center;
-}
-
-.item {
-    margin-right: 3px;
-    border-style: groove;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: space-between;
-}
-
-.item .d-flexs {
-    width: 25%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: space-between;
-
-}
-
-.item .d-flexse {
-    width: 20%;
-    margin-right: 10px;
-    display: flex;
-    text-align: center;
-    justify-content: space-between;
-}
-
-#item_tow {
-    width: 30%;
-    text-align: center;
-}
-#containerse_two{
-    display: grid;
-    grid-template-columns: auto ;
-    margin-top: 5px;
-    width: 100%;
-    height: 60vh;
-    /* background: teal; */
-}
-
-
-

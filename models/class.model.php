@@ -67,3 +67,12 @@ function deleteClass(int $id) : bool
     $statement->execute([':id' => $id]);
     return $statement->rowCount() > 0;
 }
+//<======== delete class assignment=======>
+function deleteClassAssign(int $id) : bool
+{
+    global $connection;
+    $statement = $connection->prepare("delete from assignments where class_id = :id");
+    $statement->execute([':id' => $id]);
+    return $statement->rowCount() > 0;
+}
+

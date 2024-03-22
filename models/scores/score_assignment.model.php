@@ -97,6 +97,25 @@ function getStudentTurnedIn(int $assignment_id, int $class_id)
     ]);
     return $statement->fetchAll();
 }
+function studentTurnIn(int $assignment_id, int $class_id)
+{
+    global $connection;
+    $statement = $connection->prepare("select u.*, uj.turned_in, uj.graded, s.document from users_join_class uj
+    inner join classes c on c.id = uj.class_id
+    inner join users u on u.id = uj.user_id
+    inner join assignments a on a.class_id = c.id
+    inner join student_submit s on s.assignment_id = a.id
+    where u.role = :role and a.id = :assign_id and uj.class_id = :class_id
+    group by u.id
+    ");
+
+    $statement->execute([
+        ":role" => "student",
+        ":assign_id" => $assignment_id,
+        ":class_id" => $class_id,
+    ]);
+    return $statement->fetch();
+}
 
 function getUserById($id):array {
     global $connection;
