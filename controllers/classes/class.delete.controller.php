@@ -12,6 +12,8 @@ if (isset($id)) {
     deleteClassJoin($id);
     deleteAssignJoin($id);
     deleteUserInvited($id);
+    
+    deleteClassAssign($id);
     deleteClass($id);
     header('Location: /home');
 }

@@ -8,5 +8,7 @@ $user_id = $_GET['id'] ? $_GET['id'] : null;
 
 if (isset($user_id) and isset($class_id)) {
     deleteStudent($user_id, $class_id);
+    deleteStudentSubmit($user_id);
+    deleteStudentScore($user_id);
     header("Location: /people?id=$class_id");
 }
