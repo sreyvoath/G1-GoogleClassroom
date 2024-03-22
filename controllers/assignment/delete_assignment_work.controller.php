@@ -7,6 +7,7 @@ $class_id = $_SESSION['ass_id'];
 $id = $_GET['id'] ? $_GET['id'] : null;
 if (isset($id)) {
     deleteAssign($id);
-    header("Location: /instruction?id=$id");
+    
+    header("Location: /stream?id=$class_id");
 }
 ?>
