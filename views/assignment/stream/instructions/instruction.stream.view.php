@@ -65,9 +65,6 @@ if (isset($_GET['id'])) {
                                         <li class="dropdown-submenu dropend">
                                             <a class="dropdown-item " href="controllers/assignment/delete_assignment_work.controller.php?id=<?= $assignment['id'] ?> " onclick="if (!confirm('Are you sure to Delete it?')) { return false; }">Delete</a>
                                         </li>
-                                        <li class="dropdown-submenu dropend">
-                                            <a class="dropdown-item " href="# ">Copy Link</a>
-                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -113,7 +110,7 @@ if (isset($_GET['id'])) {
                         <div class="comment ms-3 mt-3 mb-3">
                             <button type="button" class="btn btn-light btn-sm d-flex justify-content-center align-items-center">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">group</span>
-                                <p class="m-0"><?= count($allCtms) ?> classcomment</p>
+                                <p class="m-0"><?= count($allCtms) ?> Class Comment</p>
                             </button>
                         </div>
 
@@ -128,7 +125,7 @@ if (isset($_GET['id'])) {
                                         <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $value['image'] ?>" alt="">
                                     </div>
                                     <div class="ms-2">
-                                        <h6><?= $value['name'] ?><small> 20:20 am</small></h6>
+                                        <h6><?= $value['name'] ?><small> <?= $value['time'] ?></small></h6>
                                         <p><?= $value['comment'] ?></p>
                                     </div>
                                     </div>

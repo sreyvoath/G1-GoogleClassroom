@@ -117,7 +117,10 @@ unset($_SESSION['err_owner']);
                                     </tr>
                                     <?php if (isset($teachersJoin)) {
 
-                                        foreach ($teachersJoin as $teacher) { ?>
+                                        foreach ($teachersJoin as $teacher) {
+                                            
+                                    ?>
+                                    
 
                                             <tr>
                                                 <!-- Course item -->
@@ -138,13 +141,9 @@ unset($_SESSION['err_owner']);
                                                         <!-- Buttons -->
                                                         <?php if ($_SESSION['user']['role'] == 'teacher') {  ?>
                                                             <div class="dropdown">
-                                                                
-                                                                <a href="#" class="btn btn-success-soft btn-round me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="<?= $student['email'] ?>"><i class="far fa-envelope"></i></a>
-                                                                <a href="controllers/students/delete_student.controller.php?id=<?= $student['id'] ?>" class="btn btn-danger-soft btn-round mb-0" onclick="if (!confirm('Are you sure to Delete it?')) { return false; }" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove"><i class="fas fa-trash"></i></a>
 
-                                                                <!-- <a href="#" class="btn btn-success-soft btn-round me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="<?= $teacher['email'] ?>"><i class="far fa-envelope"></i></a> -->
-                                                                <!-- <a href="controllers/students/delete_student.controller.php?id=<?= $teacher['user_id'] ?>" class="btn btn-danger-soft btn-round mb-0" onclick="if (!confirm('Are you sure to Delete it?')) { return false; }" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove"><i class="fas fa-trash"></i></a> -->
-
+                                                                <a href="#" class="btn btn-success-soft btn-round me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="<?= $teacher['email'] ?>"><i class="far fa-envelope"></i></a>
+                                                                <a href="controllers/students/delete_student.controller.php?id=<?= $teacher['user_id'] ?>" class="btn btn-danger-soft btn-round mb-0" onclick="if (!confirm('Are you sure to Delete teacher?')) { return false; }" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove"><i class="fas fa-trash"></i></a>
 
                                                             </div>
                                                         <?php } else { ?>
@@ -256,7 +255,7 @@ unset($_SESSION['err_owner']);
                                         <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $user['image'] ?>" alt="">
                                     </div>
                                     <div class="nameEmail">
-                                        <h6 class="ms-2 mt-3"><?=($user['name']) ?></h6>
+                                        <h6 class="ms-2 mt-3"><?= ($user['name']) ?></h6>
                                         <p class="small ms-2"><?= $user['email'] ?></p>
                                     </div>
                                 </div>
@@ -265,7 +264,7 @@ unset($_SESSION['err_owner']);
                                         <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
                                     </div>
                                     <div class="nameEmail">
-                                        <h6 class="ms-2 mt-3"><?=($user['name']) ?></h6>
+                                        <h6 class="ms-2 mt-3"><?= ($user['name']) ?></h6>
                                         <p class="small ms-2"><?= $user['email'] ?></p>
                                     </div>
                                 </div>
@@ -274,7 +273,7 @@ unset($_SESSION['err_owner']);
                                         <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
                                     </div>
                                     <div class="nameEmail">
-                                        <h6 class="ms-2 mt-3"><?=($user['name']) ?></h6>
+                                        <h6 class="ms-2 mt-3"><?= ($user['name']) ?></h6>
                                         <p class="small ms-2"><?= $user['email'] ?></p>
                                     </div>
                                 </div>
@@ -283,7 +282,7 @@ unset($_SESSION['err_owner']);
                                         <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
                                     </div>
                                     <div class="nameEmail">
-                                        <h6 class="ms-2 mt-3"><?=($user['name']) ?></h6>
+                                        <h6 class="ms-2 mt-3"><?= ($user['name']) ?></h6>
                                         <p class="small ms-2"><?= $user['email'] ?></p>
                                     </div>
                                 </div>
@@ -292,7 +291,7 @@ unset($_SESSION['err_owner']);
                                         <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
                                     </div>
                                     <div class="nameEmail">
-                                        <h6 class="ms-2 mt-3"><?=($user['name']) ?></h6>
+                                        <h6 class="ms-2 mt-3"><?= ($user['name']) ?></h6>
                                         <p class="small ms-2"><?= $user['email'] ?></p>
                                     </div>
                                 </div>
@@ -327,13 +326,13 @@ unset($_SESSION['err_owner']);
                         <label for="exampleFormControlTextarea1" class="form-label"></label>
                         <div class="border  scrollspy-example" style="height: 150px; overflow-y: auto;" data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" tabindex="0">
                             <ul>
-                                
-                            <div class="email d-flex">
+
+                                <div class="email d-flex">
                                     <div class="avatar avatar-md  mt-2">
                                         <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $_SESSION['user']['image'] ?>" alt="">
                                     </div>
                                     <div class="nameEmail">
-                                        <h6 class="ms-2 mt-3"><?=($_SESSION['user']['name']) ?></h6>
+                                        <h6 class="ms-2 mt-3"><?= ($_SESSION['user']['name']) ?></h6>
                                         <p class="small ms-2"><?= $_SESSION['user']['email'] ?></p>
                                     </div>
                                 </div>
@@ -362,7 +361,7 @@ unset($_SESSION['err_owner']);
                 </form>
             </div>
             <div class="modal-footer">
-                <a href="/people?id=<?= $_SESSION['class_id']?>" class="me-3 btn border-secondary btn-light mb-0" type="button">Cancel</a>
+                <a href="/people?id=<?= $_SESSION['class_id'] ?>" class="me-3 btn border-secondary btn-light mb-0" type="button">Cancel</a>
                 <button type="submit" class="btn btn-primary" form="myForm2">Invite</button>
             </div>
         </div>
