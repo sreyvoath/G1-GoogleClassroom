@@ -14,6 +14,7 @@ if (isset($_SESSION['class_id'])) {
     $studentTurned = 0;
     $studentAssigned = 0;
     $studentGraded = 0;
+
 }
 $id = $_SESSION['ass_id'];
 date_default_timezone_set('Asia/Phnom_Penh');
