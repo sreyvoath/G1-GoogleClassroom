@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 move_uploaded_file($_FILES["image"]["tmp_name"], $nameInDirectory);
                 $user = accountExists($email);
                 if (count($user) == 0) {
-                    createAccount($name, $email, $role, $passwordEncript, $nameInDB);
+                    createAccount($name, $email, $role,$code, $passwordEncript, $nameInDB);
                     $newUser = getUserEmail($email);
                     $_SESSION['user'] = ['name'=>$name, 'email'=>$email, 'role'=>$role, 'image'=>$nameInDB,'id'=>$newUser['id'], 'role'=>$newUser['role']];
                     header('Location: /user-signin');
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     if (!empty($name) && (!empty($email)) && (!empty($password)) && !empty($image)) {
-        createAccount($name, $email, $role, $passwordEncript, $image);
+        createAccount($name, $email, $role, $code,  $passwordEncript, $image);
         header("Location:/home");
     } else {
         header("Location:/user-signup");
@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
    
     if (empty($error['password'])) {
-        createAccount($name, $email, $role, $passwordEncript, $image);
+        createAccount($name, $email, $role, $code, $passwordEncript, $image);
         header("Location:/home");
         exit;
     } else {
