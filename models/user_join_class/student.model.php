@@ -181,17 +181,16 @@ function deleteStudentScore(int $user_id) : bool
 }
 
 // ========Get students information============
-function getStudentInfo(int $student_id, int $id):array
+function getStudentInfo(int $student_id, int $id)
 {
 
     global $connection;
-    $statement = $connection->prepare("select u.id, u.name, u.email, u.image, c.id as class_id , c.title, uj.join_date, ss.score, sts.document from users u 
+    $statement = $connection->prepare("select u.id, u.name, u.email, u.image, c.id as class_id , c.title, uj.join_date, sts.document from users u 
     inner join users_join_class uj on uj.user_id= u.id
     inner join classes c on uj.class_id = c.id
     inner join assignments a on a.class_id = c.id
     inner join student_submit sts on sts.user_id = u.id
-    inner join assignment_score ss on u.id = ss.user_id
-    where u.role = :role and u.id =:student_id and a.id = :ass_id
+    where u.role = :role and uj.user_id =:student_id and a.id = :ass_id
     order by uj.id desc
     ");
 
@@ -200,5 +199,9 @@ function getStudentInfo(int $student_id, int $id):array
         ":ass_id"=> $id,
         ":student_id" => $student_id
     ]);
-    return $statement->fetch();
+    if ($statement->rowCount() > 0) {
+        return $statement->fetch();
+    } else {
+        return [];
+    }
 }

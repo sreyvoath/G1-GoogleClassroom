@@ -253,7 +253,8 @@ if (isset($_GET['id'])) {
             <p><i class="fas fa-user-graduate mt-2 "></i>Private comments</p>
             <div class="">
                 <nav class=" d-flex flex-column">
-                    <?php foreach ($getCommentPrivate as $comment) : ?>
+                    <?php foreach ($getCommentPrivate as $comment) :?>
+                       
                         <div class="d-flex justify-content-between" style="margin-right: 70px;">
 
                             <div class="d-flex">
@@ -274,7 +275,7 @@ if (isset($_GET['id'])) {
                                 <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
                                 <ul class="dropdown-menu" aria-labelledby="accounntMenu">
                                     <li class="dropdown-submenu dropend">
-                                        <a class="dropdown-item " href="controllers/comment/delete_comment.controller.php" onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
+                                        <a class="dropdown-item " href="controllers/comment/delete_comments_teacher.controller.php?id=<?=$comment['comment_id']?>&student_id=<?= $student['user_id'] ?>" onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
                                         <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php">Edit</a>
                                     </li>
                                 </ul>

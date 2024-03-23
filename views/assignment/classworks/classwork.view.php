@@ -122,7 +122,7 @@
                                                 </div>
                                                 <div class="title mx-3" style="margin-top: 30px;">
                                                     <h5><?= $assigment['title'] ?></h5>
-                                                    <p><?= $assigment['document'] ?></p>
+                                                    <p class="d-inline-block text-truncate" style="max-width: 170px;"><?= $assigment['document'] ?></p>
                                                 </div>
 
                                             </a>

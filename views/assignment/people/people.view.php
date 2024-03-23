@@ -299,7 +299,7 @@ unset($_SESSION['err_owner']);
                                             <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $user['image'] ?>" alt="">
                                         </div>
                                         <div class="nameEmail">
-                                            <h6 class="ms-2 mt-3"><?= ($user['name']) ?></h6>
+                                            <h6 class="ms-2 mt-3"><?= strtoupper($user['name']) ?></h6>
                                             <p class="small ms-2"><?= $user['email'] ?></p>
                                         </div>
                                 </a>
