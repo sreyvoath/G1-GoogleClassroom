@@ -228,9 +228,7 @@ if (isset($_GET['id'])) {
                                                             </li>
 
                                                         <?php endif; ?>
-                                                        <li class="dropdown-submenu dropend">
-                                                            <a class="dropdown-item " href="# ">Copy Link</a>
-                                                        </li>
+                                                        
                                                         </ul>
                                                     </div>
                                                 </div>

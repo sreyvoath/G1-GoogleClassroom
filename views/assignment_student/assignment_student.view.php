@@ -120,7 +120,6 @@ if (isset($_GET['id'])) {
                                         <ul class="dropdown-menu" aria-labelledby="accounntMenu">
                                             <li class="dropdown-submenu dropend">
                                                 <a class="dropdown-item " href="controllers/comment/delete_comment_student.controller.php?id=<?= $value['comment_id'] ?> " onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
-                                                <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $value['id'] ?>">Edit</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -306,7 +305,6 @@ if (isset($_GET['id'])) {
                                         <ul class="dropdown-menu" aria-labelledby="accounntMenu">
                                             <li class="dropdown-submenu dropend">
                                                 <a class="dropdown-item " href="controllers/comment/delete_comment_student.controller.php?id=<?= $comment['comment_id'] ?> " onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
-                                                <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php?id=<?= $value['id'] ?>">Edit</a>
                                             </li>
                                         </ul>
                                     </div>
