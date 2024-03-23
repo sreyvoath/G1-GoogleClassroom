@@ -1,14 +1,15 @@
 <?php
 //<======== create user account =======>
-function createAccount(string $name, string $email, string $role, string $password, string $image) : bool
+function createAccount(string $name, string $email, string $role,int $code, string $password, string $image) : bool
 {
     global $connection;
-    $statement = $connection->prepare("insert into users (name,email, password, role, image) values (:name, :email, :password, :role, :image)");
+    $statement = $connection->prepare("insert into users (name,email,pass_verify, password, role, image) values (:name, :email,:code, :password, :role, :image)");
     $statement->execute([
         ':name' => $name,
         ':email' => $email,
         ':password' => $password,
         ':role' => $role,
+        ':code' => $code,
         ':image' => $image
     ]);
     return $statement->rowCount() > 0;
