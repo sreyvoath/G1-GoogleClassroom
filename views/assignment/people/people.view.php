@@ -243,7 +243,7 @@ unset($_SESSION['err_owner']);
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="myForm1" action="/./controllers/invite/teacher_invite.controller.php" method="post" enctype="multipart/form-data g-3">
+                <form id="myForm1" action="controllers/invite/teacher_invite.controller.php" method="post" enctype="multipart/form-data g-3">
                     <div class="mb-3">
                         <input type="email" class="form-control" id="email" placeholder="Type a name or email" name="email">
                     </div>
@@ -269,7 +269,7 @@ unset($_SESSION['err_owner']);
             </div>
             <div class="modal-footer">
                 <a href="/people?id=<?= $_SESSION['class_id'] ?>" class="me-3 btn border-secondary btn-light mb-0" type="button">Cancel</a>
-                <button type="submit" class="btn btn-primary" form="myForm1">invite</button>
+                <button type="submit" name="send" class="btn btn-primary" form="myForm1">invite</button>
             </div>
         </div>
     </div>
@@ -285,7 +285,7 @@ unset($_SESSION['err_owner']);
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="myForm2" action="/./controllers/invite/student_invite.controller.php" method="post">
+                <form id="myForm2" action="controllers/invite/student_invite.controller.php" method="post" enctype="multipart/form-data g-3">
                     <div class="mb-3">
                         <input type="email" class="form-control" id="email" placeholder="Type a name or email" name="email">
                     </div>
@@ -313,7 +313,7 @@ unset($_SESSION['err_owner']);
             </div>
             <div class="modal-footer">
                 <a href="/people?id=<?= $_SESSION['class_id'] ?>" class="me-3 btn border-secondary btn-light mb-0" type="button">Cancel</a>
-                <button type="submit" class="btn btn-primary" form="myForm2">Invite</button>
+                <button type="submit" name="send" class="btn btn-primary" form="myForm2">Invite</button>
             </div>
         </div>
     </div>
