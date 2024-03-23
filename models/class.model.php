@@ -44,7 +44,7 @@ function getClassCode(string $code)
     return $statement->fetch();
 }
 
-//<======== update class=======>
+//<======== update new class=======>
 function updateClass(string $title, string $section, string $subject, int $id, string $image) : bool
 {
     global $connection;
@@ -55,6 +55,19 @@ function updateClass(string $title, string $section, string $subject, int $id, s
         ':subject' => $subject,
         ':id' => $id,
         ':image' => $image
+    ]);
+    return $statement->rowCount() > 0;
+}
+//<======== update exsit class=======>
+function updateExistClass(string $title, string $section, string $subject, int $id) : bool
+{
+    global $connection;
+    $statement = $connection->prepare("update classes set title = :title, section = :section, subject = :subject where id = :id");
+    $statement->execute([
+        ':title' => $title,
+        ':section' => $section,
+        ':subject' => $subject,
+        ':id' => $id
     ]);
     return $statement->rowCount() > 0;
 }
