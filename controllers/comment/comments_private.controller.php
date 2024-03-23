@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $assigmentId = $_POST['class_id'];
         $currentDateTime = date('h:i A');
         $teacherId = $_SESSION['user_created']['id'];
-        commentPrivate($assigmentId, $userId, $classComment,$currentDateTime, $teacherId);
+        commentPrivate($assigmentId, $_SESSION['user']['id'], $classComment,$currentDateTime, $teacherId);
     }
 }
 header('Location: /comment_private?id=' . $_POST['class_id'] . '&student_id=' . $userId);
