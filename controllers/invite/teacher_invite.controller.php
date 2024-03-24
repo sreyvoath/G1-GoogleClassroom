@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['send'])) {
         $mail->setFrom("emcha7231@gmail.com", strtoupper($_SESSION['user_created']['name'])); // Update with your website name
         $mail->addAddress($teacherEmail); // Send email to the provided email address
         $mail->isHTML(true); // Set email format to HTML
-        $mail->Subject = 'Teacher invite'; // Subject of the email
+        $mail->Subject = '[E-CLASSROOM] ' . strtoupper($_SESSION['user_created']['name']).' Invited you to join class'; // Subject of the email
         $mail->Body = 'Invited you to join class'; // Body of the email
 
         // Send email

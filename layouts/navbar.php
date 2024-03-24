@@ -94,9 +94,11 @@ foreach ($studentJoin as $student) {
 						<a class="nav-link dropdown-toggle <?= urlIs("/teacher") ? "active" : "" ?> " href="#" id="accounntMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Enrolled</a>
 						<ul class="dropdown-menu" aria-labelledby="accounntMenu">
 							<!-- Dropdown submenu -->
+							<?php if ($_SESSION['user']['role'] == 'student') : ?>
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item " href="/todo"><i class="far fa-address-card fa-fw me-1"></i>To do</a>
 							</li>
+							<?php endif; ?>
 							<!-- Dropdown submenu -->
 							<li class="dropdown-submenu dropend">
 								<a class="dropdown-item dropdown-toggle" href="#"><i class="bi bi-easel2 fa-fw me-1"></i>All Classes</a>

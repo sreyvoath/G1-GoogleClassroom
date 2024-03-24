@@ -52,11 +52,12 @@ foreach ($assignments as $assigment) {
     <hr>
     <!-- Search bar -->
     <script src="../../js/main.js"></script>
-    <form action="controllers/score/return_score.controller.php" method="post">
+    <form action="controllers/score/return_score.controller.php" method="post" enctype="multipart/form-data g-3">
         <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
+        
         <div class=" d-flex justify-content-startbtn-toolbar align-items-center" role="toolbar" aria-label="Toolbar with button groups" style="margin-left: 70px;">
             <div class="btn-group me-4" role="group" aria-label="First group">
-                <button type="submit" class="btn btn-primary" id="return" onclick="if (!confirm('You are returning score for student?')) { return false; }"> Return </button>
+                <button type="submit" name="send" class="btn btn-primary" id="return" onclick="if (!confirm('You are returning score for student?')) { return false; }"> Return </button>
             </div>
             <div class="btn-group me-4" role="group" aria-label="First group">
                 <a href="#"><button type="button" class="btn"><i class="bi bi-envelope fs-5"></i></button></a>
@@ -113,13 +114,12 @@ foreach ($assignments as $assigment) {
                                 </a>
                                 <?php
                                 foreach ($studentTurnedIn as $student) {
-
                                     if ($student['turned_in'] == true and $student['graded'] == false) :
                                         $studentTurned += 1
                                 ?>
 
                                         <a href="/comment_private?id=<?= $_GET['id'] ?>&student_id=<?= $student['id'] ?>" class="form-check border p-2 d-flex align-items-center text-center">
-                                            <input type="hidden" name="student_id[]" value="<?= $student['id'] ?>">
+                                            <input type="hidden" name="student_id[]" value="<?= $student['id']?>">
                                             <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 60px;">
                                             <label class="form-check-label d-flex" for="flexCheckDefault" style="width: 100%;">
                                                 <div class="name text-dark" style="font-size: 17px; width: 75%; border-right: 1px solid lightgray;">
@@ -148,6 +148,7 @@ foreach ($assignments as $assigment) {
                                 <?php
 
                                 foreach ($studentTurnedIn as $student) :
+                                    
                                     if ($student['turned_in'] == false and $student['graded'] == false) :
 
                                         $studentAssigned += 1
@@ -183,7 +184,6 @@ foreach ($assignments as $assigment) {
                                 <?php
                                 foreach ($getstudentGraded  as $student) :
                                     $studentGraded += 1;
-
                                 ?>
                                     <a href="/comment_private?id=<?= $_GET['id'] ?>&student_id=<?= $student['user_id'] ?>&grade=<?= $student['score'] ?>" class="form-check border p-2 d-flex align-items-center text-center">
                                         <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 60px;">

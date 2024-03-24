@@ -1,10 +1,10 @@
 <?php
-
 session_start();
 require_once '../../database/database.php';
 require_once('../../models/scores/score_assignment.model.php');
 require_once('../../models/assignments/assignment.model.php');
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['send'])) {
     $id = $_POST['id'];
     if (isset($_POST['student_id']) && isset($_POST['score'])) {
 

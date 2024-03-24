@@ -145,7 +145,7 @@ function insertAssignScore(int $score, int $user_id, int $assignment_id): bool
 function getStudentGraded($id):array {
     global $connection;
 
-    $statement =  $connection->prepare("select ss.*, u.name, u.image from assignment_score ss inner join users u on u.id = ss.user_id where assignment_id=:id");
+    $statement =  $connection->prepare("select ss.*, u.name, u.email, u.image from assignment_score ss inner join users u on u.id = ss.user_id where assignment_id=:id");
     $statement->execute([
         ":id" => $id,
     ]);
