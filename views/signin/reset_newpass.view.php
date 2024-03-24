@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Verification</title>
+    <title>Classroom</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
@@ -30,12 +30,10 @@
                     <div class="modal-footer" style="border-top: none;">
                         <button type="submit" name="send" class="btn btn-primary">Reset new password</button>
                     </div>
-                    
                 </form>
             </div>
             <div class="col-4"></div>
         </div>
     </div>
 </body>
-
 </html>
