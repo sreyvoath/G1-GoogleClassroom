@@ -36,17 +36,14 @@
 											<div class="card-footer pt-3 pb-3">
 												<?php if ($_SESSION['user']['role'] == "teacher") { ?>
 													<div class="d-flex">
-														<?php if ($_SESSION['user']['name'] == $_SESSION['user_created']['name']) { ?>
-															<a href="../../controllers/classes/archive.delete.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to delete it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-trash text-danegr "></i></a>
-															<a href="../../controllers/classes/restore.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to archive it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-secondary"><i class="bi bi-bootstrap-reboot"></i></a>
+														<a href="../../controllers/classes/archive.delete.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to delete it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-trash text-danegr "></i></a>
+														<a href="../../controllers/classes/restore.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to archive it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-secondary"><i class="bi bi-bootstrap-reboot"></i></a>
 													</div>
-												<?php } else { ?>
+
+												<?php
+												} else { ?>
 													<a href="../../controllers/classes/archive.delete.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to delete it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-ban text-danegr "></i></a>
-													<a href="../../controllers/classes/restore.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to archive it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-secondary"><i class="bi bi-bootstrap-reboot"></i></a>
-												<?php }
-													} else { ?>
-												<a href="../../controllers/classes/archive.delete.controller.php?id=<?= $class['id'] ?>" onclick="if (!confirm('Are you sure to delete it?')) { return false; }" class="btn mx-1 h6 fw-light mb-0 btn-outline-danger"><i class="fas fa-ban text-danegr "></i></a>
-											<?php } ?>
+												<?php } ?>
 											</div>
 										</div>
 									</div>

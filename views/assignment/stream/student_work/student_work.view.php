@@ -90,12 +90,6 @@ foreach ($assignments as $assigment) {
                 <div class="row p-3 mt-5 myrow  custom-row  " id="containers">
                     <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" class="scrollspy-example" tabindex="0" id="containerse">
                         <div class="left" style="width: 100%; border-right: 1px solid LightGray; margin-top: 10px;">
-                            <div class="form-check p-3 d-flex align-items-center text-center">
-                                <input class="form-check-input mb-2 me-2 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 50px;">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    <i class="bi bi-people-fill mx-2 text-info fs-5"></i><span style="font-size: 17px;">All students</span>
-                                </label>
-                            </div>
                             <div class="dropdown p-3">
                                 <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="margin-left: 50px;">
                                     Sort by status

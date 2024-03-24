@@ -12,7 +12,7 @@ function getUser(string $id): array
         return [];
     }
 }
-// ==============update profile==================
+// ==============update new profile==================
 function updateProfile(string $name, string $email, string $image, int $id) : bool
 {
     global $connection;
@@ -21,6 +21,18 @@ function updateProfile(string $name, string $email, string $image, int $id) : bo
         ':name' => $name,
         ':email' => $email,
         ':image' => $image,
+        ':id' => $id
+    ]);
+    return $statement->rowCount() > 0;
+}
+// ==============update exist profile==================
+function updateExistProfile(string $name, string $email,int $id) : bool
+{
+    global $connection;
+    $statement = $connection->prepare("update users set name =:name, email =:email where id = :id");
+    $statement->execute([
+        ':name' => $name,
+        ':email' => $email,
         ':id' => $id
     ]);
     return $statement->rowCount() > 0;

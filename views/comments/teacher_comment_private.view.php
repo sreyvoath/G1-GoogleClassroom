@@ -90,12 +90,6 @@ if (isset($_GET['id'])) {
 
         <div class="contain d-flex" style="width: 100%;">
             <div class="left" style="width: 40%; border-right: 1px solid LightGray;">
-                <div class="form-check p-3 d-flex align-items-center text-center">
-                    <input class="form-check-input mb-2 me-2 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 50px;">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        <i class="bi bi-people-fill mx-2 text-info fs-5"></i><span style="font-size: 17px;">All students</span>
-                    </label>
-                </div>
                 <div class="dropdown p-3">
                     <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="margin-left: 50px;">
                         Sort by status
@@ -276,7 +270,6 @@ if (isset($_GET['id'])) {
                                 <ul class="dropdown-menu" aria-labelledby="accounntMenu">
                                     <li class="dropdown-submenu dropend">
                                         <a class="dropdown-item " href="controllers/comment/delete_comments_teacher.controller.php?id=<?=$comment['comment_id']?>&student_id=<?= $student['user_id'] ?>" onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
-                                        <a class="dropdown-item " href="controllers/assignment/edit_assignment.controller.php">Edit</a>
                                     </li>
                                 </ul>
                             </div>
