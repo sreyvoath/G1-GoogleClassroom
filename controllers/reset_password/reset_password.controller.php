@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['send'])) {
             )
         );
 
-        $mail->setFrom("emcha7231@gmail.com", "Your code verify"); // Update with your website name
+        $mail->setFrom("emcha7231@gmail.com", "E-CLASSROOM code verify"); // Update with your website name
         $mail->addAddress($teacherEmail); // Send email to the provided email address
         $mail->isHTML(true); // Set email format to HTML
         $mail->Subject = 'Here is code verify'; // Subject of the email

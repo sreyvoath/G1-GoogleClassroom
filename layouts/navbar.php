@@ -146,11 +146,6 @@ foreach ($studentJoin as $student) {
 							<?php endif; ?>
 						</ul>
 					</li>
-					<!-- Nav item 4 Megamenu-->
-					<li class="nav-item">
-						<a class="nav-link <?= urlIs("/calendar") ? "active" : "" ?> " href="/calendar">Calendar</a>
-
-					</li>
 					<!-- Nav item 2 Pages -->
 					<li class="nav-item dropdown">
 						<a class="nav-link <?= urlIs("/archive") ? "active" : "" ?> " href="/archive">Archive</a>

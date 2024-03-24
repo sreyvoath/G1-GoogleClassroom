@@ -15,11 +15,7 @@
                     <div class="btn-group me-4" role="group" aria-label="Second group">
                         <a href="/people?id=<?= $_SESSION['class_id'] ?>"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "" ?>">Poeple</button></a>
                     </div>
-                    <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
-                        <div class="btn-group me-4" role="group" aria-label="Third group">
-                            <a href="/point"><button type="button" class="btn btn-outline-success <?= urlIs("/grade") ? "active" : "" ?>">Grades</button></a>
-                        </div>
-                    <?php endif; ?>
+                    
                 </div>
             </ul>
         </div>

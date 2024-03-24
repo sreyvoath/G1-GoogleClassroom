@@ -35,6 +35,7 @@ if (isset($_GET['id'])) {
     $assigment_id = $_GET['id'];
     $teacher_id = $_SESSION['user_created']['id'];
     $userInfo = getStudentInfo($student_id, $assigment_id);
+    $getUserAssigned = getStudentInfoMiss($student_id, $assigment_id);
     $getCommentPrivate = getPrivate($assigment_id, $student_id, $teacher_id);
 }
 
@@ -113,7 +114,7 @@ if (isset($_GET['id'])) {
                             $studentTurned += 1
                     ?>
 
-                            <a  class="form-check-1 border p-2 d-flex align-items-center text-center">
+                            <a class="form-check-1 border p-2 d-flex align-items-center text-center">
                                 <input type="hidden" name="student_id[]" value="<?= $student['id'] ?>">
                                 <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 60px;">
                                 <label class="form-check-label d-flex" for="flexCheckDefault" style="width: 100%;">
@@ -176,7 +177,7 @@ if (isset($_GET['id'])) {
                     foreach ($getstudentGraded  as $student) :
                         $studentGraded += 1
                     ?>
-                        <a  class="form-check border p-2 d-flex align-items-center text-center">
+                        <a class="form-check border p-2 d-flex align-items-center text-center">
                             <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 60px;">
                             <label class="form-check-label d-flex" for="flexCheckDefault" style="width: 100%;">
                                 <div class="name text-dark" style="font-size: 17px; width: 75%; border-right: 1px solid lightgray;">
@@ -203,101 +204,188 @@ if (isset($_GET['id'])) {
             </div>
     </form>
     <!-- =====================Right bar ======================== -->
+    <?php if (count($userInfo) > 0) : ?>
 
-    <div class="right" style="width: 60%; margin: 20px;">
-        <div class="ass-top">
-            <a class="text-dark d-flex justify-content-end" href="/student_work?id=<?= $_GET['id'] ?>"><span class="material-symbols-outlined">close</span></a>
-            <div class=" d-flex justify-content-between mt-3">
-                <div class="name">
-                    <p class="fs-5 text-dark"><?= strtoupper($userInfo['name']) ?></p>
-                    <p class="small">Grade (see history)</p>
+        <div class="right" style="width: 60%; margin: 20px;">
+            <div class="ass-top">
+                <a class="text-dark d-flex justify-content-end" href="/student_work?id=<?= $_GET['id'] ?>"><span class="material-symbols-outlined">close</span></a>
+                <div class=" d-flex justify-content-between mt-3">
+                    <div class="name">
+                        <p class="fs-5 text-dark"><?= strtoupper($userInfo['name']) ?></p>
+                        <p class="small">Grade (see history)</p>
+                    </div>
+                    <?php if (!empty($_GET['grade'])) { ?>
+                        <div class="grade fs-5 d-flex justify-content-center align-items-canter">
+                            <p class="text-info fw-bold"><?= $_GET['grade'] ?>/</p>
+                            <p><?= $getScore['score'] ?></p>
+                        </div>
+                    <?php } else { ?>
+                        <div class="grade">
+                            <p class="fs-5">No grade</p>
+                            <p class="small">Previously:0/100 - Not returned</p>
+
+                        </div>
+                    <?php } ?>
+
+
                 </div>
-                <?php if (!empty($_GET['grade'])) { ?>
-                    <div class="grade fs-5 d-flex justify-content-center align-items-canter">
-                        <p class="text-info fw-bold"><?= $_GET['grade'] ?>/</p>
-                        <p><?= $getScore['score'] ?></p>
-                    </div>
-                <?php } else { ?>
-                    <div class="grade">
-                        <p class="fs-5">No grade</p>
-                        <p class="small">Previously:0/100 - Not returned</p>
+                <span class="d-inline-block shadow-sm" style="height: auto; width: 300px; margin-left: 30px;">
+                    <a class="d-flex border" style="border-radius: 10px; margin-left: -10px;" href="assets/images/upload/<?= $userInfo['document'] ?>">
+                        <div class="bg p-2 border" style="border-radius: 10px 0 0 10px;">
+                            <img src="/assets/images/bg/06.png" alt="">
+                        </div>
+                        <div class="title mx-3" style="margin-top: 30px;">
+                            <h5 class="d-inline-block text-truncate" style="max-width: 150px;"><?= $userInfo['document'] ?></h5>
+                            <p>PDF</p>
+                        </div>
 
-                    </div>
-                <?php } ?>
-
+                    </a>
+                </span>
 
             </div>
-            <span class="d-inline-block shadow-sm" style="height: auto; width: 300px; margin-left: 30px;">
-                <a class="d-flex border" style="border-radius: 10px; margin-left: -10px;" href="assets/images/upload/<?= $userInfo['document'] ?>">
-                    <div class="bg p-2 border" style="border-radius: 10px 0 0 10px;">
-                        <img src="/assets/images/bg/06.png" alt="">
-                    </div>
-                    <div class="title mx-3" style="margin-top: 30px;">
-                        <h5 class="d-inline-block text-truncate" style="max-width: 150px;"><?= $userInfo['document'] ?></h5>
-                        <p>PDF</p>
-                    </div>
+            <hr>
 
-                </a>
-            </span>
+            <div class="mb-0  ">
+                <p><i class="fas fa-user-graduate mt-2 "></i>Private comments</p>
+                <div class="">
+                    <nav class=" d-flex flex-column">
+                        <?php foreach ($getCommentPrivate as $comment) : ?>
 
-        </div>
-        <hr>
+                            <div class="d-flex justify-content-between" style="margin-right: 70px;">
 
-        <div class="mb-0  ">
-            <p><i class="fas fa-user-graduate mt-2 "></i>Private comments</p>
-            <div class="">
-                <nav class=" d-flex flex-column">
-                    <?php foreach ($getCommentPrivate as $comment) :?>
-                       
-                        <div class="d-flex justify-content-between" style="margin-right: 70px;">
-
-                            <div class="d-flex">
-                                <div class="avatar avatar-md mt-n1 ">
-                                    <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $comment['image'] ?>" alt="">
-                                </div>
-
-                                <div class="ms-2 ">
-                                    <div class="d-flex gap-3">
-                                        <h6><?= strtoupper($comment['name']) ?></h6>
-                                        <small><?= $comment['time'] ?></small>
+                                <div class="d-flex">
+                                    <div class="avatar avatar-md mt-n1 ">
+                                        <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $comment['image'] ?>" alt="">
                                     </div>
-                                    <p><?= $comment['comment'] ?></p>
-                                </div>
 
+                                    <div class="ms-2 ">
+                                        <div class="d-flex gap-3">
+                                            <h6><?= strtoupper($comment['name']) ?></h6>
+                                            <small><?= $comment['time'] ?></small>
+                                        </div>
+                                        <p><?= $comment['comment'] ?></p>
+                                    </div>
+
+                                </div>
+                                <div class="dropdown d-flex ms-6">
+                                    <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
+                                    <ul class="dropdown-menu" aria-labelledby="accounntMenu">
+                                        <li class="dropdown-submenu dropend">
+                                            <a class="dropdown-item " href="controllers/comment/delete_comments_teacher.controller.php?id=<?= $comment['comment_id'] ?>&student_id=<?= $student['user_id'] ?>" onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="dropdown d-flex ms-6">
-                                <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
-                                <ul class="dropdown-menu" aria-labelledby="accounntMenu">
-                                    <li class="dropdown-submenu dropend">
-                                        <a class="dropdown-item " href="controllers/comment/delete_comments_teacher.controller.php?id=<?=$comment['comment_id']?>&student_id=<?= $student['user_id'] ?>" onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
-                                    </li>
-                                </ul>
+                        <?php endforeach; ?>
+                        <form action="controllers/comment/comments_private.controller.php" method="post">
+                            <input type="hidden" name="student_id" value="<?= $userInfo['id'] ?>">
+                            <div class="navbar-toggler d-flex" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <input type="hidden" name="class_id" value="<?= $_GET['id'] ?>">
+                                <input type="text" style="width: 80%; height:50px; border-radius: 50px;" class="form-control bg-white col-6" name="class_name" id="classname" placeholder="Add private comment...">
+                                <button type="submit" class="btn text-primary"><span class="material-symbols-outlined fs-3">send</span></button>
                             </div>
+                        </form>
+                    </nav>
+                    <div class="collapse" id="private">
+                        <div class=" p-3">
+                            <i class="fa fa-bold me-3" aria-hidden="true"></i>
+                            <i class="fa fa-italic me-3" aria-hidden="true"></i>
+                            <i class="fa fa-underline me-3" aria-hidden="true"></i>
+                            <i class="fa fa-align-justify me-3" aria-hidden="true"></i>
+                            <i class="fa fa-text-width me-3" aria-hidden="true"></i>
                         </div>
-                    <?php endforeach; ?>
-                    <form action="controllers/comment/comments_private.controller.php" method="post">
-                        <input type="hidden" name="student_id" value="<?= $userInfo['id'] ?>">
-                        <div class="navbar-toggler d-flex" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <input type="hidden" name="class_id" value="<?= $_GET['id'] ?>">
-                            <input type="text" style="width: 80%; height:50px; border-radius: 50px;" class="form-control bg-white col-6" name="class_name" id="classname" placeholder="Add private comment...">
-                            <button type="submit" class="btn text-primary"><span class="material-symbols-outlined fs-3">send</span></button>
-                        </div>
-                    </form>
-                </nav>
-                <div class="collapse" id="private">
-                    <div class=" p-3">
-                        <i class="fa fa-bold me-3" aria-hidden="true"></i>
-                        <i class="fa fa-italic me-3" aria-hidden="true"></i>
-                        <i class="fa fa-underline me-3" aria-hidden="true"></i>
-                        <i class="fa fa-align-justify me-3" aria-hidden="true"></i>
-                        <i class="fa fa-text-width me-3" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
+        </div>
+    <?php endif; ?>
+    <?php if (count($getUserAssigned) > 0) : ?>
+        <div class="right" style="width: 60%; margin: 20px;">
+            <div class="ass-top">
+                <a class="text-dark d-flex justify-content-end" href="/student_work?id=<?= $_GET['id'] ?>"><span class="material-symbols-outlined">close</span></a>
+                <div class=" d-flex justify-content-between mt-3">
+                    <div class="name">
+                        <p class="fs-5 text-dark"><?= strtoupper($getUserAssigned['name']) ?></p>
+                        <p class="small">Grade (see history)</p>
+                    </div>
+                    <?php if (!empty($_GET['grade'])) { ?>
+                        <div class="grade fs-5 d-flex justify-content-center align-items-canter">
+                            <p class="text-info fw-bold"><?= $_GET['grade'] ?>/</p>
+                            <p><?= $getScore['score'] ?></p>
+                        </div>
+                    <?php } else { ?>
+                        <div class="grade">
+                            <p class="fs-5">No grade</p>
+                            <p class="small">Previously:0/100 - Not returned</p>
 
+                        </div>
+                    <?php } ?>
+
+
+                </div>
+                <span class="d-inline-block shadow-sm p-5 fs-5" style="height: auto; width: 300px; margin-left: 30px;">
+                    No attachment file
+                </span>
+
+            </div>
+            <hr>
+
+            <div class="mb-0  ">
+                <p><i class="fas fa-user-graduate mt-2 "></i>Private comments</p>
+                <div class="">
+                    <nav class=" d-flex flex-column">
+                        <?php foreach ($getCommentPrivate as $comment) : ?>
+
+                            <div class="d-flex justify-content-between" style="margin-right: 70px;">
+
+                                <div class="d-flex">
+                                    <div class="avatar avatar-md mt-n1 ">
+                                        <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $comment['image'] ?>" alt="">
+                                    </div>
+
+                                    <div class="ms-2 ">
+                                        <div class="d-flex gap-3">
+                                            <h6><?= strtoupper($comment['name']) ?></h6>
+                                            <small><?= $comment['time'] ?></small>
+                                        </div>
+                                        <p><?= $comment['comment'] ?></p>
+                                    </div>
+
+                                </div>
+                                <div class="dropdown d-flex ms-6">
+                                    <a class="nav-link" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-symbols-outlined">more_vert</span></a>
+                                    <ul class="dropdown-menu" aria-labelledby="accounntMenu">
+                                        <li class="dropdown-submenu dropend">
+                                            <a class="dropdown-item " href="controllers/comment/delete_comments_teacher.controller.php?id=<?= $comment['comment_id'] ?>&student_id=<?= $student['user_id'] ?>" onclick="if (!confirm('Are you sure to Delete this comment?')) { return false; }">Delete</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                        <form action="controllers/comment/comments_private.controller.php" method="post">
+                            <input type="hidden" name="student_id" value="<?= $getUserAssigned['id'] ?>">
+                            <div class="navbar-toggler d-flex" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <input type="hidden" name="class_id" value="<?= $_GET['id'] ?>">
+                                <input type="text" style="width: 80%; height:50px; border-radius: 50px;" class="form-control bg-white col-6" name="class_name" id="classname" placeholder="Add private comment...">
+                                <button type="submit" class="btn text-primary"><span class="material-symbols-outlined fs-3">send</span></button>
+                            </div>
+                        </form>
+                    </nav>
+                    <div class="collapse" id="private">
+                        <div class=" p-3">
+                            <i class="fa fa-bold me-3" aria-hidden="true"></i>
+                            <i class="fa fa-italic me-3" aria-hidden="true"></i>
+                            <i class="fa fa-underline me-3" aria-hidden="true"></i>
+                            <i class="fa fa-align-justify me-3" aria-hidden="true"></i>
+                            <i class="fa fa-text-width me-3" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    <?php endif; ?>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

@@ -56,11 +56,7 @@ unset($_SESSION['err_owner']);
                     <div class="btn-group me-4" role="group" aria-label="Second group">
                         <a href="/people?id=<?= $_SESSION['class_id'] ?>"><button type="button" class="btn btn-outline-secondary <?= urlIs("/people") ? "active" : "active" ?> ">Poeple</button></a>
                     </div>
-                    <?php if ($_SESSION['user']['role'] == 'teacher') : ?>
-                        <div class="btn-group me-4" role="group" aria-label="Third group">
-                            <a href="/grade"><button type="button" class="btn btn-outline-success <?= urlIs("/point") ? "active" : "" ?> ">Grades</button></a>
-                        </div>
-                    <?php endif; ?>
+                   
                 </div>
             </ul>
         </div>

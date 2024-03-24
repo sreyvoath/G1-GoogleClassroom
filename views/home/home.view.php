@@ -44,10 +44,12 @@ if ($_SESSION['user']['role'] == "student" and count($idUser) > 0) {
 	$_SESSION['student_join'] = $studentsJoin;
 }
 // get user is staying website
+$numberOfTeacher =1;
 if ($_SESSION['user']['role'] == "teacher" and count($idUser) > 0) {
 	$teachersJoin = !empty(getTeacher($_SESSION['user']['id']))? getTeacher($_SESSION['user']['id']): [] ;
 	$_SESSION['teacher_join'] = $teachersJoin;
 	$sum =0;
+	$numberOfTeacher += count($teachersJoin);
 	foreach ($teachersJoin as $class) {
 		if ($class['archive'] == 1) {
 			$sum += 1;
@@ -325,7 +327,7 @@ if ($_SESSION['user']['role'] == "student") {
 						<span class="display-6 lh-1 text-blue mb-0"><i class="fas fa-user-tie"></i></span>
 						<div class="ms-4 h6 fw-normal">
 							<div class="d-flex">
-								<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="10" data-purecounter-delay="200">0</h5>
+								<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?=$numberOfTeacher?>" data-purecounter-delay="200">0</h5>
 								<span class="mb-0 h5">+</span>
 							</div>
 							<p class="mb-0">Teachers</p>
