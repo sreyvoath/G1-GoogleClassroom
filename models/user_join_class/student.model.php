@@ -205,3 +205,28 @@ function getStudentInfo(int $student_id, int $id)
         return [];
     }
 }
+// ========Get students information============
+function getStudentInfoMiss(int $student_id, int $id)
+{
+
+    global $connection;
+    $statement = $connection->prepare("select u.id, u.name, u.email, u.image, c.id as class_id , c.title, uj.join_date from users u 
+    inner join users_join_class uj on uj.user_id= u.id
+    inner join classes c on uj.class_id = c.id
+    inner join assignments a on a.class_id = c.id
+    where u.role = :role and uj.user_id =:student_id and a.id = :ass_id
+    order by uj.id desc
+    ");
+
+    $statement->execute([
+        ":role" => "student",
+        ":ass_id"=> $id,
+        ":student_id" => $student_id
+    ]);
+    if ($statement->rowCount() > 0) {
+        return $statement->fetch();
+    } else {
+        return [];
+    }
+}
+

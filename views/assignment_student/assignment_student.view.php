@@ -7,12 +7,27 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $_SESSION['assign_id'] = $id;
     $assignment = getAssign($id);
-    $assignment = getAssign($id);
     $assignments = getAssignmentsStudents($_GET['id'], $_SESSION['user']['id']);
     $_SESSION['assignment_submitted'] = $assignments;
     $allCtms = showCmts($_GET['id']);
     $getScore = returnScore($_GET['id'], $_SESSION['user']['id']);
     $getPrivateComment = getPrivate($_GET['id'], $_SESSION['user']['id'], $_SESSION['user_created']['id']);
+
+    date_default_timezone_set('Asia/Phnom_Penh');
+    $assignmentsMiss = getAssigns($id);
+    foreach ($assignmentsMiss as $assigment) {
+        if ($assigment['id']) {
+            $endDateTime = date($assigment['end_date'] . ' ' . $assigment['end_time']);
+            $currentDateTime = date('Y-m-d H:i:s');
+            $dateLineTime = ($endDateTime < $currentDateTime);
+        }
+
+        if ($_SESSION['user']['role'] == 'teacher') {
+            if ($dateLineTime) {
+                $missing = "Missing";
+            }
+        }
+    }
 }
 
 ?>
@@ -45,7 +60,7 @@ if (isset($_GET['id'])) {
                                                 </div>
                                             <?php } else { ?>
                                                 <div>
-                                                    <p class="h6 fw-light mb-0 "><?= $assignment['score'] ?> Points</p>
+                                                    <p class="h6 fw-light mb-0 "><?= isset($missing).'/'? "0 /" : "" ?><?= $assignment['score'] ?> Points</p>
                                                 </div>
                                             <?php } ?>
                                             <div>
@@ -110,7 +125,7 @@ if (isset($_GET['id'])) {
                                         </div>
                                         <div class="ms-2 ">
                                             <div class="d-flex " style="justify-content: space-between;">
-                                                <h6><?= $value['name'] ?><small> 20:20 am</small></h6>
+                                                <h6><?= $value['name'] ?><small>9:20 pm</small></h6>
                                             </div>
                                             <p><?= $value['comment'] ?></p>
                                         </div>
@@ -294,7 +309,7 @@ if (isset($_GET['id'])) {
                                             <img class="avatar-img rounded-circle border border-white border-5 shadow" src="../../assets/images/profiles/<?= $comment['image'] ?>" alt="">
                                         </div>
                                         <div class="ms-2 ">
-                                            <div class="d-flex " >
+                                            <div class="d-flex ">
                                                 <h6><?= $comment['name'] ?><small><?= $comment['time'] ?> </small></h6>
                                             </div>
                                             <p><?= $comment['comment'] ?></p>

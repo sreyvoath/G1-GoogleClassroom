@@ -3,9 +3,7 @@ require "database/database.php";
 require "models/assignments/assignment.model.php";
 require "models/user_join_class/student.model.php";
 require "models/scores/score_assignment.model.php";
-if (isset($_GET['id'])) {
-    $assignments = getStudentsSubmitted($_GET['id']);
-}
+
 if (isset($_SESSION['class_id'])) {
     $getScore = getScoreAssign($_GET['id']);
     $studentTurnedIn = getStudentTurnedIn($_GET['id'], $_SESSION['class_id']);
@@ -90,15 +88,6 @@ foreach ($assignments as $assigment) {
                 <div class="row p-3 mt-5 myrow  custom-row  " id="containers">
                     <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" class="scrollspy-example" tabindex="0" id="containerse">
                         <div class="left" style="width: 100%; border-right: 1px solid LightGray; margin-top: 10px;">
-                            <div class="dropdown p-3">
-                                <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="margin-left: 50px;">
-                                    Sort by status
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item mt-2" href="#">Sort by last name</a></li>
-                                    <li><a class="dropdown-item mt-3" href="#">Sort by first name</a></li>
-                                </ul>
-                            </div>
                             <?php if (count($studentTurnedIn) > 0) { ?>
                                 <a href="#" class="form-check bg-light p-3 d-flex align-items-center text-center">
                                     <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 50px;">
@@ -212,7 +201,6 @@ foreach ($assignments as $assigment) {
                         <div class="contain d-flex " style=" width: 800px;">
                             <div class="tag"></div>
                             <div class="row myrow  custom-row " id="containers" style="width: 100%; margin-top: 20px; ">
-                                <!-- <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" class="scrollspy-example" tabindex="0" id="containerses"> -->
                                     <div class="title">
                                         <h5><?= $getScore['title'] ?></h5>
                                     </div>
@@ -233,17 +221,6 @@ foreach ($assignments as $assigment) {
                                     <div class="form-check form-switch mt-4 m-3">
                                         <input checked class="form-check-input fs-5" type="checkbox" role="switch" id="flexSwitchCheckChecked">
                                         <label class="form-check-label mt-1" style="font-size: 17px;" for="flexSwitchCheckChecked">Not accepting submissions</label> <i class="bi bi-info-circle mx-2"></i>
-                                    </div>
-                                    <div class="dropdown mt-3">
-                                        <button class="btn btn-white dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            All
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li><a class="dropdown-item mt-2" href="#">Turned in</a></li>
-                                            <li><a class="dropdown-item mt-3" href="#">Assigned</a></li>
-                                            <li><a class="dropdown-item mt-3" href="#">Graded</a></li>
-
-                                        </ul>
                                     </div>
                                     <?php if (count($studentTurnedIn) > 0) { ?>
 

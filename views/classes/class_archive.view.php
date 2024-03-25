@@ -51,7 +51,7 @@
 							}
 						} else { ?>
 							<div class="tab-pane fade show active d-flex justify-content-center">
-								<img src="../../assets/images/archive_image/no_class.jpg" alt="" width="300px">
+								<img src="../../assets/images/about/25.png" alt="" width="300px">
 							</div>
 						<?php } ?>
 						<!-- Card item END -->

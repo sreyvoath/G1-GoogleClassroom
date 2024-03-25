@@ -1,5 +1,4 @@
-
-<?php 
+<?php
 session_start();
 if (isset($_SESSION['user'])) {
 	header('Location:/home');
@@ -39,87 +38,68 @@ if (isset($_SESSION['user'])) {
 <body>
 
 	<!-- **************** MAIN CONTENT START **************** -->
-	<main>
+
+	<main style="background-image: url('../../assets/images/bg/12.jpg'); background-size: cover; background-repeat: no-repeat;">
 		<section class="p-0 d-flex align-items-center position-relative overflow-hidden">
 
 			<div class="container-fluid">
 				<div class="row">
 					<!-- Right -->
-					<div class="col-12 col-lg-6 m-auto ">
+					<div class="col-12 col-lg-8 m-auto ">
 						<div class="row my-3">
-							<div class="col-sm-12 col-xl-8 m-auto border shadow-lg p-3 mb-5 bg-body rounded bordered">
-								<!-- Title -->
-								<span class="mb-0 fs-1">👋</span>
-								<h1 class="fs-2">Login into Classroom!</h1>
-								<p class="lead mb-4">Nice to see you! Please log in with your account.</p>
+							<div class="mt-3 col-sm-12 col-xl-8 m-auto border shadow-lg p-3 mb-5 rounded bordered" style="background-color: gray;">
+								<div class="dark-blur-overlay p-3" style=" background-color: rgba(0, 0, 0, 0.5); backdrop-filter: blur(10px);">
+									<!-- Title -->
+									<p class="fs-2 text-center text-white" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Login into Classroom!</p>
+									<p class="lead mb-4 text-white">Nice to see you! Please log in with your account.</p>
 
-								<!-- Form START -->
-								<form action="controllers/signin/signin_process.controller.php" method="post">
-									<!-- Email -->
-									<div class="mb-4">
-										<label for="exampleInputEmail1" class="form-label">Email address *</label>
-										<div class="input-group input-group-lg">
-											<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-envelope-fill"></i></span>
-											<input type="email" class="form-control border-0 bg-light rounded-end ps-1" placeholder="E-mail" id="exampleInputEmail1" name="email">
+									<!-- Form START -->
+									<form action="controllers/signin/signin_process.controller.php" method="post">
+										<!-- Email -->
+										<div class="mb-4">
+											<label for="exampleInputEmail1 " class="form-label text-white">Email address *</label>
+											<div class="input-group input-group-lg">
+												<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-envelope-fill"></i></span>
+												<input type="email" class="form-control border-0 bg-light rounded-end ps-1" placeholder="E-mail" id="exampleInputEmail1" name="email">
+											</div>
+											<span class="text-danger"><?= isset($_SESSION['email-error']) ? $_SESSION['email-error'] : "" ?></span>
 										</div>
-										<span class="text-danger"><?= isset($_SESSION['email-error']) ? $_SESSION['email-error'] : "" ?></span>
-									</div>
-									<!-- Password -->
-									<div class="mb-4">
-										<label for="inputPassword5" class="form-label">Password *</label>
-										<div class="input-group input-group-lg">
-											<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
-											<input type="password" class="form-control border-0 bg-light rounded-end ps-1" placeholder="password" id="inputPassword5" name="password">
-											<span class="input-group-text bg-light password border-0 text-secondary px-3"><i class="bi bi-eye-slash fs-5" id="eyeIcon"></i></span>
+										<!-- Password -->
+										<div class="mb-4">
+											<label for="inputPassword5" class="form-label text-white">Password *</label>
+											<div class="input-group input-group-lg">
+												<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
+												<input type="password" class="form-control border-0 bg-light rounded-end ps-1" placeholder="password" id="inputPassword5" name="password">
+												<span class="input-group-text bg-light password border-0 text-secondary px-3"><i class="bi bi-eye-slash fs-5" id="eyeIcon"></i></span>
 
+											</div>
+											<span class="text-danger"><?= isset($_SESSION['password-error']) ? $_SESSION['password-error'] : "" ?></span>
+											
 										</div>
-										<span class="text-danger"><?= isset($_SESSION['password-error']) ? $_SESSION['password-error'] : "" ?></span>
-										<div id="passwordHelpBlock" class="form-text">
-											Your password must be 8 characters at least
+										<!-- Check box -->
+										<div class="mb-4 d-flex justify-content-between mb-4">
+											<div class="form-check text-white">
+												<input type="checkbox" class="form-check-input" id="exampleCheck1">
+												<label class="form-check-label" for="exampleCheck1">Remember me</label>
+											</div>
+											<div class="text-primary-hover">
+												<a href="views/signin/reset_password.view.php" class="text-white ">
+													<u>Forgot password?</u>
+												</a>
+											</div>
 										</div>
-									</div>
-									<!-- Check box -->
-									<div class="mb-4 d-flex justify-content-between mb-4">
-										<div class="form-check">
-											<input type="checkbox" class="form-check-input" id="exampleCheck1">
-											<label class="form-check-label" for="exampleCheck1">Remember me</label>
+										<!-- Button -->
+										<div class="align-items-center mt-0">
+											<div class="d-grid">
+												<button type="submit" class="btn btn-danger mb-0" type="button">Login</button>
+											</div>
 										</div>
-										<div class="text-primary-hover">
-											<a href="views/signin/reset_password.view.php" class="text-secondary">
-												<u>Forgot password?</u>
-											</a>
-										</div>
-									</div>
-									<!-- Button -->
-									<div class="align-items-center mt-0">
-										<div class="d-grid">
-											<button type="submit" class="btn btn-primary mb-0" type="button">Login</button>
-										</div>
-									</div>
-								</form>
-								<!-- Form END -->
+									</form>
 
-								<!-- Social buttons and divider -->
-								<div class="row">
-									<!-- Divider with text -->
-									<div class="position-relative my-4">
-										<hr>
-										<p class="small position-absolute top-50 start-50 translate-middle bg-body px-5">Or</p>
+									<!-- Sign up link -->
+									<div class="mt-4 text-center">
+										<span class="text-white">Don't have an account? <a href="/user-signup">Signup here</a></span>
 									</div>
-
-									<!-- Social btn -->
-									<div class="col-xxl-6 d-grid">
-										<a href="#" class="btn bg-google mb-2 mb-xxl-0"><i class="fab fa-fw fa-google text-white me-2"></i>Login with Google</a>
-									</div>
-									<!-- Social btn -->
-									<div class="col-xxl-6 d-grid">
-										<a href="#" class="btn bg-facebook mb-0"><i class="fab fa-fw fa-facebook-f me-2"></i>Login with Facebook</a>
-									</div>
-								</div>
-
-								<!-- Sign up link -->
-								<div class="mt-4 text-center">
-									<span>Don't have an account? <a href="/user-signup">Signup here</a></span>
 								</div>
 							</div>
 						</div> <!-- Row END -->
@@ -151,6 +131,7 @@ if (isset($_SESSION['user'])) {
 
 	<!-- Template Functions -->
 	<script src="vendor/js/functions.js"></script>
+
 
 </body>
 

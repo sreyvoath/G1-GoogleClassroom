@@ -25,8 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['send'])) {
         if(isset($_POST['no_file'])){
             $_SESSION['no_file'] = $_POST['no_file'];
         }
- 
+        
     }
-
     header("Location: /student_work?id=$id");
 }
