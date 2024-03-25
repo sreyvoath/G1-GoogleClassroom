@@ -320,8 +320,6 @@ if (isset($_GET['id'])) {
 
                         </div>
                     <?php } ?>
-
-
                 </div>
                 <span class="d-inline-block shadow-sm p-5 fs-5" style="height: auto; width: 300px; margin-left: 30px;">
                     No attachment file

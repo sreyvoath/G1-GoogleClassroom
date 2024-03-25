@@ -37,6 +37,15 @@ function getAssigns($id): array
     $statement->execute([":id" => $id]);
     return $statement->fetchAll();
 }
+// ========Get all assignments by id class============
+function getAssignsMiss($id): array
+{
+
+    global $connection;
+    $statement = $connection->prepare("select * from assignments where id=:id order by id desc");
+    $statement->execute([":id" => $id]);
+    return $statement->fetchAll();
+}
 
 // ========Get all assignments============
 function getAssignments()
