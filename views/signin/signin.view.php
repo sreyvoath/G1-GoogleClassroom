@@ -39,7 +39,7 @@ if (isset($_SESSION['user'])) {
 
 	<!-- **************** MAIN CONTENT START **************** -->
 
-	<main style="background-image: url('../../assets/images/bg/12.jpg'); background-size: cover; background-repeat: no-repeat;">
+	<main >
 		<section class="p-0 d-flex align-items-center position-relative overflow-hidden">
 
 			<div class="container-fluid">
@@ -47,17 +47,17 @@ if (isset($_SESSION['user'])) {
 					<!-- Right -->
 					<div class="col-12 col-lg-8 m-auto ">
 						<div class="row my-3">
-							<div class="mt-3 col-sm-12 col-xl-8 m-auto border shadow-lg p-3 mb-5 rounded bordered" style="background-color: gray;">
-								<div class="dark-blur-overlay p-3" style=" background-color: rgba(0, 0, 0, 0.5); backdrop-filter: blur(10px);">
+							<div class="mt-3 col-sm-12 col-xl-8 m-auto border shadow-lg p-3 mb-5 rounded bordered" style="background-color: white;">
+								
 									<!-- Title -->
-									<p class="fs-2 text-center text-white" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Login into Classroom!</p>
-									<p class="lead mb-4 text-white">Nice to see you! Please log in with your account.</p>
+									<p class="fs-2 text-center" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Login into Classroom!</p>
+									<p class="lead mb-4">Nice to see you! Please log in with your account.</p>
 
 									<!-- Form START -->
 									<form action="controllers/signin/signin_process.controller.php" method="post">
 										<!-- Email -->
 										<div class="mb-4">
-											<label for="exampleInputEmail1 " class="form-label text-white">Email address *</label>
+											<label for="exampleInputEmail1 " class="form-label">Email address *</label>
 											<div class="input-group input-group-lg">
 												<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="bi bi-envelope-fill"></i></span>
 												<input type="email" class="form-control border-0 bg-light rounded-end ps-1" placeholder="E-mail" id="exampleInputEmail1" name="email">
@@ -66,7 +66,7 @@ if (isset($_SESSION['user'])) {
 										</div>
 										<!-- Password -->
 										<div class="mb-4">
-											<label for="inputPassword5" class="form-label text-white">Password *</label>
+											<label for="inputPassword5" class="form-label">Password *</label>
 											<div class="input-group input-group-lg">
 												<span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fas fa-lock"></i></span>
 												<input type="password" class="form-control border-0 bg-light rounded-end ps-1" placeholder="password" id="inputPassword5" name="password">
@@ -78,7 +78,7 @@ if (isset($_SESSION['user'])) {
 										</div>
 										<!-- Check box -->
 										<div class="mb-4 d-flex justify-content-between mb-4">
-											<div class="form-check text-white">
+											<div class="form-check">
 												<input type="checkbox" class="form-check-input" id="exampleCheck1">
 												<label class="form-check-label" for="exampleCheck1">Remember me</label>
 											</div>
@@ -98,9 +98,8 @@ if (isset($_SESSION['user'])) {
 
 									<!-- Sign up link -->
 									<div class="mt-4 text-center">
-										<span class="text-white">Don't have an account? <a href="/user-signup">Signup here</a></span>
+										<span>Don't have an account? <a href="/user-signup">Signup here</a></span>
 									</div>
-								</div>
 							</div>
 						</div> <!-- Row END -->
 					</div>

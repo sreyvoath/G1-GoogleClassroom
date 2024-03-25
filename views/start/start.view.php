@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,51 +32,56 @@
 <body>
 
     <!-- **************** MAIN CONTENT START **************** -->
-    <main style="background-image: url('../../assets/images/bg/13.jpg'); background-size: cover; background-repeat: no-repeat;">
-        <section class="p-0 d-flex align-items-center position-relative overflow-hidden">
-            <div class="container-fluid">
+
+    <main>
+
+        <section class="p-0 d-flex align-items-center">
+
+            <div class="container-fluidf d-flex">
                 <div class="row">
-                    <!-- Right -->
-                    <div class="col-12 col-lg-12 m-auto mb-5">
-                        <div class="row my-3">
-                            <div class="mt-3 col-sm-12 col-xl-8 m-auto border shadow-lg p-3 mb-5 rounded bordered">
-                                <!-- Title -->
-                                <p class="fs-2 text-center text-white" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Welcom!</p>
-                                <div class="col-12 col-lg-12 px-5">
-                                    <p class="fw-bold fs-2 text-dark mt-2">Where teaching and learning come together</p>
-                                    <p class="mb-0 h6 fw-light fs-5 lh-base">Google Classroom helps educators create engaging learning experiences they can personalize, manage, and measure. Part of Google Workspace for Education, it empowers educators to enhance their impact and prepare students for the future.</p>
-                                    <div class="btn mt-3 ml-0">
-                                        <a href="/user-signin" class="btn btn-primary">Login into Classroom</a>
-                                        <a href="/user-signup" class="btn btn-warning">Create Account</a>
-                                    </div>
-                                </div>
-                                
-                                <div class="d-flex mt-5 align-items-center justify-content-center">
-                                    <!-- Avatar group -->
-                                    <ul class="avatar-group">
-                                        <li class="avatar avatar-sm">
-                                            <img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="avatar">
-                                        </li>
-                                        <li class="avatar avatar-sm">
-                                            <img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt="avatar">
-                                        </li>
-                                        <li class="avatar avatar-sm">
-                                            <img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="avatar">
-                                        </li>
-                                        <li class="avatar avatar-sm">
-                                            <img class="avatar-img rounded-circle" src="assets/images/avatar/04.jpg" alt="avatar">
-                                        </li>
-                                    </ul>
-                                </div>
-                                
+                    <!-- left -->
+                    <div class="col-12 col-lg-6 d-md-flex align-items-center justify-content-center bg-primary bg-opacity-10 vh-lg-100">
+                        <div class="p-3 p-lg-5">
+                            <!-- Title -->
+                            <div class="text-center mt-5">
+                                <h2 class="fw-bold mt-5">WELCOME!</h2>
+                            </div>
+                            <!-- SVG Image -->
+                            <img src="assets/images/element/02.svg" class="mt-5" alt="">
+                            <!-- Info -->
+                            <div class="d-sm-flex mt-5 align-items-center justify-content-center">
+                                <!-- Avatar group -->
+                                <ul class="avatar-group mb-2 mb-sm-0">
+                                    <li class="avatar avatar-sm">
+                                        <img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="avatar">
+                                    </li>
+                                    <li class="avatar avatar-sm">
+                                        <img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt="avatar">
+                                    </li>
+                                    <li class="avatar avatar-sm">
+                                        <img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="avatar">
+                                    </li>
+                                    <li class="avatar avatar-sm">
+                                        <img class="avatar-img rounded-circle" src="assets/images/avatar/04.jpg" alt="avatar">
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                    </div> <!-- Row END -->
+                    </div>
+                    <!-- Title -->
+                    <div class="col-12 col-lg-6 px-5">
+                        <h1 class="fw-bold mt-5">Where teaching and learning come together</h1>
+                        <p class="mb-0 h6 fw-light fs-5 lh-base">Google Classroom helps educators create engaging learning experiences they can personalize, manage, and measure. Part of Google Workspace for Education, it empowers educators to enhance their impact and prepare students for the future.</p>
+                        <div class="btn mt-3 ml-0">
+                            <a href="/user-signin" class="btn btn-primary">Login into Classroom</a>
+                            <a href="/user-signup" class="btn btn-warning">Create Account</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
 
-    </main>
+            </div>
+
+        </section>
 
 </body>
 
