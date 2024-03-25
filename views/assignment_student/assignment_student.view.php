@@ -14,15 +14,16 @@ if (isset($_GET['id'])) {
     $getPrivateComment = getPrivate($_GET['id'], $_SESSION['user']['id'], $_SESSION['user_created']['id']);
 
     date_default_timezone_set('Asia/Phnom_Penh');
-    $assignmentsMiss = getAssigns($id);
+    $assignmentsMiss = getAssignsMiss($id);
     foreach ($assignmentsMiss as $assigment) {
         if ($assigment['id']) {
             $endDateTime = date($assigment['end_date'] . ' ' . $assigment['end_time']);
             $currentDateTime = date('Y-m-d H:i:s');
             $dateLineTime = ($endDateTime < $currentDateTime);
+            
         }
 
-        if ($_SESSION['user']['role'] == 'teacher') {
+        if ($_SESSION['user']['role'] == 'student') {
             if ($dateLineTime) {
                 $missing = "Missing";
             }
@@ -60,7 +61,7 @@ if (isset($_GET['id'])) {
                                                 </div>
                                             <?php } else { ?>
                                                 <div>
-                                                    <p class="h6 fw-light mb-0 "><?= isset($missing).'/'? "0 /" : "" ?><?= $assignment['score'] ?> Points</p>
+                                                    <p class="h6 fw-light mb-0 "><?= isset($missing)? "0 /" : "" ?><?= $assignment['score'] ?> Points</p>
                                                 </div>
                                             <?php } ?>
                                             <div>
@@ -258,13 +259,13 @@ if (isset($_GET['id'])) {
                         <?php if (isset($assignments)) : ?>
                             <?php if ($assignments[0]['status'] == false) { ?>
                                 <form action="controllers/assignment/assignment_students.controller.php" method="post" id="upload-form" enctype="multipart/form-data">
-                                    <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
-                                    <label for="file-upload" class="btn border-primary mb-3" style="width: 100%; cursor: pointer;">
+                                    <input type="hidden"  name="id" value="<?= $_GET['id'] ?>">
+                                    <label for="file-upload" class="btn border-primary mb-3" style="width: 100%; cursor: pointer;" >
                                         <i class="fa fa-plus me-3" aria-hidden="true"></i>
                                         <span>Add or Create</span>
                                     </label>
                                     <input id="file-upload" type="file" name="upload" style="display: none;">
-                                    <button type="submit" class="btn btn-primary" style="width: 100%;">Assign</button>
+                                    <button  type="submit" class="btn btn-primary" style="width: 100%;">Assign</button>
                                 </form>
                             <?php } else { ?>
                                 <a href="controllers/assignment/assignment_student/unsubmit_assignment.controller.php?id=<?= $assignment['id'] ?>" type="submit" class="btn btn-outline-light mt-2" style="width: 100%;">Unsubmit</a>
@@ -290,7 +291,7 @@ if (isset($_GET['id'])) {
                                     <span>Add or Create</span>
                                 </label>
                                 <input id="file-upload" type="file" name="upload" style="display: none;">
-                                <button type="submit" class="btn btn-primary" style="width: 100%;">Turn in</button>
+                                <button <?= isset($missing)? "disabled" : "" ?> type="submit" class="btn btn-primary" style="width: 100%;">Turn in</button>
                             </form>
                         </div>
                     </div>
