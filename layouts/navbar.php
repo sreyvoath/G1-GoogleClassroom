@@ -3,13 +3,14 @@ require "database/database.php";
 require "models/invites/invite.model.php";
 require "models/signin.model.php";
 $user = $_SESSION['user'];
-
 if (isset($_SESSION['class'])) {
 	$classes = $_SESSION['class'];
 }
-if (isset($_SESSION['class_join'])) {
-	$classJoin = $_SESSION['class_join'];
+
+if (isset($_SESSION['student_join'])) {
+	$classJoin = $_SESSION['student_join'];
 }
+
 $studentJoin = getMessages();
 $_SESSION['studentJoint'] = $studentJoin;
 $numberAlert = 0;
@@ -95,9 +96,9 @@ foreach ($studentJoin as $student) {
 						<ul class="dropdown-menu" aria-labelledby="accounntMenu">
 							<!-- Dropdown submenu -->
 							<?php if ($_SESSION['user']['role'] == 'student') : ?>
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item " href="/todo"><i class="far fa-address-card fa-fw me-1"></i>To do</a>
-							</li>
+								<li class="dropdown-submenu dropend">
+									<a class="dropdown-item " href="/todo"><i class="far fa-address-card fa-fw me-1"></i>To do</a>
+								</li>
 							<?php endif; ?>
 							<!-- Dropdown submenu -->
 							<li class="dropdown-submenu dropend">
@@ -126,12 +127,11 @@ foreach ($studentJoin as $student) {
 									} else
 									if (isset($_SESSION['idUser'])) {
 										if (count($_SESSION['idUser']) > 0) {
+
 											foreach ($classJoin as $class) :
-												if ($class['archive'] == 0) :
 												?>
-													<li> <a class="dropdown-item" href="/stream?id=<?= $class['id'] ?>"><i class="bi bi-book fa-fw me-1"></i><?= $class['title'] ?></a> </li>
+												<li> <a class="dropdown-item" href="/stream?id=<?= $class['id'] ?>"><i class="bi bi-book fa-fw me-1"></i><?= $class['title'] ?></a> </li>
 									<?php
-												endif;
 											endforeach;
 										};
 									} ?>
@@ -283,7 +283,7 @@ foreach ($studentJoin as $student) {
 					</div>
 					<div class="mb-4">
 						<label for="inputImage" class="form-label">Profile Image *</label>
-						<input type="file" name="image" id="inputImages" class="form-control" >
+						<input type="file" name="image" id="inputImages" class="form-control">
 					</div>
 				</form>
 			</div>

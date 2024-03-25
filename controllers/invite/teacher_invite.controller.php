@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['send'])) {
         // Send email
         $mail->send();
         echo "Message has been sent successfully";
-        header("location: /people");
+        header('location: /people?id=' . $_SESSION['class_id']);
     } catch (Exception $e) {
         // Error handling
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 if (count($checkEmailExits) > 0) {
                     $_SESSION['err_exist_join'] = "This user already joined!";
-                    header("location:/people");
+                    header("location:/people?id=$classId");
                 }
                 if($email != $_SESSION['user_created']['email']){
                     createMessage("Invited you", $checkEmail['id'], $classId, $_SESSION['user']['id']);

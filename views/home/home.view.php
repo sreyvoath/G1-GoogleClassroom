@@ -32,23 +32,24 @@ $role = $_SESSION['user']['role'];
 $students = getStudents();
 $student_number = count($students);
 
+
 // check id user in user join class
 $idUser = checkId($_SESSION['user']['id']);
 
 $_SESSION['idUser'] = $idUser;
-
+$resultJoin = 0;
 // get user is staying website
 if ($_SESSION['user']['role'] == "student" and count($idUser) > 0) {
 	$studentsJoin = getStudent($_SESSION['user']['id']);
-
+	$resultJoin = count($studentsJoin);
 	$_SESSION['student_join'] = $studentsJoin;
 }
 // get user is staying website
-$numberOfTeacher =1;
+$numberOfTeacher = 1;
 if ($_SESSION['user']['role'] == "teacher" and count($idUser) > 0) {
-	$teachersJoin = !empty(getTeacher($_SESSION['user']['id']))? getTeacher($_SESSION['user']['id']): [] ;
+	$teachersJoin = !empty(getTeacher($_SESSION['user']['id'])) ? getTeacher($_SESSION['user']['id']) : [];
 	$_SESSION['teacher_join'] = $teachersJoin;
-	$sum =0;
+	$sum = 0;
 	$numberOfTeacher += count($teachersJoin);
 	foreach ($teachersJoin as $class) {
 		if ($class['archive'] == 1) {
@@ -327,7 +328,7 @@ if ($_SESSION['user']['role'] == "student") {
 						<span class="display-6 lh-1 text-blue mb-0"><i class="fas fa-user-tie"></i></span>
 						<div class="ms-4 h6 fw-normal">
 							<div class="d-flex">
-								<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?=$numberOfTeacher?>" data-purecounter-delay="200">0</h5>
+								<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?= $numberOfTeacher ?>" data-purecounter-delay="200">0</h5>
 								<span class="mb-0 h5">+</span>
 							</div>
 							<p class="mb-0">Teachers</p>
@@ -351,13 +352,23 @@ if ($_SESSION['user']['role'] == "student") {
 				<div class=" col-sm-6 col-xl-3">
 					<div class=" card_class d-flex justify-content-center align-items-center p-4 bg-purple bg-opacity-10 rounded-3">
 						<span class="display-6 lh-1 text-warning mb-0"><i class="fas fa-tv"></i></span>
-						<div class="ms-4 h6 fw-normal">
-							<div class="d-flex">
-								<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?= $class_number ?>" data-purecounter-delay="200">0</h5>
-								<span class="mb-0 h5">+</span>
+						<?php if ($_SESSION['user']['role'] == "teacher") { ?>
+							<div class="ms-4 h6 fw-normal">
+								<div class="d-flex">
+									<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?= $class_number ?>" data-purecounter-delay="200">0</h5>
+									<span class="mb-0 h5">+</span>
+								</div>
+								<p class="mb-0">Classes</p>
 							</div>
-							<p class="mb-0">Classes</p>
-						</div>
+						<?php } else { ?>
+							<div class="ms-4 h6 fw-normal">
+								<div class="d-flex">
+									<h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="<?= $resultJoin ?>" data-purecounter-delay="200">0</h5>
+									<span class="mb-0 h5">+</span>
+								</div>
+								<p class="mb-0">Classes</p>
+							</div>
+						<?php } ?>
 					</div>
 				</div>
 				<!-- Counter item -->
@@ -399,7 +410,7 @@ if ($_SESSION['user']['role'] == "student") {
 						<?php
 
 						if ($role == "teacher") {
-							if (count($classes) == $result and (count($idUser) == 0 || count($teachersJoin)==$sum)) {
+							if (count($classes) == $result and (count($idUser) == 0 || count($teachersJoin) == $sum)) {
 						?>
 								<img src="../../assets/images/about/25.png" alt="" style="width: 400px; height: 300px; display:flex; margin:auto; padding-top:100px">
 								<?php
@@ -462,7 +473,7 @@ if ($_SESSION['user']['role'] == "student") {
 								foreach ($studentsJoin as $student) {
 									$class_id = $student['class_id'];
 									$classJoin = studentJoinClass($class_id);
-									$resultJoin = 0;
+									
 									foreach ($classJoin as $class) {
 										if ($class['archive'] == 1) {
 											$resultJoin += 1;
@@ -629,9 +640,9 @@ if ($_SESSION['user']['role'] == "student") {
 											<!-- Avatar -->
 											<div class="d-flex align-items-center">
 												<div class="avatar avatar-sm">
-													<img class="avatar-img rounded-1" src="assets/images/profiles/<?= isset($_SESSION['user_created']['name']) ? strtoupper($_SESSION['user_created']['image'] ): strtoupper($_SESSION['user']['image']) ?>" alt="avatar">
+													<img class="avatar-img rounded-1" src="assets/images/profiles/<?= isset($_SESSION['user_created']['name']) ? strtoupper($_SESSION['user_created']['image']) : strtoupper($_SESSION['user']['image']) ?>" alt="avatar">
 												</div>
-												<p class="mb-0 ms-2"><a href="#" class="h6 fw-light mb-0"><?= isset($_SESSION['user_created']['name']) ? strtoupper($_SESSION['user_created']['name'] ): strtoupper($_SESSION['user']['name']) ?></a></p>
+												<p class="mb-0 ms-2"><a href="#" class="h6 fw-light mb-0"><?= isset($_SESSION['user_created']['name']) ? strtoupper($_SESSION['user_created']['name']) : strtoupper($_SESSION['user']['name']) ?></a></p>
 											</div>
 											<!-- Price -->
 											<div>
