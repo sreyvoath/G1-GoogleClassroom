@@ -204,7 +204,7 @@ if (isset($_GET['id'])) {
             </div>
     </form>
     <!-- =====================Right bar ======================== -->
-    <?php if (count($userInfo) > 0) : ?>
+    <?php if (count($userInfo) > 0) { ?>
 
         <div class="right" style="width: 60%; margin: 20px;">
             <div class="ass-top">
@@ -299,8 +299,7 @@ if (isset($_GET['id'])) {
             </div>
         </div>
         </div>
-    <?php endif; ?>
-    <?php if (count($getUserAssigned) > 0) : ?>
+    <?php } elseif (count($getUserAssigned) > 0) { ?>
         <div class="right" style="width: 60%; margin: 20px;">
             <div class="ass-top">
                 <a class="text-dark d-flex justify-content-end" href="/student_work?id=<?= $_GET['id'] ?>"><span class="material-symbols-outlined">close</span></a>
@@ -385,7 +384,7 @@ if (isset($_GET['id'])) {
             </div>
         </div>
         </div>
-    <?php endif; ?>
+    <?php } ?>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

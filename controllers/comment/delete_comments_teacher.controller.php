@@ -6,5 +6,7 @@ require_once("../../models/comments/comment.model.php");
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     deleteComment($id);
+    var_dump($_SESSION['classId']);
+
 }
-header('location: /student_work?id=' . $_SESSION['assign_id']);
+header('location: /student_work?id=' . $_SESSION['classId']);

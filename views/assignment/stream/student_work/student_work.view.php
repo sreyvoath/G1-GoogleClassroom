@@ -3,9 +3,7 @@ require "database/database.php";
 require "models/assignments/assignment.model.php";
 require "models/user_join_class/student.model.php";
 require "models/scores/score_assignment.model.php";
-if (isset($_GET['id'])) {
-    $assignments = getStudentsSubmitted($_GET['id']);
-}
+
 if (isset($_SESSION['class_id'])) {
     $getScore = getScoreAssign($_GET['id']);
     $studentTurnedIn = getStudentTurnedIn($_GET['id'], $_SESSION['class_id']);
@@ -140,6 +138,7 @@ foreach ($assignments as $assigment) {
                                 ?>
                                         <a href="/comment_private?id=<?= $_GET['id'] ?>&student_id=<?= $student['id'] ?>" class="form-check border p-2 d-flex align-items-center text-center">
                                             <input type="hidden" name="student_id[]" value="<?= $student['id'] ?>">
+                                            <input type="hidden" name="no_file" value="No attachment">
                                             <input class="form-check-input mb-2 me-4 fs-5 check" type="checkbox" value="" id="flexCheckDefault" style="margin-left: 60px;">
                                             <label class="form-check-label d-flex" for="flexCheckDefault" style="width: 100%;">
                                                 <div class="name text-dark" style="font-size: 17px; width: 75%; border-right: 1px solid lightgray;">
@@ -151,9 +150,10 @@ foreach ($assignments as $assigment) {
                                                     </div>
                                                 </div>
                                                 <div class="score text-dark" style="width: 25%;">
-                                                    <span><input type="text" value="<?= isset($missing) ? 0 : "" ?>" id="point" name="score[]" class="custom-input" maxlength="3" placeholder="......">/<?= $getScore['score'] ?></span>
+                                                    <span><input type="text" id="point" name="score[]" class="custom-input" maxlength="3" placeholder="......">/<?= $getScore['score'] ?></span>
                                                     <span class="text-danger"><?= isset($missing) ? $missing : "" ?></span>
                                                 </div>
+
                                             </label>
                                         </a>
                                 <?php endif;
