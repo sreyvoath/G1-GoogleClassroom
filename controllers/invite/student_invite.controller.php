@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['send'])) {
         // Send email
         $mail->send();
         echo "Message has been sent successfully";
-        header("location: /people");
+        header('location: /people?id=' . $_SESSION['class_id']);
     } catch (Exception $e) {
         // Error handling
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -81,5 +81,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['err_empty_email'] = "Email field is empty";
     }
 
-    header("location:/people");
+    header('location: /people?id=' . $_SESSION['class_id']);
 }
