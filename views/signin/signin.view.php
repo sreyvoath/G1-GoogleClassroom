@@ -83,7 +83,7 @@ if (isset($_SESSION['user'])) {
 												<label class="form-check-label" for="exampleCheck1">Remember me</label>
 											</div>
 											<div class="text-primary-hover">
-												<a href="views/signin/reset_password.view.php" class="text-white ">
+												<a href="views/signin/reset_password.view.php">
 													<u>Forgot password?</u>
 												</a>
 											</div>
