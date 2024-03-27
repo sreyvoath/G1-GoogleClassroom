@@ -20,7 +20,6 @@ if (isset($_GET['id'])) {
             $endDateTime = date($assigment['end_date'] . ' ' . $assigment['end_time']);
             $currentDateTime = date('Y-m-d H:i:s');
             $dateLineTime = ($endDateTime < $currentDateTime);
-            
         }
 
         if ($_SESSION['user']['role'] == 'student') {
@@ -61,7 +60,7 @@ if (isset($_GET['id'])) {
                                                 </div>
                                             <?php } else { ?>
                                                 <div>
-                                                    <p class="h6 fw-light mb-0 "><?= isset($missing)? "0 /" : "" ?><?= $assignment['score'] ?> Points</p>
+                                                    <p class="h6 fw-light mb-0 "><?= isset($missing) ? "0 /" : "" ?><?= $assignment['score'] ?> Points</p>
                                                 </div>
                                             <?php } ?>
                                             <div>
@@ -259,13 +258,13 @@ if (isset($_GET['id'])) {
                         <?php if (isset($assignments)) : ?>
                             <?php if ($assignments[0]['status'] == false) { ?>
                                 <form action="controllers/assignment/assignment_students.controller.php" method="post" id="upload-form" enctype="multipart/form-data">
-                                    <input type="hidden"  name="id" value="<?= $_GET['id'] ?>">
-                                    <label for="file-upload" class="btn border-primary mb-3" style="width: 100%; cursor: pointer;" >
+                                    <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
+                                    <label for="file-upload" class="btn border-primary mb-3" style="width: 100%; cursor: pointer;">
                                         <i class="fa fa-plus me-3" aria-hidden="true"></i>
                                         <span>Add or Create</span>
                                     </label>
                                     <input id="file-upload" type="file" name="upload" style="display: none;">
-                                    <button  type="submit" class="btn btn-primary" style="width: 100%;">Assign</button>
+                                    <button type="submit" class="btn btn-primary" style="width: 100%;">Assign</button>
                                 </form>
                             <?php } else { ?>
                                 <a href="controllers/assignment/assignment_student/unsubmit_assignment.controller.php?id=<?= $assignment['id'] ?>" type="submit" class="btn btn-outline-light mt-2" style="width: 100%;">Unsubmit</a>
@@ -280,8 +279,12 @@ if (isset($_GET['id'])) {
                 <div class="p-3 mb-2 rounded shadow-sm p-3 mb-5 bg-body rounded" style="border: 1px solid gainsboro;">
                     <div class="card-body d-flex justify-content-between text-center align-items-center ">
                         <p class="card-title fs-4">Your work</p>
+                        <?php if (!empty($missing)) { ?>
+                            <p class="card-text text-danger mb-1">Missing</p>
+                        <?php } ?>
                     </div>
                     <div class=" card-body rounded " style=" margin-top: -30px;">
+
                         <img style="margin-top: -20px;" src="../../assets/images/bg/07.png" alt="bg">
                         <div class="nav-item dropdown">
                             <form action="controllers/assignment/assignment_students.controller.php" method="post" id="upload-form" enctype="multipart/form-data">
@@ -291,7 +294,7 @@ if (isset($_GET['id'])) {
                                     <span>Add or Create</span>
                                 </label>
                                 <input id="file-upload" type="file" name="upload" style="display: none;">
-                                <button <?= isset($missing)? "disabled" : "" ?> type="submit" class="btn btn-primary" style="width: 100%;">Turn in</button>
+                                <button <?= isset($missing) ? "disabled" : "" ?> type="submit" class="btn btn-primary" style="width: 100%;">Turn in</button>
                             </form>
                         </div>
                     </div>
