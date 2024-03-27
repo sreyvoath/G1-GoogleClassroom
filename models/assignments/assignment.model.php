@@ -199,11 +199,12 @@ function getStudentsSubmitted(int $assignment_id):array
 function updateStudentStatus(int $id, bool $status, int $class_id): bool
 {
     global $connection;
-    $statement = $connection->prepare("update users_join_class set turned_in = :status where user_id = :id and class_id=:class_id");
+    $statement = $connection->prepare("update users_join_class set turned_in = :status, graded = :graded where user_id = :id and class_id=:class_id");
     $statement->execute([
         ':status' => $status,
         ':id' => $id,
         ':class_id' => $class_id,
+        ':graded' => false,
     ]);
     return $statement->rowCount() > 0;
 }

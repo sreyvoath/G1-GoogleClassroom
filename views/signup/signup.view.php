@@ -94,7 +94,7 @@ if (isset($_SESSION['error'])) {
 										</div>
 										<span class="text-danger"><?= isset($_SESSION['error']) ? $error['name'] : "" ?></span>
 										<span class="text-danger"><?= isset($_SESSION['error']) ? $error['password'] : "" ?></span>
-										<div id="passwordHelpBlock" class="form-text text-white">
+										<div id="passwordHelpBlock" class="form-text">
 											Your password must be 8 characters at least
 										</div>
 									</div>
